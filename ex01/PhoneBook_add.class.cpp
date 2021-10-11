@@ -1,46 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/11 20:42:54 by mfunyu           ###   ########.fr       */
+/*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
+/*   Updated: 2021/10/11 17:03: by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "PhoneBook.class.hpp"
+#include <iostream>
 
-#include "contact.hpp"
-
-# define MAX_CONTACTS 8
-
-class PhoneBook
+void	PhoneBook::add()
 {
-private:
-	/* data */
-public:
-	Contact	contact_lst[MAX_CONTACTS];
-	int		contacts_total;
-
-	PhoneBook() {
+	std::cout << "Input a new contact’s information" << std::endl;
+	if (contacts_total == MAX_CONTACTS)
 		contacts_total = 0;
-	};
-
-	void	add();
-	void	search();
-
-private:
-	void	print_header(void);
-	void	print_table(void);
-};
-
-
-// PhoneBook::PhoneBook()
-// {
-// 	contacts_total = 0;
-// }
-
-#endif
+	contact_lst[contacts_total].fillout();
+	contacts_total += 1;
+}

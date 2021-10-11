@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 01:25:50 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/11 20:27:45 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/12 00:14:17 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ CXX		:= clang++
 CXXFLAGS:= -Wall -Wextra -Werror
 
 SRCS	:= main.cpp \
-			phonebook_add.cpp \
-			phonebook_search.cpp \
-			contact.cpp
+			PhoneBook_add.class.cpp \
+			PhoneBook_search.class.cpp \
+			Contact.class.cpp
 OBJS	:= $(SRCS:.cpp=.o)
 
 .PHONY : all clean fclean re
