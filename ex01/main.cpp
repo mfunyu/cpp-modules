@@ -1,37 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/11 01:36:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/11 22:54:30 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-#include "contact.hpp"
 #include <iostream>
 
+static void	_print_instruction(std::string cmd)
+{
+	std::cout << "Invalid input: " << cmd << std::endl;
+	std::cout << "available commands [ADD/SEARCH/EXIT]" << std::endl;
+}
 
 int	main()
 {
-	Contact	contact_lst[8];
+	PhoneBook	phonebook;
 
-	while (42)
+	while (1)
 	{
-		std::string	cmd;
 		std::cout << "Please enter a command: ";
+		std::string cmd;
 		std::cin >> cmd;
 
+		if (std::cin.eof()) {
+			std::cin.clear();
+			std::clearerr(stdin);
+			continue ;
+		}
 
 		if (cmd.compare("EXIT") == 0) {
 			return (0);
 		} else if (cmd.compare("ADD") == 0) {
-			contact_lst[0] = create();
+			phonebook.add();
 		} else if (cmd.compare("SEARCH") == 0) {
-			search(contact_lst);
+			phonebook.search();
+		} else {
+			_print_instruction(cmd);
 		}
 		std::cout << std::endl;
 	}

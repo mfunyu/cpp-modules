@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 01:25:50 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/11 01:08:36 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/11 20:27:45 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME	:= phonebook
 CXX		:= clang++
 CXXFLAGS:= -Wall -Wextra -Werror
 
-SRCS	:= phonebook.cpp \
-			add.cpp \
-			search.cpp \
+SRCS	:= main.cpp \
+			phonebook_add.cpp \
+			phonebook_search.cpp \
 			contact.cpp
 OBJS	:= $(SRCS:.cpp=.o)
 
