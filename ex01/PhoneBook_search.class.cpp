@@ -27,6 +27,7 @@ static void	print_one_column(std::string str)
 
 void	PhoneBook::print_header(void)
 {
+	std::cout << SPACER;
 	print_one_column("index");
 	print_one_column("first_name");
 	print_one_column("last_name");
@@ -36,6 +37,7 @@ void	PhoneBook::print_header(void)
 
 void	PhoneBook::print_border(int num_cols)
 {
+	std::cout << '+';
 	for (int i = 0; i < num_cols; i++) {
 		std::cout << std::string(10, '-') << '+';
 	}
@@ -44,21 +46,25 @@ void	PhoneBook::print_border(int num_cols)
 
 void	PhoneBook::print_table()
 {
+	print_border(4);
 	print_header();
 	for (int i = 0; contact_lst[i].get_is_filled(); i++) {
 		print_border(4);
-		std::cout << std::setw(10) << i << SPACER;
+		std::cout << SPACER;
+		print_one_column(std::to_string(i));
 		print_one_column(contact_lst[i].get_first_name());
 		print_one_column(contact_lst[i].get_last_name());
 		print_one_column(contact_lst[i].get_nickname());
 		std::cout << std::endl;
 	}
+	print_border(4);
 	std::cout << std::endl;
 }
 
 void	PhoneBook::search()
 {
 	if (!contact_lst[0].get_is_filled()) {
+		std::cout << "-------" << std::endl;
 		std::cout << "Error: No available contact" << std::endl;
 		return ;
 	}

@@ -15,6 +15,7 @@
 
 void	PhoneBook::add()
 {
+	std::cout << "-------" << std::endl;
 	std::cout << "Input a new contact’s information" << std::endl;
 	if (contacts_total == MAX_CONTACTS)
 		contacts_total = 0;
