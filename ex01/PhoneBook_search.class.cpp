@@ -17,30 +17,37 @@
 #define SPACER "|"
 #define SEPARATOR ": "
 
-static void	print_one_column(std::string str, bool add_spacer)
+static void	print_one_column(std::string str)
 {
 	if (str.size() > 10) {
 		str.replace(str.begin() + 9, str.end(), 1, '.');
 	}
-	std::cout << std::setw(10) << str;
-	if (add_spacer) {
-		std::cout << SPACER;
-	}
+	std::cout << std::setw(10) << str << SPACER;
 }
 
 void	PhoneBook::print_header(void)
 {
-	print_one_column("index", true);
-	print_one_column("first_name", true);
-	print_one_column("last_name", true);
-	print_one_column("nickname", false);
+	print_one_column("index");
+	print_one_column("first_name");
+	print_one_column("last_name");
+	print_one_column("nickname");
 	std::cout << std::endl;
 }
+
+void	PhoneBook::print_border(int num_cols)
+{
+	for (int i = 0; i < num_cols; i++) {
+		std::cout << std::string(10, '-') << '+';
+	}
+	std::cout << std::endl;
+}
+
 
 void	PhoneBook::print_table()
 {
 	print_header();
 	for (int i = 0; contact_lst[i].is_filled; i++) {
+		print_border(4);
 		std::cout << std::setw(10) << i << SPACER;
 		print_one_column(contact_lst[i].first_name, true);
 		print_one_column(contact_lst[i].last_name, true);

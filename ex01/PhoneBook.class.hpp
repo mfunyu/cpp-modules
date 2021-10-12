@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 00:15:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 14:27:50 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ public:
 private:
 	void	print_table(void);
 	static void	print_header(void);
+	static void	print_border(int num_col);
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/11 23:29:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 14:24:59 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,36 @@
 
 static void print_one_line(std::string name, std::string value)
 {
-	std::cout << name << SEPARATOR << value << std::endl;
+	std::cout << std::setw(15) << name << SEPARATOR << value << std::endl;
 }
 
 void	Contact::print(void)
 {
-	std::cout << "=============" << std::endl;
+	std::cout.setf(std::ios::left);
+	std::cout << "================================" << std::endl;
 	print_one_line("first_name", first_name);
 	print_one_line("last_name", last_name);
 	print_one_line("nickname", nickname);
 	print_one_line("phone_number", phone_number);
 	print_one_line("darkest_secret", darkest_secret);
-	std::cout << "=============" << std::endl;
+	std::cout << "================================" << std::endl;
+	std::cout.unsetf(std::ios::left);
 }
 
 void	Contact::fillout(void)
 {
-	std::cout << "Enter first name: ";
+	std::cout.setf(std::ios::left);
+	std::cout << std::setw(20) << "Enter first name" << SEPARATOR;
 	std::cin >> first_name;
-	std::cout << "Enter last name: ";
+	std::cout << std::setw(20) << "Enter last name" << SEPARATOR;
 	std::cin >> last_name;
-	std::cout << "Enter nickname: ";
+	std::cout << std::setw(20) << "Enter nickname" << SEPARATOR;
 	std::cin >> nickname;
-	std::cout << "Enter phone number: ";
+	std::cout << std::setw(20) << "Enter phone number" << SEPARATOR;
 	std::cin >> phone_number;
-	std::cout << "Enter darkest secret: ";
+	std::cout <<  std::setw(20) << "Enter darkest secret" << SEPARATOR;
 	std::cin >> darkest_secret;
+	std::cout.unsetf(std::ios::left);
 	is_filled = true;
 }
 
