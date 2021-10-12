@@ -13,11 +13,24 @@
 #include "PhoneBook.class.hpp"
 #include <iostream>
 
+int	PhoneBook::_get_contacts_total(void) const {
+	return (_contacts_total);
+}
+
+void	PhoneBook::_reset_contacts_total(void) {
+	_contacts_total = 0;
+}
+
+void	PhoneBook::_increment_contacts_total(void) {
+	_contacts_total += 1;
+}
+
 void	PhoneBook::add() {
 	std::cout << "-------" << std::endl;
 	std::cout << "Input a new contact’s information" << std::endl;
-	if (_contacts_total == MAX_CONTACTS)
-		_contacts_total = 0;
-	_contact_lst[_contacts_total].fillout();
-	_contacts_total += 1;
+
+	if (_get_contacts_total() == MAX_CONTACTS)
+		_reset_contacts_total();
+	_contact_lst[_get_contacts_total()].fillout();
+	_increment_contacts_total();
 }
