@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 13:49:14 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 16:16:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ public:
 		return ;
 	}
 
-	void		print(void);
+	void		print(void) const;
 	void		fillout(void);
-	std::string	get_first_name(void);
-	std::string	get_last_name(void);
-	std::string	get_nickname(void);
-	bool		get_is_filled(void);
+	std::string	get_first_name(void) const;
+	std::string	get_last_name(void) const;
+	std::string	get_nickname(void) const;
+	bool		get_is_filled(void) const;
 
 private:
 	std::string	first_name;

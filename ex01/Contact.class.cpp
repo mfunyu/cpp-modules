@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 14:25:16 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 16:16:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void print_one_line(std::string name, std::string value)
 	std::cout << std::setw(15) << name << SEPARATOR << value << std::endl;
 }
 
-void	Contact::print(void)
+void	Contact::print(void) const
 {
 	std::cout.setf(std::ios::left);
 	std::cout << "================================" << std::endl;
@@ -51,18 +51,18 @@ void	Contact::fillout(void)
 	is_filled = true;
 }
 
-std::string	Contact::get_first_name(void) {
+std::string	Contact::get_first_name(void) const {
 	return (first_name);
 }
 
-std::string	Contact::get_last_name(void) {
+std::string	Contact::get_last_name(void) const {
 	return (last_name);
 }
 
-std::string	Contact::get_nickname(void) {
+std::string	Contact::get_nickname(void) const {
 	return (nickname);
 }
 
-bool	Contact::get_is_filled(void) {
+bool	Contact::get_is_filled(void) const {
 	return (is_filled);
 }

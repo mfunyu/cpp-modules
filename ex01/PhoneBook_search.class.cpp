@@ -44,7 +44,7 @@ void	PhoneBook::print_border(int num_cols)
 	std::cout << std::endl;
 }
 
-void	PhoneBook::print_table()
+void	PhoneBook::print_table() const
 {
 	print_border(4);
 	print_header();
@@ -61,7 +61,7 @@ void	PhoneBook::print_table()
 	std::cout << std::endl;
 }
 
-void	PhoneBook::search()
+void	PhoneBook::search() const
 {
 	if (!contact_lst[0].get_is_filled()) {
 		std::cout << "-------" << std::endl;
@@ -72,7 +72,7 @@ void	PhoneBook::search()
 	print_table();
 
 	std::cout << "Enter index of the desired entry: ";
-	int	index;
+	unsigned int	index;
 	std::cin >> index;
 	if (std::cin.fail()) {
 		std::cout << "Error: Invalid input" << std::endl;
