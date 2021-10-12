@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 23:16:08 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/13 00:04:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
-#include "Contact.class.hpp"
+#include <iostream>
 
-# define MAX_CONTACTS 8
-
-class PhoneBook
+class Contact
 {
 public:
-	PhoneBook();
+	Contact();
 
-	void	add();
-	void	search() const;
+	void		print(void) const;
+	void		fillout(void);
+	std::string	get_first_name(void) const;
+	std::string	get_last_name(void) const;
+	std::string	get_nickname(void) const;
+	bool		get_is_filled(void) const;
 
 private:
-	Contact		_contact_lst[MAX_CONTACTS];
-	int			_contacts_total;
-	void		_print_table(void) const;
-	static void	_print_header(void);
-	static void	_print_border(int num_col);
-	int			_get_contacts_total(void) const;
-	void		_reset_contacts_total(void);
-	void		_increment_contacts_total(void);
+	std::string	_first_name;
+	std::string	_last_name;
+	std::string	_nickname;
+	std::string	_phone_number;
+	std::string	_darkest_secret;
+	bool		_is_filled;
 };
 
 #endif
