@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 14:27:50 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 14:28:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ class PhoneBook
 private:
 	/* data */
 public:
-	Contact	contact_lst[MAX_CONTACTS];
-	int		contacts_total;
-
 	PhoneBook() {
 		contacts_total = 0;
 		return ;
@@ -34,6 +31,8 @@ public:
 	void	search();
 
 private:
+	Contact	contact_lst[MAX_CONTACTS];
+	int		contacts_total;
 	void	print_table(void);
 	static void	print_header(void);
 	static void	print_border(int num_col);

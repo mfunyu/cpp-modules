@@ -42,16 +42,15 @@ void	PhoneBook::print_border(int num_cols)
 	std::cout << std::endl;
 }
 
-
 void	PhoneBook::print_table()
 {
 	print_header();
-	for (int i = 0; contact_lst[i].is_filled; i++) {
+	for (int i = 0; contact_lst[i].get_is_filled(); i++) {
 		print_border(4);
 		std::cout << std::setw(10) << i << SPACER;
-		print_one_column(contact_lst[i].first_name, true);
-		print_one_column(contact_lst[i].last_name, true);
-		print_one_column(contact_lst[i].nickname, false);
+		print_one_column(contact_lst[i].get_first_name());
+		print_one_column(contact_lst[i].get_last_name());
+		print_one_column(contact_lst[i].get_nickname());
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
@@ -59,7 +58,7 @@ void	PhoneBook::print_table()
 
 void	PhoneBook::search()
 {
-	if (!contact_lst[0].is_filled) {
+	if (!contact_lst[0].get_is_filled()) {
 		std::cout << "Error: No available contact" << std::endl;
 		return ;
 	}
@@ -73,9 +72,10 @@ void	PhoneBook::search()
 		std::cout << "Error: Invalid input" << std::endl;
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		return ;
 	}
 
-	if (contact_lst[index].is_filled) {
+	if (contact_lst[index].get_is_filled()) {
 		contact_lst[index].print();
 	} else {
 		std::cout << "Error: Index out of range" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 14:24:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 14:25:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,18 @@ void	Contact::fillout(void)
 	is_filled = true;
 }
 
+std::string	Contact::get_first_name(void) {
+	return (first_name);
+}
+
+std::string	Contact::get_last_name(void) {
+	return (last_name);
+}
+
+std::string	Contact::get_nickname(void) {
+	return (nickname);
+}
+
+bool	Contact::get_is_filled(void) {
+	return (is_filled);
+}
