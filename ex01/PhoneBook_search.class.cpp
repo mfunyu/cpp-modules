@@ -81,7 +81,7 @@ void	PhoneBook::search()
 		return ;
 	}
 
-	if (contact_lst[index].get_is_filled()) {
+	if (index < MAX_CONTACTS && contact_lst[index].get_is_filled()) {
 		contact_lst[index].print();
 	} else {
 		std::cout << "Error: Index out of range" << std::endl;
