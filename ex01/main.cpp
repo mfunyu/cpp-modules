@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/11 23:30:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 23:01:40 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
 #include <iostream>
 
-static void	_print_instruction(std::string cmd)
+static void	print_instruction(std::string cmd)
 {
 	std::cout << "Invalid input: " << cmd << std::endl;
 	std::cout << "available commands [ADD/SEARCH/EXIT]" << std::endl;
@@ -42,7 +42,7 @@ int	main()
 		} else if (cmd.compare("SEARCH") == 0) {
 			phonebook.search();
 		} else {
-			_print_instruction(cmd);
+			print_instruction(cmd);
 		}
 		std::cout << std::endl;
 	}

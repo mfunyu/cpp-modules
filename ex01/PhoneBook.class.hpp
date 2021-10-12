@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 22:54:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 23:00:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ public:
 	void	search() const;
 
 private:
-	Contact		contact_lst[MAX_CONTACTS];
-	int			contacts_total;
-	void		print_table(void) const;
-	static void	print_header(void);
-	static void	print_border(int num_col);
+	Contact		_contact_lst[MAX_CONTACTS];
+	int			_contacts_total;
+	void		_print_table(void) const;
+	static void	_print_header(void);
+	static void	_print_border(int num_col);
 };
 
 #endif
