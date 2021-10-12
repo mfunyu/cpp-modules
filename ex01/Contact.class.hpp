@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/12 16:16:07 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/12 22:54:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@
 class Contact
 {
 public:
-	Contact()
-	{
-		is_filled = false;
-		return ;
-	}
+	Contact();
 
 	void		print(void) const;
 	void		fillout(void);

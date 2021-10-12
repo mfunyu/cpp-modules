@@ -17,16 +17,14 @@
 #define SPACER "|"
 #define SEPARATOR ": "
 
-static void	print_one_column(std::string str)
-{
+static void	print_one_column(std::string str) {
 	if (str.size() > 10) {
 		str.replace(str.begin() + 9, str.end(), 1, '.');
 	}
 	std::cout << std::setw(10) << str << SPACER;
 }
 
-void	PhoneBook::print_header(void)
-{
+void	PhoneBook::print_header(void) {
 	std::cout << SPACER;
 	print_one_column("index");
 	print_one_column("first_name");
@@ -35,8 +33,7 @@ void	PhoneBook::print_header(void)
 	std::cout << std::endl;
 }
 
-void	PhoneBook::print_border(int num_cols)
-{
+void	PhoneBook::print_border(int num_cols) {
 	std::cout << '+';
 	for (int i = 0; i < num_cols; i++) {
 		std::cout << std::string(10, '-') << '+';
@@ -44,8 +41,7 @@ void	PhoneBook::print_border(int num_cols)
 	std::cout << std::endl;
 }
 
-void	PhoneBook::print_table() const
-{
+void	PhoneBook::print_table() const {
 	print_border(4);
 	print_header();
 	for (int i = 0; contact_lst[i].get_is_filled(); i++) {
@@ -61,8 +57,7 @@ void	PhoneBook::print_table() const
 	std::cout << std::endl;
 }
 
-void	PhoneBook::search() const
-{
+void	PhoneBook::search() const {
 	if (!contact_lst[0].get_is_filled()) {
 		std::cout << "-------" << std::endl;
 		std::cout << "Error: No available contact" << std::endl;
@@ -88,3 +83,7 @@ void	PhoneBook::search() const
 	}
 }
 
+PhoneBook::PhoneBook() {
+		contacts_total = 0;
+		return ;
+}
