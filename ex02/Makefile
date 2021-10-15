@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 01:25:50 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/14 01:51:18 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/15 23:36:01 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,4 +33,12 @@ fclean	: clean
 
 re	: fclean all
 
+##############################
+
+TESTER	:= cpp00-ex02_diff.sh
+
+${TESTER}	:
+	curl -O https://raw.githubusercontent.com/mfunyu/tester_cpp-module/main/cpp00-ex02_diff.sh
+
+test	: ${TESTER}
 
