@@ -16,10 +16,10 @@
 
 #include "Account.hpp"
 
-int	Account::_nbAccounts = 0;
-int	Account::_totalAmount = 0;
-int	Account::_totalNbDeposits = 0;
-int	Account::_totalNbWithdrawals = 0;
+int	Account::_nbAccounts;
+int	Account::_totalAmount;
+int	Account::_totalNbDeposits;
+int	Account::_totalNbWithdrawals;
 
 int		Account::getNbAccounts( void ) {
 	return _nbAccounts;
@@ -104,7 +104,9 @@ void	Account::displayStatus( void ) const {
 }
 
 Account::Account( int initial_deposit ) : _accountIndex(getNbAccounts()),
-											_amount(initial_deposit){
+										_amount(initial_deposit),
+										_nbDeposits(0),
+										_nbWithdrawals(0) {
 	_nbAccounts += 1;
 	_totalAmount += initial_deposit;
 
