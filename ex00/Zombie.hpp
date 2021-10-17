@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:03:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/17 18:10:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/17 19:00:40 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,5 @@ public:
 private:
 	std::string	_zombie_name;
 };
-
-Zombie*	newZombie( std::string name );
-void	randomChump( std::string name );
 
 #endif
