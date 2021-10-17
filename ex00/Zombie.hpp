@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:03:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/17 19:00:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/17 19:36:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 #include <iostream>
 
-class Zombie {
+class Zombie
+{
+	public:
+		Zombie( std::string name );
+		~Zombie();
+		void	announce( void ) const;
 
-public:
-	Zombie( std::string name );
-	~Zombie();
-	void	announce( void );
-
-private:
-	std::string	_zombie_name;
+	private:
+		std::string	_name;
 };
 
 #endif
