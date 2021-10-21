@@ -15,18 +15,15 @@
 #include <iomanip>
 #include <string>
 
-#define SPACER "|"
-#define SEPARATOR ": "
-
 static void	print_one_column(std::string str) {
 	if (str.size() > 10) {
 		str.replace(str.begin() + 9, str.end(), 1, '.');
 	}
-	std::cout << std::setw(10) << str << SPACER;
+	std::cout << std::setw(10) << str << "|";
 }
 
 void	PhoneBook::_print_header(void) {
-	std::cout << SPACER;
+	std::cout << "|";
 	print_one_column("index");
 	print_one_column("first_name");
 	print_one_column("last_name");
@@ -47,7 +44,7 @@ void	PhoneBook::_print_table() const {
 	_print_header();
 	for (int i = 0; _contact_lst[i].is_filled(); i++) {
 		_print_border(4);
-		std::cout << SPACER;
+		std::cout << "|";
 		print_one_column(std::to_string(i));
 		print_one_column(_contact_lst[i].get_first_name());
 		print_one_column(_contact_lst[i].get_last_name());
