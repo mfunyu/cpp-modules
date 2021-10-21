@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 01:45:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/10 14:21:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/21 14:03:48 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cctype>
 
 static void	_str_toupper(const char *str)
 {

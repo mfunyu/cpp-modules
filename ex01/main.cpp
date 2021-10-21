@@ -6,12 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/13 00:04:28 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/20 21:59:03 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
+#include <string>
 
 static void	print_instruction(std::string cmd)
 {
