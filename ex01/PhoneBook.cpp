@@ -103,7 +103,6 @@ void	PhoneBook::add() {
 	_increment_contacts_total();
 }
 
-PhoneBook::PhoneBook() {
-	_contacts_total = 0;
+PhoneBook::PhoneBook() : _contacts_total(0){
 	return ;
 }
