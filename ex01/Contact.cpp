@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/21 21:13:00 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/21 22:48:32 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 #include <iomanip>
 #include <string>
 
-static void print_one_line(std::string name, std::string value) {
+void Contact::_print_one_line(std::string name, std::string value) {
 	std::cout << std::setw(15) << name << ": " << value << std::endl;
 }
 
 void	Contact::print(void) const {
 	std::cout.setf(std::ios::left);
 	std::cout << "================================" << std::endl;
-	print_one_line("first_name", _first_name);
-	print_one_line("last_name", _last_name);
-	print_one_line("nickname", _nickname);
-	print_one_line("phone_number", _phone_number);
-	print_one_line("darkest_secret", _darkest_secret);
+	_print_one_line("first_name", _first_name);
+	_print_one_line("last_name", _last_name);
+	_print_one_line("nickname", _nickname);
+	_print_one_line("phone_number", _phone_number);
+	_print_one_line("darkest_secret", _darkest_secret);
 	std::cout << "================================" << std::endl;
 	std::cout.unsetf(std::ios::left);
 }

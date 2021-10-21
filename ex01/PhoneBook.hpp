@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/13 00:03:55 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/21 22:55:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ public:
 
 private:
 	Contact		_contact_lst[MAX_CONTACTS];
-	int			_contacts_total;
+	unsigned int	_contacts_total;
 	void		_print_table(void) const;
+	static void	_print_one_column(std::string str);
 	static void	_print_header(void);
-	static void	_print_border(int num_col);
+	static void	_print_border();
 	int			_get_contacts_total(void) const;
 	void		_reset_contacts_total(void);
 	void		_increment_contacts_total(void);

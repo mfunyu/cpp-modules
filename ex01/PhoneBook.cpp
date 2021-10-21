@@ -15,43 +15,46 @@
 #include <iomanip>
 #include <string>
 
-static void	print_one_column(std::string str) {
-	if (str.size() > 10) {
-		str.replace(str.begin() + 9, str.end(), 1, '.');
+# define NUM_COLS 4
+# define COL_WIDTH 10
+
+void	PhoneBook::_print_one_column(std::string str) {
+	if (str.size() > COL_WIDTH) {
+		str.replace(str.begin() + COL_WIDTH - 1, str.end(), 1, '.');
 	}
 	std::cout << std::setw(10) << str << "|";
 }
 
 void	PhoneBook::_print_header(void) {
 	std::cout << "|";
-	print_one_column("index");
-	print_one_column("first_name");
-	print_one_column("last_name");
-	print_one_column("nickname");
+	_print_one_column("index");
+	_print_one_column("first_name");
+	_print_one_column("last_name");
+	_print_one_column("nickname");
 	std::cout << std::endl;
 }
 
-void	PhoneBook::_print_border(int num_cols) {
+void	PhoneBook::_print_border() {
 	std::cout << '+';
-	for (int i = 0; i < num_cols; i++) {
-		std::cout << std::string(10, '-') << '+';
+	for (int i = 0; i < NUM_COLS; i++) {
+		std::cout << std::string(COL_WIDTH, '-') << '+';
 	}
 	std::cout << std::endl;
 }
 
 void	PhoneBook::_print_table() const {
-	_print_border(4);
+	_print_border();
 	_print_header();
 	for (int i = 0; _contact_lst[i].is_filled(); i++) {
-		_print_border(4);
+		_print_border();
 		std::cout << "|";
-		print_one_column(std::to_string(i));
-		print_one_column(_contact_lst[i].get_first_name());
-		print_one_column(_contact_lst[i].get_last_name());
-		print_one_column(_contact_lst[i].get_nickname());
+		_print_one_column(std::to_string(i));
+		_print_one_column(_contact_lst[i].get_first_name());
+		_print_one_column(_contact_lst[i].get_last_name());
+		_print_one_column(_contact_lst[i].get_nickname());
 		std::cout << std::endl;
 	}
-	_print_border(4);
+	_print_border();
 	std::cout << std::endl;
 }
 
@@ -97,9 +100,10 @@ void	PhoneBook::add() {
 	std::cout << "-------" << std::endl;
 	std::cout << "Input a new contact’s information" << std::endl;
 
-	if (_get_contacts_total() == MAX_CONTACTS)
+	int		index = _get_contacts_total();
+	if (index == MAX_CONTACTS)
 		_reset_contacts_total();
-	_contact_lst[_get_contacts_total()].fillout();
+	_contact_lst[index].fillout();
 	_increment_contacts_total();
 }
 

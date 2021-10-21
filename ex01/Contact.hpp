@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/21 14:14:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/21 22:48:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Contact
 		std::string	_phone_number;
 		std::string	_darkest_secret;
 		bool		_is_filled;
+		static void	_print_one_line(std::string name, std::string value);
 };
 
 #endif
