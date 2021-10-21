@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/21 22:48:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/21 23:07:18 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	Contact::print(void) const {
 }
 
 void	Contact::fillout(void) {
+	std::cout << "-------" << std::endl;
+	std::cout << "Input a new contact’s information" << std::endl;
 	std::cout.setf(std::ios::left);
 	std::cout << std::setw(20) << "Enter first name" << ": ";
 	std::cin >> _first_name;
