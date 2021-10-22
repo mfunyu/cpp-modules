@@ -36,6 +36,7 @@ int	main(void)
 		}
 
 		if (cmd.compare("EXIT") == 0) {
+			std::cout << "Bye!" << std::endl;
 			return 0;
 		} else if (cmd.compare("ADD") == 0) {
 			phonebook.add();
