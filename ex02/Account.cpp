@@ -1,14 +1,14 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   Account.cpp                                        :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2021/10/14 01:41:56 by mfunyu            #+#    #+#             */
-// /*   Updated: 2021/10/14 01:47:59 by mfunyu           ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/14 01:41:56 by mfunyu            #+#    #+#             */
+/*   Updated: 2021/10/22 15:10:09 by mfunyu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
@@ -35,9 +35,6 @@ int		Account::getNbDeposits( void ) {
 
 int		Account::getNbWithdrawals( void ) {
 	return _totalNbWithdrawals;
-}
-
-Account::Account(void) {
 }
 
 void	Account::_displayTimestamp( void ) {
@@ -94,6 +91,10 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 	return true;
 }
 
+int		Account::checkAmount( void ) const {
+	return _amount;
+};
+
 void	Account::displayStatus( void ) const {
 	_displayTimestamp();
 
@@ -103,10 +104,15 @@ void	Account::displayStatus( void ) const {
 	std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }
 
-Account::Account( int initial_deposit ) : _accountIndex(getNbAccounts()),
-										_amount(initial_deposit),
-										_nbDeposits(0),
-										_nbWithdrawals(0) {
+Account::Account(void) {
+	return ;
+}
+
+Account::Account( int initial_deposit ) : _accountIndex(getNbAccounts())
+										, _amount(initial_deposit)
+										, _nbDeposits(0)
+										, _nbWithdrawals(0)
+{
 	_nbAccounts += 1;
 	_totalAmount += initial_deposit;
 
