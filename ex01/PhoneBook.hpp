@@ -28,7 +28,7 @@ class PhoneBook
 		void	search() const;
 
 	private:
-		Contact			_contact_lst[MAX_CONTACTS];
+		Contact			_contact_lst[MAX_CONTACTS + 1];
 		unsigned int	_contact_index;
 		unsigned int	_get_contact_index(void) const;
 		void			_update_contact_index(void);
