@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 16:52:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/19 17:12:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/22 23:18:09 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 int		main(void)
 {
