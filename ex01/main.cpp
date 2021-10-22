@@ -13,6 +13,7 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 static void	print_instruction(std::string cmd)
 {
@@ -31,9 +32,7 @@ int	main(void)
 		std::cin >> cmd;
 
 		if (std::cin.eof()) {
-			std::cin.clear();
-			std::clearerr(stdin);
-			continue ;
+			std::exit(EXIT_FAILURE);
 		}
 
 		if (cmd.compare("EXIT") == 0) {
