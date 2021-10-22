@@ -6,12 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 18:29:00 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/18 19:58:56 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/22 23:17:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-#include <iostream>
+#include <string>
 
 Zombie*	zombieHorde( int N, std::string name );
 

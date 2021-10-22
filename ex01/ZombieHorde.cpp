@@ -6,12 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 19:02:02 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/18 20:06:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/22 23:17:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-#include <iostream>
+#include <string>
 
 Zombie*	zombieHorde( int N, std::string name ){
 	Zombie*		zombies = new Zombie[N];
