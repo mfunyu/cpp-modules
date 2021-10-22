@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:03:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/18 19:52:30 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/22 23:14:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#include <iostream>
+#include <string>
 
 class Zombie
 {

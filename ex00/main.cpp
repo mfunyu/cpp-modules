@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:03:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/17 19:00:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/22 23:14:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 #include "Zombie.hpp"
 
 Zombie*	newZombie( std::string name );

@@ -6,12 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 23:48:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/18 19:56:05 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/22 23:14:56 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
+#include <string>
 
 void	Zombie::announce( void ) const {
 	std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
