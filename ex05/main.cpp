@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:51:02 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 17:01:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/24 00:17:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@ int		main(void)
 {
 	Karen	karen;
 
-	karen.complain("error");
-	karen.complain("info");
-	karen.complain("warning");
-	karen.complain("debug");
-
-	karen.complain("warning");
-	karen.complain("info");
-	karen.complain("error");
-	karen.complain("debug");
+	karen.complain("ERROR");
+	karen.complain("INFO");
+	karen.complain("KO");
+	karen.complain("WARNING");
+	karen.complain("DEBUG");
+	karen.complain("ok");
 	return 0;
 }

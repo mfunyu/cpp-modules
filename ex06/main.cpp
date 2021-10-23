@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 20:54:26 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 21:09:39 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/24 00:21:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ int		main(int ac, char **av)
 			break ;
 		case DEBUG:
 			std::cout << "[DEBUG]" << std::endl;
-			karen.complain("debug");
+			karen.complain("DEBUG");
 			std::cout << std::endl;
 		case INFO:
 			std::cout << "[INFO]" << std::endl;
-			karen.complain("info");
+			karen.complain("INFO");
 			std::cout << std::endl;
 		case WARNING:
 			std::cout << "[WARNING]" << std::endl;
-			karen.complain("warning");
+			karen.complain("WARNING");
 			std::cout << std::endl;
 		case ERROR:
 			std::cout << "[ERROR]" << std::endl;
-			karen.complain("error");
+			karen.complain("ERROR");
 			std::cout << std::endl;
 	}
 }

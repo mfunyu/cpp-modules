@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:50:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 20:27:01 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/24 00:16:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ struct complain_types
 
 void	Karen::complain( std::string level ) {
 	struct complain_types	type_lst[5] = {
-		{"debug", &Karen::debug},
-		{"info", &Karen::info},
-		{"warning", &Karen::warning},
-		{"error", &Karen::error},
+		{"DEBUG", &Karen::debug},
+		{"INFO", &Karen::info},
+		{"WARNING", &Karen::warning},
+		{"ERROR", &Karen::error},
 	};
 
 	for (int i = 0; i < 4; i++) {
