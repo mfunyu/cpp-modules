@@ -6,10 +6,11 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:19:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:15:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 14:21:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 #include <iostream>
@@ -23,6 +24,7 @@ int		main(void)
 	for (int i = 0; i < 10; i++) {
 		Weapon		weapon;
 		weapon.setType();
+
 		HumanA		humanA(weapon);
 		humanA.attack();
 	}
