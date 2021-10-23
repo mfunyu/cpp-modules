@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:48:18 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 16:53:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 20:26:53 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Karen
 {
 	public:
-		Karen(/* args */);
+		Karen();
 		~Karen();
 		void	complain( std::string level );
 

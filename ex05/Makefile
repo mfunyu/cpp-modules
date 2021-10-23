@@ -6,11 +6,11 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/17 18:28:42 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/23 16:45:06 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/23 19:20:49 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= replace
+NAME	:= karen
 CXX		:= clang++
 CXXFLAGS:= -Wall -Wextra -Werror
 

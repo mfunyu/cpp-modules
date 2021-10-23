@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:50:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 20:23:21 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 20:27:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ struct complain_types
 };
 
 void	Karen::complain( std::string level ) {
-	typedef		void (Karen::*FuncPtr)();
-	FuncPtr		func;
+	struct complain_types	type_lst[5] = {
+		{"debug", &Karen::debug},
+		{"info", &Karen::info},
+		{"warning", &Karen::warning},
+		{"error", &Karen::error},
+	};
 
-	if (level.compare("debug") == 0)
-		func = &Karen::debug;
-	if (level.compare("info") == 0)
-		func = &Karen::info;
-	if (level.compare("warning") == 0)
-		func = &Karen::warning;
-	if (level.compare("error") == 0)
-		func = &Karen::error;
-	(this->*func)();
+	for (int i = 0; i < 4; i++) {
+		if (type_lst[i].level == level) {
+			(this->*type_lst[i].FuncPtr)();
+			break ;
+		}
+	}
 }
-
 
 void	Karen::debug( void ) {
 	std::cout << "DEBUG I love to get extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I just love it!" << std::endl;
