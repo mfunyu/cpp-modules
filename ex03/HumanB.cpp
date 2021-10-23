@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:24:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:10:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 14:16:04 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ void	HumanB::attack() {
 	}
 }
 
-HumanB::HumanB(std::string name, std::string type) : _name(name) {
-	_weapon.setType(type);
-	return ;
-}
-
 HumanB::HumanB() {
 	_name = "Jhon_" + std::to_string(rand() % 10000);
 
-	_weapon.setType(true);
+	if (rand() % 2)
+		_weapon.setType();
 	return ;
 }
 
