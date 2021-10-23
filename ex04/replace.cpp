@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 20:29:57 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 23:40:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	write_to_file(const std::string filename, const std::string file_content)
 		std::cout << "Failed to open file" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	ofs << file_content << std::endl;
+	ofs << file_content;
 }
 
 void	replace_str(std::string& file_content, const std::string s1, const std::string s2)
@@ -46,11 +46,13 @@ std::string		read_file(std::ifstream& ifs)
 {
 	std::string	file_content;
 
-	while (ifs) {
-		std::string	line;
-		std::getline(ifs, line);
-		file_content.append(line);
-		file_content.append("\n");
+	char	c;
+	while (ifs.get(c)) {
+		file_content += c;
+	}
+	if (!ifs.eof()) {
+		std::cout << "Failed to read" << std::endl;
+		exit(EXIT_FAILURE);
 	}
 	return file_content;
 }
