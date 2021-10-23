@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 16:30:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 16:35:31 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ std::string		read_file(std::ifstream& ifs)
 	return file_content;
 }
 
-int		replace(const std::string filename, const std::string s1, const std::string s2)
+void	replace(const std::string filename, const std::string s1, const std::string s2)
 {
 	std::ifstream	ifs(filename);
 
@@ -68,6 +68,4 @@ int		replace(const std::string filename, const std::string s1, const std::string
 
 	replace_str(file_content, s1, s2);
 	write_to_file(filename, file_content);
-
-	return 0;
 }
