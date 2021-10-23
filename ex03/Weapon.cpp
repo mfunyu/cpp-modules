@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 17:19:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 12:52:16 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 13:58:54 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,37 @@ std::string&	Weapon::getType() {
 	return _type;
 }
 
-void	Weapon::setType() {
+void	Weapon::setType(std::string type) {
+	_type = type;
 }
 
+void	Weapon::setType(bool random) {
+	if (random && rand() % 2) {
+		return ;
+	}
+	std::string		weapon_types[10] = {
+		"pen",
+		"spoon",
+		"kitchen knife",
+		"sword",
+		"katana",
+		"nuclear weapon",
+		"smile",
+		"stone",
+		"gun",
+		"sniper rifle"
+	};
+	_type = weapon_types[rand() % 10];
+}
 
-Weapon::Weapon(/* args */) {
+Weapon::Weapon(std::string type) : _type(type) {
 
 }
+
+Weapon::Weapon() {
+
+}
+
 
 Weapon::~Weapon() {
 	return ;
