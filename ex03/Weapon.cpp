@@ -6,14 +6,16 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 17:19:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:15:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 14:23:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
 std::string&	Weapon::getType() {
-	return _type;
+	std::string&	typeREF = _type;
+
+	return typeREF;
 }
 
 void	Weapon::setType(std::string type) {
