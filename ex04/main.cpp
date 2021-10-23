@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 23:55:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 23:59:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ void	put_error(std::string error_msg)
 	std::exit(1);
 }
 
-void	write_to_file(const std::string filename, const std::string file_content)
+void	write_to_newfile(const std::string filename, const std::string file_content)
 {
-	std::string	new_filename = filename + ".replace";
-	std::ofstream	ofs(new_filename);
+	std::ofstream	ofs(filename);
 
 	if (!ofs) {
 		put_error("failed to open");
@@ -50,8 +49,14 @@ void	replace_string(std::string& file_content, const std::string s1, const std::
 	}
 }
 
-std::string		read_file(std::ifstream& ifs)
+std::string		read_from_file(std::string filename)
 {
+	std::ifstream	ifs(filename);
+
+	if (!ifs) {
+		put_error("failed to open");
+	}
+
 	std::string	file_content;
 
 	char	c;
@@ -78,14 +83,10 @@ int		main(int ac, char **av)
 		put_error("empty string");
 	}
 
-	std::ifstream	ifs(filename);
-
-	if (!ifs) {
-		put_error("failed to open");
-	}
-
-	std::string	file_content = read_file(ifs);
+	std::string	file_content = read_from_file(filename);
 
 	replace_string(file_content, s1, s2);
-	write_to_file(filename, file_content);
+
+	std::string	new_filename = filename + ".replace";
+	write_to_newfile(new_filename, file_content);
 }
