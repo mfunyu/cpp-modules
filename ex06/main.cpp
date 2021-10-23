@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 20:54:26 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/24 00:21:22 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/24 00:24:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	resolveComplainType(std::string level)
 
 int		main(int ac, char **av)
 {
-	if (ac < 2) {
+	if (ac != 2) {
 		std::cout << "Invalid arguments" << std::endl;
 		return 0;
 	}
@@ -52,19 +52,19 @@ int		main(int ac, char **av)
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 			break ;
 		case DEBUG:
-			std::cout << "[DEBUG]" << std::endl;
+			std::cout << "[ DEBUG ]" << std::endl;
 			karen.complain("DEBUG");
 			std::cout << std::endl;
 		case INFO:
-			std::cout << "[INFO]" << std::endl;
+			std::cout << "[ INFO ]" << std::endl;
 			karen.complain("INFO");
 			std::cout << std::endl;
 		case WARNING:
-			std::cout << "[WARNING]" << std::endl;
+			std::cout << "[ WARNING ]" << std::endl;
 			karen.complain("WARNING");
 			std::cout << std::endl;
 		case ERROR:
-			std::cout << "[ERROR]" << std::endl;
+			std::cout << "[ ERROR ]" << std::endl;
 			karen.complain("ERROR");
 			std::cout << std::endl;
 	}
