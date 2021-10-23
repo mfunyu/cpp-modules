@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/17 18:28:42 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/23 19:20:49 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/23 20:49:34 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ all : $(NAME)
 $(NAME)	: $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 clean	:
-	$(RM) $(OBJS) *.replace
+	$(RM) $(OBJS)
 
 fclean	: clean
 	$(RM) $(NAME)
