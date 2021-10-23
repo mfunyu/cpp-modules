@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:21:18 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:46:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 20:04:26 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class HumanB {
 		HumanB(std::string name);
 		~HumanB();
 		void			attack();
-		void			setWeapon(Weapon weapon);
+		void			setWeapon(Weapon& weapon);
 
 	private:
 		std::string		_name;
-		Weapon			_weapon;
+		Weapon			*_weapon;
 };
 
 #endif
