@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/17 18:28:42 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/23 16:23:21 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/23 23:48:44 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ NAME	:= replace
 CXX		:= clang++
 CXXFLAGS:= -Wall -Wextra -Werror
 
-SRCS	:= main.cpp \
-			replace.cpp
+SRCS	:= main.cpp
 OBJS	:= $(SRCS:.cpp=.o)
 
 .PHONY : all clean fclean re
