@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:03:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/22 23:14:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 22:28:50 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,4 @@ class Zombie
 		std::string	_name;
 };
 
-#endif
+#endif /* ZOMBIE_HPP */
