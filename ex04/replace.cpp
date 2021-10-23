@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 23:40:22 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 23:43:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 #include <string>
 #include <iostream>
 
+void	put_error(std::string error_msg)
+{
+	std::cerr << error_msg << std::endl;
+	std::exit(1);
+}
+
 void	write_to_file(const std::string filename, const std::string file_content)
 {
 	std::string	new_filename = filename + ".replace";
 	std::ofstream	ofs(new_filename);
 
 	if (ofs.fail())	{
-		std::cout << "Failed to open file" << std::endl;
-		exit(EXIT_FAILURE);
+		put_error("Failed to open file");
 	}
 	ofs << file_content;
 }
@@ -51,8 +56,7 @@ std::string		read_file(std::ifstream& ifs)
 		file_content += c;
 	}
 	if (!ifs.eof()) {
-		std::cout << "Failed to read" << std::endl;
-		exit(EXIT_FAILURE);
+		put_error("Failed to read");
 	}
 	return file_content;
 }
@@ -60,15 +64,13 @@ std::string		read_file(std::ifstream& ifs)
 void	replace(const std::string filename, const std::string s1, const std::string s2)
 {
 	if (s1.empty() || s2.empty()) {
-		std::cout << "Invalid strings" << std::endl;
-		exit(EXIT_FAILURE);
+		put_error("Invalid strings");
 	}
 
 	std::ifstream	ifs(filename);
 
 	if (ifs.fail())	{
-		std::cout << "Failed to open file" << std::endl;
-		exit(EXIT_FAILURE);
+		put_error("Failed to open file");
 	}
 
 	std::string	file_content = read_file(ifs);
