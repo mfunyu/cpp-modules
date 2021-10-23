@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 16:14:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 16:30:32 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 #include <string>
 #include <iostream>
 
-int		replace(std::string filename, std::string s1, std::string s2)
+void	write_to_file(const std::string filename, const std::string file_content)
 {
-	//open filename
-	std::ifstream	ifs(filename);
+	std::string	new_filename = filename + ".replace";
+	std::ofstream	ofs(new_filename);
 
-	if (ifs.fail())	{
+	if (ofs.fail())	{
 		std::cout << "Failed to open file" << std::endl;
-		return 1;
+		exit(EXIT_FAILURE);
 	}
+	ofs << file_content << std::endl;
+}
 
-	std::string	file_content;
-
-	while (ifs) {
-		std::string	line;
-		std::getline(ifs, line);
-		file_content.append(line);
-		file_content.append("\n");
-	}
-
-	//replace s1 -> s2
+void	replace_str(std::string& file_content, const std::string s1, const std::string s2)
+{
 	std::size_t	found;
 	std::size_t	s1_len = s1.length();
 	std::size_t	pos = 0;
@@ -46,15 +40,34 @@ int		replace(std::string filename, std::string s1, std::string s2)
 		file_content.insert(found, s2);
 		pos = found + s1_len;
 	}
+}
 
-	//write to filaname.replace
-	std::string	new_filename = filename + ".replace";
-	std::ofstream	ofs(new_filename);
+std::string		read_file(std::ifstream& ifs)
+{
+	std::string	file_content;
 
-	if (ofs.fail())	{
-		std::cout << "Failed to create file" << std::endl;
-		return 1;
+	while (ifs) {
+		std::string	line;
+		std::getline(ifs, line);
+		file_content.append(line);
+		file_content.append("\n");
 	}
-	ofs << file_content << std::endl;
+	return file_content;
+}
+
+int		replace(const std::string filename, const std::string s1, const std::string s2)
+{
+	std::ifstream	ifs(filename);
+
+	if (ifs.fail())	{
+		std::cout << "Failed to open file" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+
+	std::string	file_content = read_file(ifs);
+
+	replace_str(file_content, s1, s2);
+	write_to_file(filename, file_content);
+
 	return 0;
 }
