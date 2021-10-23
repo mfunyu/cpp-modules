@@ -6,15 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:24:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:21:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 14:46:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include <iostream>
 #include <string>
-#include <ctime>
-#include <cstdlib>
 
 void	HumanB::attack() {
 	if (_weapon.getType().empty()) {
@@ -24,11 +22,11 @@ void	HumanB::attack() {
 	}
 }
 
-HumanB::HumanB() {
-	_name = "Jhon_" + std::to_string(rand() % 10000);
+void	HumanB::setWeapon(Weapon weapon) {
+	_weapon = weapon;
+}
 
-	if (rand() % 2)
-		_weapon.setType();
+HumanB::HumanB(std::string name) : _name(name) {
 	return ;
 }
 

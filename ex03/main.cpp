@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:19:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:21:11 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 14:43:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 #include "HumanB.hpp"
 #include <iostream>
 
-int		main(void)
+int main()
 {
-	srand(time(NULL));
-
-	/* Human A: random name, random weapon type */
-	std::cout << "[Human A]" << std::endl;
-	for (int i = 0; i < 10; i++) {
-		Weapon		weapon;
-		weapon.setType();
-
-		HumanA		humanA(weapon);
-		humanA.attack();
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
-
-	/* Human B: random name, random weapon type */
-	std::cout << "\n[Human B]" << std::endl;
-	for (int i = 0; i < 10; i++) {
-		HumanB		humanB;
-		humanB.attack();
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 	}
 }
