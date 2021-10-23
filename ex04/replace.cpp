@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 16:35:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/23 20:29:57 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ std::string		read_file(std::ifstream& ifs)
 
 void	replace(const std::string filename, const std::string s1, const std::string s2)
 {
+	if (s1.empty() || s2.empty()) {
+		std::cout << "Invalid strings" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+
 	std::ifstream	ifs(filename);
 
 	if (ifs.fail())	{
