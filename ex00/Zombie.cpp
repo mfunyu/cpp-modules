@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 23:48:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/22 23:14:56 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/24 14:42:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ Zombie::Zombie () {
 }
 
 Zombie::~Zombie () {
-	std::cerr << "Zombie " << _name << " died" << std::endl;
+	std::cout << "Zombie " << _name << " died" << std::endl;
 	return;
 }
