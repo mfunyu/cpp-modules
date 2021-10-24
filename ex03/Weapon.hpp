@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 17:19:11 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:47:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/24 16:53:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Weapon
 		Weapon(std::string type);
 		Weapon();
 		~Weapon();
-		std::string&	getType();
+		const std::string&	getType() const;
 		void			setType(std::string type);
 
 	private:
