@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 19:07:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/25 23:26:04 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,37 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &obj)
+Fixed::Fixed(const Fixed &fixed_obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = obj;
+	//if not the same ?
+	*this = fixed_obj;
 }
 
-Fixed&	Fixed::operator =(const Fixed &obj)
+Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	_fixedPointValue = obj.getRawBits();
+
+	_fixedPointValue = fixed_obj.getRawBits();
 	return *this;
 }
 
-int Fixed::getRawBits( void ) const
+int		Fixed::getRawBits(void) const
 {
 	return _fixedPointValue;
 }
 
-void Fixed::setRawBits( int const raw )
+void	Fixed::setRawBits(int const raw)
 {
 	_fixedPointValue = raw;
 }
 
-float Fixed::toFloat( void ) const
-{
-	return	_fixedPointValue / float(1 << _nbFractionalBit);
-;
-}
-
-int Fixed::toInt( void ) const
+int		Fixed::toInt(void) const
 {
 	return _fixedPointValue >> _nbFractionalBit;
+}
+
+float	Fixed::toFloat(void) const
+{
+	return	_fixedPointValue / float(1 << _nbFractionalBit);
 }
