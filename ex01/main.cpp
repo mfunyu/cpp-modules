@@ -6,12 +6,18 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 13:22:18 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 13:23:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/25 18:31:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+
+std::ostream&	operator <<(std::ostream& os, const Fixed& fixed)
+{
+	os << fixed.toFloat();
+	return os;
+}
 
 int main( void )
 {
