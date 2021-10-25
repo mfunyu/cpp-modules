@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:56:29 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/24 20:48:50 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/25 23:24:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-int		main( void )
+int		main(void)
 {
 	Fixed a;
 	Fixed b( a );
