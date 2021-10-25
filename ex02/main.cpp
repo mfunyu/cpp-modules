@@ -6,20 +6,21 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 22:48:28 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/25 23:33:26 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-std::ostream&	operator <<(std::ostream& os, const Fixed& fixed)
+std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj)
 {
-	os << fixed.toFloat();
+	os << fixed_obj.toFloat();
 	return os;
 }
 
-int main( void ) {
+int		main(void)
+{
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
