@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/26 21:17:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 00:29:47 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,21 @@ bool	Fixed::operator!=(Fixed const &rhs) const
 **  arithmetic operator overloadings
 */
 
-Fixed	Fixed::operator+(Fixed const &rhs)
+Fixed	Fixed::operator+(Fixed const &rhs) const
 {
 	Fixed	ret;
 	ret.setRawBits(_fixedPointValue + rhs._fixedPointValue);
 	return ret;
 }
 
-Fixed	Fixed::operator-(Fixed const &rhs)
+Fixed	Fixed::operator-(Fixed const &rhs) const
 {
 	Fixed	ret;
 	ret.setRawBits(_fixedPointValue - rhs._fixedPointValue);
 	return ret;
 }
 
-Fixed	Fixed::operator*(Fixed const &rhs)
+Fixed	Fixed::operator*(Fixed const &rhs) const
 {
 	long long	lhs_value = _fixedPointValue;
 	long long	mul_value = lhs_value * rhs._fixedPointValue;
@@ -129,7 +129,7 @@ Fixed	Fixed::operator*(Fixed const &rhs)
 	return ret;
 }
 
-Fixed	Fixed::operator/(Fixed const &rhs)
+Fixed	Fixed::operator/(Fixed const &rhs) const
 {
 	if (rhs._fixedPointValue == 0)
 		return Fixed(0);
