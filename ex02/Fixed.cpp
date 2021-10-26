@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/26 14:39:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 15:38:02 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ float	Fixed::toFloat(void) const
 	return	_fixedPointValue / float(1 << _nbFractionalBit);
 }
 
+/*
+** comparison operator overloadings
+*/
+
 bool	Fixed::operator>(Fixed const &rhs) const
 {
 	return (_fixedPointValue > rhs._fixedPointValue);
@@ -96,6 +100,10 @@ bool	Fixed::operator!=(Fixed const &rhs) const
 	return (_fixedPointValue != rhs._fixedPointValue);
 }
 
+/*
+**  arithmetic operator overloadings
+*/
+
 Fixed	Fixed::operator+(Fixed const &rhs)
 {
 	Fixed	ret;
@@ -105,16 +113,18 @@ Fixed	Fixed::operator+(Fixed const &rhs)
 
 Fixed	Fixed::operator*(Fixed const &rhs)
 {
-	long long	tmp = _fixedPointValue;
-	long long	tmp2 = rhs._fixedPointValue;
-	long long	new_fixed = tmp * tmp2 >> _nbFractionalBit;
+	long long	lhs_value = _fixedPointValue;
+	long long	mul_value = lhs_value * rhs._fixedPointValue;
 
 	Fixed	ret;
-	ret.setRawBits(new_fixed);
+	ret.setRawBits(mul_value >> _nbFractionalBit);
 
 	return ret;
 }
 
+/*
+** increment / decrement operator overloadings
+*/
 
 Fixed	&Fixed::operator++()
 {
@@ -131,9 +141,20 @@ Fixed	Fixed::operator++(int i)
 	return prev;
 }
 
+/*
+** static member function overloadings
+*/
+
 const Fixed		&Fixed::max (Fixed const &fixed1, Fixed const &fixed2)
 {
 	if (fixed1 >= fixed2)
 		return fixed1;
 	return fixed2;
+}
+
+
+std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj)
+{
+	os << fixed_obj.toFloat();
+	return os;
 }

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:57:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/26 14:36:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 15:38:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ class Fixed
 		static Fixed&	max(Fixed &fixed1, Fixed &fixed2);
 		static const Fixed&	max(Fixed const &fixed1, Fixed const &fixed2);
 };
+
+
+std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj);
 
 #endif /* FIXED_HPP */
