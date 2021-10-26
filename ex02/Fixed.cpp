@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 00:31:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 00:34:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,44 @@ Fixed	Fixed::operator++(int)
 	return prev;
 }
 
+Fixed	&Fixed::operator--()
+{
+	_fixedPointValue -= 1;
+	return *this;
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	prev = *this;
+
+	_fixedPointValue -= 1;
+	return prev;
+}
+
 /*
 ** static member function overloadings
 */
+
+Fixed		&Fixed::min (Fixed &fixed1, Fixed &fixed2)
+{
+	if (fixed1 <= fixed2)
+		return fixed1;
+	return fixed2;
+}
+
+const Fixed		&Fixed::min (Fixed const &fixed1, Fixed const &fixed2)
+{
+	if (fixed1 <= fixed2)
+		return fixed1;
+	return fixed2;
+}
+
+Fixed		&Fixed::max (Fixed &fixed1, Fixed &fixed2)
+{
+	if (fixed1 >= fixed2)
+		return fixed1;
+	return fixed2;
+}
 
 const Fixed		&Fixed::max (Fixed const &fixed1, Fixed const &fixed2)
 {
