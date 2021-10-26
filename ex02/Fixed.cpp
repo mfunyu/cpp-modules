@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 23:31:21 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 00:16:51 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 
 const int	Fixed::_nbFractionalBit = 8;
 
-Fixed::Fixed() : _fixedPointValue(0)
-{
-}
+Fixed::Fixed() : _fixedPointValue(0) {}
 
 Fixed::Fixed(const int int_value)
 {
@@ -30,9 +28,7 @@ Fixed::Fixed(const float float_value)
 	_fixedPointValue = roundf(float_value * ( 1 << _nbFractionalBit));
 }
 
-Fixed::~Fixed()
-{
-}
+Fixed::~Fixed() {}
 
 Fixed::Fixed(const Fixed &fixed_obj)
 {
@@ -66,24 +62,41 @@ float	Fixed::toFloat(void) const
 	return	_fixedPointValue / float(1 << _nbFractionalBit);
 }
 
-Fixed	Fixed::operator++(int i)
+bool	Fixed::operator>(Fixed const &rhs) const
 {
-	Fixed	prev = *this;
-
-	(void)i;
-	_fixedPointValue += 1;
-	return prev;
+	return (_fixedPointValue > rhs._fixedPointValue);
 }
 
-Fixed	&Fixed::operator++()
+bool	Fixed::operator<(Fixed const &rhs) const
 {
-	_fixedPointValue += 1;
-	return *this;
+	return (_fixedPointValue < rhs._fixedPointValue);
 }
 
 bool	Fixed::operator>=(Fixed const &rhs) const
 {
 	return (_fixedPointValue >= rhs._fixedPointValue);
+}
+
+bool	Fixed::operator<=(Fixed const &rhs) const
+{
+	return (_fixedPointValue <= rhs._fixedPointValue);
+}
+
+bool	Fixed::operator==(Fixed const &rhs) const
+{
+	return (_fixedPointValue == rhs._fixedPointValue);
+}
+
+bool	Fixed::operator!=(Fixed const &rhs) const
+{
+	return (_fixedPointValue != rhs._fixedPointValue);
+}
+
+Fixed	Fixed::operator+(Fixed const &rhs)
+{
+	Fixed	ret;
+	ret.setRawBits(_fixedPointValue + rhs._fixedPointValue);
+	return ret;
 }
 
 Fixed	Fixed::operator*(Fixed const &rhs)
@@ -98,6 +111,21 @@ Fixed	Fixed::operator*(Fixed const &rhs)
 	return ret;
 }
 
+
+Fixed	&Fixed::operator++()
+{
+	_fixedPointValue += 1;
+	return *this;
+}
+
+Fixed	Fixed::operator++(int i)
+{
+	Fixed	prev = *this;
+
+	(void)i;
+	_fixedPointValue += 1;
+	return prev;
+}
 
 const Fixed		&Fixed::max (Fixed const &fixed1, Fixed const &fixed2)
 {
