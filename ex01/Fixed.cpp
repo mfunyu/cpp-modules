@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 23:26:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 14:40:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,13 @@
 
 const int	Fixed::_nbFractionalBit = 8;
 
+/*
+** canonical class functions
+*/
+
 Fixed::Fixed() : _fixedPointValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-}
-
-Fixed::Fixed(const int int_value)
-{
-	_fixedPointValue = int_value << _nbFractionalBit;
-	std::cout << "Int constructor called" << std::endl;
-}
-
-Fixed::Fixed(const float float_value)
-{
-	_fixedPointValue = roundf(float_value * ( 1 << _nbFractionalBit));
-	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
@@ -53,6 +45,18 @@ Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 	return *this;
 }
 
+Fixed::Fixed(const int int_value)
+{
+	_fixedPointValue = int_value << _nbFractionalBit;
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float float_value)
+{
+	_fixedPointValue = roundf(float_value * ( 1 << _nbFractionalBit));
+	std::cout << "Float constructor called" << std::endl;
+}
+
 int		Fixed::getRawBits(void) const
 {
 	return _fixedPointValue;
@@ -71,4 +75,11 @@ int		Fixed::toInt(void) const
 float	Fixed::toFloat(void) const
 {
 	return	_fixedPointValue / float(1 << _nbFractionalBit);
+}
+
+
+std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj)
+{
+	os << fixed_obj.toFloat();
+	return os;
 }
