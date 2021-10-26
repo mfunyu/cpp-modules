@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/26 15:38:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 21:17:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,13 @@ Fixed	Fixed::operator+(Fixed const &rhs)
 	return ret;
 }
 
+Fixed	Fixed::operator-(Fixed const &rhs)
+{
+	Fixed	ret;
+	ret.setRawBits(_fixedPointValue - rhs._fixedPointValue);
+	return ret;
+}
+
 Fixed	Fixed::operator*(Fixed const &rhs)
 {
 	long long	lhs_value = _fixedPointValue;
@@ -121,6 +128,21 @@ Fixed	Fixed::operator*(Fixed const &rhs)
 
 	return ret;
 }
+
+Fixed	Fixed::operator/(Fixed const &rhs)
+{
+	if (rhs._fixedPointValue == 0)
+		return Fixed(0);
+
+	long long	lhs_value = _fixedPointValue;
+	long long	mul_value = lhs_value / rhs._fixedPointValue;
+
+	Fixed	ret;
+	ret.setRawBits(mul_value << _nbFractionalBit);
+
+	return ret;
+}
+
 
 /*
 ** increment / decrement operator overloadings
