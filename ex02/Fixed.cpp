@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 00:29:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 00:31:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,11 +154,10 @@ Fixed	&Fixed::operator++()
 	return *this;
 }
 
-Fixed	Fixed::operator++(int i)
+Fixed	Fixed::operator++(int)
 {
 	Fixed	prev = *this;
 
-	(void)i;
 	_fixedPointValue += 1;
 	return prev;
 }
