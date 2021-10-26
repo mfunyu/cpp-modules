@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:57:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/26 00:18:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 14:36:47 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ class Fixed
 
 	public:
 		Fixed();
-		Fixed(const int i);
-		Fixed(const float f);
 		~Fixed();
 		Fixed(const Fixed &fixed_obj);
-
 		Fixed	&operator=(const Fixed &fixed_obj);
+
+		Fixed(const int i);
+		Fixed(const float f);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

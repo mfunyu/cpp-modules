@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/26 00:16:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 14:39:09 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,11 @@
 
 const int	Fixed::_nbFractionalBit = 8;
 
+/*
+** canonical class functions
+*/
+
 Fixed::Fixed() : _fixedPointValue(0) {}
-
-Fixed::Fixed(const int int_value)
-{
-	_fixedPointValue = int_value << _nbFractionalBit;
-}
-
-Fixed::Fixed(const float float_value)
-{
-	_fixedPointValue = roundf(float_value * ( 1 << _nbFractionalBit));
-}
 
 Fixed::~Fixed() {}
 
@@ -40,6 +34,16 @@ Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 {
 	_fixedPointValue = fixed_obj.getRawBits();
 	return *this;
+}
+
+Fixed::Fixed(const int int_value)
+{
+	_fixedPointValue = int_value << _nbFractionalBit;
+}
+
+Fixed::Fixed(const float float_value)
+{
+	_fixedPointValue = roundf(float_value * ( 1 << _nbFractionalBit));
 }
 
 int		Fixed::getRawBits(void) const
