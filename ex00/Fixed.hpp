@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:57:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 23:03:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/26 14:27:34 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Fixed
 		Fixed();
 		~Fixed();
 		Fixed(const Fixed &fixed_obj);
-
 		Fixed	&operator=(const Fixed &fixed_obj);
 
 		int		getRawBits(void) const;
