@@ -6,13 +6,55 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 23:32:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 00:35:31 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <iomanip>
+
+void	division(Fixed const &a, Fixed const &b)
+{
+	std::cout << std::setprecision(20) << a << " / " << b << " " << std::flush;
+
+	Fixed	ans = a / b;
+	std::cout << "= " << ans << "\t";
+
+	float	diff = a.toFloat() / b.toFloat() - ans.toFloat() ;
+
+	if (!diff) {
+		std::cout << ": \033[32mOK\033[m" << std::endl;
+	} else {
+		std::cout << ": \033[33mDIFF\033[m";
+		std::cout << " diff " << diff << std::endl;
+	}
+}
+
+void	test_division(int lhs, int rhs)
+{
+	Fixed	a(lhs);
+	Fixed	b(rhs);
+	division(a , b);
+}
+void	test_division(float lhs, int rhs)
+{
+	Fixed	a(lhs);
+	Fixed	b(rhs);
+	division(a , b);
+}
+void	test_division(float lhs, float rhs)
+{
+	Fixed	a(lhs);
+	Fixed	b(rhs);
+	division(a , b);
+}
+void	test_division(int lhs, float rhs)
+{
+	Fixed	a(lhs);
+	Fixed	b(rhs);
+	division(a , b);
+}
 
 void	test_arithmatics(Fixed const &a, Fixed const &b)
 {
@@ -79,6 +121,16 @@ int		main(void)
 
 	try
 	{
+		test_division(10, 5);
+		test_division(5, 10);
+		test_division(50, 10);
+		test_division(52, 7);
+		test_division(-42.42f, 42.42f);
+		test_division(42.6f, 7.2f);
+		test_division(42.6f, 7);
+		test_division(200, 0);
+
+		/*
 		std::cout << a << std::endl;
 		std::cout << ++a << std::endl;
 		std::cout << a << std::endl;
@@ -86,13 +138,16 @@ int		main(void)
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << Fixed::max( a, b ) << std::endl;
-
+		*/
+		/*
 		test_all(Fixed(10), Fixed(5));
 		test_all(Fixed(20), Fixed(20));
 		test_all(Fixed(0), Fixed(200));
 		test_all(Fixed(-42.3f), Fixed(42.3f));
 		test_all(Fixed(-214748364), Fixed(2147483647));
+		test_all(Fixed(570), Fixed(0.456f));
 		test_all(Fixed(200), Fixed(0));
+		*/
 	}
 	catch (char const* error_msg)
 	{
