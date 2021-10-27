@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/25 23:07:27 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 21:36:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ Fixed::~Fixed()
 Fixed::Fixed(const Fixed &fixed_obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	//if not the same ?
 	*this = fixed_obj;
 }
 
 Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
-
-	_fixedPointValue = fixed_obj.getRawBits();
+	if (this != &fixed_obj)
+	{
+		_fixedPointValue = fixed_obj.getRawBits();
+	}
 	return *this;
 }
 
