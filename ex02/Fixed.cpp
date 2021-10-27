@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 23:58:24 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 00:28:56 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ Fixed	Fixed::operator/(Fixed const &rhs) const
 	if (rhs._fixedPointValue == 0)
 		throw "floating point exception";
 
-	int64_t	lhs_value = _fixedPointValue;
-	int64_t	mul_value = lhs_value / rhs._fixedPointValue;
+	int64_t	new_raw_value = _fixedPointValue;
+	new_raw_value <<= _nbFractionalBit;
+	new_raw_value /= rhs._fixedPointValue;
 
 	Fixed	ret;
-	ret.setRawBits(mul_value << _nbFractionalBit);
-
+	ret.setRawBits(static_cast<int>(new_raw_value));
 	return ret;
 }
 
