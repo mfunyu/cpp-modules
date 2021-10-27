@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 21:38:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 23:03:19 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ Fixed	Fixed::operator-(Fixed const &rhs) const
 
 Fixed	Fixed::operator*(Fixed const &rhs) const
 {
-	long long	lhs_value = _fixedPointValue;
-	long long	mul_value = lhs_value * rhs._fixedPointValue;
+	int64_t	lhs_value = _fixedPointValue;
+	int64_t	mul_value = lhs_value * rhs._fixedPointValue;
 
 	Fixed	ret;
 	ret.setRawBits(mul_value >> _nbFractionalBit);
@@ -136,8 +136,8 @@ Fixed	Fixed::operator/(Fixed const &rhs) const
 	if (rhs._fixedPointValue == 0)
 		return Fixed(0);
 
-	long long	lhs_value = _fixedPointValue;
-	long long	mul_value = lhs_value / rhs._fixedPointValue;
+	int64_t	lhs_value = _fixedPointValue;
+	int64_t	mul_value = lhs_value / rhs._fixedPointValue;
 
 	Fixed	ret;
 	ret.setRawBits(mul_value << _nbFractionalBit);
