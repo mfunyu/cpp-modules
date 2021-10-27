@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 23:03:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 23:09:58 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ Fixed	Fixed::operator*(Fixed const &rhs) const
 Fixed	Fixed::operator/(Fixed const &rhs) const
 {
 	if (rhs._fixedPointValue == 0)
-		return Fixed(0);
+		throw "floating point exception";
 
 	int64_t	lhs_value = _fixedPointValue;
 	int64_t	mul_value = lhs_value / rhs._fixedPointValue;

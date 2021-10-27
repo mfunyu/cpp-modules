@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 00:35:34 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 23:08:14 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,27 @@ int		main(void)
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-
-	#ifdef ADVANCED
+	try
 	{
+		std::cout << a << std::endl;
+		std::cout << ++a << std::endl;
+		std::cout << a << std::endl;
+		std::cout << a++ << std::endl;
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << Fixed::max( a, b ) << std::endl;
+
 		test_all(Fixed(10), Fixed(5));
 		test_all(Fixed(20), Fixed(20));
 		test_all(Fixed(0), Fixed(200));
-		test_all(Fixed(200), Fixed(0));
 		test_all(Fixed(-42.3f), Fixed(42.3f));
 		test_all(Fixed(-214748364), Fixed(2147483647));
+		test_all(Fixed(200), Fixed(0));
 	}
-	#endif
+	catch (char const* error_msg)
+	{
+		std::cout << error_msg << std::endl;
+	};
 
 	return 0;
 }
