@@ -6,13 +6,13 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 23:45:01 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/27 12:09:28 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/27 22:01:19 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= a.out
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors
 
 SRCS	:= main.cpp \
 			Fixed.cpp
