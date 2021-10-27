@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 23:45:01 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/25 13:19:23 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/27 12:01:51 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,3 +31,11 @@ fclean	: clean
 	$(RM) $(NAME)
 
 re	: fclean all
+
+
+#################
+
+difftest	:
+	curl https://raw.githubusercontent.com/mfunyu/cpp-module-02/test/difftest.sh > ../difftest.sh
+	curl https://raw.githubusercontent.com/mfunyu/cpp-module-02/test/ex01_expected.txt > ../ex01_expected.txt
+	cd ../ && ./difftest 1
