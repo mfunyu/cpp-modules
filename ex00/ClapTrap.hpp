@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:26:51 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 12:37:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 13:35:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 class ClapTrap
 {
 	private:
-		std::string		_name;
 		int				_hitPoints;
 		int				_energyPoints;
 		int				_attackDamage;
+		std::string		_name;
 
 	public:
 		ClapTrap();

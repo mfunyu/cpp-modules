@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:29:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 12:44:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 13:37:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <iostream>
 #include <string>
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() : _hitPoints(10),
+						_energyPoints(10),
+						_attackDamage(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -33,14 +35,18 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	if (this != &other)
 	{
+		_hitPoints = other._hitPoints;
+		_energyPoints = other._energyPoints;
+		_attackDamage = other._attackDamage;
+		_name = other._name;
 	}
 	return *this;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name),
-										_hitPoints(10),
+ClapTrap::ClapTrap(std::string name) : _hitPoints(10),
 										_energyPoints(10),
-										_attackDamage(0)
+										_attackDamage(0),
+										_name(name)
 {
 	std::cout << "Constructor called" << std::endl;
 }
@@ -53,13 +59,14 @@ void	ClapTrap::attack(std::string const &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-
-
+	std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
+	_hitPoints += amount;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-
-
+	std::cout << "ClapTrap " << _name << " is repaired,";
+	std::cout << " causing " << amount << " points of recovery!" << std::endl;
+	_energyPoints += amount;
 }
 
