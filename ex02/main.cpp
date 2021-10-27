@@ -6,12 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 23:08:14 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/27 23:32:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <iomanip>
 
 void	test_arithmatics(Fixed const &a, Fixed const &b)
 {
@@ -36,15 +37,15 @@ void	test_comparisons(Fixed const &a, Fixed const &b)
 void	test_inc_dec(Fixed &a)
 {
 	std::cout << "====== inc / dec ========" << std::endl;
-	std::cout << "a  : " << a << std::endl;
-	std::cout << "++a: " << ++a << std::endl;
-	std::cout << "a  : " << a << std::endl;
-	std::cout << "a++: " << a++ << std::endl;
-	std::cout << "a  : " << a << std::endl;
-	std::cout << "--a: " << --a << std::endl;
-	std::cout << "a  : " << a << std::endl;
-	std::cout << "a--: " << a-- << std::endl;
-	std::cout << "a  : " << a << std::endl;
+	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
+	std::cout << std::setprecision(20) << "++a: " << ++a << std::endl;
+	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
+	std::cout << std::setprecision(20) << "a++: " << a++ << std::endl;
+	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
+	std::cout << std::setprecision(20) << "--a: " << --a << std::endl;
+	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
+	std::cout << std::setprecision(20) << "a--: " << a-- << std::endl;
+	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
 }
 
 void	test_min_max(Fixed a, Fixed b)
