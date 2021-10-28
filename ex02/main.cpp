@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 00:35:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 13:39:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,21 @@ void	test_division(int lhs, int rhs)
 	Fixed	b(rhs);
 	division(a , b);
 }
+
 void	test_division(float lhs, int rhs)
 {
 	Fixed	a(lhs);
 	Fixed	b(rhs);
 	division(a , b);
 }
+
 void	test_division(float lhs, float rhs)
 {
 	Fixed	a(lhs);
 	Fixed	b(rhs);
 	division(a , b);
 }
+
 void	test_division(int lhs, float rhs)
 {
 	Fixed	a(lhs);
