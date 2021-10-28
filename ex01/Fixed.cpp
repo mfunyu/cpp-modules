@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 15:46:14 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 15:52:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 
 Fixed::Fixed(const int int_value)
 {
-	_fixedPointValue = int_value << _nbFractionalBit;
+	_fixedPointValue = int_value  * (1 << _nbFractionalBit);
 	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float float_value)
 {
-	_fixedPointValue = roundf(float_value * ( 1 << _nbFractionalBit));
+	_fixedPointValue = std::roundf(float_value * (1 << _nbFractionalBit));
 	std::cout << "Float constructor called" << std::endl;
 }
 
