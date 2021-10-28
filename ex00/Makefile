@@ -6,13 +6,13 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 12:52:10 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/27 13:23:28 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/28 16:55:23 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= a.out
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors
 
 SRCS	:= main.cpp \
 			ClapTrap.cpp
