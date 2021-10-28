@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 15:52:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 17:21:26 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int		Fixed::toInt(void) const
 
 float	Fixed::toFloat(void) const
 {
-	return	_fixedPointValue / float(1 << _nbFractionalBit);
+	float	float_value = _fixedPointValue;
+	float_value /= 1 << _nbFractionalBit;
+	return float_value;
 }
 
 /*
