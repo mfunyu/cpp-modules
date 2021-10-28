@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:26:51 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 16:52:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 21:05:33 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
 class ClapTrap
 {
 	protected:
+		std::string		_name;
 		int				_hitPoints;
 		int				_energyPoints;
 		int				_attackDamage;
-		std::string		_name;
-
-		ClapTrap();
 
 	public:
+		ClapTrap();
 		virtual ~ClapTrap();
 		ClapTrap(const ClapTrap &other);
 		ClapTrap	&operator=(const ClapTrap &other);
