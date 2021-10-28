@@ -1,8 +1,22 @@
-#include "ScavTrap.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 23:49:04 by mfunyu            #+#    #+#             */
+/*   Updated: 2021/10/28 23:55:12 by mfunyu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap() {}
+ScavTrap::ScavTrap()
+{
+	std::cout << "ScavTrap default constructor called" << std::endl;
+}
 
 ScavTrap::~ScavTrap()
 {
@@ -36,5 +50,6 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 void	ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << _name << " have enterred in Gate keeper mode" << std::endl;
+	std::cout << "ScavTrap " << _name << \
+				 " have enterred in Gate keeper mode" << std::endl;
 }
