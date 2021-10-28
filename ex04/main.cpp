@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:07:12 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 23:59:55 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 23:36:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	replace_string(std::string& file_content, const std::string s1, const std::
 {
 	std::size_t	found;
 	std::size_t	s1_len = s1.length();
+	std::size_t	s2_len = s2.length();
 	std::size_t	pos = 0;
 
 	while (1) {
@@ -45,7 +46,7 @@ void	replace_string(std::string& file_content, const std::string s1, const std::
 			break ;
 		file_content.erase(found, s1_len);
 		file_content.insert(found, s2);
-		pos = found + s1_len;
+		pos = found + s2_len;
 	}
 }
 
@@ -62,7 +63,10 @@ std::string		read_from_file(std::string filename)
 	char	c;
 	while (ifs.get(c)) {
 		file_content += c;
+
 	}
+	if (ifs.fail())
+
 	if (!ifs.eof()) {
 		put_error("failed to read");
 	}
