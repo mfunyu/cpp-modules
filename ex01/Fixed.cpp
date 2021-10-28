@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 21:37:33 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 15:46:14 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,18 @@ void	Fixed::setRawBits(int const raw)
 
 int		Fixed::toInt(void) const
 {
-	return _fixedPointValue >> _nbFractionalBit;
+	int		int_value = _fixedPointValue;
+	int_value >>= _nbFractionalBit;
+
+	if (_fixedPointValue < 0)
+	{
+		int		recovered_fixedpoint = int_value << _nbFractionalBit;
+		if (recovered_fixedpoint != _fixedPointValue)
+		{
+			int_value += 1;
+		}
+	}
+	return int_value;
 }
 
 float	Fixed::toFloat(void) const
