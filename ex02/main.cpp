@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 13:39:43 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 17:34:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,18 @@ void	test_all(Fixed a, Fixed b)
 
 int		main(void)
 {
+	#ifdef TEST
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	#else
 	try
 	{
 		test_division(10, 5);
@@ -133,15 +142,6 @@ int		main(void)
 		test_division(42.6f, 7);
 		test_division(200, 0);
 
-		/*
-		std::cout << a << std::endl;
-		std::cout << ++a << std::endl;
-		std::cout << a << std::endl;
-		std::cout << a++ << std::endl;
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << Fixed::max( a, b ) << std::endl;
-		*/
 		/*
 		test_all(Fixed(10), Fixed(5));
 		test_all(Fixed(20), Fixed(20));
@@ -156,6 +156,7 @@ int		main(void)
 	{
 		std::cout << error_msg << std::endl;
 	};
+	#endif
 
 	return 0;
 }
