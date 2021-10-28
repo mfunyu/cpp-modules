@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:29:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 13:37:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/28 16:38:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 #include <iostream>
 #include <string>
 
-ClapTrap::ClapTrap() : _hitPoints(10),
-						_energyPoints(10),
-						_attackDamage(0)
-{
-	std::cout << "Default constructor called" << std::endl;
-}
+ClapTrap::ClapTrap() {}
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -31,7 +26,7 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 	*this = other;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 {
 	if (this != &other)
 	{
@@ -48,7 +43,7 @@ ClapTrap::ClapTrap(std::string name) : _hitPoints(10),
 										_attackDamage(0),
 										_name(name)
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "ClapTrap constructor called" << std::endl;
 }
 
 void	ClapTrap::attack(std::string const &target)
