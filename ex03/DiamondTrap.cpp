@@ -40,10 +40,18 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
 	return *this;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScavTrap(name), _name(name)
 {
-	_hitPoints = 100;
-	_energyPoints = 100;
-	_attackDamage = 30;
+	ClapTrap::_name = name + "_clap_name";
+	_hitPoints = FragTrap::_hitPoints;
+	_energyPoints = ScavTrap::_energyPoints;
+	_attackDamage = FragTrap::_attackDamage;
 	std::cout << "DiamondTrap constructor called" << std::endl;
+}
+
+
+void	DiamondTrap::whoAmI()
+{
+	std::cout << "I am " << _name << \
+				 ". My ClapTrap name is " << ClapTrap::_name << std::endl;
 }
