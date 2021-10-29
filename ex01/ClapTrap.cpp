@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:29:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 23:50:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/29 12:46:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <string>
 
 ClapTrap::ClapTrap()
-	: _name("no name"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
