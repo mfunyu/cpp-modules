@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:52:38 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 12:43:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/29 13:16:53 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class ScavTrap : public virtual ClapTrap
 
 		ScavTrap(std::string name);
 
+		void	attack(std::string const &target);
 		void	guardGate();
 };
 

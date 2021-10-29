@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:49:04 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 12:44:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/29 13:16:40 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ ScavTrap::ScavTrap(std::string name)
 	_energyPoints = ST_ENERGY_P;
 	_attackDamage = ST_ATTACK_D;
 	std::cout << "ScavTrap constructor called" << std::endl;
+}
+
+void	ScavTrap::attack(std::string const &target)
+{
+	std::cout << "ScavTrap " << _name << \
+				 " attacks " << target << \
+				 ", causing " << _attackDamage << \
+				 " points of damage!" << std::endl;
 }
 
 void	ScavTrap::guardGate()
