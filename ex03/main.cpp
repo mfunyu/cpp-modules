@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 11:25:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/29 12:44:31 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		main()
 		DiamondTrap	diamondtrap("Bob");
 
 		diamondtrap.attack("Julia");
-		diamondtrap.takeDamage(150);
+		diamondtrap.takeDamage(0);
 		diamondtrap.beRepaired(200);
 		diamondtrap.whoAmI();
 	}
