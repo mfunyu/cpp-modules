@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:52:38 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 12:41:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/29 13:31:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class FragTrap : public virtual ClapTrap
 {
 	public:
 		FragTrap();
-		~FragTrap();
+		virtual ~FragTrap();
 		FragTrap(const FragTrap &other);
 		FragTrap	&operator=(const FragTrap &other);
 
