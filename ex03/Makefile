@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 14:53:57 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/31 15:01:07 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/10/31 22:10:07 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ NAME	:= a.out
 SRCS	:= main.cpp \
 			AMateria.cpp \
 			Cure.cpp \
-			ICharacter.cpp \
-			IMateriaSource.cpp \
-			Ice.cpp
+			Ice.cpp \
+			Character.cpp \
+			MateriaSource.cpp
 
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic -Wshadow
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
