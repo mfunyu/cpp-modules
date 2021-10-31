@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 12:54:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/31 18:12:59 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,14 @@ Cat::~Cat()
 Cat::Cat(const Cat &other)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	*this = other;
+	_brain = new Brain(*(other._brain));
 }
 
 Cat	&Cat::operator=(const Cat &other)
 {
 	if (this != &other)
 	{
-		delete _brain;
-		if (other._brain)
-		{
-			_brain = new Brain();
-			for (int i = 0; i < TOTAL_IDEAS; i++)
-			{
-				_brain->setIdeas(i, other._brain->getIdeas(i));
-			}
-		}
+		*_brain = *(other._brain);
 	}
 	return *this;
 }
