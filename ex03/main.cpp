@@ -6,13 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 14:47:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/31 22:18:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "IMateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {
