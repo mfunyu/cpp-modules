@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/31 22:45:24 by mfunyu            #+#    #+#             */
+/*   Updated: 2021/10/31 22:45:24 by mfunyu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cure.hpp"
 #include <iostream>
 
-Cure::Cure()
+Cure::Cure() : AMateria("cure")
 {
 }
 
@@ -24,15 +36,12 @@ Cure	&Cure::operator=(const Cure &other)
 
 AMateria*	Cure::clone() const
 {
-	Cure*	cloned = new Cure;
-	return cloned;
+	return new Cure;
 }
 
 void	Cure::use(ICharacter& target)
 {
-	// std::cout << "* heals " << target.getName() << \
-	// 			 "’s wounds *" << std::endl;
-	(void)target;
+	std::cout << "* heals " << target.getName() << \
+				 "’s wounds *" << std::endl;
 }
-
 

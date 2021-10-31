@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:49:00 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 21:53:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/10/31 22:45:06 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <string>
 
-class	ICharacter;
+#include "ICharacter.hpp"
 
 class AMateria
 {
@@ -31,7 +31,5 @@ class AMateria
 		virtual AMateria*	clone() const = 0;
 		virtual void		use(ICharacter& target);
 };
-
-
 
 #endif /* AMATERIA_HPP */

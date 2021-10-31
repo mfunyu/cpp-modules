@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/31 22:45:44 by mfunyu            #+#    #+#             */
+/*   Updated: 2021/10/31 22:45:44 by mfunyu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Ice.hpp"
 #include <iostream>
 
@@ -24,13 +36,11 @@ Ice	&Ice::operator=(const Ice &other)
 
 AMateria*	Ice::clone() const
 {
-	Ice*	cloned = new Ice();
-	return cloned;
+	return new Ice();
 }
 
 void	Ice::use(ICharacter& target)
 {
-	// std::cout << "* shoots an ice bolt at " << target \
-	// 			 " *" << std::endl;
-	(void)target;
+	std::cout << "* shoots an ice bolt at " << target.getName() << \
+				 " *" << std::endl;
 }

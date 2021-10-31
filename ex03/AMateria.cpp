@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/31 22:44:49 by mfunyu            #+#    #+#             */
+/*   Updated: 2021/10/31 22:44:49 by mfunyu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AMateria.hpp"
 #include <iostream>
 
@@ -16,8 +28,7 @@ std::string const&	AMateria::getType() const
 
 void	AMateria::use(ICharacter& target)
 {
-	// std::cout << "* use materia for " << target.getName() << \
-	// 			 " *" << std::endl;
-	(void)target;
+	std::cout << "* use materia for " << target.getName() << \
+				 " *" << std::endl;
 }
 
