@@ -61,7 +61,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (_inventory[idx])
+	if (idx < MAX_MATERIALS && _inventory[idx])
 	{
 		_inventory[idx]->use(target);
 	}
