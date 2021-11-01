@@ -12,9 +12,9 @@ class Character : public ICharacter
 	private:
 		std::string		_name;
 		AMateria		*_inventory[MAX_MATERIALS];
+		Character();
 
 	public:
-		Character();
 		~Character();
 		Character(Character const &other);
 		Character	&operator=(Character const &other);
