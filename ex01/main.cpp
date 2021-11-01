@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:16:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 13:12:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/01 17:56:30 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int main()
 		Dog		dog_original;
 		dog_original.setBrainIdea(0, "a brilliant idea");
 		dog_original.setBrainIdea(1, "an excellent idea");
-		Dog		dog_copy(dog_original);
+		Dog		dog_copy;
+
+		dog_copy = dog_original;
 		/*
 		[ON COPY]
 		dog_original:						dog_copy:
