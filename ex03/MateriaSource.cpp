@@ -18,6 +18,7 @@ MateriaSource::~MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
+	MateriaSource();
 	*this = other;
 }
 
@@ -25,6 +26,10 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 {
 	if (this != &other)
 	{
+		for (int i = 0; i < MAX_MATERIALS; i++)
+		{
+			_memory[i] = other._memory[i];
+		}
 	}
 	return *this;
 }

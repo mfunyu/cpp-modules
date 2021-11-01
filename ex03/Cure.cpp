@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:45:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/01 17:34:52 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/01 17:50:50 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Cure	&Cure::operator=(const Cure &other)
 {
 	if (this != &other)
 	{
+		_type = other._type;
 	}
 	return *this;
 }

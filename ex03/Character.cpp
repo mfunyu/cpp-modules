@@ -18,6 +18,7 @@ Character::~Character()
 
 Character::Character(const Character &other)
 {
+	Character();
 	*this = other;
 }
 

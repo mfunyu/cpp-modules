@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:49:00 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/01 17:39:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/01 17:47:57 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class AMateria
 	public:
 		AMateria();
 		virtual ~AMateria();
+		AMateria(AMateria const &other);
+		AMateria	&operator=(AMateria const &other);
+
 		AMateria(std::string const & type);
 
 		std::string const&	getType() const; //Returns the materia type
