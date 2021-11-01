@@ -11,7 +11,7 @@ class Character : public ICharacter
 {
 	private:
 		std::string		_name;
-		// AMateria		_inventory[MAX_MATERIALS];
+		AMateria		*_inventory[MAX_MATERIALS];
 
 	public:
 		Character();
