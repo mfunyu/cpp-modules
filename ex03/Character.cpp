@@ -1,6 +1,12 @@
 #include "Character.hpp"
 
-Character::Character() {}
+Character::Character()
+{
+	for (int i = 0; i < MAX_MATERIALS; i++)
+	{
+		_inventory[i] = NULL;
+	}
+}
 
 Character::~Character()
 {
