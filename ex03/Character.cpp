@@ -2,10 +2,18 @@
 
 Character::Character()
 {
+	for (int i = 0; i < MAX_MATERIALS; i++)
+	{
+		_inventory[i] = NULL;
+	}
 }
 
 Character::~Character()
 {
+	for (int i = 0; i < MAX_MATERIALS; i++)
+	{
+		delete _inventory[i];
+	}
 }
 
 Character::Character(const Character &other)
