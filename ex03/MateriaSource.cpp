@@ -41,18 +41,18 @@ void	MateriaSource::learnMateria(AMateria* a)
 		if (!_memory[i])
 		{
 			_memory[i] = a;
-			break ;
+			return ;
 		}
 	}
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; _memory[i]; i++)
 	{
 		if (_memory[i]->getType() == type)
 			return _memory[i]->clone();
 	}
-	return 0;
+	return NULL;
 }
 
