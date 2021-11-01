@@ -2,10 +2,18 @@
 
 MateriaSource::MateriaSource()
 {
+	for (int i = 0; i < MAX_MATERIALS; i++)
+	{
+		_memory[i] = NULL;
+	}
 }
 
 MateriaSource::~MateriaSource()
 {
+	for (int i = 0; i < MAX_MATERIALS; i++)
+	{
+		delete _memory[i];
+	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other)

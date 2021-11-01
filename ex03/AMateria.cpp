@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:44:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 22:44:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/01 17:42:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <iostream>
 
 AMateria::AMateria()
+{
+}
+
+AMateria::~AMateria()
 {
 }
 
