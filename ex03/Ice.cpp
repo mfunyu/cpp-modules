@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:45:44 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 22:45:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/01 17:31:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Ice	&Ice::operator=(const Ice &other)
 
 AMateria*	Ice::clone() const
 {
-	return new Ice();
+	return new Ice(*this);
 }
 
 void	Ice::use(ICharacter& target)

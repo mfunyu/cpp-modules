@@ -39,6 +39,7 @@ void Character::equip(AMateria* m)
 		if (!_inventory[i])
 		{
 			_inventory[i] = m;
+			break ;
 		}
 	}
 }
