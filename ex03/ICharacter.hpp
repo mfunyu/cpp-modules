@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:48:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 22:16:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/01 16:47:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <string>
 
-class AMateria;
+class ICharacter;
+#include "AMateria.hpp"
 
 class ICharacter
 {
