@@ -27,7 +27,13 @@ Character	&Character::operator=(const Character &other)
 	if (this != &other)
 	{
 		_name = other._name;
-		*_inventory = *(other._inventory);
+		for (int i = 0; i < MAX_MATERIALS; i++)
+		{
+			if (other._inventory[i])
+				_inventory[i] = other._inventory[i]->clone();
+			else
+				_inventory[i] = NULL;
+		}
 	}
 	return *this;
 }
