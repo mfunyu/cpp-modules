@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:11:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 12:56:05 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,21 @@ void	test_unequip()
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	AMateria* tmp1;
+	tmp1 = src->createMateria("cure");
+	me->equip(tmp1);
+	AMateria* tmp2;
+	tmp2 = src->createMateria("ice");
+	me->equip(tmp2);
+	AMateria* tmp3;
+	tmp3 = src->createMateria("cure");
+	me->equip(tmp3);
 
 	ICharacter* bob = new Character("bob");
 
-	// tmp = src->createMateria("cure");
 	me->unequip(1);
 	me->unequip(4);
+	delete tmp1;
 
 	for (int i = 0; i < MAX_MATERIALS; i++) {
 		std::cout << i << ": ";
@@ -106,7 +109,7 @@ void	test_learnMateria()
 	src->learnMateria(new Cure());
 	src->learnMateria(new Cure());
 	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	// src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
 
@@ -145,8 +148,11 @@ void	test_createMateria()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	/*
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	delete tmp
+	*/
 
 	ICharacter* cathy = new Character("Cathy");
 
