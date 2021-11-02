@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 15:17:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 15:25:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <string>
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("no name"), _grade(GRADE_LOWEST)
 {
 }
 
@@ -64,7 +64,7 @@ void	Bureaucrat::decrementGrage()
 
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat& bureaucrat)
 {
-	std::cout << bureaucrat.getName() << ", bureaucrat grade " <<\
-				 bureaucrat.getGrade() << "." << std::endl;
+	std::cout << bureaucrat.getName() << ": bureaucrat grade " <<\
+				 bureaucrat.getGrade();
 	return os;
 }

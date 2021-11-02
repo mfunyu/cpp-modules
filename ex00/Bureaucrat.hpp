@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 15:18:07 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 15:22:26 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const &other);
 		Bureaucrat	&operator=(Bureaucrat const &other);
 
-		Bureaucrat(std::string name = "noname", int grade = GRADE_LOWEST);
+		Bureaucrat(std::string name, int grade = GRADE_LOWEST);
 
 		std::string		getName() const;
 		int				getGrade() const;
