@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 14:53:57 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/31 22:10:07 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/01 22:02:02 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,3 +43,9 @@ fclean	: clean
 	$(RM) $(NAME)
 
 re		: fclean all
+
+leak	: $(NAME)
+	leaks -q --atExit -- ./$(NAME)
+
+debug	:
+	$(CXX) $(CXXFLAGS) -fsanitize=address -o $(NAME) $(SRCS)
