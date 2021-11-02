@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 11:33:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 12:11:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,40 @@
 #include "Character.hpp"
 #include "MateriaSource.hpp"
 #include <iostream>
+
+void	test_unequip()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter* bob = new Character("bob");
+
+	// tmp = src->createMateria("cure");
+	me->unequip(1);
+	me->unequip(4);
+
+	for (int i = 0; i < MAX_MATERIALS; i++) {
+		std::cout << i << ": ";
+		me->use(i, *bob);
+	}
+
+	delete bob;
+	delete me;
+	delete src;
+}
 
 void	test_character_copy()
 {
@@ -158,6 +192,8 @@ int main()
 		test_learnMateria();
 		std::cout << std::endl;
 		test_character_copy();
+		std::cout << std::endl;
+		test_unequip();
 	}
 	return 0;
 }

@@ -67,7 +67,11 @@ void Character::unequip(int idx)
 {
 	if (is_idx_in_range(idx))
 	{
-		_inventory[idx] = NULL;
+		for (int i = idx + 1; i < MAX_MATERIALS; i++)
+		{
+			_inventory[i - 1] = _inventory[i];
+			_inventory[i] = NULL;
+		}
 	}
 }
 
