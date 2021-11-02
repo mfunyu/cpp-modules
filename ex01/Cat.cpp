@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 18:12:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 12:35:51 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat::~Cat()
 	std::cout << "Cat destructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &other)
+Cat::Cat(const Cat &other) : Animal(other)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
 	_brain = new Brain(*(other._brain));
@@ -37,6 +37,7 @@ Cat	&Cat::operator=(const Cat &other)
 	if (this != &other)
 	{
 		*_brain = *(other._brain);
+		_type = other._type;
 	}
 	return *this;
 }

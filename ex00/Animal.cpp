@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 14:55:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 17:04:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 12:29:05 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Animal	&Animal::operator=(const Animal &other)
 {
 	if (this != &other)
 	{
+		_type = other._type;
 	}
 	return *this;
 }
