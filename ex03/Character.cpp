@@ -53,8 +53,6 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	if (!m)
-		return ;
 	for (int i = 0; i < MAX_MATERIALS; i++)
 	{
 		if (!_inventory[i])
@@ -63,7 +61,6 @@ void Character::equip(AMateria* m)
 			return ;
 		}
 	}
-	delete m;
 }
 
 void Character::unequip(int idx)

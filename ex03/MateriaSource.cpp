@@ -44,7 +44,6 @@ void	MateriaSource::learnMateria(AMateria* a)
 			return ;
 		}
 	}
-	delete a;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
@@ -54,6 +53,6 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 		if (_memory[i]->getType() == type)
 			return _memory[i]->clone();
 	}
-	return NULL;
+	return 0;
 }
 
