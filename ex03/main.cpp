@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 11:26:24 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 11:33:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	test_createMateria()
 
 	ICharacter* cathy = new Character("Cathy");
 
-	for (int i = 0; i < MAX_MATERIALS + 2; i++) {
+	for (int i = -1; i < MAX_MATERIALS + 2; i++) {
 		std::cout << i << ": ";
 		me->use(i, *cathy);
 	}

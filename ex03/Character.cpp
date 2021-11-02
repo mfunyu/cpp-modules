@@ -68,14 +68,21 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	_inventory[idx] = NULL;
+	if (is_idx_in_range(idx))
+	{
+		_inventory[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < MAX_MATERIALS && _inventory[idx])
+	if (is_idx_in_range(idx) && _inventory[idx])
 	{
 		_inventory[idx]->use(target);
 	}
 }
 
+bool	Character::is_idx_in_range(int idx)
+{
+	return (0 <= idx && idx < MAX_MATERIALS);
+}
