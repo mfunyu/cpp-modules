@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 15:25:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 21:47:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <string>
 
-Bureaucrat::Bureaucrat() : _name("no name"), _grade(GRADE_LOWEST)
+Bureaucrat::Bureaucrat() : _name("no_name"), _grade(GRADE_LOWEST)
 {
 }
 
@@ -37,8 +37,17 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 	return *this;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
+	if (isGradeTooHigh(grade))
+	{
+		throw GradeTooHighException();
+	}
+	if (isGradeTooLow(grade))
+	{
+		throw GradeTooLowException();
+	}
+	_grade = grade;
 }
 
 std::string		Bureaucrat::getName() const
@@ -59,6 +68,16 @@ void	Bureaucrat::incrementGrage()
 void	Bureaucrat::decrementGrage()
 {
 
+}
+
+bool	Bureaucrat::isGradeTooHigh(int grade)
+{
+	return grade < GRADE_HIGHEST;
+}
+
+bool	Bureaucrat::isGradeTooLow(int grade)
+{
+	return GRADE_LOWEST < grade;
 }
 
 
