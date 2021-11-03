@@ -13,6 +13,7 @@ class Form
 		bool				_isSigned;
 		int const			_gradeToSign;
 		int const			_gradeToExec;
+		int					validateGrade(int grade);
 
 	public:
 		Form();
@@ -28,6 +29,9 @@ class Form
 		int				getGradeToExec() const;
 
 		void			beSigned(Bureaucrat const &bureaucrat);
+
+		static bool		isGradeTooHigh(int grade);
+		static bool		isGradeTooLow(int grade);
 
 		class GradeTooHighException : public std::exception
 		{

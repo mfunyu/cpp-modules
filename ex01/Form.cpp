@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form.cpp                                           :+:      :+:    :+:   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 14:59:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 18:30:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Form	&Form::operator=(const Form &other)
 }
 
 Form::Form(std::string name, int gradeToSign, int gradeToExec) :
-	_name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
+	_name(name), _isSigned(false), _gradeToSign(validateGrade(gradeToSign)), _gradeToExec(validateGrade(gradeToExec))
 {
 }
 
@@ -69,6 +69,29 @@ void	Form::beSigned(Bureaucrat const &bureaucrat)
 		throw GradeTooLowException();
 	}
 	_isSigned = true;
+}
+
+bool	Form::isGradeTooHigh(int grade)
+{
+	return grade < GRADE_HIGHEST;
+}
+
+bool	Form::isGradeTooLow(int grade)
+{
+	return GRADE_LOWEST < grade;
+}
+
+int		Form::validateGrade(int grade)
+{
+	if (isGradeTooHigh(grade))
+	{
+		throw GradeTooHighException();
+	}
+	if (isGradeTooLow(grade))
+	{
+		throw GradeTooLowException();
+	}
+	return grade;
 }
 
 const char* Form::GradeTooHighException::what() const throw()
