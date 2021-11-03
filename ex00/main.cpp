@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:06:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 17:29:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 20:10:30 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	printTestName(std::string testName)
 void	printTestInfo(std::string name, int grade, std::string append = "")
 {
 	std::cout << SET_COLOR "// Bureaucrat(name=" << name <<\
-				 " grade=" << std::to_string(grade) <<\
+				 ", grade=" << std::to_string(grade) <<\
 				 ")" << append <<\
 				 RESET_COLOR << std::endl;
 }
