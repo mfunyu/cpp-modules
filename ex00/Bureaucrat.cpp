@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 11:20:35 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 13:15:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int		Bureaucrat::getGrade() const
 
 void	Bureaucrat::incrementGrage()
 {
-
+	setGrade(_grade - 1);
 }
 
 void	Bureaucrat::decrementGrage()
 {
-
+	setGrade(_grade + 1);
 }
 
 bool	Bureaucrat::isGradeTooHigh(int grade)
