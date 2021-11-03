@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 11:16:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 11:20:18 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Bureaucrat
 		std::string	_name;
 		int			_grade;
 
+		void		setGrade(int grade);
+
 	public:
 		Bureaucrat();
 		~Bureaucrat();
@@ -41,6 +43,7 @@ class Bureaucrat
 
 		static bool		isGradeTooHigh(int grade);
 		static bool		isGradeTooLow(int grade);
+
 
 		class GradeTooHighException : public std::exception
 		{

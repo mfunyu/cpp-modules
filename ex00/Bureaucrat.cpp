@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 11:17:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 11:20:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	if (isGradeTooHigh(grade))
-	{
-		throw GradeTooHighException();
-	}
-	if (isGradeTooLow(grade))
-	{
-		throw GradeTooLowException();
-	}
-	_grade = grade;
+	setGrade(grade);
 }
 
 std::string		Bureaucrat::getName() const
@@ -78,6 +70,19 @@ bool	Bureaucrat::isGradeTooHigh(int grade)
 bool	Bureaucrat::isGradeTooLow(int grade)
 {
 	return GRADE_LOWEST < grade;
+}
+
+void	Bureaucrat::setGrade(int grade)
+{
+	if (isGradeTooHigh(grade))
+	{
+		throw GradeTooHighException();
+	}
+	if (isGradeTooLow(grade))
+	{
+		throw GradeTooLowException();
+	}
+	_grade = grade;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
