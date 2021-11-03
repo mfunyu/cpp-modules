@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 14:44:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 14:59:59 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void	Form::beSigned(Bureaucrat const &bureaucrat)
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-	return "Grade is Too High";
+	return "grade is too high";
 }
 
 const char*	Form::GradeTooLowException::what() const throw()
 {
-	return "Grade is Too Low";
+	return "grade is too low";
 }
 
 
