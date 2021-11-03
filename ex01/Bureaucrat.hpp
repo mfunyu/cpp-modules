@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 14:05:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 14:54:34 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class Bureaucrat
 		static bool		isGradeTooHigh(int grade);
 		static bool		isGradeTooLow(int grade);
 
-		void			signForm(Form const &form);
+		void			signForm(Form &form);
 
 		class GradeTooHighException : public std::exception
 		{
