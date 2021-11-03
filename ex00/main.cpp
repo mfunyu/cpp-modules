@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:06:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 15:44:34 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/02 21:49:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int		main()
 		Bureaucrat	x_neverReachesHere("x_neverReachesHere", 42);
 		std::cout << x_neverReachesHere << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException)
+	catch (std::exception & e)
 	{
-		std::cout << "Exception" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }

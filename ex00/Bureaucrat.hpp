@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 15:34:35 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 11:16:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # include <string>
+# include <stdexcept>
 
 # define GRADE_HIGHEST 1
 # define GRADE_LOWEST 150
@@ -41,14 +42,14 @@ class Bureaucrat
 		static bool		isGradeTooHigh(int grade);
 		static bool		isGradeTooLow(int grade);
 
-	class GradeTooHighException : public std::exception
-	{
-
-	};
-	class GradeTooLowException : public std::exception
-	{
-
-	};
+		class GradeTooHighException : public std::exception
+		{
+			const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			const char* what() const throw();
+		};
 };
 
 
