@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 18:30:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/03 18:41:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,27 @@ int		Form::validateGrade(int grade)
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-	return "grade is too high";
+	return "Grade is too high";
 }
 
 const char*	Form::GradeTooLowException::what() const throw()
 {
-	return "grade is too low";
+	return "Grade is too low";
 }
 
 
 std::ostream	&operator<<(std::ostream &os, const Form& form)
 {
-	std::cout << "Form " << form.getName() <<\
-				 ": required grade to sign" << form.getGradeToSign() <<\
-				 ", required grade to execute" << form.getGradeToExec() << std::endl;
+	std::cout << form.getName() <<\
+				 ": grade to sign = " << form.getGradeToSign() <<\
+				 ", grade to execute = " << form.getGradeToExec();
+	if (form.getIsSigned())
+	{
+		std::cout << " (signed)";
+	}
+	else
+	{
+		std::cout << " (unsigned)";
+	}
 	return os;
 }
