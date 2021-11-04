@@ -6,12 +6,15 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:06:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 21:35:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 12:34:45 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include <iostream>
+#include <string>
+
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /****************** FOR PRINT and FORMATTING ******************/
 
@@ -36,7 +39,7 @@ std::string	createFormString(std::string name, int gradeToSign, int gradeToExec,
 
 std::string	createBureaucratString(std::string name, int grade)
 {
-	return "Bureaucrat(name=" + name + ", grade" + std::to_string(grade) + ")";
+	return "Bureaucrat(name=" + name + ", grade=" + std::to_string(grade) + ")";
 }
 
 void	printFormTestInfo(std::string name, int gradeToSign, int gradeToExec, bool isSigned = false, std::string append = "")
