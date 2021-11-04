@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 11:20:18 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 18:18:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 class Bureaucrat
 {
 	private:
-		std::string	_name;
-		int			_grade;
+		std::string const	_name;
+		int					_grade;
 
 		void		setGrade(int grade);
+		Bureaucrat();
 
 	public:
-		Bureaucrat();
 		~Bureaucrat();
 		Bureaucrat(Bureaucrat const &other);
 		Bureaucrat	&operator=(Bureaucrat const &other);
