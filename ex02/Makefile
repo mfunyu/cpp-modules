@@ -25,7 +25,7 @@ $(OBJS_DIR):
 	@mkdir $@
 
 clean	:
-	$(RM) -R $(OBJS_DIR)
+	$(RM) -R $(OBJS_DIR) *_shrubbery
 
 fclean	: clean
 	$(RM) $(NAME)
