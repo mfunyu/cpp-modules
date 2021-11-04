@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:56:33 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 13:57:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:18:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 class PresidentialPardonForm : public Form
 {
 	private:
-		std::string		_target;
 		PresidentialPardonForm();
+		virtual void	beExecuted() const;
 
 	public:
 		~PresidentialPardonForm();
@@ -31,8 +31,6 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &other);
 
 		PresidentialPardonForm(std::string target);
-
-		void	beExecuted() const;
 };
 
 #endif /* PRESIDENTIALPARDONFORM_HPP */

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:44:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 12:47:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:19:32 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 class RobotomyRequestForm : public Form
 {
 	private:
-		std::string		_target;
 		RobotomyRequestForm();
+		virtual void	beExecuted() const;
 
 	public:
 		~RobotomyRequestForm();
@@ -31,8 +31,6 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &other);
 
 		RobotomyRequestForm(std::string target);
-
-		void	beExecuted() const;
 };
 
 #endif /* ROBOTOMYREQUESTFORM_HPP */

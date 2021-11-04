@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:56:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 13:58:33 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:34:09 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <string>
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm()
+PresidentialPardonForm::PresidentialPardonForm() :
+	Form("PresidentialPardonForm", PRESIDENTIALPARDON_SIGN, PRESIDENTIALPARDON_EXEC, "no_target")
 {
 }
 
@@ -22,7 +23,8 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) :
+	Form("PresidentialPardonForm", PRESIDENTIALPARDON_SIGN, PRESIDENTIALPARDON_EXEC, other.getTarget())
 {
 	*this = other;
 }
@@ -36,11 +38,11 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-	Form("PresidentialPardonForm", PRESIDENTIALPARDON_SIGN, PRESIDENTIALPARDON_EXEC), _target(target)
+	Form("PresidentialPardonForm", PRESIDENTIALPARDON_SIGN, PRESIDENTIALPARDON_EXEC, target)
 {
 }
 
 void	PresidentialPardonForm::beExecuted() const
 {
-	std::cout << _target << " has been pardoned by Zafod Beeblebrox" << std::endl;
+	std::cout << getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }

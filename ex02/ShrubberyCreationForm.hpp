@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 12:43:55 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:19:45 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 class ShrubberyCreationForm : public Form
 {
 	private:
-		std::string		_target;
 		ShrubberyCreationForm();
+		virtual void	beExecuted() const;
 
 	public:
 		~ShrubberyCreationForm();
@@ -32,7 +32,6 @@ class ShrubberyCreationForm : public Form
 
 		ShrubberyCreationForm(std::string target);
 
-		void	beExecuted() const;
 };
 
 #endif /* SHRUBBERYCREATIONFORM_HPP */
