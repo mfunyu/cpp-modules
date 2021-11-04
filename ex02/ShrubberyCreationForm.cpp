@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 22:23:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 12:18:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
-	_target(target), Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC)
+	Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
 {
 }
 
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void	ShrubberyCreationForm::beExecuted() const
 {
 	std::string		filename = _target + "_shrubbery";
 	std::ofstream	ofs(filename);

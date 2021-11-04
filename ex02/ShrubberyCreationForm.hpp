@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 22:23:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 12:17:57 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class ShrubberyCreationForm : public Form
 
 		ShrubberyCreationForm(std::string target);
 
-		void	execute(Bureaucrat const & executor) const;
+		void	beExecuted() const;
 };
 
 #endif /* SHRUBBERYCREATIONFORM_HPP */
