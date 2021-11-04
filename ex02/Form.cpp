@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:29:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 15:12:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ std::ostream	&operator<<(std::ostream &os, const Form& form)
 	std::cout << form.getName() <<\
 				 ": grade to sign = " << form.getGradeToSign() <<\
 				 ", grade to execute = " << form.getGradeToExec() <<\
-				 ", signed = " << (form.getIsSigned() ? "true" : "false");
+				 ", signed = " << (form.getIsSigned() ? "true" : "false") <<\
+				 ", target = " << form.getTarget();
 	return os;
 }
