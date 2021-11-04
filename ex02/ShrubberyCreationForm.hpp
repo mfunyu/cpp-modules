@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:19:45 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:50:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ShrubberyCreationForm : public Form
 		virtual void	beExecuted() const;
 
 	public:
-		~ShrubberyCreationForm();
+		virtual ~ShrubberyCreationForm();
 		ShrubberyCreationForm(ShrubberyCreationForm const &other);
 		ShrubberyCreationForm	&operator=(ShrubberyCreationForm const &other);
 

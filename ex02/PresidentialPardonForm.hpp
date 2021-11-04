@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:56:33 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:18:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:50:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PresidentialPardonForm : public Form
 		virtual void	beExecuted() const;
 
 	public:
-		~PresidentialPardonForm();
+		virtual ~PresidentialPardonForm();
 		PresidentialPardonForm(PresidentialPardonForm const &other);
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &other);
 

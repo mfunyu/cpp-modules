@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:44:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:19:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:50:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class RobotomyRequestForm : public Form
 		virtual void	beExecuted() const;
 
 	public:
-		~RobotomyRequestForm();
+		virtual ~RobotomyRequestForm();
 		RobotomyRequestForm(RobotomyRequestForm const &other);
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &other);
 

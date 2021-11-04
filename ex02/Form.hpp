@@ -21,7 +21,7 @@ class Form
 		virtual void	beExecuted() const = 0;
 
 	public:
-		~Form();
+		virtual ~Form();
 		Form(Form const &other);
 		Form	&operator=(Form const &other);
 
