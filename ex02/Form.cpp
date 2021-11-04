@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 20:52:05 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 12:17:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,19 @@ int		Form::validateGrade(int grade)
 	return grade;
 }
 
+void	Form::execute(Bureaucrat const & executor) const
+{
+	if (!_isSigned)
+	{
+		throw FormNotSignedException();
+	}
+	if (_gradeToExec < executor.getGrade())
+	{
+		throw GradeTooLowException();
+	}
+	beExecuted();
+}
+
 const char* Form::GradeTooHighException::what() const throw()
 {
 	return "Grade is too high";
@@ -104,6 +117,10 @@ const char*	Form::GradeTooLowException::what() const throw()
 	return "Grade is too low";
 }
 
+const char*	Form::FormNotSignedException::what() const throw()
+{
+	return "Form is not signed";
+}
 
 std::ostream	&operator<<(std::ostream &os, const Form& form)
 {

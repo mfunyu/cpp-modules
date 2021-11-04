@@ -15,6 +15,9 @@ class Form
 		int const			_gradeToExec;
 		int					validateGrade(int grade);
 
+	protected:
+		virtual void	beExecuted() const = 0;
+
 	public:
 		Form();
 		~Form();
@@ -33,11 +36,17 @@ class Form
 		static bool		isGradeTooHigh(int grade);
 		static bool		isGradeTooLow(int grade);
 
+		void			execute(Bureaucrat const & executor) const;
+
 		class GradeTooHighException : public std::exception
 		{
 			const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception
+		{
+			const char* what() const throw();
+		};
+		class FormNotSignedException : public std::exception
 		{
 			const char* what() const throw();
 		};
