@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 12:17:39 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:29:02 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ Form::~Form()
 }
 
 Form::Form(const Form &other) :
-	_name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec)
+	_name(other._name), _isSigned(other._isSigned), _gradeToSign(other._gradeToSign),
+	_gradeToExec(other._gradeToExec), _target(other._target)
 {
 	*this = other;
 }
@@ -33,12 +34,14 @@ Form	&Form::operator=(const Form &other)
 	if (this != &other)
 	{
 		_isSigned = other._isSigned;
+		_target = other._target;
 	}
 	return *this;
 }
 
-Form::Form(std::string name, int gradeToSign, int gradeToExec) :
-	_name(name), _isSigned(false), _gradeToSign(validateGrade(gradeToSign)), _gradeToExec(validateGrade(gradeToExec))
+Form::Form(std::string name, int gradeToSign, int gradeToExec, std::string target) :
+	_name(name), _isSigned(false), _gradeToSign(validateGrade(gradeToSign)),
+	_gradeToExec(validateGrade(gradeToExec)), _target(target)
 {
 }
 
@@ -60,6 +63,11 @@ int		Form::getGradeToSign() const
 int		Form::getGradeToExec() const
 {
 	return _gradeToExec;
+}
+
+std::string		Form::getTarget() const
+{
+	return _target;
 }
 
 void	Form::beSigned(Bureaucrat const &bureaucrat)
