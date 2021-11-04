@@ -14,9 +14,9 @@ class Form
 		int const			_gradeToSign;
 		int const			_gradeToExec;
 		int					validateGrade(int grade);
+		Form();
 
 	public:
-		Form();
 		~Form();
 		Form(Form const &other);
 		Form	&operator=(Form const &other);

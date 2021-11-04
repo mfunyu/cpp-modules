@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 15:12:11 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 18:24:58 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <string>
 #include <iostream>
 
-Form::Form() : _isSigned(false), _gradeToSign(GRADE_HIGHEST), _gradeToExec(GRADE_HIGHEST)
+Form::Form() :
+	_name("no_name"), _isSigned(false), _gradeToSign(GRADE_HIGHEST),
+	_gradeToExec(GRADE_HIGHEST), _target("no_target")
 {
 }
 
