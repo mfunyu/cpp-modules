@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:19:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 13:50:26 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:04:45 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,28 @@ void	testRobotomyRequestForm(int bureaucreatGrade, bool sign)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+}
 
+void	testPresidentialPardonForm(int bureaucreatGrade, bool sign)
+{
+	std::string		target = "Ford";
+	std::string		b_name = "Nancy";
+
+	printExecTestInfo("PresidentialPardonForm", target, b_name, bureaucreatGrade);
+
+	try
+	{
+		PresidentialPardonForm	p(target);
+		Bureaucrat				b(b_name, bureaucreatGrade);
+
+		signForm(sign, &p, b);
+
+		p.execute(b);
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 int		main()
@@ -133,10 +154,16 @@ int		main()
 	testShrubberyCreationForm(140, true);
 	testShrubberyCreationForm(150, true);
 
-	printTestName("Robotomy Request Form gradeToSign=72, gradeToExec=45");
+	printTestName("Robotomy Request Form [gradeToSign=72, gradeToExec=45]");
 	testRobotomyRequestForm(1, true);
 	testRobotomyRequestForm(20, true);
 	testRobotomyRequestForm(70, false);
 	testRobotomyRequestForm(70, true);
 	testRobotomyRequestForm(140, true);
+
+	printTestName("Presidential Pardon Form [gradeToSign=25, gradeToExec=5]");
+	testPresidentialPardonForm(1, true);
+	testPresidentialPardonForm(5, true);
+	testPresidentialPardonForm(4, false);
+	testPresidentialPardonForm(70, true);
 }
