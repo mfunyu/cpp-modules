@@ -6,13 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 12:17:57 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 12:43:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
+# include <string>
 # include "Form.hpp"
 
 # define SHRUBBERY_SIGN 145

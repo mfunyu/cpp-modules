@@ -6,13 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 12:18:01 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 12:47:58 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <string>
-
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
@@ -32,6 +31,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 {
 	if (this != &other)
 	{
+		_target = other._target;
 	}
 	return *this;
 }
@@ -40,7 +40,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
 	Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
 {
 }
-
 
 void	ShrubberyCreationForm::beExecuted() const
 {
