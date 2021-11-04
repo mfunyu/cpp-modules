@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 21:06:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 15:25:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Bureaucrat::setGrade(int grade)
 	_grade = grade;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(Form &form) const
 {
 	try
 	{
@@ -95,6 +95,21 @@ void	Bureaucrat::signForm(Form &form)
 	catch (std::exception &e)
 	{
 		std::cout << _name << " cannot sign " <<\
+					 form.getName() << " because " <<\
+					 e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(Form const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executes " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << _name << " cannot execute " <<\
 					 form.getName() << " because " <<\
 					 e.what() << std::endl;
 	}

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:19:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 15:13:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 15:48:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	printFormTestInfo(std::string f_name, std::string target, std::string appen
 				 append << " " << RESET_COLOR;
 }
 
-void	printBureaucratTestInfo(std::string name, int grade, std::string append = "")
+void	printBureaucratExecTestInfo(std::string name, int grade, std::string f_name, std::string target)
 {
 	std::cout << SET_COLOR "// " << createBureaucratString(name, grade) <<\
-				 append << RESET_COLOR << std::endl;
+				".executeForm(" + createFormString(f_name, target) + ") " << RESET_COLOR;
 }
 
 /******************************** TESTS ********************************/
@@ -198,6 +198,31 @@ void	testAssignation(bool sign)
 	}
 }
 
+void	testBureaucratExecuteForm(int bureaucreatGrade)
+{
+	std::string	b_name = "Mars";
+	std::string	target = "Target";
+	printBureaucratExecTestInfo(b_name, bureaucreatGrade, "PresidentialPardonForm", target);
+
+	try
+	{
+		Bureaucrat				b(b_name, bureaucreatGrade);
+		PresidentialPardonForm	f(target);
+
+		signForm(true, &f, b);
+		std::cout << "Before: " << f << std::endl;
+		std::cout << "exec======" << std::endl;
+		b.executeForm(f);
+		std::cout << "==========" << std::endl;
+		std::cout << "After : " << f << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+}
+
 int		main()
 {
 	std::srand(time(NULL));
@@ -229,4 +254,9 @@ int		main()
 	printTestName("Assignation");
 	testAssignation(true);
 	testAssignation(false);
+
+	printTestName("Bureaucrat executeForm()");
+	testBureaucratExecuteForm(5);
+	testBureaucratExecuteForm(6);
+	testBureaucratExecuteForm(26);
 }
