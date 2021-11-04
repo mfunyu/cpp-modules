@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:44:39 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:32:33 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 15:15:54 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) :
-	Form("RobotomyRequestForm", ROBOTOMY_SIGN, ROBOTOMY_EXEC, other.getTarget())
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : Form(other)
 {
 	*this = other;
 }
@@ -33,6 +32,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 {
 	if (this != &other)
 	{
+		Form::operator=(other);
 	}
 	return *this;
 }

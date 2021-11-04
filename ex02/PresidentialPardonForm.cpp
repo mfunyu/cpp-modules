@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:56:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:34:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 15:15:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) :
-	Form("PresidentialPardonForm", PRESIDENTIALPARDON_SIGN, PRESIDENTIALPARDON_EXEC, other.getTarget())
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : Form(other)
 {
 	*this = other;
 }
@@ -33,6 +32,7 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 {
 	if (this != &other)
 	{
+		Form::operator=(other);
 	}
 	return *this;
 }
