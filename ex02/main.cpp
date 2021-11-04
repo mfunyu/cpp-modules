@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:19:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:04:45 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/04 15:13:59 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ void	printExecTestInfo(std::string f_name, std::string target, std::string b_nam
 	std::cout << SET_COLOR "// " << createFormString(f_name, target) <<\
 				 ".execute(" << createBureaucratString(b_name, grade) << ") " <<\
 				 RESET_COLOR;
+}
+
+void	printFormTestInfo(std::string f_name, std::string target, std::string append = "")
+{
+	std::cout << SET_COLOR "// " << createFormString(f_name, target) <<\
+				 append << " " << RESET_COLOR;
 }
 
 void	printBureaucratTestInfo(std::string name, int grade, std::string append = "")
@@ -143,6 +149,55 @@ void	testPresidentialPardonForm(int bureaucreatGrade, bool sign)
 	}
 }
 
+void	testCopy(bool sign)
+{
+	std::string		target = "August";
+	Bureaucrat		b("tmp", GRADE_HIGHEST);
+
+	printFormTestInfo("RobotomyRequestForm", target);
+
+	try
+	{
+		RobotomyRequestForm	f(target);
+		signForm(sign, &f, b);
+		Form*	f_copy = new RobotomyRequestForm(f);
+
+		std::cout << "Original: " << f << std::endl;
+		std::cout << "Copied  : " << *f_copy << std::endl;
+
+		delete f_copy;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+void	testAssignation(bool sign)
+{
+	std::string		target = "Kitty";
+	Bureaucrat		b("tmp", GRADE_HIGHEST);
+
+	printFormTestInfo("ShrubberyCreationForm", target);
+
+	try
+	{
+		ShrubberyCreationForm	f_src(target);
+		ShrubberyCreationForm	f_dst(target + '2');
+		signForm(sign, &f_src, b);
+
+		std::cout << "src before copy: " << f_src << std::endl;
+		std::cout << "dst before copy: " << f_dst << std::endl;
+
+		f_dst = f_src;
+		std::cout << "dst after copy : " << f_dst << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 int		main()
 {
 	std::srand(time(NULL));
@@ -166,4 +221,12 @@ int		main()
 	testPresidentialPardonForm(5, true);
 	testPresidentialPardonForm(4, false);
 	testPresidentialPardonForm(70, true);
+
+	printTestName("Copy");
+	testCopy(true);
+	testCopy(false);
+
+	printTestName("Assignation");
+	testAssignation(true);
+	testAssignation(false);
 }
