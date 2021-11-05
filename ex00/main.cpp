@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:30 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 19:48:22 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/05 22:10:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int main(int ac, char **av)
 	{
 		print_error("Invalid Arguments");
 	}
-	Convert Converter(av[1]);
-	Converter.displayResults();
+
+	Convert converter(av[1]);
+	converter.solve();
+	converter.displayResults();
+
 	return 0;
 }

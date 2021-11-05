@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 19:57:27 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/05 17:01:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,25 @@ class Convert
 {
 	private:
 		std::string const	_str;
+		double				_store;
+		char				_char;
+		int					_int;
+		float				_float;
+		double				_double;
+		std::string			_strChar;
+		std::string			_strInt;
+		std::string			_strFloat;
+		std::string			_strDouble;
 		Convert();
+		void	interpretCurrentType();
+		void	convertStrToChar();
+		void	convertStrToInt();
+		void	convertStrToFloat();
+		void	convertStrToDouble();
+		void	convertDoubleToStrChar();
+		void	convertDoubleToStrInt();
+		void	convertDoubleToStrFloat();
+		void	convertDoubleToStrDouble();
 
 	public:
 		~Convert();
@@ -27,6 +45,8 @@ class Convert
 		Convert	&operator=(Convert const &other);
 
 		Convert(std::string const & str);
+
+		void	solve();
 
 		void	displayResults() const;
 };
