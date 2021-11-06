@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/05 17:01:35 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 12:42:14 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,19 @@ class Convert
 		std::string			_strInt;
 		std::string			_strFloat;
 		std::string			_strDouble;
+		int					_precision;
 		Convert();
 		void	interpretCurrentType();
 		void	convertStrToChar();
 		void	convertStrToInt();
 		void	convertStrToFloat();
 		void	convertStrToDouble();
+		void	convertDoubleToStrType();
 		void	convertDoubleToStrChar();
 		void	convertDoubleToStrInt();
 		void	convertDoubleToStrFloat();
 		void	convertDoubleToStrDouble();
+		void	setImpossible();
 
 	public:
 		~Convert();
