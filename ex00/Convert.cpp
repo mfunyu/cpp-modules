@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 14:47:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 15:02:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,8 +191,13 @@ void	Convert::convertDoubleToStrFloat()
 	}
 	float	f = static_cast<float>(_store);
 
+	int		max_precision = std::max(_precision, 1);
+	if (f == 0) {
+		max_precision = 1;
+	}
+
 	std::ostringstream oss;
-	oss << std::fixed << std::setprecision(std::max(_precision, 1)) << f << std::flush;
+	oss << std::fixed << std::setprecision(max_precision) << f << std::flush;
 	_strFloat = oss.str() + "f";
 }
 
@@ -200,8 +205,13 @@ void	Convert::convertDoubleToStrDouble()
 {
 	double	d = _store;
 
+	int		max_precision = std::max(_precision, 1);
+	if (d == 0) {
+		max_precision = 1;
+	}
+
 	std::ostringstream oss;
-	oss << std::fixed << std::setprecision(std::max(_precision, 1)) << d << std::flush;
+	oss << std::fixed << std::setprecision(max_precision) << d << std::flush;
 	_strDouble = oss.str();
 }
 
