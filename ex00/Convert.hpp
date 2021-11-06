@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 15:27:26 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 16:44:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ class Convert
 		bool	isNonNumericChar();
 
 		void	setImpossible();
+		void	setPseudoLiteral();
 		bool	isNumeric();
+		bool	isPseudoLiteral();
 
 		void	interpretCurrentType();
 

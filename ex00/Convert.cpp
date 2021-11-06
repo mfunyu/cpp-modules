@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 15:27:52 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 16:53:56 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	Convert::convertDoubleToStr_double()
 
 void	Convert::convertDoubleToStr_types()
 {
-	if (_strDouble == impossible) {
+	if (!_strDouble.empty()) {
 		return ;
 	}
 	convertDoubleToStr_double();
@@ -132,7 +132,7 @@ void	Convert::convertStrToDouble()
 	std::cout << "DOUBLE" << std::endl;
 	std::string		str = _str;
 	if (str.at(str.length() - 1) == 'f') {
-		str.pop_back();
+		str.erase(str.length() - 1, 1);
 	}
 	std::istringstream iss(str);
 
@@ -152,6 +152,26 @@ void	Convert::setImpossible()
 	_strFloat = impossible;
 	_strInt = impossible;
 	_strChar = impossible;
+}
+
+void	Convert::setPseudoLiteral()
+{
+	_strInt = impossible;
+	_strChar = impossible;
+
+	if (_str.find("nan") != std::string::npos) {
+		_strDouble = "nan";
+		_strFloat = "nanf";
+		return ;
+	}
+	if (_str.find("inf") != std::string::npos) {
+		if (_str.at(0) == '+' || _str.at(0) == '-') {
+			_strDouble = _str.at(0);
+			_strFloat = _str.at(0);
+		}
+		_strDouble += "inf";
+		_strFloat += "inff";
+	}
 }
 
 void	Convert::setNumericIndexes(int & numeric_head, int & numeric_tail)
@@ -189,12 +209,29 @@ bool	Convert::isNumeric()
 	return true;
 }
 
+bool	Convert::isPseudoLiteral()
+{
+	std::string		str = _str;
+	if (str == "nan" || str == "nanf") {
+		return true;
+	}
+	if (str.at(0) == '-' || str.at(0) == '+') {
+		str.erase(0, 1);
+	}
+	return (str == "inf" || str == "inff");
+}
+
 void	Convert::interpretCurrentType()
 {
 	if (_str.empty()) {
 		setImpossible();
 		return ;
 	}
+	if (isPseudoLiteral()) {
+		setPseudoLiteral();
+		return ;
+	}
+
 	if (isNonNumericChar()) {
 		convertStrToChar();
 		return ;
