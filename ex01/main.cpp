@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:10:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 20:43:06 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/07 00:02:14 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int		main()
 		Data*		deserialized = deserialize(ptr);
 
 		std::cout << "Ptr After : " << deserialized << std::endl;
+
+		std::cout << "func getContent() : " << \
+					 deserialized->getContent() << std::endl;
 	}
 	std::cout << std::endl;
 	{
@@ -64,6 +67,9 @@ int		main()
 
 		std::cout << "Ptr After : " << deserialized << std::endl;
 
-		delete deserialized;
+		std::cout << "func getContent() : " << \
+					 deserialized->getContent() << std::endl;
+
+		delete test;
 	}
 }
