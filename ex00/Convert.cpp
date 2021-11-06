@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 15:19:39 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 15:27:52 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <limits>
 #include "Convert.hpp"
 
-std::string		impossible = "impossible";
+std::string	Convert::impossible = "impossible";
 
 Convert::Convert()
 {
@@ -156,7 +156,7 @@ void	Convert::setImpossible()
 
 void	Convert::setNumericIndexes(int & numeric_head, int & numeric_tail)
 {
-	if (_str.at(0) == '-') {
+	if (_str.at(0) == '-' || _str.at(0) == '+') {
 		numeric_head += 1;
 	}
 	if (_str.at(numeric_tail - 1) == 'f') {
