@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 15:14:08 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 15:19:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ class Convert
 {
 	private:
 		std::string const	_str;
-		double				_store;
+		double				_stored;
+		int					_precision;
 
 		std::string			_strChar;
 		std::string			_strInt;
 		std::string			_strFloat;
 		std::string			_strDouble;
-		int					_precision;
 
 		Convert();
 

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 15:14:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 15:19:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,24 @@ void	Convert::convertDoubleToStr_char()
 		return ;
 	}
 
-	int		i = static_cast<int>(_store);
+	int		i = static_cast<int>(_stored);
 	if (!std::isprint(i)) {
 		_strChar = "Non displayable";
 		return ;
 	}
 
-	_strChar = static_cast<char>(_store);
+	_strChar = static_cast<char>(_stored);
 	_strChar = "'" + _strChar + "'";
 }
 
 void	Convert::convertDoubleToStr_int()
 {
-	if (_store < INT_MIN || INT_MAX < _store) {
+	if (_stored < INT_MIN || INT_MAX < _stored) {
 		_strInt = impossible;
 		return ;
 	}
 
-	int		i = static_cast<int>(_store);
+	int		i = static_cast<int>(_stored);
 
 	std::ostringstream oss;
 	oss << i << std::flush;
@@ -82,7 +82,7 @@ void	Convert::convertDoubleToStr_float()
 		_strFloat = impossible;
 		return ;
 	}
-	float	f = static_cast<float>(_store);
+	float	f = static_cast<float>(_stored);
 
 	int		max_precision = std::max(_precision, 1);
 	if (f == 0) {
@@ -96,7 +96,7 @@ void	Convert::convertDoubleToStr_float()
 
 void	Convert::convertDoubleToStr_double()
 {
-	double	d = _store;
+	double	d = _stored;
 
 	int		max_precision = std::max(_precision, 1);
 	if (d == 0) {
@@ -124,7 +124,7 @@ void	Convert::convertDoubleToStr_types()
 void	Convert::convertStrToChar()
 {
 	std::cout << "CHAR" << std::endl;
-	_store = static_cast<double>(_str.at(0));
+	_stored = static_cast<double>(_str.at(0));
 }
 
 void	Convert::convertStrToDouble()
@@ -136,7 +136,7 @@ void	Convert::convertStrToDouble()
 	}
 	std::istringstream iss(str);
 
-	iss >> _store;
+	iss >> _stored;
 }
 
 bool	Convert::isNonNumericChar()
