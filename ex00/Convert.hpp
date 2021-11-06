@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 14:43:56 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 15:14:08 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,33 @@ class Convert
 	private:
 		std::string const	_str;
 		double				_store;
-		char				_char;
-		int					_int;
-		float				_float;
-		double				_double;
+
 		std::string			_strChar;
 		std::string			_strInt;
 		std::string			_strFloat;
 		std::string			_strDouble;
 		int					_precision;
+
 		Convert();
-		void	interpretCurrentType();
+
+		void	convertDoubleToStr_char();
+		void	convertDoubleToStr_int();
+		void	convertDoubleToStr_float();
+		void	convertDoubleToStr_double();
+
+		void	convertDoubleToStr_types();
+
 		void	convertStrToChar();
-		void	convertStrToInt();
-		void	convertStrToFloat();
 		void	convertStrToDouble();
-		void	convertDoubleToStrType();
-		void	convertDoubleToStrChar();
-		void	convertDoubleToStrInt();
-		void	convertDoubleToStrFloat();
-		void	convertDoubleToStrDouble();
-		void	setImpossible();
+
 		void	setNumericIndexes(int & numeric_head, int & numeric_tail);
 
+		bool	isNonNumericChar();
+
+		void	setImpossible();
 		bool	isNumeric();
+
+		void	interpretCurrentType();
 
 	public:
 		~Convert();
