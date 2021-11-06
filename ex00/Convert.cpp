@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 16:53:56 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 17:09:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@
 #include "Convert.hpp"
 
 std::string	Convert::impossible = "impossible";
-
-Convert::Convert()
-{
-}
 
 Convert::~Convert()
 {
@@ -37,6 +33,12 @@ Convert	&Convert::operator=(const Convert &other)
 {
 	if (this != &other)
 	{
+		_stored = other._stored;
+		_precision = other._precision;
+		_strChar = other._strChar;
+		_strInt = other._strInt;
+		_strFloat = other._strFloat;
+		_strDouble = other._strDouble;
 	}
 	return *this;
 }
