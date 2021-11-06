@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 14:15:27 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 14:43:56 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class Convert
 		void	convertDoubleToStrDouble();
 		void	setImpossible();
 		void	setNumericIndexes(int & numeric_head, int & numeric_tail);
+
+		bool	isNumeric();
 
 	public:
 		~Convert();

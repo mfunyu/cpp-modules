@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 14:40:18 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 14:47:19 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,8 @@ void	Convert::setNumericIndexes(int & numeric_head, int & numeric_tail)
 	}
 }
 
-void	Convert::interpretCurrentType()
+bool	Convert::isNumeric()
 {
-	if (_str.empty()) {
-		setImpossible();
-		return ;
-	}
-	if (isNonNumericChar(_str)) {
-		convertStrToChar();
-		return ;
-	}
-
 	int		numeric_head = 0;
 	int		numeric_tail = _str.length();
 	setNumericIndexes(numeric_head, numeric_tail);
@@ -93,19 +84,33 @@ void	Convert::interpretCurrentType()
 			continue ;
 		}
 		if (!std::isdigit(_str.at(i))) {
-			setImpossible();
-			return ;
+			return false;
 		}
 		if (fraction) {
 			_precision += 1;
-			if (_str.at(i) == '0') {
-				zero_tail += 1;
-			} else {
-				zero_tail = 0;
-			}
+			zero_tail = (_str.at(i) == '0' ? ++zero_tail : 0);
 		}
 	}
 	_precision -= zero_tail;
+	return true;
+}
+
+void	Convert::interpretCurrentType()
+{
+	if (_str.empty()) {
+		setImpossible();
+		return ;
+	}
+	if (isNonNumericChar(_str)) {
+		convertStrToChar();
+		return ;
+	}
+
+	if (!isNumeric()) {
+		setImpossible();
+		return ;
+	}
+
 	convertStrToDouble();
 }
 
