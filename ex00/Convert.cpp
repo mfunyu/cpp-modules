@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 13:11:11 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/06 14:40:18 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <string>
 #include <sstream>
 #include <climits>
+#include <limits>
 #include "Convert.hpp"
 
 std::string		impossible = "impossible";
@@ -52,34 +53,50 @@ void	Convert::setImpossible()
 	_strChar = impossible;
 }
 
+bool	isNonNumericChar(std::string const & str)
+{
+	return ( str.length() == 1
+			&& !std::isdigit(str.at(0))
+			&& std::isprint(str.at(0)) );
+}
+
+void	Convert::setNumericIndexes(int & numeric_head, int & numeric_tail)
+{
+	if (_str.at(0) == '-') {
+		numeric_head += 1;
+	}
+	if (_str.at(numeric_tail - 1) == 'f') {
+		numeric_tail -= 1;
+	}
+}
+
 void	Convert::interpretCurrentType()
 {
 	if (_str.empty()) {
 		setImpossible();
 		return ;
 	}
-	if (_str.length() == 1
-			&& !std::isdigit(_str.at(0)) && std::isprint(_str.at(0))) {
+	if (isNonNumericChar(_str)) {
 		convertStrToChar();
 		return ;
 	}
 
-	int		strlen = _str.length();
-	if (_str.at(strlen - 1) == 'f') {
-		strlen -= 1;
-	}
+	int		numeric_head = 0;
+	int		numeric_tail = _str.length();
+	setNumericIndexes(numeric_head, numeric_tail);
 
-	int		point = 0;
+	bool	fraction = false;
 	int		zero_tail = 0;
-	for (int i = 0; i < strlen; i++) {
-		if (i == 0 && _str.at(i) == '-') {
+	for (int i = numeric_head; i < numeric_tail; i++) {
+		if (!fraction && _str.at(i) == '.') {
+			fraction = true;
 			continue ;
 		}
-		if (point == 0 && _str.at(i) == '.') {
-			point = 1;
-			continue ;
+		if (!std::isdigit(_str.at(i))) {
+			setImpossible();
+			return ;
 		}
-		if (point == 1) {
+		if (fraction) {
 			_precision += 1;
 			if (_str.at(i) == '0') {
 				zero_tail += 1;
@@ -87,13 +104,8 @@ void	Convert::interpretCurrentType()
 				zero_tail = 0;
 			}
 		}
-		if (!std::isdigit(_str.at(i))) {
-			setImpossible();
-			return ;
-		}
 	}
 	_precision -= zero_tail;
-	std::cout << zero_tail << std::endl;
 	convertStrToDouble();
 }
 
@@ -106,7 +118,11 @@ void	Convert::convertStrToChar()
 void	Convert::convertStrToDouble()
 {
 	std::cout << "DOUBLE" << std::endl;
-	std::istringstream iss(_str);
+	std::string		str = _str;
+	if (str.at(str.length() - 1) == 'f') {
+		str.pop_back();
+	}
+	std::istringstream iss(str);
 
 	iss >> _double;
 	_store = _double;
