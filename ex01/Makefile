@@ -6,31 +6,40 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 01:25:50 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/13 00:04:41 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/08 09:45:17 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= phonebook
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 
 SRCS	:= main.cpp \
 			PhoneBook.cpp \
 			Contact.cpp
-OBJS	:= $(SRCS:.cpp=.o)
+OBJS_DIR:= objs/
+OBJS	:= $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
+DEPS	:= $(OBJS:.o=.d)
 
-.PHONY : all clean fclean re
+.PHONY	: all clean fclean re
 
-all : $(NAME)
+all	: $(NAME)
 
-$(NAME)	: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+-include $(DEPS)
+
+$(NAME)	: $(OBJS_DIR) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+
+$(OBJS_DIR)%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+$(OBJS_DIR):
+	@mkdir $@
 
 clean	:
-	$(RM) $(OBJS)
+	$(RM) -R $(OBJS_DIR)
 
 fclean	: clean
 	$(RM) $(NAME)
 
 re	: fclean all
-
