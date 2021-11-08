@@ -1,46 +1,45 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/01 01:25:50 by mfunyu            #+#    #+#              #
-#    Updated: 2021/10/15 23:40:45 by mfunyu           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	:= test
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 
 SRCS	:= Account.cpp \
 			tests.cpp
-OBJS	:= $(SRCS:.cpp=.o)
+OBJS_DIR:= objs/
+OBJS	:= $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
+DEPS	:= $(OBJS:.o=.d)
 
-.PHONY : all clean fclean re
+.PHONY	: all clean fclean re
 
-all : $(NAME)
+all	: $(NAME)
 
-$(NAME)	: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+-include $(DEPS)
+
+$(NAME)	: $(OBJS_DIR) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+
+$(OBJS_DIR)%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+$(OBJS_DIR):
+	@mkdir $@
 
 clean	:
-	$(RM) $(OBJS)
+	$(RM) -R $(OBJS_DIR)
 
 fclean	: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(TESTER) *.log
 
 re	: fclean all
 
 ##############################
 
+.PHONY	: tester
+
 TESTER	:= cpp00-ex02_diff.sh
 
-${TESTER}	:
+$(TESTER)	:
 	curl -O https://raw.githubusercontent.com/mfunyu/tester_cpp-module/main/cpp00-ex02_diff.sh
+	@chmod 755 $@
 
-runtest	: ${NAME} ${TESTER}
-	@chmod 755 ${TESTER}
-	./${TESTER}
-
+tester	: $(NAME) $(TESTER)
+	./$(TESTER)
