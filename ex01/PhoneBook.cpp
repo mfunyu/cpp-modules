@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:17:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:24:49 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	PhoneBook::search() const
 
 	_printTable();
 
-	unsigned int	index = _format.promptGetUIntInput("index of the desired entry");
+	unsigned int index = _format.promptGetUIntInput("index of the desired entry");
 
 	if (index < _maxContacts && _contactList[index].isFilled()) {
 		_contactList[index].print();
@@ -52,25 +52,28 @@ void	PhoneBook::search() const
 	}
 }
 
-void	PhoneBook::_printTable() const {
+void	PhoneBook::_printTable() const
+{
 	std::string		header[4] = {"index", "first_name", "last_name", "nickname"};
 
 	_format.printTableHeader(header);
 	for (int i = 0; _contactList[i].isFilled(); i++) {
 		std::string	content[4] = {
-									std::to_string(i),
-									_contactList[i].getFirstName(),
-									_contactList[i].getLastName(),
-									_contactList[i].getNickname()
-								};
+			std::to_string(i),
+			_contactList[i].getFirstName(),
+			_contactList[i].getLastName(),
+			_contactList[i].getNickname()
+		};
 		_format.printTableRow(content);
 	}
 	_format.printTableBorder('+', '-');
 	std::cout << std::endl;
 }
 
-void	PhoneBook::_updateContactIndex(void) {
+void	PhoneBook::_updateContactIndex(void)
+{
 	_contactIndex += 1;
-	if (_contactIndex == _maxContacts)
+	if (_contactIndex == _maxContacts) {
 		_contactIndex = 0;
+	}
 }

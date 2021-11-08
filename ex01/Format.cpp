@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:21:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:34:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,15 @@ std::string	Format::promptGetStrInput(std::string key) const
 
 	std::string		input;
 	std::cin >> input;
+
+	if (std::cin.eof()) {
+		std::exit(EXIT_FAILURE);
+	}
+
 	return input;
 }
 
-unsigned int		Format::promptGetUIntInput(std::string key) const
+unsigned int	Format::promptGetUIntInput(std::string key) const
 {
 	unsigned int	input;
 	while (1)
