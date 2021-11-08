@@ -6,13 +6,16 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 21:07:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 22:26:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
 #include "Format.hpp"
+
+#define INVERT "\033[7m"
+#define RESET_INVERT "\033[0m"
 
 Format::Format() : _keyWidth(15), _numCols(4), _colWidth(10)
 {
@@ -54,11 +57,13 @@ void	Format::printKey(std::string const & key, unsigned int keyWidth) const
 		keyWidth = _keyWidth;
 	}
 	std::cout.setf(std::ios::left);
-	std::cout << std::setw(keyWidth) << key << ": " << std::flush;
+	std::cout << INVERT << std::setw(keyWidth) << key <<\
+				 ":" << RESET_INVERT << " " << std::flush;
 	std::cout.unsetf(std::ios::left);
 }
 
-void	Format::printPairLine(std::string const & key, std::string const & value, unsigned int keyWidth) const
+void	Format::printPairLine(std::string const & key, std::string const & value,
+								unsigned int keyWidth) const
 {
 	printKey(key, keyWidth);
 	std::cout << value << std::endl;
@@ -131,7 +136,7 @@ unsigned int	Format::promptGetUIntInput(std::string key) const
 	unsigned int	input;
 	while (1)
 	{
-		printKey("Enter " + key);
+		std::cout << "Enter " + key + ": ";
 		std::cin >> input;
 
 		if (std::cin.eof()) {
