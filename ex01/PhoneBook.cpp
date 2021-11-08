@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:30:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 21:11:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ void	PhoneBook::_printTable() const
 
 	_format.printTableHeader(header);
 	for (int i = 0; _contactList[i].isFilled(); i++) {
+		std::ostringstream	oss;
+		oss << i;
+
 		std::string	content[4] = {
-			std::to_string(i),
+			oss.str(),
 			_contactList[i].getFirstName(),
 			_contactList[i].getLastName(),
 			_contactList[i].getNickname()
