@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 01:25:50 by mfunyu            #+#    #+#              #
-#    Updated: 2021/11/08 09:45:17 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/08 13:39:20 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 
 SRCS	:= main.cpp \
 			PhoneBook.cpp \
-			Contact.cpp
+			Contact.cpp \
+			Format.cpp
 OBJS_DIR:= objs/
 OBJS	:= $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 DEPS	:= $(OBJS:.o=.d)
