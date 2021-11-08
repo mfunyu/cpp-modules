@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/21 21:09:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 09:51:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 #include <string>
 #include <cstdlib>
 
-static void	print_instruction(std::string cmd)
-{
-	std::cout << "Invalid input: " << cmd << std::endl;
-	std::cout << "available commands [ADD/SEARCH/EXIT]" << std::endl;
-}
+namespace {
+	void	print_instruction(std::string cmd)
+	{
+		std::cout << "Invalid input: " << cmd << std::endl;
+		std::cout << "available commands [ADD/SEARCH/EXIT]" << std::endl;
+	}
+} /* namespace */
 
 int	main(void)
 {
@@ -35,12 +37,12 @@ int	main(void)
 			std::exit(EXIT_FAILURE);
 		}
 
-		if (cmd.compare("EXIT") == 0) {
+		if (cmd == "EXIT") {
 			std::cout << "Bye!" << std::endl;
 			return 0;
-		} else if (cmd.compare("ADD") == 0) {
+		} else if (cmd == "ADD") {
 			phonebook.add();
-		} else if (cmd.compare("SEARCH") == 0) {
+		} else if (cmd == "SEARCH") {
 			phonebook.search();
 		} else {
 			print_instruction(cmd);
