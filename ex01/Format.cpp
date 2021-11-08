@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 22:26:07 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 22:46:40 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void	Format::printSeparator(unsigned int width, char ch) const
 
 void	Format::printTableSingleColumn(std::string col) const
 {
+	if (col.size() > _colWidth) {
+		col.replace(_colWidth - 1, col.size(), 1, '.');
+	}
 	std::cout << std::setw(_colWidth) << col << "|";
 }
 
