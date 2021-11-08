@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 14:29:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:58:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 
 class PhoneBook
 {
+	private:
+		Format			_format;
+		Contact			_contactList[MAX_CONTACTS + 1];
+		unsigned int	_contactIndex;
+
 	public:
 		PhoneBook();
 		~PhoneBook();
@@ -29,17 +34,8 @@ class PhoneBook
 		void	search() const;
 
 	private:
-		Format	_format;
-		Contact			_contact_lst[MAX_CONTACTS + 1];
-		unsigned int	_contact_index;
-		unsigned int	_get_contact_index(void) const;
-		void			_update_contact_index(void);
-
-		void			_print_table(void) const;
-		void			_print_contents() const;
-		static void		_print_one_column(std::string str);
-		static void		_print_header(void);
-		static void		_print_border();
+		void	_printTable(void) const;
+		void	_updateContactIndex(void);
 };
 
 #endif /* PHONEBOOK_HPP */
