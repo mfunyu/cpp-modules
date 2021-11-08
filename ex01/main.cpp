@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 09:51:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:37:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 #include <string>
 #include <cstdlib>
 
+# define SET_COLOR "\033[36m"
+# define RESET_COLOR "\033[m"
+
 namespace {
-	void	print_instruction(std::string cmd)
+	void	printInstruction(std::string cmd)
 	{
 		std::cout << "Invalid input: " << cmd << std::endl;
 		std::cout << "available commands [ADD/SEARCH/EXIT]" << std::endl;
+	}
+
+	void	printPrompt()
+	{
+		std::cout << "Enter a command" << std::endl;
+		std::cout << SET_COLOR << "$> " << RESET_COLOR;
 	}
 } /* namespace */
 
@@ -29,7 +38,7 @@ int	main(void)
 
 	while (1)
 	{
-		std::cout << "Please enter a command: ";
+		printPrompt();
 		std::string cmd;
 		std::cin >> cmd;
 
@@ -45,7 +54,7 @@ int	main(void)
 		} else if (cmd == "SEARCH") {
 			phonebook.search();
 		} else {
-			print_instruction(cmd);
+			printInstruction(cmd);
 		}
 		std::cout << std::endl;
 	}
