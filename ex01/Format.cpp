@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 14:46:16 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:21:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,40 @@ void	Format::printTableBorder(char charCorner, char charLine) const
 	std::cout << std::endl;
 }
 
+/****************************** set & input ***********************************/
 
 void	Format::setKeyWidth(unsigned int keyWidth)
 {
 	_keyWidth = keyWidth;
 }
 
-std::string	Format::promptGetInput(std::string key)
+std::string	Format::promptGetStrInput(std::string key) const
 {
-	std::string		input;
+	printKey("Enter " + key);
 
-	printKey("Enter" + key);
+	std::string		input;
 	std::cin >> input;
+	return input;
+}
+
+unsigned int		Format::promptGetUIntInput(std::string key) const
+{
+	unsigned int	input;
+	while (1)
+	{
+		printKey("Enter " + key);
+		std::cin >> input;
+
+		if (std::cin.eof()) {
+			std::exit(EXIT_FAILURE);
+		}
+		if (std::cin.fail()) {
+			printInfoLine("Error: Invalid input");
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue ;
+		}
+		break ;
+	}
 	return input;
 }

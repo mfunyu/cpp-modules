@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:03:58 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:17:59 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ unsigned int	PhoneBook::_maxContacts = MAX_CONTACTS;
 PhoneBook::PhoneBook() : _contactIndex(0)
 {
 	Format	_format(15);
-	return ;
 }
 
 PhoneBook::~PhoneBook()
@@ -44,16 +43,7 @@ void	PhoneBook::search() const
 
 	_printTable();
 
-	std::cout << "Enter index of the desired entry: ";
-	unsigned int	index;
-	std::cin >> index;
-
-	if (std::cin.fail()) {
-		_format.printInfoLine("Error: Invalid input");
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		return ;
-	}
+	unsigned int	index = _format.promptGetUIntInput("index of the desired entry");
 
 	if (index < _maxContacts && _contactList[index].isFilled()) {
 		_contactList[index].print();

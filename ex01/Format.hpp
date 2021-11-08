@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:47 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 14:42:28 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:13:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ class Format
 
 		void	setKeyWidth(unsigned int keyWidth);
 
-		std::string	promptGetInput(std::string key);
+		std::string		promptGetStrInput(std::string key) const;
+		unsigned int	promptGetUIntInput(std::string key) const;
 };
 
 #endif /* FORMAT_HPP */
