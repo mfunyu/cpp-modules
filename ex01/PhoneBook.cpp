@@ -6,16 +6,15 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 21:58:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 22:51:26 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include "Format.hpp"
-#include <iostream>
-#include <iomanip>
 #include <string>
 #include <sstream>
+
+#include "PhoneBook.hpp"
+#include "Format.hpp"
 
 unsigned int	PhoneBook::_maxContacts = MAX_CONTACTS;
 
@@ -71,7 +70,6 @@ void	PhoneBook::_printTable() const
 		_format.printTableRow(content);
 	}
 	_format.printTableBorder('+', '-');
-	std::cout << std::endl;
 }
 
 void	PhoneBook::_updateContactIndex(void)
