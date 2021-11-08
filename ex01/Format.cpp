@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 22:46:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 22:58:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ Format::Format() : _keyWidth(15), _numCols(4), _colWidth(10)
 
 Format::~Format()
 {
-}
-
-Format::Format(const Format &other)
-{
-	*this = other;
-}
-
-Format	&Format::operator=(const Format &other)
-{
-	if (this != &other)
-	{
-		_keyWidth = other._keyWidth;
-	}
-	return *this;
 }
 
 Format::Format(unsigned int keyWidth) :

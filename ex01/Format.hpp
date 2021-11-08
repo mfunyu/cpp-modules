@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:47 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 21:08:22 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 22:58:31 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ class Format
 	public:
 		Format();
 		~Format();
-		Format(Format const &other);
-		Format	&operator=(Format const &other);
-
+		
 		Format(unsigned int keyWidth);
 
 		/* print lines */
