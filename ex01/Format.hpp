@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:47 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:13:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 21:08:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ class Format
 		Format(unsigned int keyWidth);
 
 		/* print lines */
-		void	printPairLine(std::string const & key, std::string const & value, unsigned int keyWidth = 0) const;
 		void	printInfoLine(std::string const & info) const;
 		void	printKey(std::string const & key, unsigned int keyWidth = 0) const;
+		void	printPairLine(std::string const & key, std::string const & value,
+								unsigned int keyWidth = 0) const;
 		void	printSeparator(unsigned int width, char ch) const;
 
 		/* print table */

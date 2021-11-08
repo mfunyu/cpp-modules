@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:34:43 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 21:07:54 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,6 @@ Format::Format(unsigned int keyWidth) :
 
 /****************************** print lines ***********************************/
 
-void	Format::printPairLine(std::string const & key, std::string const & value, unsigned int keyWidth) const
-{
-	std::cout.setf(std::ios::left);
-	std::cout << std::setw(keyWidth) <<\
-				 key << ": " << value << std::endl;
-	std::cout.unsetf(std::ios::left);
-}
-
 void	Format::printInfoLine(std::string const & info) const
 {
 	std::cout << info << std::endl;
@@ -64,6 +56,12 @@ void	Format::printKey(std::string const & key, unsigned int keyWidth) const
 	std::cout.setf(std::ios::left);
 	std::cout << std::setw(keyWidth) << key << ": " << std::flush;
 	std::cout.unsetf(std::ios::left);
+}
+
+void	Format::printPairLine(std::string const & key, std::string const & value, unsigned int keyWidth) const
+{
+	printKey(key, keyWidth);
+	std::cout << value << std::endl;
 }
 
 void	Format::printSeparator(unsigned int width, char ch) const
