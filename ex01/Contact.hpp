@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 13:33:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:12:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ class Contact
 		std::string	_darkestSecret;
 
 		Format		_format;
-
-		static void	_print_one_line(std::string name, std::string value);
 
 	public:
 		Contact();

@@ -6,14 +6,22 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 14:01:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:11:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
+
 #include "Contact.hpp"
 #include "Format.hpp"
-#include <iomanip>
-#include <string>
+
+Contact::Contact() : _isFilled(false)
+{
+}
+
+Contact::~Contact()
+{
+}
 
 void	Contact::print(void) const
 {
@@ -39,6 +47,11 @@ void	Contact::fillout(void)
 	_isFilled = true;
 }
 
+bool	Contact::isFilled(void) const
+{
+	return _isFilled;
+}
+
 std::string const & Contact::getFirstName(void) const
 {
 	return _firstName;
@@ -52,19 +65,4 @@ std::string const & Contact::getLastName(void) const
 std::string const &	Contact::getNickname(void) const
 {
 	return _nickname;
-}
-
-bool	Contact::isFilled(void) const
-{
-	return _isFilled;
-}
-
-Contact::Contact() : _isFilled(false)
-{
-	return;
-}
-
-Contact::~Contact()
-{
-	return;
 }
