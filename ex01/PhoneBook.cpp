@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 14:57:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:03:58 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+
+unsigned int	PhoneBook::_maxContacts = MAX_CONTACTS;
 
 PhoneBook::PhoneBook() : _contactIndex(0)
 {
@@ -53,7 +55,7 @@ void	PhoneBook::search() const
 		return ;
 	}
 
-	if (index < MAX_CONTACTS && _contactList[index].isFilled()) {
+	if (index < _maxContacts && _contactList[index].isFilled()) {
 		_contactList[index].print();
 	} else {
 		_format.printInfoLine("Error: Index out of range");
@@ -79,6 +81,6 @@ void	PhoneBook::_printTable() const {
 
 void	PhoneBook::_updateContactIndex(void) {
 	_contactIndex += 1;
-	if (_contactIndex == MAX_CONTACTS)
+	if (_contactIndex == _maxContacts)
 		_contactIndex = 0;
 }
