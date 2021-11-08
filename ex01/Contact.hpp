@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 11:35:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 13:33:04 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONTACT_HPP
 
 # include <string>
+
+# include "Format.hpp"
 
 class Contact
 {
@@ -24,6 +26,8 @@ class Contact
 		std::string	_nickname;
 		std::string	_phoneNumber;
 		std::string	_darkestSecret;
+
+		Format		_format;
 
 		static void	_print_one_line(std::string name, std::string value);
 
