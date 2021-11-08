@@ -6,63 +6,37 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 11:38:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:48:18 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Format.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
 
-void	PhoneBook::_print_one_column(std::string str) {
-	if (str.size() > COL_WIDTH) {
-		str.replace(str.begin() + COL_WIDTH - 1, str.end(), 1, '.');
-	}
-	std::cout << std::setw(10) << str << "|";
-}
-
-void	PhoneBook::_print_contents() const {
-	for (int i = 0; _contact_lst[i].isFilled(); i++) {
-		_print_border();
-		std::cout << "|";
-		_print_one_column(std::to_string(i));
-		_print_one_column(_contact_lst[i].getFirstName());
-		_print_one_column(_contact_lst[i].getLastName());
-		_print_one_column(_contact_lst[i].getNickname());
-		std::cout << std::endl;
-	}
-}
-
-void	PhoneBook::_print_header(void) {
-	std::cout << "|";
-	_print_one_column("index");
-	_print_one_column("first_name");
-	_print_one_column("last_name");
-	_print_one_column("nickname");
-	std::cout << std::endl;
-}
-
-void	PhoneBook::_print_border() {
-	std::cout << '+';
-	for (int i = 0; i < NUM_COLS; i++) {
-		std::cout << std::string(COL_WIDTH, '-') << '+';
-	}
-	std::cout << std::endl;
-}
-
 void	PhoneBook::_print_table() const {
-	_print_border();
-	_print_header();
-	_print_contents();
-	_print_border();
+	std::string		header[4] = {"index", "first_name", "last_name", "nickname"};
+
+	_format.printTableHeader(header);
+	for (int i = 0; _contact_lst[i].isFilled(); i++) {
+		std::string	content[4] = {
+									std::to_string(i),
+									_contact_lst[i].getFirstName(),
+									_contact_lst[i].getLastName(),
+									_contact_lst[i].getNickname()
+								};
+		_format.printTableRow(content);
+	}
+	_format.printTableBorder('+', '-');
 	std::cout << std::endl;
 }
 
 void	PhoneBook::search() const {
 	if (!_contact_lst[0].isFilled()) {
-		std::cout << "-------" << std::endl;
-		std::cout << "Error: No available contact" << std::endl;
+		_format.printSeparator(10, '-');
+		_format.printInfoLine("Error: No available contact");
 		return ;
 	}
 
@@ -73,7 +47,7 @@ void	PhoneBook::search() const {
 	std::cin >> index;
 
 	if (std::cin.fail()) {
-		std::cout << "Error: Invalid input" << std::endl;
+		_format.printInfoLine("Error: Invalid input");
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return ;
@@ -82,7 +56,7 @@ void	PhoneBook::search() const {
 	if (index < MAX_CONTACTS && _contact_lst[index].isFilled()) {
 		_contact_lst[index].print();
 	} else {
-		std::cout << "Error: Index out of range" << std::endl;
+		_format.printInfoLine("Error: Index out of range");
 	}
 }
 
@@ -103,7 +77,8 @@ void	PhoneBook::add() {
 	_update_contact_index();
 }
 
-PhoneBook::PhoneBook() : _contact_index(0){
+PhoneBook::PhoneBook() : _contact_index(0) {
+	Format	_format(15);
 	return ;
 }
 

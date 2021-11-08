@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 14:07:38 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:46:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iomanip>
 #include "Format.hpp"
 
-Format::Format() : _keyWidth(15)
+Format::Format() : _keyWidth(15), _numCols(4), _colWidth(10)
 {
 }
 
@@ -41,7 +41,7 @@ Format::Format(unsigned int keyWidth) :
 {
 }
 
-/************************ Print related funcs *****************************/
+/****************************** print lines ***********************************/
 
 void	Format::printPairLine(std::string const & key, std::string const & value, unsigned int keyWidth) const
 {
@@ -73,6 +73,40 @@ void	Format::printSeparator(unsigned int width, char ch) const
 	separator.append(width, ch);
 	std::cout << separator << std::endl;
 }
+
+/****************************** print table ***********************************/
+
+void	Format::printTableSingleColumn(std::string col) const
+{
+	std::cout << std::setw(_colWidth) << col << "|";
+}
+
+void	Format::printTableRow(std::string *lst) const
+{
+	printTableBorder('+', '-');
+	std::cout << "|";
+	for (int i = 0; i < _numCols; i++) {
+		printTableSingleColumn(lst[i]);
+	}
+	std::cout << std::endl;
+}
+
+void	Format::printTableHeader(std::string *lst) const
+{
+	printTableRow(lst);
+}
+
+void	Format::printTableBorder(char charCorner, char charLine) const
+{
+	std::string		line(_colWidth, charLine);
+
+	std::cout << charCorner;
+	for (int i = 0; i < _numCols; i++) {
+		std::cout << line << charCorner;
+	}
+	std::cout << std::endl;
+}
+
 
 void	Format::setKeyWidth(unsigned int keyWidth)
 {

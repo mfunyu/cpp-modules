@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/22 16:13:03 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:29:23 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class PhoneBook
 		void	search() const;
 
 	private:
+		Format	_format;
 		Contact			_contact_lst[MAX_CONTACTS + 1];
 		unsigned int	_contact_index;
 		unsigned int	_get_contact_index(void) const;
