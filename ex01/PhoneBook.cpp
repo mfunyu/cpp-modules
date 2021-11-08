@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/22 16:15:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 11:38:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	PhoneBook::_print_one_column(std::string str) {
 }
 
 void	PhoneBook::_print_contents() const {
-	for (int i = 0; _contact_lst[i].is_filled(); i++) {
+	for (int i = 0; _contact_lst[i].isFilled(); i++) {
 		_print_border();
 		std::cout << "|";
 		_print_one_column(std::to_string(i));
-		_print_one_column(_contact_lst[i].get_first_name());
-		_print_one_column(_contact_lst[i].get_last_name());
-		_print_one_column(_contact_lst[i].get_nickname());
+		_print_one_column(_contact_lst[i].getFirstName());
+		_print_one_column(_contact_lst[i].getLastName());
+		_print_one_column(_contact_lst[i].getNickname());
 		std::cout << std::endl;
 	}
 }
@@ -60,7 +60,7 @@ void	PhoneBook::_print_table() const {
 }
 
 void	PhoneBook::search() const {
-	if (!_contact_lst[0].is_filled()) {
+	if (!_contact_lst[0].isFilled()) {
 		std::cout << "-------" << std::endl;
 		std::cout << "Error: No available contact" << std::endl;
 		return ;
@@ -79,7 +79,7 @@ void	PhoneBook::search() const {
 		return ;
 	}
 
-	if (index < MAX_CONTACTS && _contact_lst[index].is_filled()) {
+	if (index < MAX_CONTACTS && _contact_lst[index].isFilled()) {
 		_contact_lst[index].print();
 	} else {
 		std::cout << "Error: Index out of range" << std::endl;
