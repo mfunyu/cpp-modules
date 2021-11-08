@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 01:41:56 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/22 15:10:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 21:28:30 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ int		Account::getNbWithdrawals( void ) {
 }
 
 void	Account::_displayTimestamp( void ) {
-	std::time_t	epoch = std::time(nullptr);
-	std::cout << "[" << std::put_time(std::localtime(&epoch), "%Y%m%d-%H%M%S") << "] ";
+	std::time_t	now = std::time(NULL);
+	struct tm *	timeInfo = std::localtime(&now);
+
+	char	time[20];
+	std::strftime(time, 20, "%Y%m%d_%H%M%S", timeInfo);
+
+	std::cout << "[" << time << "] ";
 }
 
 void	Account::displayAccountsInfos( void ) {
@@ -93,7 +98,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 
 int		Account::checkAmount( void ) const {
 	return _amount;
-};
+}
 
 void	Account::displayStatus( void ) const {
 	_displayTimestamp();
