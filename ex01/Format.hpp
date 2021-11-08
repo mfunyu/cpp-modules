@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:47 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 13:32:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 14:03:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ class Format
 
 		Format(unsigned int keyWidth);
 
-		void	printPairLine(std::string key, std::string value, unsigned int keyWidth) const;
-		void	printKey(std::string key, unsigned int keyWidth) const;
+		void	printPairLine(std::string const & key, std::string const & value, unsigned int keyWidth = 0) const;
+		void	printInfoLine(std::string const & info) const;
+		void	printKey(std::string const & key, unsigned int keyWidth = 0) const;
 		void	printSeparator(unsigned int width, char ch) const;
 
 		void	setKeyWidth(unsigned int keyWidth);
+
+		std::string	promptGetInput(std::string key);
 };
 
 #endif /* FORMAT_HPP */
