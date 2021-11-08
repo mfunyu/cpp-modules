@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:24:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:30:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	PhoneBook::add()
 void	PhoneBook::search() const
 {
 	if (!_contactList[0].isFilled()) {
-		_format.printSeparator(10, '-');
 		_format.printInfoLine("Error: No available contact");
 		return ;
 	}
@@ -45,11 +44,12 @@ void	PhoneBook::search() const
 
 	unsigned int index = _format.promptGetUIntInput("index of the desired entry");
 
-	if (index < _maxContacts && _contactList[index].isFilled()) {
-		_contactList[index].print();
-	} else {
+	if (index >= _maxContacts || !_contactList[index].isFilled()) {
 		_format.printInfoLine("Error: Index out of range");
+		return ;
 	}
+
+	_contactList[index].print();
 }
 
 void	PhoneBook::_printTable() const

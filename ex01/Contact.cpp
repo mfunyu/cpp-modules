@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:28:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 15:11:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/08 15:40:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	Contact::print(void) const
 
 void	Contact::fillout(void)
 {
-	_format.printSeparator(10, '-');
 	_format.setKeyWidth(20);
 	_format.printInfoLine("Input a new contact’s information");
 	_firstName = _format.promptGetStrInput("first name");
