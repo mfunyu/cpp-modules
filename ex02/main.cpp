@@ -1,11 +1,56 @@
 #include <iostream>
+#include <iomanip>
 #include <Array.hpp>
+
+/* ***************************** print test info **************************** */
+
+#define COLOR_RED "\033[31m"
+#define COLOR_GREEN "\033[32m"
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+void	printTestName(std::string test){
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN << "****** Test " << test <<\
+				 " ******" << COLOR_RESET << std::endl;
+}
+
+template <typename T>
+void	printElem(int i, T elem, int total) {
+	std::cout << "[" << i << "]: " << elem << " " << std::flush;
+	if (i == total - 1) {
+		std::cout << std::endl;
+	}
+}
+
+template <typename T>
+void	printList(std::string title, Array<T> elem, int total) {
+	std::cout.setf(std::ios::left);
+	std::cout << std::setw(9) << title << "| ";
+	std::cout.unsetf(std::ios::left);
+	for (int i = 0; i < total; i++) {
+		printElem(i, elem[i], total);
+	}
+}
+
+void	printKO(std::string testinfo) {
+	std::cout << testinfo << ": " <<\
+				 COLOR_RED << "[KO]" << COLOR_RESET << std::endl;
+}
+
+void	printOK(std::string testinfo) {
+	std::cout << testinfo << ": " <<\
+				 COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
+}
+
+/* ********************************** tests ********************************* */
 
 #define MAX_VAL 750
 
 namespace {
 int		subject_main()
 {
+	printTestName("Subject main");
 	Array<int> numbers(MAX_VAL);
 	int *mirror = new int[MAX_VAL];
 	srand(time(NULL));
@@ -55,9 +100,101 @@ int		subject_main()
 
 	return 0;
 }
+
+template <typename T>
+void	testAssignmentOperator(std::string type)
+{
+	int		n = 8;
+	int		m = 4;
+	Array<T> src(n);
+	Array<T> dst(m);
+	std::string testInfo = "Running deep copy <" + type + ">";
+	dst = src;
+	for (int i = 0; i < n; i++) {
+		src[i] = i + 'A';
+		if (dst[i] == src[i]) {
+			printKO(testInfo);
+			return ;
+		}
+	}
+	printList<T>("dst", dst, n);
+	printList<T>("src", src, n);
+	printOK(testInfo);
+}
+
+template <typename T>
+void	testCopyConstructor(std::string type)
+{
+	int		n = 5;
+	Array<T> original(n);
+	Array<T> copy(original);
+	std::string testInfo = "Running deep copy <" + type + ">";
+	for (int i = 0; i < n; i++) {
+		original[i] = i + 'a';
+		if (original[i] == copy[i]) {
+			printKO(testInfo);
+			return ;
+		}
+	}
+	printList<T>("original", original, n);
+	printList<T>("copy", copy, n);
+	printOK(testInfo);
+}
+
+template <typename T>
+void	testConstructor(std::string type)
+{
+	int		n = 10;
+	Array<T> numbers(n);
+	std::string testInfo = "Initialized to default <" + type + ">";
+	for (int i = 0; i < n; i++) {
+		printElem<T>(i, numbers[i], n);
+		if (numbers[i] != 0) {
+			printKO(testInfo);
+			return ;
+		}
+	}
+	printOK(testInfo);
+}
+
+void	testConstructor()
+{
+	std::string testInfo = "Initialized to default <std::string>";
+	int		n = 10;
+	Array<std::string> strs(n);
+	for (int i = 0; i < n; i++) {
+		printElem<std::string>(i, strs[i], n);
+		if (!strs[i].empty()) {
+			printKO(testInfo);
+			return ;
+		}
+	}
+	printOK(testInfo);
+}
 } /* namespace */
 
 int		main()
 {
-	subject_main();
+	try {
+	(void)subject_main;
+
+	printTestName("Constructor");
+	testConstructor<int>("int");
+	testConstructor<float>("float");
+	testConstructor<const unsigned char>("const unsigned char");
+	testConstructor();
+
+	printTestName("Copy Constructor");
+	testCopyConstructor<int>("int");
+	testCopyConstructor<float>("float");
+	testCopyConstructor<double>("double");
+	testCopyConstructor<std::string>("std::string");
+
+	printTestName("Assignment Operator");
+	testAssignmentOperator<int>("int");
+	testAssignmentOperator<std::string>("std::string");
+
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
