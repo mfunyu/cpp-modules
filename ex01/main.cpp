@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 00:12:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 22:51:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/09 21:49:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,14 @@ int	main(void)
 		std::string cmd;
 		std::cin >> cmd;
 
-		if (std::cin.eof()) {
+		if (std::cin.eof() || std::cin.bad()) {
 			std::exit(EXIT_FAILURE);
+		}
+		if (std::cin.fail()) {
+			std::cout << "Error: Invalid input" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue ;
 		}
 
 		if (cmd == "EXIT") {

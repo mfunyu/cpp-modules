@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/08 22:58:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/09 21:48:53 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,21 @@ std::string	Format::promptGetStrInput(std::string key) const
 	printKey("Enter " + key);
 
 	std::string		input;
-	std::cin >> input;
+	while (1)
+	{
+		std::cin >> input;
 
-	if (std::cin.eof()) {
-		std::exit(EXIT_FAILURE);
+		if (std::cin.eof() || std::cin.bad()) {
+			std::exit(EXIT_FAILURE);
+		}
+		if (std::cin.fail()) {
+			printInfoLine("Error: Invalid input");
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue ;
+		}
+		break ;
 	}
-
 	return input;
 }
 
@@ -128,7 +137,7 @@ unsigned int	Format::promptGetUIntInput(std::string key) const
 		std::cout << "Enter " + key + ": ";
 		std::cin >> input;
 
-		if (std::cin.eof()) {
+		if (std::cin.eof() || std::cin.bad()) {
 			std::exit(EXIT_FAILURE);
 		}
 		if (std::cin.fail()) {
