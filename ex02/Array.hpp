@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:32:45 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/09 23:08:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/09 23:37:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ class Array
 
 	T	&operator[](unsigned int i) {
 		if (i < 0 || i >= _size) {
-			throw std::out_of_range("out of range");
+			throw std::out_of_range("index out of range");
 		}
 		return _array[i];
 	}
