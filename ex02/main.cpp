@@ -114,6 +114,42 @@ int		subject_main()
 }
 
 template <typename T>
+void	testSize(std::string type)
+{
+	unsigned int	n = 8;
+	Array<T> test(n);
+	std::string testInfo = "Accurate size returned <" + type + ">";
+
+	if (test.size() != n) {
+		printKO(testInfo);
+		return ;
+	}
+	printOK(testInfo);
+}
+
+template <typename T>
+void	testSubscriptOperator(std::string type)
+{
+	int		n = 8;
+	Array<T> test(n);
+	std::string testInfo = "Exception thrown at right index <" + type + ">";
+	try {
+		for (int i = 0; i < n + 10; i++) {
+			test[i] = i * 10;
+			if (i >= n) {
+				printKO(testInfo);
+				return ;
+			}
+		}
+	} catch (std::exception &e){
+		#ifdef PRINT
+		std::cout << e.what() << std::endl;
+		#endif
+		printOK(testInfo);
+	}
+}
+
+template <typename T>
 void	testAssignmentOperator(std::string type)
 {
 	int		n = 8;
@@ -188,7 +224,7 @@ void	testConstructor()
 int		main()
 {
 	try {
-	(void)subject_main;
+	subject_main();
 
 	printTestName("Constructor");
 	testConstructor<int>("int");
@@ -202,10 +238,20 @@ int		main()
 	testCopyConstructor<double>("double");
 	testCopyConstructor<std::string>("std::string");
 
-	printTestName("Assignment Operator");
+	printTestName("Assignment Operator = ");
 	testAssignmentOperator<unsigned int>("unsigned int");
 	testAssignmentOperator<char>("char");
 	testAssignmentOperator<std::string>("std::string");
+
+	printTestName("Subscript Operator []");
+	testSubscriptOperator<float>("float");
+	testSubscriptOperator<unsigned char>("unsigned char");
+	testSubscriptOperator<int64_t>("int64_t");
+
+	printTestName("size");
+	testSize<const float>("const float");
+	testSize<unsigned char>("unsigned char");
+	testSize<const std::string>("const std::string");
 
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
