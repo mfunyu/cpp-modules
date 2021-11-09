@@ -17,20 +17,32 @@ void	printTestName(std::string test){
 
 template <typename T>
 void	printElem(int i, T elem, int total) {
+	#ifdef PRINT
 	std::cout << "[" << i << "]: " << elem << " " << std::flush;
 	if (i == total - 1) {
 		std::cout << std::endl;
 	}
+	#else
+	(void)i;
+	(void)elem;
+	(void)total;
+	#endif
 }
 
 template <typename T>
 void	printList(std::string title, Array<T> elem, int total) {
+	#ifdef PRINT
 	std::cout.setf(std::ios::left);
 	std::cout << std::setw(9) << title << "| ";
 	std::cout.unsetf(std::ios::left);
 	for (int i = 0; i < total; i++) {
 		printElem(i, elem[i], total);
 	}
+	#else
+	(void)title;
+	(void)elem;
+	(void)total;
+	#endif
 }
 
 void	printKO(std::string testinfo) {
@@ -111,7 +123,7 @@ void	testAssignmentOperator(std::string type)
 	std::string testInfo = "Running deep copy <" + type + ">";
 	dst = src;
 	for (int i = 0; i < n; i++) {
-		src[i] = i + 'A';
+		dst[i] = i + 'A';
 		if (dst[i] == src[i]) {
 			printKO(testInfo);
 			return ;
@@ -191,7 +203,8 @@ int		main()
 	testCopyConstructor<std::string>("std::string");
 
 	printTestName("Assignment Operator");
-	testAssignmentOperator<int>("int");
+	testAssignmentOperator<unsigned int>("unsigned int");
+	testAssignmentOperator<char>("char");
 	testAssignmentOperator<std::string>("std::string");
 
 	} catch (std::exception &e) {
