@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:32:45 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/09 12:54:08 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/09 23:01:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,19 @@ class Array
 		}
 
 		Array<T>(Array<T> const &other) {
+			_array = new T[other._size]();
 			_size = other._size;
-			_array = new T[_size]();
-			*this = other;
+			for (unsigned int i = 0; i < other._size; i++) {
+				_array[i] = other._array[i];
+			}
 		}
 
 		Array<T>	&operator=(Array<T> const &other) {
 			if (this != &other) {
-				for (unsigned int i = 0; i < _size; i++) {
+				delete [] _array;
+				_array = new T[other._size]();
+				_size = other._size;
+				for (unsigned int i = 0; i < other._size; i++) {
 					_array[i] = other._array[i];
 				}
 			}
