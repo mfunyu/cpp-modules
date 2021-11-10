@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:19:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 14:43:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:47:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
-#include <iostream>
 
 int main()
 {

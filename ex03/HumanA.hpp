@@ -6,25 +6,26 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:21:18 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/23 20:47:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:45:30 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HUMANA_HPP
-#define HUMANA_HPP
+# define HUMANA_HPP
 
-#include "Weapon.hpp"
-#include <string>
+# include <string>
+# include "Weapon.hpp"
 
-class HumanA {
+class HumanA
+{
+	private:
+		std::string	_name;
+		Weapon		&_weapon;
+
 	public:
 		HumanA(std::string name, Weapon& weapon);
 		~HumanA();
-		void			attack();
-
-	private:
-		std::string		_name;
-		Weapon			&_weapon;
+		void	attack();
 };
 
-#endif
+#endif /* HUMANA_HPP */
