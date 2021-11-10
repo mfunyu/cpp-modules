@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 23:48:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/10 11:32:43 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/10 11:37:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	Zombie::nameZombie ( std::string name ) {
 }
 
 void	Zombie::announce( void ) const {
-	std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << _name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
