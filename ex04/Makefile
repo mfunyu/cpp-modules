@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/17 18:28:42 by mfunyu            #+#    #+#              #
-#    Updated: 2021/11/11 12:03:09 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/11 12:59:19 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(OBJS_DIR):
 	@mkdir $@
 
 clean	:
-	$(RM) -R $(OBJS_DIR)
+	$(RM) -R $(OBJS_DIR) *.replace */*.replace
 
 fclean	: clean
 	$(RM) $(NAME)
