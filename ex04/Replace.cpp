@@ -6,14 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:59:32 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/11 14:05:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/11 14:27:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <sys/stat.h>
 #include "Replace.hpp"
 
 std::string const	Replace::extention = ".replace";
@@ -50,12 +49,6 @@ void	Replace::readInputFile()
 		if (!ifs.eof()) {
 			_fileContent.append("\n");
 		}
-	}
-
-	struct stat	stat_buf;
-	stat(_inputFileName.c_str(), &stat_buf);
-	if (S_ISDIR(stat_buf.st_mode)) {
-		putError(_inputFileName + " is a directory");
 	}
 
 	if (!ifs.eof()) {
