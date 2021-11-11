@@ -6,18 +6,16 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 16:50:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/24 00:16:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/11 15:32:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Karen.hpp"
 #include <iostream>
 
-struct complain_types
-{
-	std::string		level;
-	void (Karen::*FuncPtr)();
-};
+Karen::Karen() {}
+
+Karen::~Karen() {}
 
 void	Karen::complain( std::string level ) {
 	struct complain_types	type_lst[5] = {
@@ -25,14 +23,14 @@ void	Karen::complain( std::string level ) {
 		{"INFO", &Karen::info},
 		{"WARNING", &Karen::warning},
 		{"ERROR", &Karen::error},
+		{"", &Karen::nop},
 	};
 
-	for (int i = 0; i < 4; i++) {
-		if (type_lst[i].level == level) {
-			(this->*type_lst[i].FuncPtr)();
-			break ;
-		}
+	int	i = 0;
+	while (i < 4 && level != type_lst[i].level) {
+		i++;
 	}
+	(this->*type_lst[i].FuncPtr)();
 }
 
 void	Karen::debug( void ) {
@@ -51,10 +49,6 @@ void	Karen::error( void ) {
 	std::cout << "ERROR This is unacceptable, I want to speak to the manager now." << std::endl;
 }
 
-Karen::Karen() {
-	return ;
-}
-
-Karen::~Karen() {
+void	Karen::nop( void ) {
 	return ;
 }
