@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:59:32 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/11 12:26:42 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/11 13:36:04 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ void	Replace::readInputFile()
 		putError("failed to open");
 	}
 
-	while (ifs) {
-		std::string	line;
+	std::string	line;
+	while (ifs.good()) {
 		std::getline(ifs, line);
 		_fileContent.append(line);
-		_fileContent.append("\n");
+		if (!ifs.eof()) {
+			_fileContent.append("\n");
+		}
 	}
 
 	if (!ifs.eof()) {
