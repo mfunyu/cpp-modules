@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:19:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/10 20:10:34 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/11 11:13:04 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ int main()
 		print(" ## Bob's Weapon Automatically Changed ## ");
 		bob.attack();
 	}
+	std::cout << std::endl;
 	{
-		print("\n[ Human B: Case of Jim ]");
+		print("[ Human B: Case of Jim ]");
 
 		Weapon club = Weapon("crude spiked club");
 		print(" ** Weapon Created ** ");
