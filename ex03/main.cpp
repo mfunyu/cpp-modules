@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:19:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/11 11:13:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/11 11:48:49 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
@@ -70,5 +71,16 @@ int main()
 
 		print(" ## Bob's Weapon Automatically Changed ## ");
 		jim.attack();
+	}
+	std::cout << std::endl;
+	{
+		print("[ Error Check ]");
+		Weapon* empty = NULL;
+		HumanA peaceKeeper("Bob", *empty);
+
+		print(" ## Will he attack anyone ? ## ");
+		peaceKeeper.attack();
+
+		// HumanA doesNotCompile();
 	}
 }
