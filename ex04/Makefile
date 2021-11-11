@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/17 18:28:42 by mfunyu            #+#    #+#              #
-#    Updated: 2021/11/11 15:13:50 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/11 16:54:46 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,10 @@ re	: fclean all
 
 .PHONY	: test
 
-TESTER	:= ./tester_cpp01/test.sh
+TESTER	:= ../tester_cpp01/test_ex04.sh
 
 $(TESTER):
-	git clone github.com:mfunyu/tester_cpp01.git
+	git clone github.com:mfunyu/tester_cpp01.git ../tester_cpp01
 
 test	: $(NAME) $(TESTER)
 	@$(RM) *.replace */*.replace */*/*.replace
