@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 20:54:26 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/11 15:39:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/11 16:50:09 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,23 @@ enum	ComplainType
 	DEBUG,
 	INFO,
 	WARNING,
-	ERROR,
-	OTHER
+	ERROR
 };
 
 int	resolveComplainType(std::string level)
 {
-	if (level.compare("DEBUG") == 0)
-		return DEBUG;
-	if (level.compare("INFO") == 0)
-		return INFO;
-	if (level.compare("WARNING") == 0)
-		return WARNING;
-	if (level.compare("ERROR") == 0)
-		return ERROR;
-	return -1;
-}
+	std::string	level_lst[4] = {};
+	level_lst[DEBUG] = "DEBUG";
+	level_lst[INFO] = "INFO";
+	level_lst[WARNING] = "WARNING";
+	level_lst[ERROR] = "ERROR";
 
+	int	i = 0;
+	while (i < 4 && level != level_lst[i]) {
+		i++;
+	}
+	return i;
+}
 
 int		main(int ac, char **av)
 {
