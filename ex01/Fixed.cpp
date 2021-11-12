@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 17:20:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/12 20:06:19 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &fixed_obj)
 	{
-		_fixedPointValue = fixed_obj.getRawBits();
+		_fixedPointValue = fixed_obj._fixedPointValue;
 	}
 	return *this;
 }
@@ -70,12 +70,12 @@ void	Fixed::setRawBits(int const raw)
 
 int		Fixed::toInt(void) const
 {
-	int		int_value = _fixedPointValue;
+	int	int_value = _fixedPointValue;
 	int_value >>= _nbFractionalBit;
 
 	if (_fixedPointValue < 0)
 	{
-		int		recovered_fixedpoint = int_value << _nbFractionalBit;
+		int	recovered_fixedpoint = int_value << _nbFractionalBit;
 		if (recovered_fixedpoint != _fixedPointValue)
 		{
 			int_value += 1;
