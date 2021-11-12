@@ -6,12 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 21:36:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/12 15:12:48 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
 #include <iostream>
+#include "Fixed.hpp"
 
 const int	Fixed::_nbFractionalBit = 8;
 
@@ -36,7 +36,7 @@ Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &fixed_obj)
 	{
-		_fixedPointValue = fixed_obj.getRawBits();
+		_fixedPointValue = fixed_obj._fixedPointValue;
 	}
 	return *this;
 }
@@ -50,6 +50,8 @@ int		Fixed::getRawBits(void) const
 
 void	Fixed::setRawBits(int const raw)
 {
+	std::cout << "setRawBits member function called" << std::endl;
+
 	_fixedPointValue = raw;
 }
 
