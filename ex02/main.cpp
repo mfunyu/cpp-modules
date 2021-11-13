@@ -6,13 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 19:13:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 19:21:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <iomanip>
+#include <exception>
 
 /* ------------------------------- formatting ------------------------------- */
 
@@ -173,9 +174,9 @@ int		main(void)
 		printHeader("Zero Division");
 		test_division(200, 0);
 	}
-	catch (char const* error_msg)
+	catch (std::exception & e)
 	{
-		std::cout << error_msg << std::endl;
+		std::cout << e.what() << std::endl;
 	};
 
 	return 0;

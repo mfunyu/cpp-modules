@@ -6,13 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 19:06:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 19:19:23 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 
 const int	Fixed::_nbFractionalBit = 8;
 
@@ -157,7 +158,7 @@ Fixed	Fixed::operator*(Fixed const &rhs) const
 Fixed	Fixed::operator/(Fixed const &rhs) const
 {
 	if (rhs._fixedPointValue == 0) {
-		throw "floating point exception";
+		throw std::logic_error("floating point exception");
 	}
 
 	long	new_raw_value = _fixedPointValue;
