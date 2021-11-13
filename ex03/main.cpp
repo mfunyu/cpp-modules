@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:35:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 22:34:45 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 22:48:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,36 @@ void	printHeader(std::string content)
 				 "*** " << content << " ***" <<\
 				 COLOR_RESET << std::endl;
 }
+
+void	printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN <<\
+				 "[ " << content << " ]" <<\
+				 COLOR_RESET << std::endl;
+}
 } //namespace
 
 /* -------------------------------------------------------------------------- */
+
+void	testCopy()
+{
+	{
+		printSubHeader("Copy Constructor");
+		Point	original(13.5, 52.1);
+		Point	copy(original);
+		std::cout << "original: " << original << std::endl;
+		std::cout << "copy	: " << copy << std::endl;
+	}
+	{
+		printSubHeader("Assignation Operator =");
+		Point	original(13.5, 52.1);
+		Point	copy(42.1, 98.0);
+		std::cout << "before copy	: " << copy << std::endl;
+		std::cout << "before original	: " << original << std::endl;
+		copy = original;
+		std::cout << "after copy	: " << copy << std::endl;
+	}
+}
 
 void	test(Point const a, Point const b, Point const c, Point const point)
 {
@@ -69,4 +96,7 @@ int		main()
 
 	printHeader("Inside");
 	test(Point(0, 0), Point(0, 1), Point(1, 0), Point(0.4, 0.3));
+
+	printHeader("Copies");
+	testCopy();
 }

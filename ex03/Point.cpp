@@ -6,13 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:28:33 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 22:36:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 22:41:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-Point::Point() : _x(Fixed(0)), _y(Fixed(0)) {}
+Point::Point() : _x(0.0f), _y(0.0f) {}
 
 Point::~Point() {}
 
@@ -25,11 +25,13 @@ Point	&Point::operator=(const Point &other)
 {
 	if (this != &other)
 	{
+		const_cast<Fixed &>(_x) = other._x;
+		const_cast<Fixed &>(_y) = other._y;
 	}
 	return *this;
 }
 
-Point::Point(float const x, float const y) : _x(Fixed(x)), _y(Fixed(y)) {}
+Point::Point(float const x, float const y) : _x(x), _y(y) {}
 
 Point::Point(Fixed const & Fx, Fixed const & Fy) : _x(Fx), _y(Fy) {}
 
