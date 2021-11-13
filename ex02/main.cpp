@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 17:20:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 19:13:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,28 +89,32 @@ void	test_comparisons(Fixed const &a, Fixed const &b)
 void	test_inc_dec(Fixed &a)
 {
 	printSubHeader("inc / dec");
-	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
-	std::cout << std::setprecision(20) << "++a: " << ++a << std::endl;
-	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
-	std::cout << std::setprecision(20) << "a++: " << a++ << std::endl;
-	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
-	std::cout << std::setprecision(20) << "--a: " << --a << std::endl;
-	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
-	std::cout << std::setprecision(20) << "a--: " << a-- << std::endl;
-	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
+	std::cout << "a  : " << a << std::endl;
+	std::cout << "++a: " << ++a << std::endl;
+	std::cout << "a  : " << a << std::endl;
+	std::cout << "a++: " << a++ << std::endl;
+	std::cout << "a  : " << a << std::endl;
+	std::cout << "--a: " << --a << std::endl;
+	std::cout << "a  : " << a << std::endl;
+	std::cout << "a--: " << a-- << std::endl;
+	std::cout << "a  : " << a << std::endl;
 }
 
 void	test_min_max(Fixed a, Fixed b)
 {
 	printSubHeader("min / max");
-	std::cout << "min: " << Fixed::min(a, b) << "	(a = " << a << " b = " << b << std::endl;
-	std::cout << "max: " << Fixed::max(a, b) << "	(a = " << a << " b = " << b << std::endl;
+	std::cout << "min: " << Fixed::min(a, b) <<\
+				 "	(a = " << a << " b = " << b << ")" << std::endl;
+	std::cout << "max: " << Fixed::max(a, b) <<\
+				 "	(a = " << a << " b = " << b << ")" << std::endl;
 }
 
 void	test_min_max_const(Fixed const a, Fixed const b)
 {
-	std::cout << "const min: " << Fixed::min(a, b) << "	(a = " << a << " b = " << b << std::endl;
-	std::cout << "const max: " << Fixed::max(a, b) << "	(a = " << a << " b = " << b << std::endl;
+	std::cout << "const min: " << Fixed::min(a, b) <<\
+				 "	(a = " << a << " b = " << b << ")" << std::endl;
+	std::cout << "const max: " << Fixed::max(a, b) <<\
+				 "	(a = " << a << " b = " << b << ")" << std::endl;
 }
 
 void	test_all(Fixed a, Fixed b)
@@ -146,8 +150,8 @@ int		main(void)
 		printHeader("Subject Main");
 		subject_main();
 
-		printHeader("Division");
 		std::cout << std::setprecision(20);
+		printHeader("Division");
 		test_division(10, 5);
 		test_division(5, 10);
 		test_division(50, 10);
@@ -155,16 +159,19 @@ int		main(void)
 		test_division(-42.42f, 42.42f);
 		test_division(42.6f, 7.2f);
 		test_division(42.6f, 7);
-		// test_division(200, 0);
 
 		printHeader("Test All");
 		test_all(Fixed(10), Fixed(5));
 		test_all(Fixed(20), Fixed(20));
 		test_all(Fixed(0), Fixed(200));
 		test_all(Fixed(-42.3f), Fixed(42.3f));
+		test_all(Fixed(-10.004f), Fixed(0.8f));
 		test_all(Fixed(-214748364), Fixed(2147483647));
 		test_all(Fixed(570), Fixed(0.456f));
 		test_all(Fixed(200), Fixed(0));
+
+		printHeader("Zero Division");
+		test_division(200, 0);
 	}
 	catch (char const* error_msg)
 	{
