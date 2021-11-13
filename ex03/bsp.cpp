@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:39:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 22:54:48 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 23:33:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	Fixed	bc;
 	Fixed	ca;
 
-	ab = (point - a).crossP(point - b);
-	bc = (point - b).crossP(point - c);
-	ca = (point - c).crossP(point - a);
+	ab = (point - a).crossP(b - a);
+	bc = (point - b).crossP(c - b);
+	ca = (point - c).crossP(a - c);
 
 	std::cout << ab << std::endl;
 	std::cout << bc << std::endl;
