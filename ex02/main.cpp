@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 19:15:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 17:34:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:20:02 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,36 @@
 #include <iostream>
 #include <iomanip>
 
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_GREEN "\033[32m"
+#define COLOR_YELLOW "\033[33m"
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+
+void	printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN <<\
+				 "*** " << content << " ***" <<\
+				 COLOR_RESET << std::endl;
+}
+
+void	printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN <<\
+				 "[ " << content << " ]" <<\
+				 COLOR_RESET << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
+
 void	division(Fixed const &a, Fixed const &b)
 {
-	std::cout << std::setprecision(20) << a << " / " << b << " " << std::flush;
+	std::cout << a << " / " << b << " " << std::flush;
 
 	Fixed	ans = a / b;
 	std::cout << "= " << ans << "\t";
@@ -24,35 +51,15 @@ void	division(Fixed const &a, Fixed const &b)
 	float	diff = a.toFloat() / b.toFloat() - ans.toFloat() ;
 
 	if (!diff) {
-		std::cout << ": \033[32mOK\033[m" << std::endl;
+		std::cout << ": " << COLOR_GREEN << "OK" << COLOR_RESET << std::endl;
 	} else {
-		std::cout << ": \033[33mDIFF\033[m";
+		std::cout << ": " << COLOR_YELLOW << "DIFF" << COLOR_RESET;
 		std::cout << " diff " << diff << std::endl;
 	}
 }
 
-void	test_division(int lhs, int rhs)
-{
-	Fixed	a(lhs);
-	Fixed	b(rhs);
-	division(a , b);
-}
-
-void	test_division(float lhs, int rhs)
-{
-	Fixed	a(lhs);
-	Fixed	b(rhs);
-	division(a , b);
-}
-
-void	test_division(float lhs, float rhs)
-{
-	Fixed	a(lhs);
-	Fixed	b(rhs);
-	division(a , b);
-}
-
-void	test_division(int lhs, float rhs)
+template <typename T1, typename T2>
+void	test_division(T1 lhs, T2 rhs)
 {
 	Fixed	a(lhs);
 	Fixed	b(rhs);
@@ -61,7 +68,7 @@ void	test_division(int lhs, float rhs)
 
 void	test_arithmatics(Fixed const &a, Fixed const &b)
 {
-	std::cout << "====== arithmatics ========" << std::endl;
+	printSubHeader("arithmatics");
 	std::cout << a << " + " << b << " = " << a + b << std::endl;
 	std::cout << a << " - " << b << " = " << a - b << std::endl;
 	std::cout << a << " * " << b << " = " << a * b << std::endl;
@@ -70,7 +77,7 @@ void	test_arithmatics(Fixed const &a, Fixed const &b)
 
 void	test_comparisons(Fixed const &a, Fixed const &b)
 {
-	std::cout << "====== comparisons ========" << std::endl;
+	printSubHeader("comparisons");
 	std::cout << a << " < " << b << ": " << (a < b) << std::endl;
 	std::cout << a << " > " << b << ": " << (a > b) << std::endl;
 	std::cout << a << " >= " << b << ": " << (a >= b) << std::endl;
@@ -81,7 +88,7 @@ void	test_comparisons(Fixed const &a, Fixed const &b)
 
 void	test_inc_dec(Fixed &a)
 {
-	std::cout << "====== inc / dec ========" << std::endl;
+	printSubHeader("inc / dec");
 	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
 	std::cout << std::setprecision(20) << "++a: " << ++a << std::endl;
 	std::cout << std::setprecision(20) << "a  : " << a << std::endl;
@@ -95,15 +102,15 @@ void	test_inc_dec(Fixed &a)
 
 void	test_min_max(Fixed a, Fixed b)
 {
-	std::cout << "====== min / max ========" << std::endl;
-	std::cout << "min " << Fixed::min(a, b) << "	(a = " << a << " b = " << b << std::endl;
-	std::cout << "max " << Fixed::max(a, b) << "	(a = " << a << " b = " << b << std::endl;
+	printSubHeader("min / max");
+	std::cout << "min: " << Fixed::min(a, b) << "	(a = " << a << " b = " << b << std::endl;
+	std::cout << "max: " << Fixed::max(a, b) << "	(a = " << a << " b = " << b << std::endl;
 }
 
 void	test_min_max_const(Fixed const a, Fixed const b)
 {
-	std::cout << "const min " << Fixed::min(a, b) << "	(a = " << a << " b = " << b << std::endl;
-	std::cout << "const max " << Fixed::max(a, b) << "	(a = " << a << " b = " << b << std::endl;
+	std::cout << "const min: " << Fixed::min(a, b) << "	(a = " << a << " b = " << b << std::endl;
+	std::cout << "const max: " << Fixed::max(a, b) << "	(a = " << a << " b = " << b << std::endl;
 }
 
 void	test_all(Fixed a, Fixed b)
@@ -114,12 +121,10 @@ void	test_all(Fixed a, Fixed b)
 	test_inc_dec(b);
 	test_min_max(a, b);
 	test_min_max_const(a, b);
-	std::cout << std::endl;
 }
 
-int		main(void)
+void	subject_main()
 {
-	#ifdef TEST
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
@@ -128,11 +133,21 @@ int		main(void)
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
+
 	std::cout << b << std::endl;
+
 	std::cout << Fixed::max( a, b ) << std::endl;
-	#else
+}
+
+int		main(void)
+{
 	try
 	{
+		printHeader("Subject Main");
+		subject_main();
+
+		printHeader("Division");
+		std::cout << std::setprecision(20);
 		test_division(10, 5);
 		test_division(5, 10);
 		test_division(50, 10);
@@ -140,9 +155,9 @@ int		main(void)
 		test_division(-42.42f, 42.42f);
 		test_division(42.6f, 7.2f);
 		test_division(42.6f, 7);
-		test_division(200, 0);
+		// test_division(200, 0);
 
-		/*
+		printHeader("Test All");
 		test_all(Fixed(10), Fixed(5));
 		test_all(Fixed(20), Fixed(20));
 		test_all(Fixed(0), Fixed(200));
@@ -150,13 +165,11 @@ int		main(void)
 		test_all(Fixed(-214748364), Fixed(2147483647));
 		test_all(Fixed(570), Fixed(0.456f));
 		test_all(Fixed(200), Fixed(0));
-		*/
 	}
 	catch (char const* error_msg)
 	{
 		std::cout << error_msg << std::endl;
 	};
-	#endif
 
 	return 0;
 }
