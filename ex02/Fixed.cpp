@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 15:48:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:50:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ Fixed	Fixed::operator-(Fixed const &rhs) const
 
 Fixed	Fixed::operator*(Fixed const &rhs) const
 {
-	int64_t	new_raw_value = _fixedPointValue;
+	long	new_raw_value = _fixedPointValue;
 	new_raw_value *= rhs._fixedPointValue;
 	new_raw_value >>= _nbFractionalBit;
 
@@ -143,7 +143,7 @@ Fixed	Fixed::operator/(Fixed const &rhs) const
 	if (rhs._fixedPointValue == 0)
 		throw "floating point exception";
 
-	int64_t	new_raw_value = _fixedPointValue;
+	long	new_raw_value = _fixedPointValue;
 	new_raw_value <<= _nbFractionalBit;
 	new_raw_value /= rhs._fixedPointValue;
 
