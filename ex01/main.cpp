@@ -6,12 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 13:22:18 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/12 22:14:06 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:38:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <iomanip>
 #include <limits>
 
 /* ------------------------------- formatting ------------------------------- */
@@ -96,6 +97,7 @@ void	testToFloat(float nb)
 	std::cout << "value = " << value << std::endl;
 	float	ret = value.toFloat();
 	std::cout << "value.toFloat() = " << ret << std::endl;
+	std::cout << value.toBitString() << std::endl;
 }
 
 int		main(void)
@@ -125,6 +127,13 @@ int		main(void)
 	/* -------------------------- */
 	printLine();
 	printHeader("toFloat()");
-	testToFloat(0.0);
-	testToFloat(-1.1111111);
+	std::cout << std::setprecision(9);
+	testToFloat(0.0f);
+	testToFloat(2.0f);
+	testToFloat(-1.11111f);
+	testToFloat(-1.9999999f);
+	testToFloat(0.99609375f);
+	testToFloat(-0.00390625f); // min
+	testToFloat(32767.99390625f); // float max without dropping fraction
+	testToFloat(32768.99390625f);
 }
