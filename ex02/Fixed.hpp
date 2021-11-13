@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:57:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 15:47:48 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 18:53:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class Fixed
 
 		int		toInt(void) const;
 		float	toFloat(void) const;
+
+		std::string	toBitString(int i = 0) const;
 
 		bool	operator>(Fixed const &rhs) const;
 		bool	operator<(Fixed const &rhs) const;

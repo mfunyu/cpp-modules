@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 17:50:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 18:53:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Fixed::Fixed(const int int_value)
 
 Fixed::Fixed(const float float_value)
 {
-	_fixedPointValue = std::roundf(float_value * (1 << _nbFractionalBit));
+	_fixedPointValue = static_cast<int>(std::roundf(float_value * (1 << _nbFractionalBit)));
 }
 
 int		Fixed::getRawBits(void) const
@@ -77,6 +77,22 @@ float	Fixed::toFloat(void) const
 	float	float_value = _fixedPointValue;
 	float_value /= 1 << _nbFractionalBit;
 	return float_value;
+}
+
+std::string		Fixed::toBitString(int i) const
+{
+	int	fixed_copy = _fixedPointValue;
+	fixed_copy >>= i;
+
+	std::string ret;
+	if (i < 32 - 1) {
+		ret = toBitString(++i);
+	}
+	if (i % 4 == 0) {
+		ret += ' ';
+	}
+	ret += '0' + (fixed_copy & 0x1);
+	return ret;
 }
 
 /* -------------------- comparison operator overloadings -------------------- */
