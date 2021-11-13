@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 18:57:48 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 19:06:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,9 @@ Fixed	Fixed::operator*(Fixed const &rhs) const
 
 Fixed	Fixed::operator/(Fixed const &rhs) const
 {
-	if (rhs._fixedPointValue == 0)
+	if (rhs._fixedPointValue == 0) {
 		throw "floating point exception";
+	}
 
 	long	new_raw_value = _fixedPointValue;
 	new_raw_value <<= _nbFractionalBit;
@@ -201,32 +202,24 @@ Fixed	Fixed::operator--(int)
 
 /* ------------------- static member function overloadings ------------------ */
 
-Fixed		&Fixed::min (Fixed &fixed1, Fixed &fixed2)
+Fixed	&Fixed::min (Fixed &fixed1, Fixed &fixed2)
 {
-	if (fixed1 <= fixed2)
-		return fixed1;
-	return fixed2;
+	return (fixed1 <= fixed2 ? fixed1 : fixed2);
 }
 
-Fixed		&Fixed::max (Fixed &fixed1, Fixed &fixed2)
+Fixed	&Fixed::max (Fixed &fixed1, Fixed &fixed2)
 {
-	if (fixed1 >= fixed2)
-		return fixed1;
-	return fixed2;
+	return (fixed1 >= fixed2 ? fixed1 : fixed2);
 }
 
 const Fixed		&Fixed::min (Fixed const &fixed1, Fixed const &fixed2)
 {
-	if (fixed1 <= fixed2)
-		return fixed1;
-	return fixed2;
+	return (fixed1 <= fixed2 ? fixed1 : fixed2);
 }
 
 const Fixed		&Fixed::max (Fixed const &fixed1, Fixed const &fixed2)
 {
-	if (fixed1 >= fixed2)
-		return fixed1;
-	return fixed2;
+	return (fixed1 >= fixed2 ? fixed1 : fixed2);
 }
 
 std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj)
