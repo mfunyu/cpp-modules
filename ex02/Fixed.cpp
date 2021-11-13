@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/28 17:21:26 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:48:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 
 const int	Fixed::_nbFractionalBit = 8;
 
-/*
-** canonical class functions
-*/
+/* -------------------- canonical class / basic functions ------------------- */
 
 Fixed::Fixed() : _fixedPointValue(0) {}
 
@@ -33,7 +31,7 @@ Fixed	&Fixed::operator=(const Fixed &fixed_obj)
 {
 	if (this != &fixed_obj)
 	{
-		_fixedPointValue = fixed_obj.getRawBits();
+		_fixedPointValue = fixed_obj._fixedPointValue;
 	}
 	return *this;
 }
@@ -81,9 +79,7 @@ float	Fixed::toFloat(void) const
 	return float_value;
 }
 
-/*
-** comparison operator overloadings
-*/
+/* -------------------- comparison operator overloadings -------------------- */
 
 bool	Fixed::operator>(Fixed const &rhs) const
 {
@@ -115,9 +111,7 @@ bool	Fixed::operator!=(Fixed const &rhs) const
 	return (_fixedPointValue != rhs._fixedPointValue);
 }
 
-/*
-**  arithmetic operator overloadings
-*/
+/* -------------------- arithmetic operator overloadings -------------------- */
 
 Fixed	Fixed::operator+(Fixed const &rhs) const
 {
@@ -159,9 +153,7 @@ Fixed	Fixed::operator/(Fixed const &rhs) const
 }
 
 
-/*
-** increment / decrement operator overloadings
-*/
+/* --------------- increment / decrement operator overloadings -------------- */
 
 Fixed	&Fixed::operator++()
 {
@@ -191,18 +183,9 @@ Fixed	Fixed::operator--(int)
 	return prev;
 }
 
-/*
-** static member function overloadings
-*/
+/* ------------------- static member function overloadings ------------------ */
 
 Fixed		&Fixed::min (Fixed &fixed1, Fixed &fixed2)
-{
-	if (fixed1 <= fixed2)
-		return fixed1;
-	return fixed2;
-}
-
-const Fixed		&Fixed::min (Fixed const &fixed1, Fixed const &fixed2)
 {
 	if (fixed1 <= fixed2)
 		return fixed1;
@@ -216,13 +199,19 @@ Fixed		&Fixed::max (Fixed &fixed1, Fixed &fixed2)
 	return fixed2;
 }
 
+const Fixed		&Fixed::min (Fixed const &fixed1, Fixed const &fixed2)
+{
+	if (fixed1 <= fixed2)
+		return fixed1;
+	return fixed2;
+}
+
 const Fixed		&Fixed::max (Fixed const &fixed1, Fixed const &fixed2)
 {
 	if (fixed1 >= fixed2)
 		return fixed1;
 	return fixed2;
 }
-
 
 std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj)
 {

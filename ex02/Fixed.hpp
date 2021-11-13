@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:57:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/27 00:32:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:47:48 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ class Fixed
 		Fixed	operator--(int);
 
 		static Fixed&	min(Fixed &fixed1, Fixed &fixed2);
-		static const Fixed&	min(Fixed const &fixed1, Fixed const &fixed2);
 		static Fixed&	max(Fixed &fixed1, Fixed &fixed2);
+		static const Fixed&	min(Fixed const &fixed1, Fixed const &fixed2);
 		static const Fixed&	max(Fixed const &fixed1, Fixed const &fixed2);
 };
 
