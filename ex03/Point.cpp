@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:28:33 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 19:34:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 20:03:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,20 @@ Point	&Point::operator=(const Point &other)
 }
 
 Point::Point(float const x, float const y) : _x(x), _y(y) {}
+
+Fixed const &	Point::getX() const
+{
+	return _x;
+}
+
+Fixed const &	Point::getY() const
+{
+	return _y;
+}
+
+
+std::ostream	&operator<<(std::ostream& os, const Point& point)
+{
+	os << "Point(x = " << point.getX() << ", y = " << point.getY() << ")";
+	return os;
+}
