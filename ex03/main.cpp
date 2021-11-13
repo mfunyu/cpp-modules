@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:35:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/13 22:48:11 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 23:37:52 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,11 @@ int		main()
 
 	printHeader("Outside");
 	test(Point(0, 0), Point(0, 1), Point(1, 0), Point(1.2, 0.7));
+	test(Point(0,-1), Point(1,1), Point(-1,1), Point(0, -2));
 
 	printHeader("Inside");
 	test(Point(0, 0), Point(0, 1), Point(1, 0), Point(0.4, 0.3));
+	test(Point(0,-1), Point(1,1), Point(-1,1), Point(0, 0.959));
 
 	printHeader("Copies");
 	testCopy();
