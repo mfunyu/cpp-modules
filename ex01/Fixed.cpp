@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:58:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/12 20:06:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/13 15:38:33 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,21 @@ float	Fixed::toFloat(void) const
 	return float_value;
 }
 
+std::string		Fixed::toBitString(int i) const
+{
+	int	fixed_copy = _fixedPointValue;
+	fixed_copy >>= i;
+
+	std::string ret;
+	if (i < 32 - 1) {
+		ret = toBitString(++i);
+	}
+	if (i % 4 == 0) {
+		ret += ' ';
+	}
+	ret += '0' + (fixed_copy & 0x1);
+	return ret;
+}
 
 std::ostream	&operator<<(std::ostream& os, const Fixed& fixed_obj)
 {
