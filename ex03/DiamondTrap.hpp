@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include <string>
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
+# include <string>
 
 class DiamondTrap : public FragTrap, public ScavTrap
 {
@@ -31,6 +31,8 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		DiamondTrap(std::string name);
 
 		void	whoAmI();
+
+		void	showStatus(void);
 };
 
 #endif /* DiamondTrap_HPP */
