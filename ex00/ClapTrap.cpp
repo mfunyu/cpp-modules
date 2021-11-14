@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:29:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 11:58:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 12:30:47 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 				 " | HP: " << _hitPoints << std::endl;
 }
 
+void	ClapTrap::showStatus(void)
+{
+	std::cout << "ClapTrap" << " (" << \
+				 "name: " << _name << ", " << \
+				 "HP: " << _hitPoints << ", " <<\
+				 "EP: " << _energyPoints << ", " <<\
+				 "attack damage: " << _attackDamage << \
+				 ")" << std::endl;
+}

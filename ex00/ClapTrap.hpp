@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:26:51 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 12:23:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 12:23:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ class ClapTrap
 		void	attack(std::string const &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+
+		void	showStatus(void);
 };
 
 #endif /* CLAPTRAP_HPP */
