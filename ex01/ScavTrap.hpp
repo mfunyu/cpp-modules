@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:52:38 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 16:54:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 17:31:23 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 class ScavTrap : public ClapTrap
 {
+	private:
+		static const unsigned int	_initialHitPoints = 100;
+		static const unsigned int	_initialEnergyPoints = 50;
+		static const unsigned int	_initialAttackDamage = 20;
+
 	public:
 		ScavTrap();
 		~ScavTrap();
