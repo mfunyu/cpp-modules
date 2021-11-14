@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:49:04 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 12:41:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 17:55:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 FragTrap::FragTrap()
 {
+	_hitPoints = _initialHitPoints;
+	_energyPoints = _initialEnergyPoints;
+	_attackDamage = _initialAttackDamage;
 	std::cout << "FragTrap default constructor called" << std::endl;
 }
 
@@ -32,24 +35,33 @@ FragTrap	&FragTrap::operator=(const FragTrap &other)
 {
 	if (this != &other)
 	{
+		_name = other._name;
 		_hitPoints = other._hitPoints;
 		_energyPoints = other._energyPoints;
 		_attackDamage = other._attackDamage;
-		_name = other._name;
 	}
 	return *this;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	_name = name;
-	_hitPoints = FT_HIT_P;
-	_energyPoints = FT_ENERGY_P;
-	_attackDamage = FT_ATTACK_D;
+	_hitPoints = _initialHitPoints;
+	_energyPoints = _initialEnergyPoints;
+	_attackDamage = _initialAttackDamage;
 	std::cout << "FragTrap constructor called" << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)
 {
 	std::cout << "Gimme five!!" << std::endl;
+}
+
+void	FragTrap::showStatus(void)
+{
+	std::cout << "FragTrap" << " (" << \
+				 "name: " << _name << ", " << \
+				 "HP: " << _hitPoints << ", " <<\
+				 "EP: " << _energyPoints << ", " <<\
+				 "attack damage: " << _attackDamage << \
+				 ")" << std::endl;
 }

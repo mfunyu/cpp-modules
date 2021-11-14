@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:52:38 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 13:31:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 18:13:05 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 # include "ClapTrap.hpp"
 # include <string>
 
-# define ST_HIT_P 100
-# define ST_ENERGY_P 50
-# define ST_ATTACK_D 20
-
 class ScavTrap : public virtual ClapTrap
 {
+	protected:
+		static const unsigned int	_initialHitPoints = 100;
+		static const unsigned int	_initialEnergyPoints = 50;
+		static const unsigned int	_initialAttackDamage = 20;
+
 	public:
 		ScavTrap();
-		virtual ~ScavTrap();
+		~ScavTrap();
 		ScavTrap(const ScavTrap &other);
 		ScavTrap	&operator=(const ScavTrap &other);
 
@@ -32,6 +33,8 @@ class ScavTrap : public virtual ClapTrap
 
 		void	attack(std::string const &target);
 		void	guardGate();
+
+		void	showStatus(void);
 };
 
 #endif /* SCAVTRAP_HPP */
