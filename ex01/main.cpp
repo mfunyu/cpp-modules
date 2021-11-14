@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 16:46:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 22:32:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		main()
 		claptrap.takeDamage(100);
 	}
 	{
-		printHeader("ScavTrap Sum");
+		printHeader("ScavTrap Nancy");
 		ScavTrap	scavtrap("Nancy");
 		scavtrap.showStatus();
 
