@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 13:12:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 17:54:15 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,71 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void	printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN <<\
+				 "*** " << content << " ***" <<\
+				 COLOR_RESET << std::endl;
+}
+
+void	printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN <<\
+				 "[ " << content << " ]" <<\
+				 COLOR_RESET << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
+
 int		main()
 {
 	{
+		printHeader("ClapTrap Sum");
 		ClapTrap	claptrap("Sum");
+		claptrap.showStatus();
 
+		printSubHeader("Base Function: attack()");
 		claptrap.attack("Jhon");
-		claptrap.beRepaired(42);
+		printSubHeader("Base Class Functions");
+		claptrap.beRepaired(40);
 		claptrap.takeDamage(100);
 	}
-	std::cout << std::endl;
 	{
-		ScavTrap	scavtrap("Nany");
+		printHeader("ScavTrap Nancy");
+		ScavTrap	scavtrap("Nancy");
+		scavtrap.showStatus();
 
+		printSubHeader("Override Function: attack()");
 		scavtrap.attack("Jhon");
-		scavtrap.beRepaired(42);
+		printSubHeader("Unique Function: guardGate()");
 		scavtrap.guardGate();
-		scavtrap.takeDamage(100);
+		printSubHeader("Inherited Functions");
+		scavtrap.showStatus();
+		scavtrap.beRepaired(10);
+		scavtrap.showStatus();
+		scavtrap.takeDamage(20);
 	}
-	std::cout << std::endl;
 	{
+		printHeader("FragTrap Bob");
 		FragTrap	fragtrap("Bob");
+		fragtrap.showStatus();
 
+		printSubHeader("Override Function: attack()");
 		fragtrap.attack("Julia");
+		printSubHeader("Unique Function: guardGate()");
 		fragtrap.highFivesGuys();
+		printSubHeader("Inherited Functions");
+		fragtrap.showStatus();
 		fragtrap.takeDamage(50);
+		fragtrap.showStatus();
 		fragtrap.beRepaired(20);
 	}
 }
