@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:26:51 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 12:45:50 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 16:47:21 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class ClapTrap
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
 
-		void	showStatus(void);
+		virtual void	showStatus(void);
 };
 
 #endif /* CLAPTRAP_HPP */

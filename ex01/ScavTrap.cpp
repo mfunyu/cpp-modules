@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:49:04 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 13:12:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 16:55:03 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ void	ScavTrap::guardGate()
 {
 	std::cout << "ScavTrap " << _name << \
 				 " have enterred in Gate keeper mode" << std::endl;
+}
+
+void	ScavTrap::showStatus(void)
+{
+	std::cout << "ScavTrap" << " (" << \
+				 "name: " << _name << ", " << \
+				 "HP: " << _hitPoints << ", " <<\
+				 "EP: " << _energyPoints << ", " <<\
+				 "attack damage: " << _attackDamage << \
+				 ")" << std::endl;
 }
