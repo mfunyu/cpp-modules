@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:29:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 13:05:24 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 11:46:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,27 @@ void	ClapTrap::attack(std::string const &target)
 	std::cout << "ClapTrap " << _name << \
 				 " attacks " << target << \
 				 ", causing " << _attackDamage << \
-				 " points of damage!" << std::endl;
+				 (_attackDamage > 2 ? " points" : " point") << \
+				 " of damage!" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_hitPoints <= amount)
-		_hitPoints = 0;
-	else
-		_hitPoints -= amount;
 	std::cout << "ClapTrap " << _name << \
 				 " takes " << amount << \
-				 " points of damage! HP: " << _hitPoints << std::endl;
+				 (amount > 2 ? " points" : " point") <<\
+				 " of damage!";
+
+	if (_hitPoints == 0){
+		std::cout << " But ClapTrap is already destroied";
+	} else if (_hitPoints <= amount) {
+		_hitPoints = 0;
+		std::cout << " ClapTrap is destroied!";
+	} else {
+		_hitPoints -= amount;
+	}
+
+	std::cout << " | HP: " << _hitPoints << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -72,6 +81,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	_hitPoints += amount;
 	std::cout << "ClapTrap " << _name << \
 				 " is repaired, causing " << amount << \
-				 " points of recovery! HP: " << _hitPoints << std::endl;
+				 (amount > 2 ? " points" : " point") << \
+				 " of recovery!" << \
+				 " | HP: " << _hitPoints << std::endl;
 }
 
