@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:49:04 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 13:16:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 13:12:15 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
 {
 	if (this != &other)
 	{
+		_name = other._name;
 		_hitPoints = other._hitPoints;
 		_energyPoints = other._energyPoints;
 		_attackDamage = other._attackDamage;
-		_name = other._name;
 	}
 	return *this;
 }
@@ -53,7 +53,8 @@ void	ScavTrap::attack(std::string const &target)
 	std::cout << "ScavTrap " << _name << \
 				 " attacks " << target << \
 				 ", causing " << _attackDamage << \
-				 " points of damage!" << std::endl;
+				 (_attackDamage > 2 ? " points" : " point") << \
+				 " of damage!" << std::endl;
 }
 
 void	ScavTrap::guardGate()
