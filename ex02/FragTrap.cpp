@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:49:04 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 17:45:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/14 17:55:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,14 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 void	FragTrap::highFivesGuys(void)
 {
 	std::cout << "Gimme five!!" << std::endl;
+}
+
+void	FragTrap::showStatus(void)
+{
+	std::cout << "FragTrap" << " (" << \
+				 "name: " << _name << ", " << \
+				 "HP: " << _hitPoints << ", " <<\
+				 "EP: " << _energyPoints << ", " <<\
+				 "attack damage: " << _attackDamage << \
+				 ")" << std::endl;
 }
