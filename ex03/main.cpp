@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 22:25:58 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:12:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 namespace {
 void	printHeader(std::string content)
 {
-	std::cout << std::endl;
 	std::cout << COLOR_CYAN <<\
 				 "*** " << content << " ***" <<\
 				 COLOR_RESET << std::endl;
@@ -132,7 +131,7 @@ void	testFragTrap()
 	FragTrap	fragtrap("Bob");
 	fragtrap.showStatus();
 
-	printSubHeader("Override Function: attack()");
+	printSubHeader("Base Function: attack()");
 	fragtrap.attack("Julia");
 	printSubHeader("Unique Function: highFivesGuys()");
 	fragtrap.highFivesGuys();
@@ -146,7 +145,7 @@ void	testFragTrap()
 
 void	testDiamondTrap()
 {
-	printHeader("FragTrap Jack");
+	printHeader("DiamondTrap Jack");
 	DiamondTrap	diamondtrap("Jack");
 	diamondtrap.showStatus();
 
@@ -178,6 +177,7 @@ int		main(int ac, char **av)
 		testDiamondTrap();
 	} else if (test == "copy") {
 		testCopyConstructor();
+		std::cout << std::endl;
 		testAssignationOperator();
 	} else if (test == "copyC") {
 		testCopyConstructor();

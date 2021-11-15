@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 17:54:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 22:26:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 namespace {
 void	printHeader(std::string content)
 {
-	std::cout << std::endl;
 	std::cout << COLOR_CYAN <<\
 				 "*** " << content << " ***" <<\
 				 COLOR_RESET << std::endl;
@@ -51,6 +50,7 @@ int		main()
 		printSubHeader("Base Class Functions");
 		claptrap.beRepaired(40);
 		claptrap.takeDamage(100);
+		printSubHeader("* End of scope *");
 	}
 	{
 		printHeader("ScavTrap Nancy");
@@ -66,20 +66,22 @@ int		main()
 		scavtrap.beRepaired(10);
 		scavtrap.showStatus();
 		scavtrap.takeDamage(20);
+		printSubHeader("* End of scope *");
 	}
 	{
 		printHeader("FragTrap Bob");
 		FragTrap	fragtrap("Bob");
 		fragtrap.showStatus();
 
-		printSubHeader("Override Function: attack()");
+		printSubHeader("Base Function: attack()");
 		fragtrap.attack("Julia");
-		printSubHeader("Unique Function: guardGate()");
+		printSubHeader("Unique Function: highFivesGuys()");
 		fragtrap.highFivesGuys();
 		printSubHeader("Inherited Functions");
 		fragtrap.showStatus();
 		fragtrap.takeDamage(50);
 		fragtrap.showStatus();
 		fragtrap.beRepaired(20);
+		printSubHeader("* End of scope *");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 22:32:16 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 22:25:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		main()
 		printSubHeader("Base Class Functions");
 		claptrap.beRepaired(40);
 		claptrap.takeDamage(100);
+		printSubHeader("* End of scope *");
 	}
 	{
 		printHeader("ScavTrap Nancy");
@@ -65,5 +66,6 @@ int		main()
 		scavtrap.beRepaired(80);
 		scavtrap.showStatus();
 		scavtrap.takeDamage(220);
+		printSubHeader("* End of scope *");
 	}
 }
