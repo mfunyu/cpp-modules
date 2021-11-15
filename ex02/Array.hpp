@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:32:45 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/09 23:37:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 12:27:33 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ class Array
 	unsigned int	_size;
 
   public:
-	Array<T>() : _size(0) {}
-	Array<T>(unsigned int n) : _size(n) {
-		_array = new T[n]();
-	}
+	Array<T>() : _size(0) { _array = new T[0](); }
+	Array<T>(unsigned int n) : _size(n) { _array = new T[n]();}
 
 	Array<T>(Array<T> const &other) {
-		_array = new T[other._size]();
 		_size = other._size;
+		_array = new T[_size]();
+
 		for (unsigned int i = 0; i < other._size; i++) {
 			_array[i] = other._array[i];
 		}
@@ -55,13 +54,9 @@ class Array
 		return _array[i];
 	}
 
-	unsigned int	size(void) const {
-		return _size;
-	}
+	unsigned int	size(void) const { return _size; }
 
-	~Array<T>() {
-		delete [] _array;
-	}
+	~Array<T>() { delete [] _array; }
 };
 
 #endif /* ARRAY_HPP */
