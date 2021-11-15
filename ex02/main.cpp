@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <Array.hpp>
 
-/* ***************************** print test info **************************** */
+/* ----------------------------- print & format ----------------------------- */
 
 #define COLOR_RED "\033[31m"
 #define COLOR_GREEN "\033[32m"
@@ -17,45 +17,33 @@ void	printTestName(std::string test){
 
 template <typename T>
 void	printElem(int i, T elem, int total) {
-	#ifdef PRINT
 	std::cout << "[" << i << "]: " << elem << " " << std::flush;
 	if (i == total - 1) {
 		std::cout << std::endl;
 	}
-	#else
-	(void)i;
-	(void)elem;
-	(void)total;
-	#endif
 }
 
 template <typename T>
 void	printList(std::string title, Array<T> elem, int total) {
-	#ifdef PRINT
-	std::cout.setf(std::ios::left);
-	std::cout << std::setw(9) << title << "| ";
-	std::cout.unsetf(std::ios::left);
+	std::cout << std::left << std::setw(9) << title << "| ";
 	for (int i = 0; i < total; i++) {
 		printElem(i, elem[i], total);
 	}
-	#else
-	(void)title;
-	(void)elem;
-	(void)total;
-	#endif
 }
 
-void	printKO(std::string testinfo) {
-	std::cout << testinfo << ": " <<\
-				 COLOR_RED << "[KO]" << COLOR_RESET << std::endl;
+void	printTestInfo(std::string testinfo) {
+	std::cout << testinfo << ": ";
 }
 
-void	printOK(std::string testinfo) {
-	std::cout << testinfo << ": " <<\
-				 COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
+void	printKO() {
+	std::cout <<  COLOR_RED << "[KO]" << COLOR_RESET << std::endl;
 }
 
-/* ********************************** tests ********************************* */
+void	printOK() {
+	std::cout <<  COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
+}
+
+/* ---------------------------------- tests --------------------------------- */
 
 #define MAX_VAL 750
 
@@ -118,13 +106,13 @@ void	testSize(std::string type)
 {
 	unsigned int	n = 8;
 	Array<T> test(n);
-	std::string testInfo = "Accurate size returned <" + type + ">";
+	printTestInfo("Accurate size returned <" + type + ">");
 
 	if (test.size() != n) {
-		printKO(testInfo);
+		printKO();
 		return ;
 	}
-	printOK(testInfo);
+	printOK();
 }
 
 template <typename T>
@@ -137,15 +125,12 @@ void	testSubscriptOperator(std::string type)
 		for (int i = 0; i < n + 10; i++) {
 			test[i] = i * 10;
 			if (i >= n) {
-				printKO(testInfo);
+				printKO();
 				return ;
 			}
 		}
 	} catch (std::exception &e){
-		#ifdef PRINT
-		std::cout << e.what() << std::endl;
-		#endif
-		printOK(testInfo);
+		printOK();
 	}
 }
 
@@ -161,13 +146,13 @@ void	testAssignmentOperator(std::string type)
 	for (int i = 0; i < n; i++) {
 		dst[i] = i + 'A';
 		if (dst[i] == src[i]) {
-			printKO(testInfo);
+			printKO();
 			return ;
 		}
 	}
 	printList<T>("dst", dst, n);
 	printList<T>("src", src, n);
-	printOK(testInfo);
+	printOK();
 }
 
 template <typename T>
@@ -180,13 +165,13 @@ void	testCopyConstructor(std::string type)
 	for (int i = 0; i < n; i++) {
 		original[i] = i + 'a';
 		if (original[i] == copy[i]) {
-			printKO(testInfo);
+			printKO();
 			return ;
 		}
 	}
 	printList<T>("original", original, n);
 	printList<T>("copy", copy, n);
-	printOK(testInfo);
+	printOK();
 }
 
 template <typename T>
@@ -198,11 +183,11 @@ void	testConstructor(std::string type)
 	for (int i = 0; i < n; i++) {
 		printElem<T>(i, numbers[i], n);
 		if (numbers[i] != 0) {
-			printKO(testInfo);
+			printKO();
 			return ;
 		}
 	}
-	printOK(testInfo);
+	printOK();
 }
 
 void	testConstructor()
@@ -213,11 +198,11 @@ void	testConstructor()
 	for (int i = 0; i < n; i++) {
 		printElem<std::string>(i, strs[i], n);
 		if (!strs[i].empty()) {
-			printKO(testInfo);
+			printKO();
 			return ;
 		}
 	}
-	printOK(testInfo);
+	printOK();
 }
 } /* namespace */
 
