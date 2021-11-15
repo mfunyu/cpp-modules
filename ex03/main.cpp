@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/15 23:12:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:27:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ void	testDiamondTrap()
 	DiamondTrap	diamondtrap("Jack");
 	diamondtrap.showStatus();
 
-	printSubHeader("Inherited Functions");
+	printSubHeader("Inherited Functions: from ClapTrap");
 	diamondtrap.takeDamage(0);
 	diamondtrap.beRepaired(200);
 	printSubHeader("Inherited Function: from ScavTrap");

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 12:52:31 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/15 22:26:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:26:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 namespace {
 void	printHeader(std::string content)
 {
+	std::cout << std::endl;
 	std::cout << COLOR_CYAN <<\
 				 "*** " << content << " ***" <<\
 				 COLOR_RESET << std::endl;
