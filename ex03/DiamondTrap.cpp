@@ -13,9 +13,8 @@
 #include "DiamondTrap.hpp"
 #include <iostream>
 
-DiamondTrap::DiamondTrap() : _name("no_name")
+DiamondTrap::DiamondTrap() : ClapTrap("no_name_clap_name"), _name("no_name")
 {
-	ClapTrap::_name = _name + "_clap_name";
 	_hitPoints = FragTrap::_initialHitPoints;
 	_energyPoints = ScavTrap::_initialEnergyPoints;
 	_attackDamage = FragTrap::_initialAttackDamage;
@@ -45,9 +44,8 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
 	return *this;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : _name(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), _name(name)
 {
-	ClapTrap::_name = name + "_clap_name";
 	_hitPoints = FragTrap::_initialHitPoints;
 	_energyPoints = ScavTrap::_initialEnergyPoints;
 	_attackDamage = FragTrap::_initialAttackDamage;
