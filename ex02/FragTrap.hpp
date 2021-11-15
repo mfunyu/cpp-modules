@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:52:38 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/14 17:55:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/15 23:23:08 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ class FragTrap : public ClapTrap
 
 	public:
 		FragTrap();
-		~FragTrap();
+		virtual ~FragTrap();
 		FragTrap(const FragTrap &other);
 		FragTrap	&operator=(const FragTrap &other);
 
 		FragTrap(std::string name);
 
-		void	highFivesGuys(void);
+		void			highFivesGuys(void);
 
-		void	showStatus(void);
+		virtual void	showStatus(void);
 };
 
 #endif /* FragTrap_HPP */

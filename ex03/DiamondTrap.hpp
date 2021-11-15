@@ -24,15 +24,15 @@ class DiamondTrap : public FragTrap, public ScavTrap
 
 	public:
 		DiamondTrap();
-		~DiamondTrap();
+		virtual ~DiamondTrap();
 		DiamondTrap(const DiamondTrap &other);
 		DiamondTrap	&operator=(const DiamondTrap &other);
 
 		DiamondTrap(std::string name);
 
-		void	whoAmI();
+		void			whoAmI();
 
-		void	showStatus(void);
+		virtual void	showStatus(void);
 };
 
 #endif /* DiamondTrap_HPP */
