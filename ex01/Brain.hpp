@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 21:27:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 12:35:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:01:49 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <iostream>
 
-# define TOTAL_IDEAS 100
-
 class Brain
 {
 	private:
-		std::string		_ideas[TOTAL_IDEAS];
+		static const unsigned int	kMaxIdeas = 100;
+
+		std::string		_ideas[kMaxIdeas];
 
 	public:
 		Brain();

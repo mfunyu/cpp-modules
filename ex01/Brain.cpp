@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 21:27:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 18:07:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:07:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Brain	&Brain::operator=(const Brain &other)
 {
 	if (this != &other)
 	{
-		for (int i = 0; i < TOTAL_IDEAS; i++)
+		for (unsigned int i = 0; i < kMaxIdeas; i++)
 		{
 			_ideas[i] = other._ideas[i];
 		}
