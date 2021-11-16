@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:08:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 14:30:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 14:44:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ Dog	&Dog::operator=(const Dog &other)
 
 void	Dog::makeSound() const
 {
-	std::cout << "Bow-wow" << std::endl;
+	std::cout << "Bow-wow!" << std::endl;
 }

@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 14:55:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 14:31:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 14:34:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal()
+Animal::Animal() : _type("Animal")
 {
 	std::cout << "Animal default constructor called" << std::endl;
 }
