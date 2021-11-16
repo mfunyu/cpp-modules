@@ -36,9 +36,14 @@ re	: fclean all
 
 .PHONY	: test
 
+FILE	:= getTypeName.hpp
+
 ifdef TEST
 CXXFLAGS += -D TEST
 endif
 
-test	:
+test	: $(FILE)
 	make TEST=1
+
+$(FILE)	:
+	curl -O https://raw.githubusercontent.com/mfunyu/cpp-module-07/test/ex02/getTypeName.hpp
