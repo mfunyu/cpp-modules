@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 14:54:57 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/30 18:05:06 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 16:50:02 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRONGANIMAL_HPP
 # define WRONGANIMAL_HPP
 
-# include <iostream>
+# include <string>
 
 class WrongAnimal
 {
@@ -22,7 +22,7 @@ class WrongAnimal
 
 	public:
 		WrongAnimal();
-		virtual ~WrongAnimal();
+		~WrongAnimal();
 		WrongAnimal(WrongAnimal const &other);
 		WrongAnimal	&operator=(WrongAnimal const &other);
 

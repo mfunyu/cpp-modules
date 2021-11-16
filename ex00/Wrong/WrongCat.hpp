@@ -11,20 +11,19 @@
 /* ************************************************************************** */
 
 #ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "WrongAnimal.hpp"
+# include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal
 {
-	private:
 	public:
 		WrongCat();
 		~WrongCat();
 		WrongCat(WrongCat const &other);
 		WrongCat &operator=(WrongCat const &other);
 
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 
 #endif /* WRONGCAT_HPP */
