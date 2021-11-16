@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:16:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 21:20:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:40:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,58 +38,68 @@ void	printSubHeader(std::string content)
 
 /* -------------------------------------------------------------------------- */
 
-void	main2()
+/*
+** [ON COPY]
+** cat_original:						cat_copy:
+** 	[0] "a brilliant idea"		->		[0] "a brilliant idea"
+** 	[1] "an excellent idea"		->		[1] "an excellent idea"
+**
+** [AFTER COPY]
+** cat_original:						cat_copy:
+** 	[0] "a brilliant idea"		->		[0] "a brilliant idea"
+** 	[1] "a boring idea"			!=		[1] "an excellent idea"
+*/
+void	testCopyCat()
 {
-	std::cout << std::endl;
-	{
-		Cat		cat_original;
-		cat_original.setBrainIdea(0, "a brilliant idea");
-		cat_original.setBrainIdea(1, "an excellent idea");
-		Cat		cat_copy(cat_original);
-		/*
-		[ON COPY]
-		cat_original:						cat_copy:
-			[0] "a brilliant idea"		->		[0] "a brilliant idea"
-			[1] "an excellent idea"		->		[1] "an excellent idea"
+	printHeader("Copy: class Cat");
 
-		[AFTER COPY]
-		cat_original:						cat_copy:
-			[0] "a brilliant idea"		->		[0] "a brilliant idea"
-			[1] "a boring idea"			!=		[1] "an excellent idea"
-		*/
+	printSubHeader("Create cat_original");
+	Cat				cat_original;
+	unsigned int	index = 0;
+	cat_original.setBrainIdea(index, "a brilliant idea");
 
-		std::cout << "cat_original	idea 0: " << cat_original.getBrainIdea(0) << std::endl;
-		std::cout << "cat_copy	idea 0: " << cat_copy.getBrainIdea(0) << std::endl;
-		cat_original.setBrainIdea(1, "a boring idea");
-		std::cout << "cat_original	idea 1: " << cat_original.getBrainIdea(1) << std::endl;
-		std::cout << "cat_copy	idea 1: " << cat_copy.getBrainIdea(1) << std::endl;
-	}
-	std::cout << std::endl;
-	{
-		Dog		dog_original;
-		dog_original.setBrainIdea(0, "a brilliant idea");
-		dog_original.setBrainIdea(1, "an excellent idea");
-		Dog		dog_copy;
+	printSubHeader("Create cat_copy(cat_original)");
+	Cat		cat_copy(cat_original);
 
-		dog_copy = dog_original;
-		/*
-		[ON COPY]
-		dog_original:						dog_copy:
-			[0] "a brilliant idea"		->		[0] "a brilliant idea"
-			[1] "an excellent idea"		->		[1] "an excellent idea"
+	printSubHeader("Before Change");
+	std::cout << "cat_original	idea[index]: " << cat_original.getBrainIdea(index) << std::endl;
+	std::cout << "cat_copy	idea[index]: " << cat_copy.getBrainIdea(index) << std::endl;
 
-		[AFTER COPY]
-		dog_original:						dog_copy:
-			[0] "a brilliant idea"		->		[0] "a brilliant idea"
-			[1] "a boring idea"			!=		[1] "an excellent idea"
-		*/
+	printSubHeader("Change cat_original");
+	cat_original.setBrainIdea(index, "a boring idea");
+	std::cout << "cat_original	idea[index]: " << cat_original.getBrainIdea(index) << std::endl;
+	std::cout << "cat_copy	idea[index]: " << cat_copy.getBrainIdea(index) << std::endl;
 
-		std::cout << "dog_original	idea 0: " << dog_original.getBrainIdea(0) << std::endl;
-		std::cout << "dog_copy	idea 0: " << dog_copy.getBrainIdea(0) << std::endl;
-		dog_original.setBrainIdea(1, "a boring idea");
-		std::cout << "dog_original	idea 1: " << dog_original.getBrainIdea(1) << std::endl;
-		std::cout << "dog_copy	idea 1: " << dog_copy.getBrainIdea(1) << std::endl;
-	}
+	printSubHeader("* End of Scope *");
+}
+
+/*
+** [ON COPY]
+** dog_original:						dog_copy:
+** 	[0] "a brilliant idea"		->		[0] "a brilliant idea"
+** 	[1] "an excellent idea"		->		[1] "an excellent idea"
+**
+** [AFTER COPY]
+** dog_original:						dog_copy:
+** 	[0] "a brilliant idea"		->		[0] "a brilliant idea"
+** 	[1] "a boring idea"			!=		[1] "an excellent idea"
+*/
+void	testCopyDog()
+{
+	printHeader("Copy: class Dog");
+
+	Dog		dog_original;
+	dog_original.setBrainIdea(0, "a brilliant idea");
+	dog_original.setBrainIdea(1, "an excellent idea");
+	Dog		dog_copy;
+
+	dog_copy = dog_original;
+
+	std::cout << "dog_original	idea 0: " << dog_original.getBrainIdea(0) << std::endl;
+	std::cout << "dog_copy	idea 0: " << dog_copy.getBrainIdea(0) << std::endl;
+	dog_original.setBrainIdea(1, "a boring idea");
+	std::cout << "dog_original	idea 1: " << dog_original.getBrainIdea(1) << std::endl;
+	std::cout << "dog_copy	idea 1: " << dog_copy.getBrainIdea(1) << std::endl;
 }
 
 void	subjectRequiredTest()
@@ -121,5 +131,6 @@ void	subjectRequiredTest()
 int		main()
 {
 	subjectRequiredTest();
-	main2();
+	testCopyCat();
+	testCopyDog();
 }
