@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 21:06:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:55:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat() : Animal("Cat"), _brain(new Brain())
 {
-	_brain = new Brain();
 	std::cout << "Cat default constructor called" << std::endl;
 }
 
 Cat::~Cat()
 {
-	delete _brain;
 	std::cout << "Cat destructor called" << std::endl;
+	delete _brain;
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : Animal(other), _brain(new Brain(*(other._brain)))
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	_brain = new Brain(*(other._brain));
 }
 
 Cat	&Cat::operator=(const Cat &other)

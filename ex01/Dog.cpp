@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:08:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 21:06:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:55:18 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : Animal("Dog"), _brain(new Brain())
 {
-	_brain = new Brain();
 	std::cout << "Dog default constructor called" << std::endl;
 }
 
 Dog::~Dog()
 {
-	delete _brain;
 	std::cout << "Dog destructor called" << std::endl;
+	delete _brain;
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Dog::Dog(const Dog &other) : Animal(other), _brain(new Brain(*(other._brain)))
 {
 	std::cout << "Dog copy constructor called" << std::endl;
-	_brain = new Brain(*(other._brain));
 }
 
 Dog	&Dog::operator=(const Dog &other)
