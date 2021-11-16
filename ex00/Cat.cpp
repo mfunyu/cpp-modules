@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:32:34 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 14:30:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 Cat::Cat() : Animal("Cat")
 {
+	std::cout << "Cat default constructor called" << std::endl;
 }
 
 Cat::~Cat()
 {
+	std::cout << "Cat destructor called" << std::endl;
 }
 
 Cat::Cat(const Cat &other)

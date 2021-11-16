@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:08:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:32:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 14:30:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 Dog::Dog() : Animal("Dog")
 {
+	std::cout << "Dog default constructor called" << std::endl;
 }
 
 Dog::~Dog()
 {
+	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog::Dog(const Dog &other)
