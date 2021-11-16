@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:32:45 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/15 12:41:02 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 12:50:59 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-# include <exception>
+# include <stdexcept>
 
 template <typename T>
 class Array
