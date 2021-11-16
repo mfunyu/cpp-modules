@@ -8,10 +8,6 @@ OBJS_DIR:= objs/
 OBJS	:= $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 DEPS	:= $(OBJS:.o=.d)
 
-ifdef PRINT
-CXXFLAGS += -D PRINT
-endif
-
 .PHONY	: all clean fclean re
 
 all	: $(NAME)
@@ -21,14 +17,11 @@ all	: $(NAME)
 $(NAME)	: $(OBJS_DIR) $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-print	:
-	make re PRINT=1
-
 $(OBJS_DIR)%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 $(OBJS_DIR):
-	@mkdir $@
+	@-mkdir $@
 
 
 clean	:
@@ -38,3 +31,14 @@ fclean	: clean
 	$(RM) $(NAME)
 
 re	: fclean all
+
+# ---------------------------------------------------------------------------- #
+
+.PHONY	: test
+
+ifdef TEST
+CXXFLAGS += -D TEST
+endif
+
+test	:
+	make TEST=1
