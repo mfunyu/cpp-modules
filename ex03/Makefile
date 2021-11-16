@@ -6,20 +6,22 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 14:53:57 by mfunyu            #+#    #+#              #
-#    Updated: 2021/11/01 22:02:02 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/16 22:50:49 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= a.out
 SRCS	:= main.cpp \
+			Character.cpp \
 			AMateria.cpp \
 			Cure.cpp \
 			Ice.cpp \
-			Character.cpp \
 			MateriaSource.cpp
 
+VPATH	:= character/ materia/ materia_src/
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic -Wshadow
+INCLUDES:= -I character -I materia -I materia_src
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic $(INCLUDES)
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
@@ -34,7 +36,7 @@ $(OBJ_DIR)%.o : %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 $(OBJ_DIR):
-	@mkdir $@
+	@-mkdir $@
 
 clean	:
 	$(RM) $(OBJS)
