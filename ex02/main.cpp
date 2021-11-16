@@ -35,6 +35,7 @@ void	printList(std::string title, Array<T> & elem, int total) {
 	std::cout << std::endl;
 }
 
+
 #include <cxxabi.h>
 std::string getNameByTypeInfo(std::type_info const& typeInfo)
 {
@@ -46,9 +47,22 @@ std::string getNameByTypeInfo(std::type_info const& typeInfo)
 	return strName;
 }
 
-void	printTestInfo(std::string testinfo, std::type_info const& typeInfo) {
-	std::cout << COLOR_CYAN << "[ " << testinfo << \
-				 " <" << getNameByTypeInfo(typeInfo) << ">" << \
+template <typename T>
+void	printTestInfo(std::string info1, unsigned int value1) {
+	std::cout << COLOR_CYAN << "[ " << \
+				 info1 << ": " << value1 << \
+				 " <" << getNameByTypeInfo(typeid(T)) << ">" << \
+				 " ]" << COLOR_RESET << std::endl;
+}
+
+template <typename T>
+void	printTestInfo(std::string info1, unsigned int value1,
+						std::string info2, int value2)
+{
+	std::cout << COLOR_CYAN << "[ " << \
+				 info1 << ": " << value1 << ", " << \
+				 info2 << ": " << value2 << \
+				 " <" << getNameByTypeInfo(typeid(T)) << ">" << \
 				 " ]" << COLOR_RESET << std::endl;
 }
 
@@ -60,7 +74,7 @@ void	printOK() {
 	std::cout <<  COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
 }
 
-/* ---------------------------------- tests --------------------------------- */
+/* ------------------------------ subject main ------------------------------ */
 
 #define MAX_VAL 750
 
@@ -108,15 +122,17 @@ int		subject_main()
 	return 0;
 }
 
+/* ---------------------------------- tests --------------------------------- */
+
 template <typename T>
 void	testSize(unsigned int size)
 {
-	printTestInfo("Accurate size returned", typeid(int));
-	Array<T> test(size);
+	printTestInfo<T>("size", size);
+	Array<T> array(size);
 
-	std::cout << "size = " << test.size() << std::endl;
+	std::cout << "array.size() = " << array.size() << std::endl;
 
-	if (test.size() != size) {
+	if (array.size() != size) {
 		printKO();
 		return ;
 	}
@@ -124,11 +140,14 @@ void	testSize(unsigned int size)
 }
 
 template <typename T>
-void	testSubscriptOperator(int size, int index)
+void	testSubscriptOperator(unsigned int size, int index)
 {
-	printTestInfo("Exception thrown at right index", typeid(T));
+	printTestInfo<T>("size", size, "index", index);
 
 	Array<T> array(size);
+	for (unsigned int i = 0; i < size; i++) {
+		array[i] = i;
+	}
 
 	try {
 		std::cout << "array[" << index << "] = " << std::flush;
@@ -139,17 +158,17 @@ void	testSubscriptOperator(int size, int index)
 }
 
 template <typename T>
-void	testAssignmentOperator(int dst_size, int src_size)
+void	testAssignmentOperator(unsigned int dst_size, unsigned int src_size)
 {
-	printTestInfo("Running deep copy", typeid(T));
+	printTestInfo<T>("dst_size", dst_size, "src_size", src_size);
 
 	Array<T> src(src_size);
-	for (int i = 0; i < src_size; i++) {
+	for (unsigned int i = 0; i < src_size; i++) {
 		src[i] = i + 'a';
 	}
 
 	Array<T> dst(dst_size);
-	for (int i = 0; i < dst_size; i++) {
+	for (unsigned int i = 0; i < dst_size; i++) {
 		dst[i] = i + 'A';
 	}
 
@@ -162,21 +181,21 @@ void	testAssignmentOperator(int dst_size, int src_size)
 }
 
 template <typename T>
-void	testCopyConstructor(int n)
+void	testCopyConstructor(unsigned int original_size)
 {
-	printTestInfo("Running deep copy", typeid(T));
+	printTestInfo<T>("original_size", original_size);
 
-	Array<T> original(n);
-	for (int i = 0; i < n; i++) {
+	Array<T> original(original_size);
+	for (unsigned int i = 0; i < original_size; i++) {
 		original[i] = i + 'a';
 	}
 
 	Array<T> copy(original);
 
-	printList<T>("original", original, n);
-	printList<T>("copy", copy, n);
+	printList<T>("original", original, original_size);
+	printList<T>("copy", copy, original_size);
 
-	for (int i = 0; i < n; i++) {
+	for (unsigned int i = 0; i < original_size; i++) {
 		if (original[i] != copy[i]) {
 			printKO();
 			return ;
@@ -186,15 +205,15 @@ void	testCopyConstructor(int n)
 }
 
 template <typename T>
-void	testConstructor(int len)
+void	testConstructor(unsigned int size)
 {
-	printTestInfo("Initialized to default", typeid(T));
+	printTestInfo<T>("size", size);
 
-	Array<T> zeroInitializedArray(len);
+	Array<T> zeroInitializedArray(size);
 
-	printList("zero", zeroInitializedArray, len);
+	printList("zero_initialized", zeroInitializedArray, size);
 
-	for (int i = 0; i < len; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		if (zeroInitializedArray[i]) {
 			printKO();
 			return ;
@@ -231,11 +250,11 @@ int		main(int ac, char **av)
 			printTestName("Subscript Operator []");
 			testSubscriptOperator<float>(7, 3);
 			testSubscriptOperator<unsigned char>(5, -1);
-			testSubscriptOperator<int64_t>(2, 5);
+			testSubscriptOperator<long>(2, 5);
 		} else if (test == "size") {
 			printTestName("size");
 			testSize<const float>(3);
-			testSize<unsigned char>(4);
+			testSize<unsigned char>(0);
 			testSize<const std::string>(5);
 		} else {
 			printHelp();
