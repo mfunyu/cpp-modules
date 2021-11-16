@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 23:15:39 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:21:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 namespace {
 void	printHeader(std::string content)
 {
-	std::cout << std::endl;
 	std::cout << COLOR_CYAN <<\
 				 "*** " << content << " ***" <<\
 				 COLOR_RESET << std::endl;
@@ -35,6 +34,17 @@ void	printSubHeader(std::string content)
 	std::cout << COLOR_CYAN <<\
 				 "[ " << content << " ]" <<\
 				 COLOR_RESET << std::endl;
+}
+
+void	printHelp(void)
+{
+	std::cout << "usage: ./a.out [testname]\n" << std::endl;
+	std::cout << "  \"testnames\"" << std::endl;
+	std::cout << "\t\"subject\"\t-> run subject's main" << std::endl;
+	std::cout << "\t\"createMateria\"\t-> check create Materia" << std::endl;
+	std::cout << "\t\"learnMateria\"\t-> check learn Materia" << std::endl;
+	std::cout << "\t\"characterCopy\"\t-> check character Copy" << std::endl;
+	std::cout << "\t\"unequip\"\t-> check unequip" << std::endl;
 }
 } // namespace
 
@@ -222,12 +232,22 @@ void	subject_main()
 	delete src;
 }
 
-int		main()
+int		main(int ac, char **av)
 {
-	subject_main();
-	test_createMateria();
-	test_learnMateria();
-	test_character_copy();
-	test_unequip();
+	std::string	test = (ac > 1 ? av[1] : "");
+
+	if (test == "subject") {
+		subject_main();
+	} else if (test == "createMateria") {
+		test_createMateria();
+	} else if (test == "learnMateria") {
+		test_learnMateria();
+	} else if (test == "characterCopy") {
+		test_character_copy();
+	} else if (test == "unequip") {
+		test_unequip();
+	} else {
+		printHelp();
+	}
 	return 0;
 }
