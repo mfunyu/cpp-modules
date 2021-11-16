@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:56:10 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 22:56:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:01:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 MateriaSource::MateriaSource()
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < kMaxMaterials; i++)
 	{
 		_memory[i] = NULL;
 	}
@@ -22,7 +22,7 @@ MateriaSource::MateriaSource()
 
 MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < kMaxMaterials; i++)
 	{
 		delete _memory[i];
 	}
@@ -38,7 +38,7 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 {
 	if (this != &other)
 	{
-		for (int i = 0; i < MAX_MATERIALS; i++)
+		for (int i = 0; i < kMaxMaterials; i++)
 		{
 			_memory[i] = other._memory[i];
 		}
@@ -48,7 +48,7 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 
 void	MateriaSource::learnMateria(AMateria* a)
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < kMaxMaterials; i++)
 	{
 		if (!_memory[i])
 		{

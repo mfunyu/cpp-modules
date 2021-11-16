@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:56:14 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 22:56:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:08:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 
 # include "IMateriaSource.hpp"
 
-# define MAX_MATERIALS 4
-
-#include "AMateria.hpp"
+# include "AMateria.hpp"
 
 class MateriaSource : public IMateriaSource
 {
-	private:
-		AMateria*	_memory[MAX_MATERIALS];
-
 	public:
 		MateriaSource();
 		~MateriaSource();
@@ -32,6 +27,11 @@ class MateriaSource : public IMateriaSource
 
 		void		learnMateria(AMateria* a);
 		AMateria*	createMateria(std::string const & type);
+
+		static const int	kMaxMaterials = 4;
+
+	private:
+		AMateria*	_memory[kMaxMaterials];
 };
 
 #endif /* MATERIASOURCE_HPP */

@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:48:50 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 22:18:16 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:00:53 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 # define IMATERIASOURCE_HPP
 
-#include <string>
+# include <string>
 
 class AMateria;
 

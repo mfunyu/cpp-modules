@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:51:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 22:03:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:00:47 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_HPP
 # define ICE_HPP
 
-#include "AMateria.hpp"
+# include "AMateria.hpp"
 
 class ICharacter;
 

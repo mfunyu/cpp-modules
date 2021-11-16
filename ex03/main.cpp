@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:56:05 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:07:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	test_unequip()
 	me->unequip(4);
 	delete tmp1;
 
-	for (int i = 0; i < MAX_MATERIALS; i++) {
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++) {
 		std::cout << i << ": ";
 		me->use(i, *bob);
 	}
@@ -85,7 +85,7 @@ void	test_character_copy()
 
 	ICharacter* nop = new Character("nop");
 
-	for (int i = 0; i < MAX_MATERIALS; i++) {
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++) {
 		std::cout << i << "==" << std::endl;
 		std::cout << "he : ";
 		he->use(i, *nop);
@@ -156,7 +156,7 @@ void	test_createMateria()
 
 	ICharacter* cathy = new Character("Cathy");
 
-	for (int i = -1; i < MAX_MATERIALS + 2; i++) {
+	for (int i = -1; i < MateriaSource::kMaxMaterials + 2; i++) {
 		std::cout << i << ": ";
 		me->use(i, *cathy);
 	}

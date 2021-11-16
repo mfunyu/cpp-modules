@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 22:55:53 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:06:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
-
-# define MAX_MATERIALS 4
+# include "MateriaSource.hpp"
 
 class AMateria;
 
@@ -23,7 +22,8 @@ class Character : public ICharacter
 {
 	private:
 		std::string		_name;
-		AMateria		*_inventory[MAX_MATERIALS];
+		AMateria		*_inventory[MateriaSource::kMaxMaterials];
+
 		Character();
 
 	public:

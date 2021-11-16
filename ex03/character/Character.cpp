@@ -6,15 +6,16 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 22:55:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:06:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 
 Character::Character()
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		_inventory[i] = NULL;
 	}
@@ -22,7 +23,7 @@ Character::Character()
 
 Character::~Character()
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		delete _inventory[i];
 	}
@@ -39,7 +40,7 @@ Character	&Character::operator=(const Character &other)
 	if (this != &other)
 	{
 		_name = other._name;
-		for (int i = 0; i < MAX_MATERIALS; i++)
+		for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 		{
 			if (other._inventory[i])
 				_inventory[i] = other._inventory[i]->clone();
@@ -52,7 +53,7 @@ Character	&Character::operator=(const Character &other)
 
 Character::Character(std::string name) : _name(name)
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		_inventory[i] = NULL;
 	}
@@ -65,7 +66,7 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	for (int i = 0; i < MAX_MATERIALS; i++)
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		if (!_inventory[i])
 		{
@@ -79,7 +80,7 @@ void Character::unequip(int idx)
 {
 	if (is_idx_in_range(idx))
 	{
-		for (int i = idx + 1; i < MAX_MATERIALS; i++)
+		for (int i = idx + 1; i < MateriaSource::kMaxMaterials; i++)
 		{
 			_inventory[i - 1] = _inventory[i];
 			_inventory[i] = NULL;
@@ -97,5 +98,5 @@ void Character::use(int idx, ICharacter& target)
 
 bool	Character::is_idx_in_range(int idx)
 {
-	return (0 <= idx && idx < MAX_MATERIALS);
+	return (0 <= idx && idx < MateriaSource::kMaxMaterials);
 }
