@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:32 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 21:05:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:09:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Cat : public Animal
 
 	public:
 		Cat();
-		~Cat();
+		virtual ~Cat();
 		Cat(Cat const &other);
 		Cat	&operator=(Cat const &other);
 
