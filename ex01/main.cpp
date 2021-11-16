@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:16:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/01 17:56:30 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:20:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,32 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-int main()
-{
-	{
-		Animal* animals[4];
+/* ------------------------------- formatting ------------------------------- */
 
-		for (int i = 0; i < 2; i++)
-		{
-			animals[i] = new Cat();
-		}
-		for (int i = 2; i < 4; i++)
-		{
-			animals[i] = new Dog();
-		}
-		for (int i = 0; i < 4; i++)
-		{
-			delete animals[i];
-		}
-	}
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void	printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN <<\
+				 "*** " << content << " ***" <<\
+				 COLOR_RESET << std::endl;
+}
+
+void	printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN <<\
+				 "[ " << content << " ]" <<\
+				 COLOR_RESET << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
+
+void	main2()
+{
 	std::cout << std::endl;
 	{
 		Cat		cat_original;
@@ -84,3 +92,34 @@ int main()
 	}
 }
 
+void	subjectRequiredTest()
+{
+	printHeader("Test Required in Subject");
+
+	int		n = 4;
+	Animal* animals[4];
+
+	for (int i = 0; i < n; i++)
+	{
+		if (i % 2) {
+			printSubHeader("Create Cat");
+			animals[i] = new Cat();
+		}
+		else {
+			printSubHeader("Create Dog");
+			animals[i] = new Dog();
+		}
+	}
+
+	printSubHeader("Delete All");
+	for (int i = 0; i < n; i++)
+	{
+		delete animals[i];
+	}
+}
+
+int		main()
+{
+	subjectRequiredTest();
+	main2();
+}
