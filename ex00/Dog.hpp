@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:08:57 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/29 17:02:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 14:33:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Dog : public Animal
 
 	public:
 		Dog();
-		~Dog();
+		virtual ~Dog();
 		Dog(Dog const &other);
 		Dog	&operator=(Dog const &other);
 
