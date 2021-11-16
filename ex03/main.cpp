@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 23:07:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:15:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,34 @@
 #include "MateriaSource.hpp"
 #include <iostream>
 
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void	printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN <<\
+				 "*** " << content << " ***" <<\
+				 COLOR_RESET << std::endl;
+}
+
+void	printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN <<\
+				 "[ " << content << " ]" <<\
+				 COLOR_RESET << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
+
 void	test_unequip()
 {
+	printHeader("Test Unequip");
+
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -55,6 +81,7 @@ void	test_unequip()
 
 void	test_character_copy()
 {
+	printHeader("Test Character Copy");
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Cure());
 	src->learnMateria(new Ice());
@@ -103,6 +130,7 @@ void	test_character_copy()
 
 void	test_learnMateria()
 {
+	printHeader("Test Learn Materia");
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Cure());
 	src->learnMateria(NULL);
@@ -131,6 +159,7 @@ void	test_learnMateria()
 
 void	test_createMateria()
 {
+	printHeader("Test Create Materia");
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -167,39 +196,38 @@ void	test_createMateria()
 	delete src;
 }
 
-int main()
+void	subject_main()
 {
-	{
-		IMateriaSource* src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
+	printHeader("Subject main");
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-		ICharacter* me = new Character("me");
+	ICharacter* me = new Character("me");
 
-		AMateria* tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 
-		ICharacter* bob = new Character("bob");
+	ICharacter* bob = new Character("bob");
 
-		me->use(0, *bob);
-		me->use(1, *bob);
+	printSubHeader("Use materia");
+	me->use(0, *bob);
+	me->use(1, *bob);
 
-		delete bob;
-		delete me;
-		delete src;
-	}
-	std::cout << std::endl;
-	{
-		test_createMateria();
-		std::cout << std::endl;
-		test_learnMateria();
-		std::cout << std::endl;
-		test_character_copy();
-		std::cout << std::endl;
-		test_unequip();
-	}
+	delete bob;
+	delete me;
+	delete src;
+}
+
+int		main()
+{
+	subject_main();
+	test_createMateria();
+	test_learnMateria();
+	test_character_copy();
+	test_unequip();
 	return 0;
 }
