@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 14:53:57 by mfunyu            #+#    #+#              #
-#    Updated: 2021/11/16 14:21:43 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/16 16:45:05 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ W_SRCS	:= wrong_main.cpp \
 			WrongAnimal.cpp \
 			WrongCat.cpp
 
-VPATH	:= ./wrong/
+VPATH	:= ./Wrong/
 W_OBJS	:= $(addprefix $(OBJS_DIR), $(W_SRCS:.cpp=.o))
 
 wrong	: $(W_NAME)
