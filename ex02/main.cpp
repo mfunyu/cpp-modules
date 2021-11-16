@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:16:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/31 13:46:27 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 22:28:06 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,36 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void	printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN <<\
+				 "*** " << content << " ***" <<\
+				 COLOR_RESET << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
+
 int main()
 {
-	{
-		Animal* animals[4];
+	printHeader("Create Dog");
+	const Animal* dog = new Dog();
+	dog->makeSound();
+	delete dog;
 
-		for (int i = 0; i < 2; i++)
-		{
-			animals[i] = new Cat();
-		}
-		for (int i = 2; i < 4; i++)
-		{
-			animals[i] = new Dog();
-		}
-		for (int i = 0; i < 4; i++)
-		{
-			delete animals[i];
-		}
-	}
-	std::cout << std::endl;
-	{
-		const Animal* dog = new Dog();
-		const Animal* cat = new Cat();
-		// const Animal* animal = new Animal(); /* cause compile error */
+	printHeader("Create Cat");
+	const Animal* cat = new Cat();
+	cat->makeSound();
+	delete cat;
 
-		dog->makeSound();
-		cat->makeSound();
-
-		delete dog;
-		delete cat;
-	}
+	// const Animal* animal = new Animal(); /* cause compilation error */
+	// animal->makeSound();
 }
 
