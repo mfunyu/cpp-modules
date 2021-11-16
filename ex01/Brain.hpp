@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 21:27:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 21:01:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:03:54 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class Brain
 		Brain(Brain const &other);
 		Brain	&operator=(Brain const &other);
 
-		std::string	getIdeas(unsigned int i) const;
-		void		setIdeas(unsigned int i, std::string idea);
+		std::string const &	getIdeas(unsigned int i) const;
+		void				setIdeas(unsigned int i, std::string idea);
 };
 
 #endif /* BRAIN_HPP */

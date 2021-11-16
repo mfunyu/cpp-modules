@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:08:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:36:06 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:06:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	Dog::makeSound() const
 	std::cout << "Bow-wow" << std::endl;
 }
 
-std::string	Dog::getBrainIdea(unsigned int i) const
+std::string const &	Dog::getBrainIdea(unsigned int i) const
 {
 	return _brain->getIdeas(i);
 }

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 14:55:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 14:34:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:04:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Animal::Animal(std::string type) : _type(type)
 	std::cout << "Animal constructor called" << std::endl;
 }
 
-std::string		Animal::getType() const
+std::string const &	Animal::getType() const
 {
 	return _type;
 }

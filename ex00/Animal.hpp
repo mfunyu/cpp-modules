@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 14:54:57 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/10/30 17:35:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:04:08 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Animal
 
 		Animal(std::string type);
 
-		std::string		getType() const;
+		std::string const &	getType() const;
 
 		virtual void	makeSound() const;
 };

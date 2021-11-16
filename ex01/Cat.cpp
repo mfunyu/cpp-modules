@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:35:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:06:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	Cat::makeSound() const
 	std::cout << "Meeeeeeeeeeeeoooooooooooow" << std::endl;
 }
 
-std::string	Cat::getBrainIdea(unsigned int i) const
+std::string const &	Cat::getBrainIdea(unsigned int i) const
 {
 	return _brain->getIdeas(i);
 }

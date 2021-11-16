@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 21:27:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 21:07:07 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:07:32 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Brain	&Brain::operator=(const Brain &other)
 	return *this;
 }
 
-std::string	Brain::getIdeas(unsigned int i) const
+std::string const &	Brain::getIdeas(unsigned int i) const
 {
 	return _ideas[i];
 }
