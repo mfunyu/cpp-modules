@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 14:55:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/02 12:46:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 22:01:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal()
+Animal::Animal() : _type("Animal")
 {
 	std::cout << "Animal default constructor called" << std::endl;
 }
@@ -39,9 +39,10 @@ Animal	&Animal::operator=(const Animal &other)
 
 Animal::Animal(std::string type) : _type(type)
 {
+	std::cout << "Animal constructor called" << std::endl;
 }
 
-std::string		Animal::getType() const
+std::string const &	Animal::getType() const
 {
 	return _type;
 }
