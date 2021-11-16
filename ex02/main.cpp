@@ -2,6 +2,10 @@
 #include <iomanip>
 #include <Array.hpp>
 
+#ifdef TEST
+#include "getTypeName.hpp"
+#endif
+
 /* ----------------------------- print & format ----------------------------- */
 
 #define COLOR_RED "\033[31m"
@@ -9,6 +13,7 @@
 #define COLOR_CYAN "\033[36m"
 #define COLOR_RESET "\033[0m"
 
+namespace {
 void	printHelp()
 {
 	std::cout << "usage: ./a.out [testname]\n" << std::endl;
@@ -35,23 +40,16 @@ void	printList(std::string title, Array<T> & elem, int total) {
 	std::cout << std::endl;
 }
 
-
-#include <cxxabi.h>
-std::string getNameByTypeInfo(std::type_info const& typeInfo)
-{
-	char*	charName;
-	int		status = 0;
-	charName = abi::__cxa_demangle(typeInfo.name(), 0, 0, &status);
-	std::string	strName(charName);
-	std::free(charName);
-	return strName;
+template <typename T>
+std::string getTypeName() {
+	return "";
 }
 
 template <typename T>
 void	printTestInfo(std::string info1, unsigned int value1) {
 	std::cout << COLOR_CYAN << "[ " << \
 				 info1 << ": " << value1 << \
-				 " <" << getNameByTypeInfo(typeid(T)) << ">" << \
+				 ::getTypeName<T>() << \
 				 " ]" << COLOR_RESET << std::endl;
 }
 
@@ -62,7 +60,7 @@ void	printTestInfo(std::string info1, unsigned int value1,
 	std::cout << COLOR_CYAN << "[ " << \
 				 info1 << ": " << value1 << ", " << \
 				 info2 << ": " << value2 << \
-				 " <" << getNameByTypeInfo(typeid(T)) << ">" << \
+				 ::getTypeName<T>() << \
 				 " ]" << COLOR_RESET << std::endl;
 }
 
@@ -73,6 +71,7 @@ void	printKO() {
 void	printOK() {
 	std::cout <<  COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
 }
+} /* namespace */
 
 /* ------------------------------ subject main ------------------------------ */
 
