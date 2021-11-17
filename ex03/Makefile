@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 14:53:57 by mfunyu            #+#    #+#              #
-#    Updated: 2021/11/16 22:50:49 by mfunyu           ###   ########.fr        #
+#    Updated: 2021/11/17 20:43:14 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,3 +51,14 @@ leak	: $(NAME)
 
 debug	:
 	$(CXX) $(CXXFLAGS) -fsanitize=address -o $(NAME) $(SRCS)
+
+# ---------------------------------------------------------------------------- #
+
+.PHONY	: test
+
+ifdef TEST
+CXXFLAGS += -D TEST
+endif
+
+test	:
+	make TEST=1

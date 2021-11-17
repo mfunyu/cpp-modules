@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 20:22:07 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 20:41:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ Character::Character() : _name("no_name")
 	{
 		_inventory[i] = NULL;
 	}
+	#ifdef TEST
 	std::cout << "Character " << _name << " constructed" << std::endl;
+	#endif
 }
 
 Character::~Character()
@@ -38,7 +40,9 @@ Character::Character(const Character &other) : _name(other._name)
 		_inventory[i] = NULL;
 	}
 	*this = other;
+	#ifdef TEST
 	std::cout << "Character " << _name << " constructed through copy" << std::endl;
+	#endif
 }
 
 Character	&Character::operator=(const Character &other)
@@ -63,7 +67,9 @@ Character::Character(std::string name) : _name(name)
 	{
 		_inventory[i] = NULL;
 	}
+	#ifdef TEST
 	std::cout << "Character " << _name << " constructed" << std::endl;
+	#endif
 }
 
 std::string const & Character::getName() const
@@ -81,7 +87,9 @@ void Character::equip(AMateria* m)
 		if (!_inventory[i])
 		{
 			_inventory[i] = m;
+			#ifdef TEST
 			std::cout << _name << " equipped Materia \"" << m->getType() << "\"" << std::endl;
+			#endif
 			return ;
 		}
 	}
@@ -96,7 +104,9 @@ void Character::unequip(int idx)
 			_inventory[i - 1] = _inventory[i];
 			_inventory[i] = NULL;
 		}
+		#ifdef TEST
 		std::cout << "Materia at index " << idx << " unequipped" << std::endl;
+		#endif
 	}
 }
 

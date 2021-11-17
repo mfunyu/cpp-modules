@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:56:10 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 20:02:10 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 20:41:48 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ MateriaSource::MateriaSource()
 	{
 		_memory[i] = NULL;
 	}
+	#ifdef TEST
 	std::cout << "MateriaSource constructed" << std::endl;
+	#endif
 }
 
 MateriaSource::~MateriaSource()
@@ -58,7 +60,9 @@ void	MateriaSource::learnMateria(AMateria* a)
 		if (!_memory[i])
 		{
 			_memory[i] = a;
+			#ifdef TEST
 			std::cout << "Materia \"" << a->getType() << "\" learned" << std::endl;
+			#endif
 			return ;
 		}
 	}
@@ -69,7 +73,9 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 	for (int i = 0; _memory[i]; i++)
 	{
 		if (_memory[i]->getType() == type) {
+			#ifdef TEST
 			std::cout << "Materia \"" << type << "\" created" << std::endl;
+			#endif
 			return _memory[i]->clone();
 		}
 	}
