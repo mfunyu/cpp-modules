@@ -6,17 +6,15 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 23:38:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:06:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include "MateriaSource.hpp"
-#include <iostream>
 
 Character::Character()
 {
-	std::cout << "Character default constructor called" << std::endl;
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		_inventory[i] = NULL;
@@ -25,7 +23,6 @@ Character::Character()
 
 Character::~Character()
 {
-	std::cout << "Character destructor called" << std::endl;
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		delete _inventory[i];
@@ -34,14 +31,12 @@ Character::~Character()
 
 Character::Character(const Character &other)
 {
-	std::cout << "Character copy constructor called" << std::endl;
 	Character();
 	*this = other;
 }
 
 Character	&Character::operator=(const Character &other)
 {
-	std::cout << "Character assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		_name = other._name;
@@ -58,7 +53,6 @@ Character	&Character::operator=(const Character &other)
 
 Character::Character(std::string name) : _name(name)
 {
-	std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		_inventory[i] = NULL;
