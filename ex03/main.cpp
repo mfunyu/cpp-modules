@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 20:34:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 20:50:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,7 @@ void	test_createMateria()
 	delete src;
 }
 
-void	subject_main()
+void	descriptive_subject_main()
 {
 	printHeader("Subject main");
 
@@ -289,12 +289,39 @@ void	subject_main()
 	delete materia_src;
 }
 
+int		real_subject_main()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+
+	return 0;
+}
+
 int		main(int ac, char **av)
 {
 	std::string	test = (ac > 1 ? av[1] : "");
 
-	if (test == "subject") {
-		subject_main();
+	if (test.empty()) {
+		real_subject_main();
+	} else if (test == "subject") {
+		descriptive_subject_main();
 	} else if (test == "createMateria") {
 		test_createMateria();
 	} else if (test == "learnMateria") {
