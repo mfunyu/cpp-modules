@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:56:10 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 20:41:48 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 23:05:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ MateriaSource::~MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
-	MateriaSource();
+	for (int i = 0; i < kMaxMaterials; i++)
+	{
+		_memory[i] = NULL;
+	}
+	std::cout << "MateriaSource constructed through copy" << std::endl;
 	*this = other;
 }
 
@@ -44,7 +48,11 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 	{
 		for (int i = 0; i < kMaxMaterials; i++)
 		{
-			_memory[i] = other._memory[i];
+			delete _memory[i];
+			if (other._memory[i])
+				_memory[i] = other._memory[i]->clone();
+			else
+				_memory[i] = NULL;
 		}
 	}
 	return *this;
