@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 22:27:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 22:54:06 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,11 @@ void Character::unequip(int idx)
 {
 	if (is_idx_in_range(idx))
 	{
-		for (int i = idx + 1; i < MateriaSource::kMaxMaterials; i++)
+		_inventory[idx] = NULL;
+		for (int i = idx; i < MateriaSource::kMaxMaterials - 1; i++)
 		{
-			_inventory[i - 1] = _inventory[i];
-			_inventory[i] = NULL;
+			_inventory[i] = _inventory[i + 1];
+			_inventory[i + 1] = NULL;
 		}
 		#ifdef TEST
 		std::cout << "Materia at index " << idx << " unequipped" << std::endl;
