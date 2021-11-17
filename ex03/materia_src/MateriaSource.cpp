@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:56:10 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 23:05:01 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 23:07:06 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	MateriaSource::learnMateria(AMateria* a)
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; _memory[i]; i++)
+	for (int i = 0; i < kMaxMaterials && _memory[i]; i++)
 	{
 		if (_memory[i]->getType() == type) {
 			#ifdef TEST
