@@ -6,19 +6,21 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 23:06:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 20:22:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include "MateriaSource.hpp"
+#include <iostream>
 
-Character::Character()
+Character::Character() : _name("no_name")
 {
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		_inventory[i] = NULL;
 	}
+	std::cout << "Character " << _name << " constructed" << std::endl;
 }
 
 Character::~Character()
@@ -29,10 +31,14 @@ Character::~Character()
 	}
 }
 
-Character::Character(const Character &other)
+Character::Character(const Character &other) : _name(other._name)
 {
-	Character();
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
+	{
+		_inventory[i] = NULL;
+	}
 	*this = other;
+	std::cout << "Character " << _name << " constructed through copy" << std::endl;
 }
 
 Character	&Character::operator=(const Character &other)
@@ -57,6 +63,7 @@ Character::Character(std::string name) : _name(name)
 	{
 		_inventory[i] = NULL;
 	}
+	std::cout << "Character " << _name << " constructed" << std::endl;
 }
 
 std::string const & Character::getName() const
@@ -66,11 +73,15 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
+	if (!m) {
+		return ;
+	}
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 	{
 		if (!_inventory[i])
 		{
 			_inventory[i] = m;
+			std::cout << _name << " equipped Materia \"" << m->getType() << "\"" << std::endl;
 			return ;
 		}
 	}
@@ -85,6 +96,7 @@ void Character::unequip(int idx)
 			_inventory[i - 1] = _inventory[i];
 			_inventory[i] = NULL;
 		}
+		std::cout << "Materia at index " << idx << " unequipped" << std::endl;
 	}
 }
 

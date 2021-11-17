@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:56:10 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 23:01:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 20:02:10 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
+#include <iostream>
 
 MateriaSource::MateriaSource()
 {
@@ -18,6 +19,7 @@ MateriaSource::MateriaSource()
 	{
 		_memory[i] = NULL;
 	}
+	std::cout << "MateriaSource constructed" << std::endl;
 }
 
 MateriaSource::~MateriaSource()
@@ -48,11 +50,15 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 
 void	MateriaSource::learnMateria(AMateria* a)
 {
+	if (!a) {
+		return ;
+	}
 	for (int i = 0; i < kMaxMaterials; i++)
 	{
 		if (!_memory[i])
 		{
 			_memory[i] = a;
+			std::cout << "Materia \"" << a->getType() << "\" learned" << std::endl;
 			return ;
 		}
 	}
@@ -62,8 +68,10 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 {
 	for (int i = 0; _memory[i]; i++)
 	{
-		if (_memory[i]->getType() == type)
+		if (_memory[i]->getType() == type) {
+			std::cout << "Materia \"" << type << "\" created" << std::endl;
 			return _memory[i]->clone();
+		}
 	}
 	return 0;
 }
