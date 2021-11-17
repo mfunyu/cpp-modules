@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:44:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/16 23:21:07 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 20:34:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,17 @@ void	test_unequip()
 {
 	printHeader("Test Unequip");
 
+	printSubHeader("Create MateriaSource");
 	IMateriaSource* src = new MateriaSource();
+
+	printSubHeader("Call learnMateria()");
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
+	printSubHeader("Create Character: me");
 	ICharacter* me = new Character("me");
 
+	printSubHeader("Equip materias");
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
@@ -73,18 +78,22 @@ void	test_unequip()
 	tmp3 = src->createMateria("cure");
 	me->equip(tmp3);
 
-	ICharacter* bob = new Character("bob");
+	printSubHeader("Create Character: Jhon");
+	ICharacter* jhon = new Character("Jhon");
 
+	printSubHeader("Unequip materias");
 	me->unequip(1);
 	me->unequip(4);
 	delete tmp1;
 
+	printSubHeader("Use materias");
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++) {
 		std::cout << i << ": ";
-		me->use(i, *bob);
+		me->use(i, *jhon);
 	}
 
-	delete bob;
+	printSubHeader("* End of Scope *");
+	delete jhon;
 	delete me;
 	delete src;
 }
@@ -92,46 +101,68 @@ void	test_unequip()
 void	test_character_copy()
 {
 	printHeader("Test Character Copy");
+
+	printSubHeader("Create MateriaSource");
 	IMateriaSource* src = new MateriaSource();
+
+	printSubHeader("Call learnMateria()");
 	src->learnMateria(new Cure());
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
 	/* [he] ice, cure */
+	printSubHeader("Create Character: he");
 	Character* he = new Character("he");
+
+	printSubHeader("he Equip Materia");
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	he->equip(tmp);
 	tmp = src->createMateria("cure");
 	he->equip(tmp);
 
-	/* copying he -> she,  he -> me */
-	ICharacter* she = new Character(*he);
-	Character me("me");
-	me = *he;
-
+	/* copying he -> she */
 	/* [she] ice, cure, cure */
+	printSubHeader("Copy Character: she(he)");
+	ICharacter* she = new Character(*he);
+	printSubHeader("she Equip Materia");
 	tmp = src->createMateria("cure");
 	she->equip(tmp);
 
+	/* copying he -> me */
 	/* [me] ice, cure, ice, ice*/
+	printSubHeader("Copy Character: me = he");
+	Character me("me");
+	me = *he;
+
+	printSubHeader("me Equip Materia");
 	tmp = src->createMateria("ice");
 	me.equip(tmp);
 	tmp = src->createMateria("ice");
 	me.equip(tmp);
 
+	printSubHeader("Create Character: nop");
 	ICharacter* nop = new Character("nop");
 
+	printSubHeader("Use materias: He");
 	for (int i = 0; i < MateriaSource::kMaxMaterials; i++) {
-		std::cout << i << "==" << std::endl;
-		std::cout << "he : ";
+		std::cout << "he [" << i << "]";
 		he->use(i, *nop);
-		std::cout << "she: ";
+	}
+	std::cout << std::endl;
+	printSubHeader("Use materias: she");
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++) {
+		std::cout << "she[" << i << "]";
 		she->use(i, *nop);
-		std::cout << "me : ";
+	}
+	std::cout << std::endl;
+	printSubHeader("Use materias: me");
+	for (int i = 0; i < MateriaSource::kMaxMaterials; i++) {
+		std::cout << "me [" << i << "]";
 		me.use(i, *nop);
 	}
-
+	std::cout << std::endl;
+	printSubHeader("* End of Scope *");
 	delete nop;
 	delete he;
 	delete she;
@@ -141,7 +172,11 @@ void	test_character_copy()
 void	test_learnMateria()
 {
 	printHeader("Test Learn Materia");
+
+	printSubHeader("Create MateriaSource");
 	IMateriaSource* src = new MateriaSource();
+
+	printSubHeader("Call learnMateria()");
 	src->learnMateria(new Cure());
 	src->learnMateria(NULL);
 	src->learnMateria(new Cure());
@@ -149,19 +184,24 @@ void	test_learnMateria()
 	src->learnMateria(new Ice());
 	// src->learnMateria(new Cure());
 
+	printSubHeader("Create Character: me");
 	ICharacter* me = new Character("me");
 
+	printSubHeader("Equip Materia");
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
+	printSubHeader("Create Character: nop");
 	ICharacter* nop = new Character("nop");
 
+	printSubHeader("Use materias");
 	me->use(0, *nop);
 	me->use(1, *nop);
 
+	printSubHeader("* End of Scope *");
 	delete nop;
 	delete me;
 	delete src;
@@ -170,12 +210,18 @@ void	test_learnMateria()
 void	test_createMateria()
 {
 	printHeader("Test Create Materia");
+
+	printSubHeader("Create MateriaSource");
 	IMateriaSource* src = new MateriaSource();
+
+	printSubHeader("Call learnMateria()");
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
+	printSubHeader("Create Character: me");
 	ICharacter* me = new Character("me");
 
+	printSubHeader("Equip Materia");
 	AMateria* tmp;
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
@@ -190,17 +236,20 @@ void	test_createMateria()
 	/*
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	delete tmp
+	delete tmp;
 	*/
 
+	printSubHeader("Create Character: Cathy");
 	ICharacter* cathy = new Character("Cathy");
 
-	for (int i = -1; i < MateriaSource::kMaxMaterials + 2; i++) {
+	printSubHeader("Use materias");
+	for (int i = -1; i < MateriaSource::kMaxMaterials + 1; i++) {
 		std::cout << i << ": ";
 		me->use(i, *cathy);
+		std::cout << std::endl;
 	}
-	std::cout << std::endl;
 
+	printSubHeader("* End of Scope *");
 	delete cathy;
 	delete me;
 	delete src;
@@ -209,27 +258,35 @@ void	test_createMateria()
 void	subject_main()
 {
 	printHeader("Subject main");
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
 
+	printSubHeader("Create MateriaSource");
+	IMateriaSource* materia_src = new MateriaSource();
+
+	printSubHeader("Call learnMateria()");
+	materia_src->learnMateria(new Ice());
+	materia_src->learnMateria(new Cure());
+
+	printSubHeader("Create Character: me");
 	ICharacter* me = new Character("me");
 
+	printSubHeader("Equip Materia");
 	AMateria* tmp;
-	tmp = src->createMateria("ice");
+	tmp = materia_src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("cure");
+	tmp = materia_src->createMateria("cure");
 	me->equip(tmp);
 
-	ICharacter* bob = new Character("bob");
+	printSubHeader("Create Character: Bob");
+	ICharacter* Bob = new Character("Bob");
 
 	printSubHeader("Use materia");
-	me->use(0, *bob);
-	me->use(1, *bob);
+	me->use(0, *Bob);
+	me->use(1, *Bob);
 
-	delete bob;
+	printSubHeader("* End of Scope *");
+	delete Bob;
 	delete me;
-	delete src;
+	delete materia_src;
 }
 
 int		main(int ac, char **av)
