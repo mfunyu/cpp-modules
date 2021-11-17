@@ -6,25 +6,18 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:45:24 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/01 17:50:50 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 22:44:45 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 #include <iostream>
 
-Cure::Cure() : AMateria("cure")
-{
-}
+Cure::Cure() : AMateria("cure") {}
 
-Cure::~Cure()
-{
-}
+Cure::~Cure() {}
 
-Cure::Cure(const Cure &other)
-{
-	*this = other;
-}
+Cure::Cure(const Cure &other) : AMateria(other._type) {}
 
 Cure	&Cure::operator=(const Cure &other)
 {

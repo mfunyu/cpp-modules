@@ -6,25 +6,16 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:44:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/01 17:49:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 22:43:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include <iostream>
 
-AMateria::AMateria()
-{
-}
+AMateria::~AMateria() {}
 
-AMateria::~AMateria()
-{
-}
-
-AMateria::AMateria(const AMateria &other)
-{
-	*this = other;
-}
+AMateria::AMateria(const AMateria &other) : _type(other._type) {}
 
 AMateria	&AMateria::operator=(const AMateria &other)
 {
@@ -35,9 +26,7 @@ AMateria	&AMateria::operator=(const AMateria &other)
 	return *this;
 }
 
-AMateria::AMateria(std::string const& type) : _type(type)
-{
-}
+AMateria::AMateria(std::string const& type) : _type(type) {}
 
 std::string const&	AMateria::getType() const
 {
