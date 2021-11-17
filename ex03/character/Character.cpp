@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:55:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/17 20:41:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/17 22:27:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ Character	&Character::operator=(const Character &other)
 		_name = other._name;
 		for (int i = 0; i < MateriaSource::kMaxMaterials; i++)
 		{
+			delete _inventory[i];
 			if (other._inventory[i])
 				_inventory[i] = other._inventory[i]->clone();
 			else
