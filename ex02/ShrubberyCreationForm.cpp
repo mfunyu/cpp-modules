@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:52:49 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:10:57 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
-	Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC, target)
+	Form("ShrubberyCreationForm", kGradeToSign, kGradeToExec, target)
 {
 }
 

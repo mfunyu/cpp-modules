@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:52:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:05:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include <string>
 #include <iostream>
 
@@ -77,12 +78,12 @@ void	Form::beSigned(Bureaucrat const &bureaucrat)
 
 bool	Form::isGradeTooHigh(int grade)
 {
-	return grade < GRADE_HIGHEST;
+	return grade < Bureaucrat::kGradeHighest;
 }
 
 bool	Form::isGradeTooLow(int grade)
 {
-	return GRADE_LOWEST < grade;
+	return Bureaucrat::kGradeLowest < grade;
 }
 
 int		Form::validateGrade(int grade)

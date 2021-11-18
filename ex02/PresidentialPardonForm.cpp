@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:56:23 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:52:38 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:08:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-	Form("PresidentialPardonForm", PRESIDENTIALPARDON_SIGN, PRESIDENTIALPARDON_EXEC, target)
+	Form("PresidentialPardonForm", kGradeToSign, kGradeToExec, target)
 {
 }
 

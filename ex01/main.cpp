@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:06:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 12:34:45 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:03:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	testCopyConstructor(int gradeToSign, int gradeToExec, bool isSigned)
 		Form f(name, gradeToSign, gradeToExec);
 		/* signing the form */
 		if (isSigned) {
-			f.beSigned(Bureaucrat("tmp", GRADE_HIGHEST));
+			f.beSigned(Bureaucrat("tmp", Bureaucrat::kGradeHighest));
 		}
 
 		std::cout << "Original: ";
@@ -109,7 +109,7 @@ void	testAssignationOperator(int gradeToSign, int gradeToExec, bool isSigned)
 		Form f(name, gradeToSign, gradeToExec);
 		/* signing form f */
 		if (isSigned) {
-			f.beSigned(Bureaucrat("tmp", GRADE_HIGHEST));
+			f.beSigned(Bureaucrat("tmp", Bureaucrat::kGradeHighest));
 		}
 		Form g(name + '2', gradeToExec, gradeToSign);
 

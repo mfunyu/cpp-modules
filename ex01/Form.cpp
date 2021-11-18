@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:52:01 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:03:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include <string>
 #include <iostream>
 
@@ -49,12 +50,12 @@ bool	Form::getIsSigned() const
 	return _isSigned;
 }
 
-int		Form::getGradeToSign() const
+int	Form::getGradeToSign() const
 {
 	return _gradeToSign;
 }
 
-int		Form::getGradeToExec() const
+int	Form::getGradeToExec() const
 {
 	return _gradeToExec;
 }
@@ -70,12 +71,12 @@ void	Form::beSigned(Bureaucrat const &bureaucrat)
 
 bool	Form::isGradeTooHigh(int grade)
 {
-	return grade < GRADE_HIGHEST;
+	return grade < Bureaucrat::kGradeHighest;
 }
 
 bool	Form::isGradeTooLow(int grade)
 {
-	return GRADE_LOWEST < grade;
+	return Bureaucrat::kGradeLowest < grade;
 }
 
 int		Form::validateGrade(int grade)

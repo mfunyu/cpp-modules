@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:19:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 15:48:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:06:21 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	testPresidentialPardonForm(int bureaucreatGrade, bool sign)
 void	testCopy(bool sign)
 {
 	std::string		target = "August";
-	Bureaucrat		b("tmp", GRADE_HIGHEST);
+	Bureaucrat		b("tmp", Bureaucrat::kGradeHighest);
 
 	printFormTestInfo("RobotomyRequestForm", target);
 
@@ -176,7 +176,7 @@ void	testCopy(bool sign)
 void	testAssignation(bool sign)
 {
 	std::string		target = "Kitty";
-	Bureaucrat		b("tmp", GRADE_HIGHEST);
+	Bureaucrat		b("tmp", Bureaucrat::kGradeHighest);
 
 	printFormTestInfo("ShrubberyCreationForm", target);
 

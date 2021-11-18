@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:40:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 15:47:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include <string>
 # include <stdexcept>
-
-# define GRADE_HIGHEST 1
-# define GRADE_LOWEST 150
 
 class Bureaucrat
 {
@@ -29,11 +26,14 @@ class Bureaucrat
 		Bureaucrat();
 
 	public:
+		static const int	kGradeHighest = 1;
+		static const int	kGradeLowest = 150;
+
 		~Bureaucrat();
 		Bureaucrat(Bureaucrat const &other);
 		Bureaucrat	&operator=(Bureaucrat const &other);
 
-		Bureaucrat(std::string name, int grade = GRADE_LOWEST);
+		Bureaucrat(std::string name, int grade = kGradeLowest);
 
 		std::string const &	getName() const;
 		int					getGrade() const;

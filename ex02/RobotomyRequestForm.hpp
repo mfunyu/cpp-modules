@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:44:58 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:50:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:07:34 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <string>
 # include "Form.hpp"
 
-# define ROBOTOMY_SIGN 72
-# define ROBOTOMY_EXEC 45
-
 class RobotomyRequestForm : public Form
 {
 	private:
@@ -26,6 +23,9 @@ class RobotomyRequestForm : public Form
 		virtual void	beExecuted() const;
 
 	public:
+		static const int	kGradeToSign = 72;
+		static const int	kGradeToExec = 45;
+
 		virtual ~RobotomyRequestForm();
 		RobotomyRequestForm(RobotomyRequestForm const &other);
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &other);

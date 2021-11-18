@@ -16,9 +16,6 @@
 # include <string>
 # include <stdexcept>
 
-# define GRADE_HIGHEST 1
-# define GRADE_LOWEST 150
-
 class Bureaucrat;
 #include "Form.hpp"
 
@@ -32,11 +29,14 @@ class Bureaucrat
 		Bureaucrat();
 
 	public:
+		static const int	kGradeHighest = 1;
+		static const int	kGradeLowest = 150;
+
 		~Bureaucrat();
 		Bureaucrat(Bureaucrat const &other);
 		Bureaucrat	&operator=(Bureaucrat const &other);
 
-		Bureaucrat(std::string name, int grade = GRADE_LOWEST);
+		Bureaucrat(std::string name, int grade = kGradeLowest);
 
 		std::string const &	getName() const;
 		int					getGrade() const;

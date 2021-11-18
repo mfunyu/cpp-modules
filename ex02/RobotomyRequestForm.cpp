@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:44:39 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:52:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:10:39 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-	Form("RobotomyRequestForm", ROBOTOMY_SIGN, ROBOTOMY_EXEC, target)
+	Form("RobotomyRequestForm", kGradeToSign, kGradeToExec, target)
 {
 }
 

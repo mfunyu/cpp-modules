@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:40 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 14:50:38 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 20:07:50 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <string>
 # include "Form.hpp"
 
-# define SHRUBBERY_SIGN 145
-# define SHRUBBERY_EXEC 137
-
 class ShrubberyCreationForm : public Form
 {
 	private:
@@ -26,6 +23,9 @@ class ShrubberyCreationForm : public Form
 		virtual void	beExecuted() const;
 
 	public:
+		static const int	kGradeToSign = 145;
+		static const int	kGradeToExec = 137;
+
 		virtual ~ShrubberyCreationForm();
 		ShrubberyCreationForm(ShrubberyCreationForm const &other);
 		ShrubberyCreationForm	&operator=(ShrubberyCreationForm const &other);
