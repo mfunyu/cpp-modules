@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 18:25:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:48:26 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ class Bureaucrat
 
 		Bureaucrat(std::string name, int grade = GRADE_LOWEST);
 
-		std::string		getName() const;
-		int				getGrade() const;
+		std::string const &	getName() const;
+		int					getGrade() const;
 
 		void			incrementGrage();
 		void			decrementGrage();

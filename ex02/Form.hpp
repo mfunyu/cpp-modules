@@ -27,11 +27,11 @@ class Form
 
 		Form(std::string name, int gradeToSign, int gradeToExec, std::string target);
 
-		std::string		getName() const;
-		bool			getIsSigned() const;
-		int				getGradeToSign() const;
-		int				getGradeToExec() const;
-		std::string		getTarget() const;
+		std::string const &	getName() const;
+		bool				getIsSigned() const;
+		int					getGradeToSign() const;
+		int					getGradeToExec() const;
+		std::string const &	getTarget() const;
 
 		void			beSigned(Bureaucrat const &bureaucrat);
 

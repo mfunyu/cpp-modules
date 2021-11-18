@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 18:27:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:48:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Form::Form(std::string name, int gradeToSign, int gradeToExec) :
 {
 }
 
-std::string		Form::getName() const
+std::string const &	Form::getName() const
 {
 	return _name;
 }

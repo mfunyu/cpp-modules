@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 18:23:39 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:49:08 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 	setGrade(grade);
 }
 
-std::string		Bureaucrat::getName() const
+std::string const &	Bureaucrat::getName() const
 {
 	return _name;
 }
