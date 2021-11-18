@@ -6,18 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:44:39 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 15:15:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:52:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include "RobotomyRequestForm.hpp"
-
-RobotomyRequestForm::RobotomyRequestForm() :
-	Form("RobotomyRequestForm", ROBOTOMY_SIGN, ROBOTOMY_EXEC, "no_target")
-{
-}
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {

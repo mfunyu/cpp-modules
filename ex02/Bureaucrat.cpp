@@ -6,17 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:49:08 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:52:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
-
-Bureaucrat::Bureaucrat() : _name("no_name"), _grade(GRADE_LOWEST)
-{
-}
 
 Bureaucrat::~Bureaucrat()
 {

@@ -6,18 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/04 15:15:26 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:52:49 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <string>
 #include "ShrubberyCreationForm.hpp"
-
-ShrubberyCreationForm::ShrubberyCreationForm() :
-	Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC, "no_target")
-{
-}
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {

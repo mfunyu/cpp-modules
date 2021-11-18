@@ -6,19 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 14:48:46 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/18 14:52:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include <string>
 #include <iostream>
-
-Form::Form() :
-	_name("no_name"), _isSigned(false),
-	_gradeToSign(GRADE_HIGHEST), _gradeToExec(GRADE_HIGHEST)
-{
-}
 
 Form::~Form()
 {
