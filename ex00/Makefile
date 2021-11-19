@@ -1,15 +1,18 @@
 NAME	:= a.out
 CXX		:= clang++
-CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors
+CXXFLAGS:= -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 
 SRCS	:= main.cpp \
 			Bureaucrat.cpp
 OBJS_DIR:= objs/
 OBJS	:= $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
+DEPS	:= $(OBJS:.o=.d)
 
 .PHONY	: all clean fclean re
 
 all	: $(NAME)
+
+-include $(DEPS)
 
 $(NAME)	: $(OBJS_DIR) $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
@@ -26,4 +29,4 @@ clean	:
 fclean	: clean
 	$(RM) $(NAME)
 
-re		: fclean all
+re	: fclean all
