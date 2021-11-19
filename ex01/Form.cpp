@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:13 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 14:11:28 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 16:07:15 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,12 @@ int Form::validateGrade(int grade)
 	return grade;
 }
 
-const char* Form::GradeTooHighException::what() const throw()
-{
-	return "Grade is too high";
-}
+Form::GradeTooHighException::GradeTooHighException() :
+	std::domain_error("Grade is too high") {}
 
-const char* Form::GradeTooLowException::what() const throw()
-{
-	return "Grade is too low";
-}
+Form::GradeTooLowException::GradeTooLowException() :
+	std::domain_error("Grade is too low") {}
+
 
 std::ostream& operator<<(std::ostream& os, const Form& form)
 {

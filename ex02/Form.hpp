@@ -1,6 +1,8 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
+#include <exception>
+#include <stdexcept>
 #include <string>
 
 class Form;
@@ -41,13 +43,13 @@ class Form
 
 	void execute(Bureaucrat const& executor) const;
 
-	class GradeTooHighException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooHighException : public std::domain_error {
+	  public:
+		GradeTooHighException();
 	};
-	class GradeTooLowException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooLowException : public std::domain_error {
+	  public:
+		GradeTooLowException();
 	};
 	class FormNotSignedException : public std::exception
 	{

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 13:50:52 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:37:42 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,12 @@ void Bureaucrat::signForm(Form& form)
 	}
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return "Grade is Too High";
-}
+Bureaucrat::GradeTooHighException::GradeTooHighException() :
+	std::domain_error("Grade is too high") {}
 
-const char* Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return "Grade is Too Low";
-}
+Bureaucrat::GradeTooLowException::GradeTooLowException() :
+	std::domain_error("Grade is too low") {}
+
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {

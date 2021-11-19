@@ -1,6 +1,7 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
+#include <stdexcept>
 #include <string>
 
 class Form;
@@ -33,13 +34,13 @@ class Form
 	static bool isGradeTooHigh(int grade);
 	static bool isGradeTooLow(int grade);
 
-	class GradeTooHighException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooHighException : public std::domain_error {
+	  public:
+		GradeTooHighException();
 	};
-	class GradeTooLowException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooLowException : public std::domain_error {
+	  public:
+		GradeTooLowException();
 	};
 };
 

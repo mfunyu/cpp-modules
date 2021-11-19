@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 14:50:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:39:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ class Bureaucrat
 
 	void executeForm(Form const& form) const;
 
-	class GradeTooHighException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooHighException : public std::domain_error {
+	  public:
+		GradeTooHighException();
 	};
-	class GradeTooLowException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooLowException : public std::domain_error {
+	  public:
+		GradeTooLowException();
 	};
 };
 

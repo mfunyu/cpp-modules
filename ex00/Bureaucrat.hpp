@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 13:50:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:38:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ class Bureaucrat
 	static bool isGradeTooHigh(int grade);
 	static bool isGradeTooLow(int grade);
 
-	class GradeTooHighException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooHighException : public std::domain_error {
+	  public:
+		GradeTooHighException();
 	};
-	class GradeTooLowException : public std::exception
-	{
-		const char* what() const throw();
+	class GradeTooLowException : public std::domain_error {
+	  public:
+		GradeTooLowException();
 	};
 };
 
