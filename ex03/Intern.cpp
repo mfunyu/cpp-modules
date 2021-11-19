@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 16:01:30 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 21:22:45 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 23:23:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ Intern& Intern::operator=(const Intern& other)
 	return *this;
 }
 
+const char* Intern::UnknownFormException::what() const throw()
+{
+	return "Unknown form type";
+}
+
 template <typename AForm>
 Form* Intern::makeAForm(std::string const& target) const
 {
@@ -39,23 +44,30 @@ Form* Intern::makeAForm(std::string const& target) const
 	return newForm;
 }
 
+Form* Intern::unknownForm(std::string const& target) const
+{
+	(void)target;
+	throw UnknownFormException();
+	return NULL;
+}
+
 Form* Intern::makeForm(
 	std::string const formName, std::string const& target) const
 {
 	std::string formNames[]
 		= { "robotomy request", "presidential pardon", "shrubbery creation" };
-	Form* (Intern::*makeForms[3])(std::string const&) const = {
+	Form* (Intern::*makeForms[4])(std::string const&) const = {
 		&Intern::makeAForm<RobotomyRequestForm>,
 		&Intern::makeAForm<PresidentialPardonForm>,
 		&Intern::makeAForm<ShrubberyCreationForm>,
+		&Intern::unknownForm
 	};
 
-	for (int i = 0; i < 3; i++) {
-		if (formNames[i] == formName) {
-			std::cout << "Intern creates " << formName << " form" << std::endl;
-			return ((this->*makeForms[i])(target));
-		}
+	int i = 0;
+	while (i < 3 && formNames[i] != formName) {
+		i++;
 	}
-	std::cout << "Intern doesn't know " << formName << " form" << std::endl;
-	return (NULL);
+	Form* createdForm = (this->*makeForms[i])(target);
+	std::cout << "Intern creates " << formName << " form" << std::endl;
+	return (createdForm);
 }
