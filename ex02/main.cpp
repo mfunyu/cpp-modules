@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 12:19:53 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 14:14:18 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 23:40:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,27 @@ void testBureaucratExecuteForm(int bureaucreatGrade)
 	}
 }
 
+void	testFormExecute(Form* f, int bureaucreatGrade, std::string target)
+{
+	std::string b_name = "Mars";
+	printFormTestInfo("Form", target);
+
+	try
+	{
+		Bureaucrat	b(b_name, bureaucreatGrade);
+
+		signForm(true, f, b);
+		f->execute(b);
+		std::cout << *f << std::endl;
+		delete f;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		delete f;
+	}
+}
+
 int main()
 {
 	std::srand(time(NULL));
@@ -231,6 +252,12 @@ int main()
 	testPresidentialPardonForm(5, true);
 	testPresidentialPardonForm(4, false);
 	testPresidentialPardonForm(70, true);
+
+	printTestName("Form Execute");
+	std::string target = "Hana";
+	testFormExecute(new ShrubberyCreationForm(target), 20, target);
+	testFormExecute(new RobotomyRequestForm(target), 20, target);
+	testFormExecute(new PresidentialPardonForm(target), 20, target);
 
 	printTestName("Copy");
 	testCopy(true);
