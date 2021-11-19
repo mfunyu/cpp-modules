@@ -6,27 +6,27 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 21:55:35 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/18 20:10:57 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 14:16:06 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ShrubberyCreationForm.hpp"
 #include <fstream>
 #include <string>
-#include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Form(other)
+ShrubberyCreationForm::ShrubberyCreationForm(
+	const ShrubberyCreationForm& other) :
+	Form(other)
 {
 	*this = other;
 }
 
-ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+ShrubberyCreationForm&
+ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-	if (this != &other)
-	{
+	if (this != &other) {
 		Form::operator=(other);
 	}
 	return *this;
@@ -34,16 +34,14 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
 	Form("ShrubberyCreationForm", kGradeToSign, kGradeToExec, target)
-{
-}
+{}
 
-void	ShrubberyCreationForm::beExecuted() const
+void ShrubberyCreationForm::beExecuted() const
 {
-	std::string		filename = getTarget() + "_shrubbery";
-	std::ofstream	ofs(filename);
+	std::string	  filename = getTarget() + "_shrubbery";
+	std::ofstream ofs(filename);
 
-	if (ofs.fail())
-	{
+	if (ofs.fail()) {
 		std::exit(1);
 	}
 	ofs << ". \n\

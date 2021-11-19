@@ -6,62 +6,61 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:06 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/ by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 14:50:19 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-# include <string>
-# include <stdexcept>
+#include <stdexcept>
+#include <string>
 
 class Bureaucrat;
 #include "Form.hpp"
 
 class Bureaucrat
 {
-	private:
-		std::string const	_name;
-		int					_grade;
+  private:
+	std::string const _name;
+	int				  _grade;
 
-		void		setGrade(int grade);
-		Bureaucrat();
+	void setGrade(int grade);
+	Bureaucrat();
 
-	public:
-		static const int	kGradeHighest = 1;
-		static const int	kGradeLowest = 150;
+  public:
+	static const int kGradeHighest = 1;
+	static const int kGradeLowest  = 150;
 
-		~Bureaucrat();
-		Bureaucrat(Bureaucrat const &other);
-		Bureaucrat	&operator=(Bureaucrat const &other);
+	~Bureaucrat();
+	Bureaucrat(Bureaucrat const& other);
+	Bureaucrat& operator=(Bureaucrat const& other);
 
-		Bureaucrat(std::string name, int grade = kGradeLowest);
+	Bureaucrat(std::string name, int grade = kGradeLowest);
 
-		std::string const &	getName() const;
-		int					getGrade() const;
+	std::string const& getName() const;
+	int				   getGrade() const;
 
-		void			incrementGrage();
-		void			decrementGrage();
+	void incrementGrage();
+	void decrementGrage();
 
-		static bool		isGradeTooHigh(int grade);
-		static bool		isGradeTooLow(int grade);
+	static bool isGradeTooHigh(int grade);
+	static bool isGradeTooLow(int grade);
 
-		void			signForm(Form &form) const;
+	void signForm(Form& form) const;
 
-		void			executeForm(Form const & form) const;
+	void executeForm(Form const& form) const;
 
-		class GradeTooHighException : public std::exception
-		{
-			const char* what() const throw();
-		};
-		class GradeTooLowException : public std::exception
-		{
-			const char* what() const throw();
-		};
+	class GradeTooHighException : public std::exception
+	{
+		const char* what() const throw();
+	};
+	class GradeTooLowException : public std::exception
+	{
+		const char* what() const throw();
+	};
 };
 
-
-std::ostream	&operator<<(std::ostream &os, const Bureaucrat& bureaucrat);
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif /* BUREAUCRAT_HPP */

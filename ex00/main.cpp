@@ -6,38 +6,36 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:06:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/03 20:10:30 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 13:17:53 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-# define SET_COLOR "\033[36m"
-# define RESET_COLOR "\033[m"
+#define SET_COLOR	"\033[36m"
+#define RESET_COLOR "\033[m"
 
-void	printTestName(std::string testName)
+void printTestName(std::string testName)
 {
-	std::cout << SET_COLOR "\n/*** Test Bureaucrat " << testName <<\
-				" ***/" RESET_COLOR << std::endl;
+	std::cout << SET_COLOR "\n/*** Test Bureaucrat " << testName
+			  << " ***/" RESET_COLOR << std::endl;
 }
 
-void	printTestInfo(std::string name, int grade, std::string append = "")
+void printTestInfo(std::string name, int grade, std::string append = "")
 {
-	std::cout << SET_COLOR "// Bureaucrat(name=" << name <<\
-				 ", grade=" << std::to_string(grade) <<\
-				 ")" << append <<\
-				 RESET_COLOR << std::endl;
+	std::cout << SET_COLOR "// Bureaucrat(name=" << name
+			  << ", grade=" << std::to_string(grade) << ")" << append
+			  << RESET_COLOR << std::endl;
 }
 
-void	testDecrement(int grade)
+void testDecrement(int grade)
 {
-	std::string		name = "Cathy";
+	std::string name = "Cathy";
 
 	printTestInfo(name, grade, ".decrementGrage()");
 
-	try
-	{
+	try {
 		Bureaucrat b(name, grade);
 		std::cout << "before: ";
 		std::cout << b << std::endl;
@@ -45,21 +43,18 @@ void	testDecrement(int grade)
 		std::cout << "after : ";
 		b.decrementGrage();
 		std::cout << b << std::endl;
-	}
-	catch(std::exception& e)
-	{
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
 
-void	testIncrement(int grade)
+void testIncrement(int grade)
 {
-	std::string		name = "Jhon";
+	std::string name = "Jhon";
 
 	printTestInfo(name, grade, ".incrementGrage()");
 
-	try
-	{
+	try {
 		Bureaucrat b(name, grade);
 		std::cout << "before: ";
 		std::cout << b << std::endl;
@@ -67,31 +62,26 @@ void	testIncrement(int grade)
 		std::cout << "after : ";
 		b.incrementGrage();
 		std::cout << b << std::endl;
-	}
-	catch(std::exception& e)
-	{
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
 
-void	testConstructor(int grade)
+void testConstructor(int grade)
 {
-	std::string		name = "Sum";
+	std::string name = "Sum";
 
 	printTestInfo(name, grade);
 
-	try
-	{
+	try {
 		Bureaucrat b(name, grade);
 		std::cout << b << std::endl;
-	}
-	catch(std::exception& e)
-	{
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
 
-int		main()
+int main()
 {
 	printTestName("Constructor");
 	testConstructor(1);
