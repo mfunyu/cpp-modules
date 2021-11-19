@@ -67,5 +67,6 @@ Form* Intern::makeForm(
 			return ((this->*makeForms[i])(target));
 		}
 	}
+	std::cout << "Intern doesn't know " << formName << " form" << std::endl;
 	return (NULL);
 }
