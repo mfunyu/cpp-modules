@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 15:58:49 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 14:17:15 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 21:26:49 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 class Intern
 {
   private:
-	Form* makeRobotomyRequestForm(std::string const& target) const;
-	Form* makePresidentialPardonForm(std::string const& target) const;
-	Form* makeShrubberyCreationForm(std::string const& target) const;
+	template <typename AForm>
+	Form* makeAForm(std::string const& target) const;
 
   public:
 	Intern();

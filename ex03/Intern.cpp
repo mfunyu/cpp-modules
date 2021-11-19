@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 16:01:30 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/19 14:17:00 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/19 21:22:45 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,10 @@ Intern& Intern::operator=(const Intern& other)
 	return *this;
 }
 
-Form* Intern::makeRobotomyRequestForm(std::string const& target) const
+template <typename AForm>
+Form* Intern::makeAForm(std::string const& target) const
 {
-	Form* newForm = new RobotomyRequestForm(target);
-	return newForm;
-}
-
-Form* Intern::makePresidentialPardonForm(std::string const& target) const
-{
-	Form* newForm = new PresidentialPardonForm(target);
-	return newForm;
-}
-
-Form* Intern::makeShrubberyCreationForm(std::string const& target) const
-{
-	Form* newForm = new ShrubberyCreationForm(target);
+	AForm* newForm = new AForm(target);
 	return newForm;
 }
 
@@ -56,9 +45,9 @@ Form* Intern::makeForm(
 	std::string formNames[]
 		= { "robotomy request", "presidential pardon", "shrubbery creation" };
 	Form* (Intern::*makeForms[3])(std::string const&) const = {
-		&Intern::makeRobotomyRequestForm,
-		&Intern::makePresidentialPardonForm,
-		&Intern::makeShrubberyCreationForm,
+		&Intern::makeAForm<RobotomyRequestForm>,
+		&Intern::makeAForm<PresidentialPardonForm>,
+		&Intern::makeAForm<ShrubberyCreationForm>,
 	};
 
 	for (int i = 0; i < 3; i++) {
