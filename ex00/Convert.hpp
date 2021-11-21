@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:18:27 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:24:50 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ class Convert
 	void interpretCurrentType();
 
   public:
-	~Convert();
 	Convert(Convert const& other);
+	~Convert();
 	Convert& operator=(Convert const& other);
 
 	Convert(std::string const& str);

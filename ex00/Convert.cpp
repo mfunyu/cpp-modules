@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:18:27 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:24:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <string>
 
 std::string Convert::impossible = "impossible";
+
+Convert::Convert(std::string const& str) : _str(str), _precision(0) {}
 
 Convert::~Convert() {}
 
@@ -39,8 +41,6 @@ Convert& Convert::operator=(const Convert& other)
 	}
 	return *this;
 }
-
-Convert::Convert(std::string const& str) : _str(str), _precision(0) {}
 
 void Convert::convertDoubleToStr_char()
 {
