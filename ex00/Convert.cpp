@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 18:37:35 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:02:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,12 @@ void Convert::interpretCurrentType()
 		setImpossible();
 		return;
 	}
-	if (isPseudoLiteral()) {
+	if (isPseudoLiteral(_str)) {
 		setPseudoLiteral();
 		return;
 	}
 
-	if (isNonNumericChar()) {
-		storeStrAsChar();
-		return;
-	}
-
-	if (!isNumeric()) {
+	if (!isNumeric(_str) && !isNonNumericChar(_str)) {
 		setImpossible();
 		return;
 	}
@@ -92,18 +87,17 @@ void Convert::interpretCurrentType()
 	storeStrAsDouble();
 }
 
-void Convert::storeStrAsChar()
-{
-	_stored = static_cast<double>(_str.at(0));
-}
-
 void Convert::storeStrAsDouble()
 {
-	std::string str = _str;
-	if (str.at(str.length() - 1) == 'f') {
-		str.erase(str.length() - 1, 1);
+	if (isNonNumericChar(_str)) {
+		_stored = static_cast<double>(_str.at(0));
+		return;
 	}
-	std::istringstream iss(str);
+	std::string strcopy = _str;
+	if (strcopy.at(strcopy.length() - 1) == 'f') {
+		strcopy.erase(strcopy.length() - 1, 1);
+	}
+	std::istringstream iss(strcopy);
 
 	iss >> _stored;
 }
@@ -210,60 +204,40 @@ void Convert::setPseudoLiteral()
 	}
 }
 
-void Convert::setNumericIndexes(int& numeric_head, int& numeric_tail)
+bool Convert::isPseudoLiteral(std::string s)
 {
-	if (_str.at(0) == '-' || _str.at(0) == '+') {
-		numeric_head += 1;
-	}
-	if (_str.at(numeric_tail - 1) == 'f') {
-		numeric_tail -= 1;
-	}
-}
-
-bool Convert::isNumeric()
-{
-	int numeric_head = 0;
-	int numeric_tail = _str.length();
-	setNumericIndexes(numeric_head, numeric_tail);
-
-	bool fraction  = false;
-	int	 zero_tail = 0;
-	for (int i = numeric_head; i < numeric_tail; i++) {
-		if (!fraction && _str.at(i) == '.') {
-			fraction = true;
-			continue;
-		}
-		if (!std::isdigit(_str.at(i))) {
-			return false;
-		}
-		if (fraction) {
-			_precision += 1;
-			zero_tail = (_str.at(i) == '0' ? ++zero_tail : 0);
-		}
-	}
-	_precision -= zero_tail;
-	return true;
-}
-
-
-bool Convert::isNonNumericChar()
-{
-	return (_str.length() == 1 && !std::isdigit(_str.at(0))
-			&& std::isprint(_str.at(0)));
-}
-
-
-
-bool Convert::isPseudoLiteral()
-{
-	std::string str = _str;
-	if (str == "nan" || str == "nanf") {
+	if (s == "nan" || s == "nanf") {
 		return true;
 	}
-	if (str.at(0) == '-' || str.at(0) == '+') {
-		str.erase(0, 1);
+	if (s.at(0) == '-' || s.at(0) == '+') {
+		s.erase(0, 1);
 	}
-	return (str == "inf" || str == "inff");
+	return (s == "inf" || s == "inff");
+}
+
+bool Convert::isNonNumericChar(std::string const & s)
+{
+	return (s.length() == 1 && !std::isdigit(s.at(0))
+			&& std::isprint(s.at(0)));
+}
+
+bool Convert::isNumeric(std::string const & s)
+{
+	int head = 0;
+
+	if (s.at(0) == '-' || s.at(0) == '+') {
+		head += 1;
+	}
+	if (s.find('.', 0) != s.rfind('.', std::string::npos)) {
+		return false;
+	}
+	int tail = s.length();
+	for (int i = head; i < tail; i++) {
+		if (s.at(i) != '.' && !std::isdigit(s.at(i))) {
+			return false;
+		}
+	}
+	return true;
 }
 
 std::ostream& operator<<(std::ostream& os, Convert const& value)

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 18:38:03 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:03:01 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ class Convert
 
 	void interpretCurrentType();
 	void storeStrAsDouble();
-	void storeStrAsChar();
 
 	void convertDoubleToCharStr();
 	void convertDoubleToIntStr();
@@ -60,9 +59,9 @@ class Convert
 	void setImpossible();
 	void setPseudoLiteral();
 
-	bool isPseudoLiteral();
-	bool isNonNumericChar();
-	bool isNumeric();
+	static bool isPseudoLiteral(std::string s);
+	static bool isNonNumericChar(std::string const & s);
+	static bool isNumeric(std::string const & s);
 
 	Convert();
 };
