@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.cpp                                        :+:      :+:    :+:   */
+/*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 17:09:20 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 11:45:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,11 @@ void	Convert::convertDoubleToStr_types()
 
 void	Convert::convertStrToChar()
 {
-	std::cout << "CHAR" << std::endl;
 	_stored = static_cast<double>(_str.at(0));
 }
 
 void	Convert::convertStrToDouble()
 {
-	std::cout << "DOUBLE" << std::endl;
 	std::string		str = _str;
 	if (str.at(str.length() - 1) == 'f') {
 		str.erase(str.length() - 1, 1);
