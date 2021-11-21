@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:30 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:22:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 20:57:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ void	printSubHeader(std::string content)
 				 COLOR_RESET << std::endl;
 }
 
+void	printHelp()
+{
+	std::cout << "Usage: ./convert [argument]\n" << std::endl;
+	std::cout << "  \"argument\"" << std::endl;
+	std::cout << "\tvalue\t-> run test with the value" << std::endl;
+	std::cout << "\t\"limits\"-> run test with max and min valuse of int, float, double" << std::endl;
+	std::cout << "\t\"nan\"\t-> run test with nan, inf, +inff etc." << std::endl;
+}
 } // namespace
 
 /* -------------------------------------------------------------------------- */
@@ -54,7 +62,8 @@ void limits_test(double arg, int precision)
 int main(int ac, char** av)
 {
 	if (ac != 2) {
-		print_error("Invalid Arguments");
+		printHelp();
+		return 0;
 	}
 
 	std::string str = av[1];
