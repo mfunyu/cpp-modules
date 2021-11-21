@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:24:50 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 13:22:23 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Convert
 {
-  private:
 	std::string const _str;
 	double			  _stored;
 	int				  _precision;
@@ -27,9 +26,22 @@ class Convert
 	std::string _floatStr;
 	std::string _doubleStr;
 
-	static std::string impossible;
+  public:
+	Convert(std::string const& str);
+	~Convert();
+	Convert(Convert const& other);
+	Convert& operator=(Convert const& other);
 
-	Convert();
+	std::string const& getCharStr() const;
+	std::string const& getIntStr() const;
+	std::string const& getFloatStr() const;
+	std::string const& getDoubleStr() const;
+
+	void solve();
+
+  private:
+
+	static std::string impossible;
 
 	void convertDoubleToStr_char();
 	void convertDoubleToStr_int();
@@ -52,19 +64,7 @@ class Convert
 
 	void interpretCurrentType();
 
-  public:
-	Convert(Convert const& other);
-	~Convert();
-	Convert& operator=(Convert const& other);
-
-	Convert(std::string const& str);
-
-	std::string const& getCharStr() const;
-	std::string const& getIntStr() const;
-	std::string const& getFloatStr() const;
-	std::string const& getDoubleStr() const;
-
-	void solve();
+	Convert();
 };
 
 std::ostream& operator<<(std::ostream& os, Convert const& value);

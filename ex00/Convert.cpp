@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:24:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 13:22:03 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ Convert& Convert::operator=(const Convert& other)
 		_doubleStr = other._doubleStr;
 	}
 	return *this;
+}
+
+std::string const& Convert::getCharStr() const { return _charStr; }
+
+std::string const& Convert::getIntStr() const { return _intStr; }
+
+std::string const& Convert::getFloatStr() const { return _floatStr; }
+
+std::string const& Convert::getDoubleStr() const { return _doubleStr; }
+
+void Convert::solve()
+{
+	interpretCurrentType();
+	convertDoubleToStr_types();
 }
 
 void Convert::convertDoubleToStr_char()
@@ -235,32 +249,6 @@ void Convert::interpretCurrentType()
 	}
 
 	convertStrToDouble();
-}
-
-void Convert::solve()
-{
-	interpretCurrentType();
-	convertDoubleToStr_types();
-}
-
-std::string const& Convert::getCharStr() const
-{
-	return _charStr;
-}
-
-std::string const& Convert::getIntStr() const
-{
-	return _intStr;
-}
-
-std::string const& Convert::getFloatStr() const
-{
-	return _floatStr;
-}
-
-std::string const& Convert::getDoubleStr() const
-{
-	return _doubleStr;
 }
 
 std::ostream& operator<<(std::ostream& os, Convert const& value)
