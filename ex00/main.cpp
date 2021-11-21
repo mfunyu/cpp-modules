@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:30 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:12:11 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:22:29 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void print_error(std::string const& err_msg)
 void test(std::string arg)
 {
 	Convert converter(arg);
-	converter.solve();
 	std::cout << converter << std::endl;
 }
 
@@ -40,7 +39,6 @@ void test(double arg, int precision)
 	std::cout << "---- " << str << " ----" << std::endl;
 
 	Convert converter(str);
-	converter.solve();
 	std::cout << converter << std::endl;
 }
 

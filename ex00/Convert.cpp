@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:16:48 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:21:47 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,28 @@
 
 std::string Convert::impossible = "impossible";
 
-Convert::Convert(std::string const& str) : _str(str), _precision(0) {}
+Convert::Convert(std::string const& str) : _str(str), _precision(0)
+{
+	if (_str.empty()) {
+		setImpossible();
+		return;
+	}
+	if (isPseudoLiteral(_str)) {
+		setPseudoLiteral();
+		return;
+	}
+	if (!isNumeric(_str) && !isNonNumericChar(_str)) {
+		setImpossible();
+		return;
+	}
+
+	storeStrAsDouble();
+
+	setDoubleStr();
+	setFloatStr();
+	setIntStr();
+	setCharStr();
+}
 
 Convert::~Convert() {}
 
@@ -62,30 +83,6 @@ std::string const& Convert::getDoubleStr() const
 	return _doubleStr;
 }
 
-void Convert::solve()
-{
-	if (_str.empty()) {
-		setImpossible();
-		return;
-	}
-	if (isPseudoLiteral(_str)) {
-		setPseudoLiteral();
-		return;
-	}
-
-	if (!isNumeric(_str) && !isNonNumericChar(_str)) {
-		setImpossible();
-		return;
-	}
-
-	storeStrAsDouble();
-	
-	convertDoubleToDoubleStr();
-	convertDoubleToFloatStr();
-	convertDoubleToIntStr();
-	convertDoubleToCharStr();
-}
-
 void Convert::storeStrAsDouble()
 {
 	if (isNonNumericChar(_str)) {
@@ -101,7 +98,7 @@ void Convert::storeStrAsDouble()
 	iss >> _stored;
 }
 
-void Convert::convertDoubleToCharStr()
+void Convert::setCharStr()
 {
 	if (_intStr == impossible) {
 		_charStr = impossible;
@@ -118,7 +115,7 @@ void Convert::convertDoubleToCharStr()
 	_charStr = "'" + _charStr + "'";
 }
 
-void Convert::convertDoubleToIntStr()
+void Convert::setIntStr()
 {
 	if (_stored < INT_MIN || INT_MAX < _stored) {
 		_intStr = impossible;
@@ -132,7 +129,7 @@ void Convert::convertDoubleToIntStr()
 	_intStr = oss.str();
 }
 
-void Convert::convertDoubleToFloatStr()
+void Convert::setFloatStr()
 {
 	if (_doubleStr == impossible) {
 		_floatStr = impossible;
@@ -150,7 +147,7 @@ void Convert::convertDoubleToFloatStr()
 	_floatStr = oss.str() + "f";
 }
 
-void Convert::convertDoubleToDoubleStr()
+void Convert::setDoubleStr()
 {
 	double d = _stored;
 
@@ -203,13 +200,12 @@ bool Convert::isPseudoLiteral(std::string s)
 	return (s == "inf" || s == "inff");
 }
 
-bool Convert::isNonNumericChar(std::string const & s)
+bool Convert::isNonNumericChar(std::string const& s)
 {
-	return (s.length() == 1 && !std::isdigit(s.at(0))
-			&& std::isprint(s.at(0)));
+	return (s.length() == 1 && !std::isdigit(s.at(0)) && std::isprint(s.at(0)));
 }
 
-bool Convert::isNumeric(std::string const & s)
+bool Convert::isNumeric(std::string const& s)
 {
 	int head = 0;
 

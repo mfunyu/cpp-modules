@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:17:43 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:21:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,15 @@ class Convert
 	std::string const& getFloatStr() const;
 	std::string const& getDoubleStr() const;
 
-	void solve();
-
   private:
 	static std::string impossible;
 
 	void storeStrAsDouble();
 
-	void convertDoubleToCharStr();
-	void convertDoubleToIntStr();
-	void convertDoubleToFloatStr();
-	void convertDoubleToDoubleStr();
+	void setCharStr();
+	void setIntStr();
+	void setFloatStr();
+	void setDoubleStr();
 
 	void setNumericIndexes(int& numeric_head, int& numeric_tail);
 
@@ -55,8 +53,8 @@ class Convert
 	void setPseudoLiteral();
 
 	static bool isPseudoLiteral(std::string s);
-	static bool isNonNumericChar(std::string const & s);
-	static bool isNumeric(std::string const & s);
+	static bool isNonNumericChar(std::string const& s);
+	static bool isNumeric(std::string const& s);
 
 	Convert();
 };
