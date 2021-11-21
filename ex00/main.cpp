@@ -10,33 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Convert.hpp"
 #include <iomanip>
+#include <iostream>
 #include <limits>
 #include <sstream>
-#include "Convert.hpp"
 
-void	print_error(std::string const &err_msg)
+void print_error(std::string const& err_msg)
 {
 	std::cerr << "Error: " << err_msg << std::endl;
 	std::exit(1);
 }
 
-void	test(std::string arg)
+void test(std::string arg)
 {
 	Convert converter(arg);
 	converter.solve();
 	converter.displayResults();
 }
 
-void	test(double arg, int precision)
+void test(double arg, int precision)
 {
 	std::cout << std::endl;
 
-	std::ostringstream	oss;
+	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(precision) << arg << std::flush;
 
-	std::string		str = oss.str();
+	std::string str = oss.str();
 	std::cout << "---- " << str << " ----" << std::endl;
 
 	Convert converter(str);
@@ -44,10 +44,9 @@ void	test(double arg, int precision)
 	converter.displayResults();
 }
 
-int		main(int ac, char **av)
+int main(int ac, char** av)
 {
-	if (ac != 2)
-	{
+	if (ac != 2) {
 		print_error("Invalid Arguments");
 	}
 

@@ -6,87 +6,82 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 11:45:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:06:30 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <climits>
-#include <limits>
 #include "Convert.hpp"
+#include <climits>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <sstream>
+#include <string>
 
-std::string	Convert::impossible = "impossible";
+std::string Convert::impossible = "impossible";
 
-Convert::~Convert()
-{
-}
+Convert::~Convert() {}
 
-Convert::Convert(const Convert &other) : _str(other._str)
+Convert::Convert(const Convert& other) : _str(other._str)
 {
 	*this = other;
 }
 
-Convert	&Convert::operator=(const Convert &other)
+Convert& Convert::operator=(const Convert& other)
 {
-	if (this != &other)
-	{
-		_stored = other._stored;
+	if (this != &other) {
+		_stored	   = other._stored;
 		_precision = other._precision;
-		_strChar = other._strChar;
-		_strInt = other._strInt;
-		_strFloat = other._strFloat;
+		_strChar   = other._strChar;
+		_strInt	   = other._strInt;
+		_strFloat  = other._strFloat;
 		_strDouble = other._strDouble;
 	}
 	return *this;
 }
 
-Convert::Convert(std::string const & str) : _str(str), _precision(0)
-{
-}
+Convert::Convert(std::string const& str) : _str(str), _precision(0) {}
 
-void	Convert::convertDoubleToStr_char()
+void Convert::convertDoubleToStr_char()
 {
 	if (_strInt == impossible) {
 		_strChar = impossible;
-		return ;
+		return;
 	}
 
-	int		i = static_cast<int>(_stored);
+	int i = static_cast<int>(_stored);
 	if (!std::isprint(i)) {
 		_strChar = "Non displayable";
-		return ;
+		return;
 	}
 
 	_strChar = static_cast<char>(_stored);
 	_strChar = "'" + _strChar + "'";
 }
 
-void	Convert::convertDoubleToStr_int()
+void Convert::convertDoubleToStr_int()
 {
 	if (_stored < INT_MIN || INT_MAX < _stored) {
 		_strInt = impossible;
-		return ;
+		return;
 	}
 
-	int		i = static_cast<int>(_stored);
+	int i = static_cast<int>(_stored);
 
 	std::ostringstream oss;
 	oss << i << std::flush;
 	_strInt = oss.str();
 }
 
-void	Convert::convertDoubleToStr_float()
+void Convert::convertDoubleToStr_float()
 {
 	if (_strDouble == impossible) {
 		_strFloat = impossible;
-		return ;
+		return;
 	}
-	float	f = static_cast<float>(_stored);
+	float f = static_cast<float>(_stored);
 
-	int		max_precision = std::max(_precision, 1);
+	int max_precision = std::max(_precision, 1);
 	if (f == 0) {
 		max_precision = 1;
 	}
@@ -96,11 +91,11 @@ void	Convert::convertDoubleToStr_float()
 	_strFloat = oss.str() + "f";
 }
 
-void	Convert::convertDoubleToStr_double()
+void Convert::convertDoubleToStr_double()
 {
-	double	d = _stored;
+	double d = _stored;
 
-	int		max_precision = std::max(_precision, 1);
+	int max_precision = std::max(_precision, 1);
 	if (d == 0) {
 		max_precision = 1;
 	}
@@ -110,11 +105,10 @@ void	Convert::convertDoubleToStr_double()
 	_strDouble = oss.str();
 }
 
-
-void	Convert::convertDoubleToStr_types()
+void Convert::convertDoubleToStr_types()
 {
 	if (!_strDouble.empty()) {
-		return ;
+		return;
 	}
 	convertDoubleToStr_double();
 	convertDoubleToStr_float();
@@ -122,15 +116,14 @@ void	Convert::convertDoubleToStr_types()
 	convertDoubleToStr_char();
 }
 
-
-void	Convert::convertStrToChar()
+void Convert::convertStrToChar()
 {
 	_stored = static_cast<double>(_str.at(0));
 }
 
-void	Convert::convertStrToDouble()
+void Convert::convertStrToDouble()
 {
-	std::string		str = _str;
+	std::string str = _str;
 	if (str.at(str.length() - 1) == 'f') {
 		str.erase(str.length() - 1, 1);
 	}
@@ -139,42 +132,41 @@ void	Convert::convertStrToDouble()
 	iss >> _stored;
 }
 
-bool	Convert::isNonNumericChar()
+bool Convert::isNonNumericChar()
 {
-	return ( _str.length() == 1
-			&& !std::isdigit(_str.at(0))
-			&& std::isprint(_str.at(0)) );
+	return (_str.length() == 1 && !std::isdigit(_str.at(0))
+			&& std::isprint(_str.at(0)));
 }
 
-void	Convert::setImpossible()
+void Convert::setImpossible()
 {
 	_strDouble = impossible;
-	_strFloat = impossible;
-	_strInt = impossible;
-	_strChar = impossible;
+	_strFloat  = impossible;
+	_strInt	   = impossible;
+	_strChar   = impossible;
 }
 
-void	Convert::setPseudoLiteral()
+void Convert::setPseudoLiteral()
 {
-	_strInt = impossible;
+	_strInt	 = impossible;
 	_strChar = impossible;
 
 	if (_str.find("nan") != std::string::npos) {
 		_strDouble = "nan";
-		_strFloat = "nanf";
-		return ;
+		_strFloat  = "nanf";
+		return;
 	}
 	if (_str.find("inf") != std::string::npos) {
 		if (_str.at(0) == '+' || _str.at(0) == '-') {
 			_strDouble = _str.at(0);
-			_strFloat = _str.at(0);
+			_strFloat  = _str.at(0);
 		}
 		_strDouble += "inf";
 		_strFloat += "inff";
 	}
 }
 
-void	Convert::setNumericIndexes(int & numeric_head, int & numeric_tail)
+void Convert::setNumericIndexes(int& numeric_head, int& numeric_tail)
 {
 	if (_str.at(0) == '-' || _str.at(0) == '+') {
 		numeric_head += 1;
@@ -184,18 +176,18 @@ void	Convert::setNumericIndexes(int & numeric_head, int & numeric_tail)
 	}
 }
 
-bool	Convert::isNumeric()
+bool Convert::isNumeric()
 {
-	int		numeric_head = 0;
-	int		numeric_tail = _str.length();
+	int numeric_head = 0;
+	int numeric_tail = _str.length();
 	setNumericIndexes(numeric_head, numeric_tail);
 
-	bool	fraction = false;
-	int		zero_tail = 0;
+	bool fraction  = false;
+	int	 zero_tail = 0;
 	for (int i = numeric_head; i < numeric_tail; i++) {
 		if (!fraction && _str.at(i) == '.') {
 			fraction = true;
-			continue ;
+			continue;
 		}
 		if (!std::isdigit(_str.at(i))) {
 			return false;
@@ -209,9 +201,9 @@ bool	Convert::isNumeric()
 	return true;
 }
 
-bool	Convert::isPseudoLiteral()
+bool Convert::isPseudoLiteral()
 {
-	std::string		str = _str;
+	std::string str = _str;
 	if (str == "nan" || str == "nanf") {
 		return true;
 	}
@@ -221,31 +213,31 @@ bool	Convert::isPseudoLiteral()
 	return (str == "inf" || str == "inff");
 }
 
-void	Convert::interpretCurrentType()
+void Convert::interpretCurrentType()
 {
 	if (_str.empty()) {
 		setImpossible();
-		return ;
+		return;
 	}
 	if (isPseudoLiteral()) {
 		setPseudoLiteral();
-		return ;
+		return;
 	}
 
 	if (isNonNumericChar()) {
 		convertStrToChar();
-		return ;
+		return;
 	}
 
 	if (!isNumeric()) {
 		setImpossible();
-		return ;
+		return;
 	}
 
 	convertStrToDouble();
 }
 
-void	Convert::solve()
+void Convert::solve()
 {
 	interpretCurrentType();
 	convertDoubleToStr_types();

@@ -11,57 +11,60 @@
 /* ************************************************************************** */
 
 #ifndef CONVERT_HPP
-# define CONVERT_HPP
+#define CONVERT_HPP
 
-# include <string>
+#include <string>
 
 class Convert
 {
 	private:
-		std::string const	_str;
-		double				_stored;
-		int					_precision;
+	std::string const _str;
+	double			  _stored;
+	int				  _precision;
 
-		std::string			_strChar;
-		std::string			_strInt;
-		std::string			_strFloat;
-		std::string			_strDouble;
+	std::string _strChar;
+	std::string _strInt;
+	std::string _strFloat;
+	std::string _strDouble;
 
-		static std::string	impossible;
+	static std::string impossible;
 
 		Convert();
 
-		void	convertDoubleToStr_char();
-		void	convertDoubleToStr_int();
-		void	convertDoubleToStr_float();
-		void	convertDoubleToStr_double();
+	void convertDoubleToStr_char();
+	void convertDoubleToStr_int();
+	void convertDoubleToStr_float();
+	void convertDoubleToStr_double();
 
-		void	convertDoubleToStr_types();
+	void convertDoubleToStr_types();
 
-		void	convertStrToChar();
-		void	convertStrToDouble();
+	void convertStrToChar();
+	void convertStrToDouble();
 
-		void	setNumericIndexes(int & numeric_head, int & numeric_tail);
+	void setNumericIndexes(int& numeric_head, int& numeric_tail);
 
-		bool	isNonNumericChar();
+	bool isNonNumericChar();
 
-		void	setImpossible();
-		void	setPseudoLiteral();
-		bool	isNumeric();
-		bool	isPseudoLiteral();
+	void setImpossible();
+	void setPseudoLiteral();
+	bool isNumeric();
+	bool isPseudoLiteral();
 
-		void	interpretCurrentType();
+	void interpretCurrentType();
 
 	public:
 		~Convert();
-		Convert(Convert const &other);
-		Convert	&operator=(Convert const &other);
+	Convert(Convert const& other);
+	Convert& operator=(Convert const& other);
 
-		Convert(std::string const & str);
+	Convert(std::string const& str);
 
-		void	solve();
+	std::string const & getCharValue() const;
+	std::string const & getIntValue() const;
+	std::string const & getFloatValue() const;
+	std::string const & getDoubleValue() const;
 
-		void	displayResults() const;
+	void solve();
 };
 
 #endif /* CONVERT_HPP */
