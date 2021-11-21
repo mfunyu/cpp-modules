@@ -55,6 +55,7 @@ void	identify(Base* p)
 		std::cout << "C" << std::endl;
 		return ;
 	}
+	std::cout << "Unknown Type" << std::endl;
 }
 
 void	identify(Base& p)
