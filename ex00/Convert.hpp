@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:03:01 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:17:43 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ class Convert
   private:
 	static std::string impossible;
 
-	void interpretCurrentType();
 	void storeStrAsDouble();
 
 	void convertDoubleToCharStr();
@@ -50,11 +49,7 @@ class Convert
 	void convertDoubleToFloatStr();
 	void convertDoubleToDoubleStr();
 
-	void convertDoubleToTypeStr();
-
-
 	void setNumericIndexes(int& numeric_head, int& numeric_tail);
-
 
 	void setImpossible();
 	void setPseudoLiteral();

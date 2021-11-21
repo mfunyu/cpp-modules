@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:02:29 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:16:48 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,6 @@ std::string const& Convert::getDoubleStr() const
 
 void Convert::solve()
 {
-	interpretCurrentType();
-	convertDoubleToTypeStr();
-}
-
-void Convert::interpretCurrentType()
-{
 	if (_str.empty()) {
 		setImpossible();
 		return;
@@ -85,6 +79,11 @@ void Convert::interpretCurrentType()
 	}
 
 	storeStrAsDouble();
+	
+	convertDoubleToDoubleStr();
+	convertDoubleToFloatStr();
+	convertDoubleToIntStr();
+	convertDoubleToCharStr();
 }
 
 void Convert::storeStrAsDouble()
@@ -163,17 +162,6 @@ void Convert::convertDoubleToDoubleStr()
 	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(max_precision) << d << std::flush;
 	_doubleStr = oss.str();
-}
-
-void Convert::convertDoubleToTypeStr()
-{
-	if (!_doubleStr.empty()) {
-		return;
-	}
-	convertDoubleToDoubleStr();
-	convertDoubleToFloatStr();
-	convertDoubleToIntStr();
-	convertDoubleToCharStr();
 }
 
 void Convert::setImpossible()
