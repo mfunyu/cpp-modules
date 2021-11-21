@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:21:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:54:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Convert::Convert(std::string const& str) : _str(str), _precision(0)
 	}
 
 	storeStrAsDouble();
+	countPrecision();
 
 	setDoubleStr();
 	setFloatStr();
@@ -96,6 +97,27 @@ void Convert::storeStrAsDouble()
 	std::istringstream iss(strcopy);
 
 	iss >> _stored;
+}
+
+void Convert::countPrecision()
+{
+	unsigned long integerDigits = _str.find('.', 0);
+	if (integerDigits == std::string::npos){
+		return;
+	}
+	integerDigits += 1;
+
+	unsigned long nonZeroDigits = _str.find_last_not_of('0');
+	if (nonZeroDigits == std::string::npos) {
+		_precision = _str.size() - integerDigits;
+	}
+	nonZeroDigits += 1;
+
+	if (nonZeroDigits <= integerDigits) {
+		_precision = 0;
+	} else {
+		_precision = nonZeroDigits - integerDigits;
+	}
 }
 
 void Convert::setCharStr()

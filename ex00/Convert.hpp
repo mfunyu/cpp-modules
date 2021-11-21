@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 19:21:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 19:26:00 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ class Convert
 
 	void storeStrAsDouble();
 
+	void countPrecision();
+
 	void setCharStr();
 	void setIntStr();
 	void setFloatStr();
 	void setDoubleStr();
-
-	void setNumericIndexes(int& numeric_head, int& numeric_tail);
 
 	void setImpossible();
 	void setPseudoLiteral();
