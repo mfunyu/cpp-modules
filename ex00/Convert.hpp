@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 16:44:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:06:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Convert
 {
-	private:
+  private:
 	std::string const _str;
 	double			  _stored;
 	int				  _precision;
@@ -29,7 +29,7 @@ class Convert
 
 	static std::string impossible;
 
-		Convert();
+	Convert();
 
 	void convertDoubleToStr_char();
 	void convertDoubleToStr_int();
@@ -52,8 +52,8 @@ class Convert
 
 	void interpretCurrentType();
 
-	public:
-		~Convert();
+  public:
+	~Convert();
 	Convert(Convert const& other);
 	Convert& operator=(Convert const& other);
 
@@ -66,5 +66,7 @@ class Convert
 
 	void solve();
 };
+
+std::ostream & operator<<(std::ostream & os, Convert const & value);
 
 #endif /* CONVERT_HPP */

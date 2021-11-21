@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:30 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 13:05:22 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:12:11 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void test(std::string arg)
 {
 	Convert converter(arg);
 	converter.solve();
-	converter.displayResults();
+	std::cout << converter << std::endl;
 }
 
 void test(double arg, int precision)
@@ -41,7 +41,7 @@ void test(double arg, int precision)
 
 	Convert converter(str);
 	converter.solve();
-	converter.displayResults();
+	std::cout << converter << std::endl;
 }
 
 int main(int ac, char** av)
@@ -52,14 +52,14 @@ int main(int ac, char** av)
 
 	test(av[1]);
 
-	#ifdef LIMIT
+#ifdef LIMIT
 	test(std::numeric_limits<int>::max(), 0);
 	test(std::numeric_limits<int>::min(), 0);
 	test(std::numeric_limits<float>::max(), 1);
 	test(std::numeric_limits<float>::min(), 150);
 	test(std::numeric_limits<double>::max(), 1);
 	test(std::numeric_limits<double>::min(), 1050);
-	#endif
+#endif
 
 	return 0;
 }

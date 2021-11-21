@@ -243,10 +243,31 @@ void Convert::solve()
 	convertDoubleToStr_types();
 }
 
-void	Convert::displayResults() const
+std::string const & Convert::getCharValue() const
 {
-	std::cout << "char: " << _strChar << std::endl;
-	std::cout << "int: " << _strInt << std::endl;
-	std::cout << "float: " << _strFloat << std::endl;
-	std::cout << "double: " << _strDouble << std::endl;
+	return _strChar;
+}
+
+std::string const & Convert::getIntValue() const
+{
+	return _strInt;
+}
+
+std::string const & Convert::getFloatValue() const
+{
+	return _strFloat;
+}
+
+std::string const & Convert::getDoubleValue() const
+{
+	return _strDouble;
+}
+
+std::ostream & operator<<(std::ostream & os, Convert const & value)
+{
+	os << "char: " << value.getCharValue() << std::endl;
+	os << "int: " << value.getIntValue() << std::endl;
+	os << "float: " << value.getFloatValue() << std::endl;
+	os << "double: " << value.getDoubleValue();
+	return os;
 }
