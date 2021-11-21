@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 20:44:55 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/06 23:58:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 21:33:57 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+
+
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void	printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN <<\
+				 "*** " << content << " ***" <<\
+				 COLOR_RESET << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
 
 Base*	generate(void)
 {
@@ -78,17 +96,38 @@ void	identify(Base& p)
 	}
 }
 
+/* ---------------------------------- tests --------------------------------- */
+
+void	call_identifies(Base* anonymised)
+{
+	std::cout << "void identify(Base* p) : ";
+	identify(anonymised);
+
+	std::cout << "void identify(Base& p) : ";
+	identify(*anonymised);
+}
+
 int		main()
 {
 	std::srand(time(NULL));
 
+	printHeader("Class A");
+	Base*	a = new A();
+	call_identifies(a);
+	delete a;
+
+	printHeader("Class B");
+	Base*	b = new B();
+	call_identifies(b);
+	delete b;
+
+	printHeader("Class C");
+	Base*	c = new C();
+	call_identifies(c);
+	delete c;
+
+	printHeader("random()");
 	Base*	random = generate();
-
-	std::cout << "void identify(Base* p) : ";
-	identify(random);
-
-	std::cout << "void identify(Base& p) : ";
-	identify(*random);
-
+	call_identifies(random);
 	delete random;
 }
