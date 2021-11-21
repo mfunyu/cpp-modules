@@ -16,30 +16,39 @@
 #include <limits>
 #include <sstream>
 
-void print_error(std::string const& err_msg)
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_CYAN "\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void	printSubHeader(std::string content)
 {
-	std::cerr << "Error: " << err_msg << std::endl;
-	std::exit(1);
+	std::cout << COLOR_CYAN <<\
+				 "[ " << content << " ]" <<\
+				 COLOR_RESET << std::endl;
 }
+
+} // namespace
+
+/* -------------------------------------------------------------------------- */
 
 void test(std::string arg)
 {
+	printSubHeader(arg);
+
 	Convert converter(arg);
 	std::cout << converter << std::endl;
 }
 
-void test(double arg, int precision)
+void limits_test(double arg, int precision)
 {
-	std::cout << std::endl;
-
 	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(precision) << arg << std::flush;
 
 	std::string str = oss.str();
-	std::cout << "---- " << str << " ----" << std::endl;
 
-	Convert converter(str);
-	std::cout << converter << std::endl;
+	test(str);
 }
 
 int main(int ac, char** av)
@@ -48,16 +57,27 @@ int main(int ac, char** av)
 		print_error("Invalid Arguments");
 	}
 
-	test(av[1]);
+	std::string str = av[1];
 
-#ifdef LIMIT
-	test(std::numeric_limits<int>::max(), 0);
-	test(std::numeric_limits<int>::min(), 0);
-	test(std::numeric_limits<float>::max(), 1);
-	test(std::numeric_limits<float>::min(), 150);
-	test(std::numeric_limits<double>::max(), 1);
-	test(std::numeric_limits<double>::min(), 1050);
-#endif
+	if (str == "limits") {
+		limits_test(std::numeric_limits<int>::max(), 0);
+		limits_test(std::numeric_limits<int>::min(), 0);
+		limits_test(std::numeric_limits<float>::min(), 150);
+		limits_test(std::numeric_limits<float>::max(), 1);
+		limits_test(std::numeric_limits<double>::max(), 1);
+		limits_test(std::numeric_limits<double>::min(), 1050);
+	} else if (str == "nan") {
+		test("nan");
+		test("nanf");
+		test("inf");
+		test("inff");
+		test("-inf");
+		test("-inff");
+		test("+inf");
+		test("+inff");
+	} else {
+		test(str);
+	}
 
 	return 0;
 }
