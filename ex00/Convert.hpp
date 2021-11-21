@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 13:22:23 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 18:38:03 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,29 @@ class Convert
 	void solve();
 
   private:
-
 	static std::string impossible;
 
-	void convertDoubleToStr_char();
-	void convertDoubleToStr_int();
-	void convertDoubleToStr_float();
-	void convertDoubleToStr_double();
+	void interpretCurrentType();
+	void storeStrAsDouble();
+	void storeStrAsChar();
 
-	void convertDoubleToStr_types();
+	void convertDoubleToCharStr();
+	void convertDoubleToIntStr();
+	void convertDoubleToFloatStr();
+	void convertDoubleToDoubleStr();
 
-	void convertStrToChar();
-	void convertStrToDouble();
+	void convertDoubleToTypeStr();
+
 
 	void setNumericIndexes(int& numeric_head, int& numeric_tail);
 
-	bool isNonNumericChar();
 
 	void setImpossible();
 	void setPseudoLiteral();
-	bool isNumeric();
-	bool isPseudoLiteral();
 
-	void interpretCurrentType();
+	bool isPseudoLiteral();
+	bool isNonNumericChar();
+	bool isNumeric();
 
 	Convert();
 };

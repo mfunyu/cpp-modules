@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 13:22:03 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 18:37:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,73 @@ Convert& Convert::operator=(const Convert& other)
 	return *this;
 }
 
-std::string const& Convert::getCharStr() const { return _charStr; }
+std::string const& Convert::getCharStr() const
+{
+	return _charStr;
+}
 
-std::string const& Convert::getIntStr() const { return _intStr; }
+std::string const& Convert::getIntStr() const
+{
+	return _intStr;
+}
 
-std::string const& Convert::getFloatStr() const { return _floatStr; }
+std::string const& Convert::getFloatStr() const
+{
+	return _floatStr;
+}
 
-std::string const& Convert::getDoubleStr() const { return _doubleStr; }
+std::string const& Convert::getDoubleStr() const
+{
+	return _doubleStr;
+}
 
 void Convert::solve()
 {
 	interpretCurrentType();
-	convertDoubleToStr_types();
+	convertDoubleToTypeStr();
 }
 
-void Convert::convertDoubleToStr_char()
+void Convert::interpretCurrentType()
+{
+	if (_str.empty()) {
+		setImpossible();
+		return;
+	}
+	if (isPseudoLiteral()) {
+		setPseudoLiteral();
+		return;
+	}
+
+	if (isNonNumericChar()) {
+		storeStrAsChar();
+		return;
+	}
+
+	if (!isNumeric()) {
+		setImpossible();
+		return;
+	}
+
+	storeStrAsDouble();
+}
+
+void Convert::storeStrAsChar()
+{
+	_stored = static_cast<double>(_str.at(0));
+}
+
+void Convert::storeStrAsDouble()
+{
+	std::string str = _str;
+	if (str.at(str.length() - 1) == 'f') {
+		str.erase(str.length() - 1, 1);
+	}
+	std::istringstream iss(str);
+
+	iss >> _stored;
+}
+
+void Convert::convertDoubleToCharStr()
 {
 	if (_intStr == impossible) {
 		_charStr = impossible;
@@ -73,7 +125,7 @@ void Convert::convertDoubleToStr_char()
 	_charStr = "'" + _charStr + "'";
 }
 
-void Convert::convertDoubleToStr_int()
+void Convert::convertDoubleToIntStr()
 {
 	if (_stored < INT_MIN || INT_MAX < _stored) {
 		_intStr = impossible;
@@ -87,7 +139,7 @@ void Convert::convertDoubleToStr_int()
 	_intStr = oss.str();
 }
 
-void Convert::convertDoubleToStr_float()
+void Convert::convertDoubleToFloatStr()
 {
 	if (_doubleStr == impossible) {
 		_floatStr = impossible;
@@ -105,7 +157,7 @@ void Convert::convertDoubleToStr_float()
 	_floatStr = oss.str() + "f";
 }
 
-void Convert::convertDoubleToStr_double()
+void Convert::convertDoubleToDoubleStr()
 {
 	double d = _stored;
 
@@ -119,37 +171,15 @@ void Convert::convertDoubleToStr_double()
 	_doubleStr = oss.str();
 }
 
-void Convert::convertDoubleToStr_types()
+void Convert::convertDoubleToTypeStr()
 {
 	if (!_doubleStr.empty()) {
 		return;
 	}
-	convertDoubleToStr_double();
-	convertDoubleToStr_float();
-	convertDoubleToStr_int();
-	convertDoubleToStr_char();
-}
-
-void Convert::convertStrToChar()
-{
-	_stored = static_cast<double>(_str.at(0));
-}
-
-void Convert::convertStrToDouble()
-{
-	std::string str = _str;
-	if (str.at(str.length() - 1) == 'f') {
-		str.erase(str.length() - 1, 1);
-	}
-	std::istringstream iss(str);
-
-	iss >> _stored;
-}
-
-bool Convert::isNonNumericChar()
-{
-	return (_str.length() == 1 && !std::isdigit(_str.at(0))
-			&& std::isprint(_str.at(0)));
+	convertDoubleToDoubleStr();
+	convertDoubleToFloatStr();
+	convertDoubleToIntStr();
+	convertDoubleToCharStr();
 }
 
 void Convert::setImpossible()
@@ -215,6 +245,15 @@ bool Convert::isNumeric()
 	return true;
 }
 
+
+bool Convert::isNonNumericChar()
+{
+	return (_str.length() == 1 && !std::isdigit(_str.at(0))
+			&& std::isprint(_str.at(0)));
+}
+
+
+
 bool Convert::isPseudoLiteral()
 {
 	std::string str = _str;
@@ -225,30 +264,6 @@ bool Convert::isPseudoLiteral()
 		str.erase(0, 1);
 	}
 	return (str == "inf" || str == "inff");
-}
-
-void Convert::interpretCurrentType()
-{
-	if (_str.empty()) {
-		setImpossible();
-		return;
-	}
-	if (isPseudoLiteral()) {
-		setPseudoLiteral();
-		return;
-	}
-
-	if (isNonNumericChar()) {
-		convertStrToChar();
-		return;
-	}
-
-	if (!isNumeric()) {
-		setImpossible();
-		return;
-	}
-
-	convertStrToDouble();
 }
 
 std::ostream& operator<<(std::ostream& os, Convert const& value)
