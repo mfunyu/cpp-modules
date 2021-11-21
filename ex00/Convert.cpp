@@ -212,7 +212,7 @@ bool Convert::isNumeric(std::string const& s)
 	if (s.at(0) == '-' || s.at(0) == '+') {
 		head += 1;
 	}
-	if (s.find('.', 0) != s.rfind('.', std::string::npos)) {
+	if (s.find('.') != s.rfind('.')) {
 		return false;
 	}
 	int tail = s.length();
