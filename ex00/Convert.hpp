@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:42:16 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:06:11 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:18:27 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class Convert
 	double			  _stored;
 	int				  _precision;
 
-	std::string _strChar;
-	std::string _strInt;
-	std::string _strFloat;
-	std::string _strDouble;
+	std::string _charStr;
+	std::string _intStr;
+	std::string _floatStr;
+	std::string _doubleStr;
 
 	static std::string impossible;
 
@@ -59,14 +59,14 @@ class Convert
 
 	Convert(std::string const& str);
 
-	std::string const & getCharValue() const;
-	std::string const & getIntValue() const;
-	std::string const & getFloatValue() const;
-	std::string const & getDoubleValue() const;
+	std::string const& getCharStr() const;
+	std::string const& getIntStr() const;
+	std::string const& getFloatStr() const;
+	std::string const& getDoubleStr() const;
 
 	void solve();
 };
 
-std::ostream & operator<<(std::ostream & os, Convert const & value);
+std::ostream& operator<<(std::ostream& os, Convert const& value);
 
 #endif /* CONVERT_HPP */

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:47:54 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/21 12:06:30 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:18:27 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ Convert& Convert::operator=(const Convert& other)
 	if (this != &other) {
 		_stored	   = other._stored;
 		_precision = other._precision;
-		_strChar   = other._strChar;
-		_strInt	   = other._strInt;
-		_strFloat  = other._strFloat;
-		_strDouble = other._strDouble;
+		_charStr   = other._charStr;
+		_intStr	   = other._intStr;
+		_floatStr  = other._floatStr;
+		_doubleStr = other._doubleStr;
 	}
 	return *this;
 }
@@ -44,25 +44,25 @@ Convert::Convert(std::string const& str) : _str(str), _precision(0) {}
 
 void Convert::convertDoubleToStr_char()
 {
-	if (_strInt == impossible) {
-		_strChar = impossible;
+	if (_intStr == impossible) {
+		_charStr = impossible;
 		return;
 	}
 
 	int i = static_cast<int>(_stored);
 	if (!std::isprint(i)) {
-		_strChar = "Non displayable";
+		_charStr = "Non displayable";
 		return;
 	}
 
-	_strChar = static_cast<char>(_stored);
-	_strChar = "'" + _strChar + "'";
+	_charStr = static_cast<char>(_stored);
+	_charStr = "'" + _charStr + "'";
 }
 
 void Convert::convertDoubleToStr_int()
 {
 	if (_stored < INT_MIN || INT_MAX < _stored) {
-		_strInt = impossible;
+		_intStr = impossible;
 		return;
 	}
 
@@ -70,13 +70,13 @@ void Convert::convertDoubleToStr_int()
 
 	std::ostringstream oss;
 	oss << i << std::flush;
-	_strInt = oss.str();
+	_intStr = oss.str();
 }
 
 void Convert::convertDoubleToStr_float()
 {
-	if (_strDouble == impossible) {
-		_strFloat = impossible;
+	if (_doubleStr == impossible) {
+		_floatStr = impossible;
 		return;
 	}
 	float f = static_cast<float>(_stored);
@@ -88,7 +88,7 @@ void Convert::convertDoubleToStr_float()
 
 	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(max_precision) << f << std::flush;
-	_strFloat = oss.str() + "f";
+	_floatStr = oss.str() + "f";
 }
 
 void Convert::convertDoubleToStr_double()
@@ -102,12 +102,12 @@ void Convert::convertDoubleToStr_double()
 
 	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(max_precision) << d << std::flush;
-	_strDouble = oss.str();
+	_doubleStr = oss.str();
 }
 
 void Convert::convertDoubleToStr_types()
 {
-	if (!_strDouble.empty()) {
+	if (!_doubleStr.empty()) {
 		return;
 	}
 	convertDoubleToStr_double();
@@ -140,29 +140,29 @@ bool Convert::isNonNumericChar()
 
 void Convert::setImpossible()
 {
-	_strDouble = impossible;
-	_strFloat  = impossible;
-	_strInt	   = impossible;
-	_strChar   = impossible;
+	_doubleStr = impossible;
+	_floatStr  = impossible;
+	_intStr	   = impossible;
+	_charStr   = impossible;
 }
 
 void Convert::setPseudoLiteral()
 {
-	_strInt	 = impossible;
-	_strChar = impossible;
+	_intStr	 = impossible;
+	_charStr = impossible;
 
 	if (_str.find("nan") != std::string::npos) {
-		_strDouble = "nan";
-		_strFloat  = "nanf";
+		_doubleStr = "nan";
+		_floatStr  = "nanf";
 		return;
 	}
 	if (_str.find("inf") != std::string::npos) {
 		if (_str.at(0) == '+' || _str.at(0) == '-') {
-			_strDouble = _str.at(0);
-			_strFloat  = _str.at(0);
+			_doubleStr = _str.at(0);
+			_floatStr  = _str.at(0);
 		}
-		_strDouble += "inf";
-		_strFloat += "inff";
+		_doubleStr += "inf";
+		_floatStr += "inff";
 	}
 }
 
@@ -243,31 +243,31 @@ void Convert::solve()
 	convertDoubleToStr_types();
 }
 
-std::string const & Convert::getCharValue() const
+std::string const& Convert::getCharStr() const
 {
-	return _strChar;
+	return _charStr;
 }
 
-std::string const & Convert::getIntValue() const
+std::string const& Convert::getIntStr() const
 {
-	return _strInt;
+	return _intStr;
 }
 
-std::string const & Convert::getFloatValue() const
+std::string const& Convert::getFloatStr() const
 {
-	return _strFloat;
+	return _floatStr;
 }
 
-std::string const & Convert::getDoubleValue() const
+std::string const& Convert::getDoubleStr() const
 {
-	return _strDouble;
+	return _doubleStr;
 }
 
-std::ostream & operator<<(std::ostream & os, Convert const & value)
+std::ostream& operator<<(std::ostream& os, Convert const& value)
 {
-	os << "char: " << value.getCharValue() << std::endl;
-	os << "int: " << value.getIntValue() << std::endl;
-	os << "float: " << value.getFloatValue() << std::endl;
-	os << "double: " << value.getDoubleValue();
+	os << "char: " << value.getCharStr() << std::endl;
+	os << "int: " << value.getIntStr() << std::endl;
+	os << "float: " << value.getFloatStr() << std::endl;
+	os << "double: " << value.getDoubleStr();
 	return os;
 }
