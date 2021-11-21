@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:31:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/07 00:03:19 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/21 21:17:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "Base.hpp"
 
-class B : public Base
-{
-};
+class B : public Base {};
 
 #endif /* B_HPP */
