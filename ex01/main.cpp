@@ -6,13 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:31:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/22 14:34:58 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/22 14:42:55 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 #include <iostream>
 #include <string>
+#include <cstddef>
 
 /* ---------------------------------- print --------------------------------- */
 
@@ -93,7 +94,7 @@ namespace {
 template <typename T>
 void printLen(T const& x)
 {
-	size_t len = 0;
+	std::size_t len = 0;
 	for (; x[len]; len++) {}
 	std::cout << len << std::endl;
 }
