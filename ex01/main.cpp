@@ -34,11 +34,13 @@ void print(std::string testName)
 
 void printHelp()
 {
-	std::cout << "usage: ./a.out [testname]\n" << std::endl;
-	std::cout << "  \"testnames\"" << std::endl;
-	std::cout << "\t\"original\"\t-> my original main" << std::endl;
-	std::cout << "\t\"review\"\t-> main for review (using class Awesome)"
-			  << std::endl;
+	std::cout << "usage: ./a.out [testname]" << '\n'
+			  << '\n'
+			  << "  \"testnames\"" << '\n'
+			  << "\tnone\t-> run the original test" << '\n'
+			  << "\t\"review\"-> run tests for review (using class Awesome)"
+			  << '\n'
+			  << "\t\"all\"\t-> run all tests" << std::endl;
 }
 } /* namespace */
 
@@ -96,7 +98,7 @@ void printLen(T const& x)
 	std::cout << len << std::endl;
 }
 
-void my_main()
+void original_main()
 {
 	std::string str[4] = { "aaaaa", "bbbbbbbbb", "cc" };
 	print("[ Before ]");
@@ -112,9 +114,12 @@ int main(int ac, char** av)
 {
 	std::string test = (ac > 1 ? av[1] : "");
 
-	if (test == "original") {
-		my_main();
+	if (test.empty()) {
+		original_main();
 	} else if (test == "review") {
+		review::review_main();
+	} else if (test == "all") {
+		original_main();
 		review::review_main();
 	} else {
 		printHelp();
