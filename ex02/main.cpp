@@ -18,12 +18,12 @@ void printHelp()
 {
 	std::cout << "usage: ./a.out [testname]\n" << std::endl;
 	std::cout << "  \"testnames\"" << std::endl;
-	std::cout << "\t\"subject\" -> subject test" << std::endl;
+	std::cout << "\tnone\t -> subject test" << std::endl;
 	std::cout << "\t\"constructor\" -> constructor test" << std::endl;
-	std::cout << "\t\"copyC\" -> copy constructor test" << std::endl;
-	std::cout << "\t\"=\" -> assignment operator test" << std::endl;
-	std::cout << "\t\"[]\" -> subscription operator test" << std::endl;
-	std::cout << "\t\"size\" -> size() test" << std::endl;
+	std::cout << "\t\"copyC\"\t -> copy constructor test" << std::endl;
+	std::cout << "\t\"=\"\t -> assignment operator test" << std::endl;
+	std::cout << "\t\"[]\"\t -> subscription operator test" << std::endl;
+	std::cout << "\t\"size\"\t -> size() test" << std::endl;
 }
 
 void printTestName(std::string test)
@@ -229,7 +229,7 @@ int main(int ac, char** av)
 	try {
 		std::string test = (ac > 1 ? av[1] : "");
 
-		if (test == "subject") {
+		if (test.empty()) {
 			subject_main();
 		} else if (test == "constructor") {
 			printTestName("Constructor");
