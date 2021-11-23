@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:32:45 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/23 13:34:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/23 21:12:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Array
 
 	Array<T>& operator=(Array<T> const& other);
 	T&		  operator[](unsigned int i);
+	T const&  operator[](unsigned int i) const;
 
 	unsigned int size(void) const
 	{
@@ -81,6 +82,16 @@ Array<T>& Array<T>::operator=(Array<T> const& other)
 /* Subscript operator [] overload */
 template <typename T>
 T& Array<T>::operator[](unsigned int i)
+{
+	if (i < 0 || i >= _size) {
+		throw std::out_of_range("index out of range");
+	}
+	return _array[i];
+}
+
+/* Subscript operator [] overload */
+template <typename T>
+T const& Array<T>::operator[](unsigned int i) const
 {
 	if (i < 0 || i >= _size) {
 		throw std::out_of_range("index out of range");

@@ -23,6 +23,7 @@ void printHelp()
 	std::cout << "\t\"copyC\"\t -> copy constructor test" << std::endl;
 	std::cout << "\t\"=\"\t -> assignment operator test" << std::endl;
 	std::cout << "\t\"[]\"\t -> subscription operator test" << std::endl;
+	std::cout << "\t\"c[]\"\t -> subscription operator test for const" << std::endl;
 	std::cout << "\t\"size\"\t -> size() test" << std::endl;
 }
 
@@ -139,6 +140,7 @@ void testSize(unsigned int size)
 	printOK();
 }
 
+namespace _nonconst {
 template <typename T>
 void testSubscriptOperator(unsigned int size, int index)
 {
@@ -157,6 +159,25 @@ void testSubscriptOperator(unsigned int size, int index)
 		;
 	}
 }
+} // namespace _const
+
+namespace _const {
+template <typename T>
+void testSubscriptOperator(unsigned int size, int index)
+{
+	printTestInfo<T>("size", size, "index", index);
+
+	Array<T> array(size);
+
+	try {
+		std::cout << "array[" << index << "] = " << std::flush;
+		std::cout << array[index] << std::endl;
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+		;
+	}
+}
+} // namespace _nonconst
 
 template <typename T>
 void testAssignmentOperator(unsigned int dst_size, unsigned int src_size)
@@ -249,9 +270,14 @@ int main(int ac, char** av)
 			testAssignmentOperator<std::string>(5, 5);
 		} else if (test == "[]") {
 			printTestName("Subscript Operator []");
-			testSubscriptOperator<float>(7, 3);
-			testSubscriptOperator<unsigned char>(5, -1);
-			testSubscriptOperator<long>(2, 5);
+			_nonconst::testSubscriptOperator<float>(7, 3);
+			_nonconst::testSubscriptOperator<unsigned char>(5, -1);
+			_nonconst::testSubscriptOperator<long>(2, 5);
+		} else if (test == "c[]") {
+			printTestName("Subscript Operator const []");
+			_const::testSubscriptOperator<const float>(7, 3);
+			_const::testSubscriptOperator<const unsigned char>(5, -1);
+			_const::testSubscriptOperator<const long>(2, 5);
 		} else if (test == "size") {
 			printTestName("size");
 			testSize<const float>(3);
