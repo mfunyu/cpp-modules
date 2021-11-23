@@ -51,8 +51,9 @@ void lst_test(int nbr)
 
 	std::cout << "result : ";
 	try {
-		std::cout << easyfind(int_lst, nbr) << std::endl;
-	} catch (std::exception &e) {
+		const std::list<int>::const_iterator ret = easyfind(int_lst, nbr);
+		std::cout << *ret << std::endl;
+	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
@@ -69,8 +70,9 @@ void vec_test(int nbr)
 
 	std::cout << "result : ";
 	try {
-		std::cout << easyfind(int_vec, nbr) << std::endl;
-	} catch (std::exception &e) {
+		std::vector<int>::const_iterator const ret = easyfind(int_vec, nbr);
+		std::cout << *ret << std::endl;
+	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
