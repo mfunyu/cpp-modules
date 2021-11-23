@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 00:14:55 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/22 14:27:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/23 21:32:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,25 +146,25 @@ int subject_main()
 void original_main()
 {
 	printHeader("MAX");
-	std::cout << "max(1, 2) = " << max<int>(1, 2) << std::endl;
-	std::cout << "max(42, 42) = " << max<int>(42, 42) << std::endl;
-	std::cout << "max(1.51, 1.5) = " << max<double>(1.51, 1.5) << std::endl;
-	std::cout << "max(10.001f, 10.002f) = " << max<float>(10.001f, 10.002f)
+	std::cout << "max(1, 2) = " << ::max<int>(1, 2) << std::endl;
+	std::cout << "max(42, 42) = " << ::max<int>(42, 42) << std::endl;
+	std::cout << "max(1.51, 1.5) = " << ::max<double>(1.51, 1.5) << std::endl;
+	std::cout << "max(10.001f, 10.002f) = " << ::max<float>(10.001f, 10.002f)
 			  << std::endl;
 
 	printHeader("MIN");
 	std::cout << "min(1, 2) = "
-			  << min<int>(1, 2) << std::endl;
+			  << ::min<int>(1, 2) << std::endl;
 	std::cout << "min(-999.9, -1000.0) = "
-			  << min<double>(-999.9, -1000.0) << std::endl;
+			  << ::min<double>(-999.9, -1000.0) << std::endl;
 	std::cout << "min('a', 'b') = "
-			  << min<char>('a', 'b') << std::endl;
+			  << ::min<char>('a', 'b') << std::endl;
 	std::cout << "min(\"abc\", \"abd\") = "
-			  << min<std::string>("abc", "abd") << std::endl;
+			  << ::min<std::string>("abc", "abd") << std::endl;
 	std::cout << "min(\"abd\", \"abc\") = "
-			  << min<std::string>("abd", "abc") << std::endl;
+			  << ::min<std::string>("abd", "abc") << std::endl;
 	std::cout << "min(\"42tokyo\", \"42Tokyo\") = "
-			  << min<std::string>("42tokyo", "42Tokyo") << std::endl;
+			  << ::min<std::string>("42tokyo", "42Tokyo") << std::endl;
 
 	printHeader("SWAP");
 	{
@@ -176,7 +176,7 @@ void original_main()
 		std::cout << "before: ft = " << ft << std::endl;
 		std::cout << "before: tf = " << tf << std::endl;
 		std::cout << "** swap<int>(ft, tf) **" << std::endl;
-		swap<int>(ft, tf);
+		::swap<int>(ft, tf);
 		std::cout << "after : ft = " << ft << std::endl;
 		std::cout << "after : tf = " << tf << std::endl;
 	}
