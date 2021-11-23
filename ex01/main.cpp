@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:31:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/23 13:30:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/23 20:47:23 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,55 @@ void original_main()
 		printLst(farray, len);
 	}
 }
+
+namespace _const {
+template <typename T>
+void print(T const& x)
+{
+	std::cout << x << std::endl;
+	return;
+}
+} // namespace _const
+
+namespace _nonconst {
+template <typename T>
+void print(T& x)
+{
+	x += 1;
+	std::cout << x << std::endl;
+	return;
+}
+} // namespace _nonconst
+
+namespace _nonref {
+template <typename T>
+void print(T x)
+{
+	std::cout << x << std::endl;
+	return;
+}
+} // namespace _nonref
+
+void const_test()
+{
+	int		  len		= 4;
+	int		  array[]	= { 1, 2, 3, 4 };
+	const int c_array[] = { 1, 2, 3, 4 };
+
+	printSubHeader("nonconst T, func(const &T)");
+	iter(array, len, _const::print);
+	printSubHeader("const T, func(const &T)");
+	iter(c_array, len, _const::print);
+	printSubHeader("nonconst T, func(&T)");
+	iter(array, len, _nonconst::print);
+	// printSubHeader("const T, func(&T)");
+	// iter(c_array, len, _nonconst::print);
+	printSubHeader("nonconst T, func(T)");
+	iter(array, len, _nonref::print);
+	printSubHeader("const T, func(T)");
+	iter(c_array, len, _nonref::print);
+}
+
 } // namespace
 
 int main(int ac, char** av)
@@ -150,6 +199,8 @@ int main(int ac, char** av)
 
 	if (test.empty()) {
 		original_main();
+	} else if (test == "const") {
+		const_test();
 	} else if (test == "review") {
 		review::review_main();
 	} else if (test == "all") {
