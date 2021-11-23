@@ -6,34 +6,32 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 12:34:26 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/20 16:28:58 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/23 22:45:52 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <iostream>
-#include <vector>
 #include <list>
+#include <vector>
 
 /* ------------------------------- formatting ------------------------------- */
 
-#define COLOR_CYAN "\033[36m"
+#define COLOR_CYAN	"\033[36m"
 #define COLOR_RESET "\033[0m"
 
 namespace {
-void	printHeader(std::string content)
+void printHeader(std::string content)
 {
 	std::cout << std::endl;
-	std::cout << COLOR_CYAN <<\
-				 "*** " << content << " ***" <<\
-				 COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN << "*** " << content << " ***" << COLOR_RESET
+			  << std::endl;
 }
 
-void	printSubHeader(std::string content, int nbr)
+void printSubHeader(std::string content, int nbr)
 {
-	std::cout << COLOR_CYAN <<\
-				 "[ " << content << " " << nbr << " ]" <<\
-				 COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN << "[ " << content << " " << nbr << " ]"
+			  << COLOR_RESET << std::endl;
 }
 } // namespace
 
@@ -43,7 +41,7 @@ void lst_test(int nbr)
 {
 	printSubHeader("int_lst", nbr);
 
-	int		max_len = 500;
+	int			   max_len = 500;
 	std::list<int> int_lst(max_len);
 	for (int i = 0; i < max_len; i++) {
 		int_lst.push_back(i);
@@ -62,7 +60,7 @@ void vec_test(int nbr)
 {
 	printSubHeader("int_vec", nbr);
 
-	int		max_len = 500;
+	int				 max_len = 500;
 	std::vector<int> int_vec(max_len);
 	for (int i = 0; i < max_len; i++) {
 		int_vec[i] = i;
