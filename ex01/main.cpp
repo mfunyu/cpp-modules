@@ -6,14 +6,14 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:31:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/22 14:42:55 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/23 13:30:40 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
+#include <cstddef>
 #include <iostream>
 #include <string>
-#include <cstddef>
 
 /* ---------------------------------- print --------------------------------- */
 
@@ -21,16 +21,25 @@
 #define COLOR_RESET "\033[0m"
 
 namespace {
-void printLst(std::string const* lst)
+template <typename T>
+void printLst(T const* lst, int len)
 {
-	for (int i = 0; !lst[i].empty(); i++) {
+	for (int i = 0; i < len; i++) {
 		std::cout << "[" << i << "]: " << lst[i] << std::endl;
 	}
 }
 
-void print(std::string testName)
+void printHeader(std::string content)
 {
-	std::cout << COLOR_CYAN << testName << COLOR_RESET << std::endl;
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN << "*** " << content << " ***" << COLOR_RESET
+			  << std::endl;
+}
+
+void printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN << "[ " << content << " ]" << COLOR_RESET
+			  << std::endl;
 }
 
 void printHelp()
@@ -79,6 +88,8 @@ void print(T const& x)
 
 int review_main()
 {
+	printHeader("Review test");
+
 	int		tab[] = { 0, 1, 2, 3, 4 };
 	Awesome tab2[5];
 
@@ -98,16 +109,38 @@ void printLen(T const& x)
 	for (; x[len]; len++) {}
 	std::cout << len << std::endl;
 }
+template <typename T>
+void increment(T& x)
+{
+	x += 1;
+}
 
 void original_main()
 {
-	std::string str[4] = { "aaaaa", "bbbbbbbbb", "cc" };
-	print("[ Before ]");
-	printLst(str);
-	print("** Call func **");
-	iter<std::string>(str, 3, printLen);
-	print("[ After ]");
-	printLst(str);
+	{
+		int len = 3;
+		printHeader("const test <std::string>");
+		std::string str[4] = { "aaaaa", "bbbbbbbbb", "cc" };
+
+		printSubHeader("Array");
+		printLst(str, len);
+
+		printSubHeader("* iter<std::string>(str, len, printLen); *");
+		iter<std::string>(str, len, printLen);
+	}
+	{
+		int len = 4;
+		printHeader("non const test <float>");
+		float farray[5] = { 123.0f, 456.1f, 789.2f, 1000 };
+
+		printSubHeader("Array");
+		printLst(farray, len);
+
+		printSubHeader("* iter<float>(farray, len, increment); *");
+		iter<float>(farray, len, increment);
+		std::cout << "result: " << std::endl;
+		printLst(farray, len);
+	}
 }
 } // namespace
 
