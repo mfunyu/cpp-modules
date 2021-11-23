@@ -1,6 +1,6 @@
-#include <iostream>
-#include <iomanip>
 #include <Array.hpp>
+#include <iomanip>
+#include <iostream>
 
 #ifdef TEST
 #include "getTypeName.hpp"
@@ -8,13 +8,13 @@
 
 /* ----------------------------- print & format ----------------------------- */
 
-#define COLOR_RED "\033[31m"
+#define COLOR_RED	"\033[31m"
 #define COLOR_GREEN "\033[32m"
-#define COLOR_CYAN "\033[36m"
+#define COLOR_CYAN	"\033[36m"
 #define COLOR_RESET "\033[0m"
 
 namespace {
-void	printHelp()
+void printHelp()
 {
 	std::cout << "usage: ./a.out [testname]\n" << std::endl;
 	std::cout << "  \"testnames\"" << std::endl;
@@ -26,13 +26,15 @@ void	printHelp()
 	std::cout << "\t\"size\" -> size() test" << std::endl;
 }
 
-void	printTestName(std::string test){
-	std::cout << COLOR_CYAN << "****** Test " << test <<\
-				 " ******" << COLOR_RESET << std::endl;
+void printTestName(std::string test)
+{
+	std::cout << COLOR_CYAN << "****** Test " << test << " ******"
+			  << COLOR_RESET << std::endl;
 }
 
 template <typename T>
-void	printList(std::string title, Array<T> & elem, int total) {
+void printList(std::string title, Array<T>& elem, int total)
+{
 	std::cout << std::left << std::setw(9) << title << "| ";
 	for (int i = 0; i < total; i++) {
 		std::cout << "[" << i << "]: " << elem[i] << " " << std::flush;
@@ -41,35 +43,35 @@ void	printList(std::string title, Array<T> & elem, int total) {
 }
 
 template <typename T>
-std::string getTypeName() {
+std::string getTypeName()
+{
 	return "";
 }
 
 template <typename T>
-void	printTestInfo(std::string info1, unsigned int value1) {
-	std::cout << COLOR_CYAN << "[ " << \
-				 info1 << ": " << value1 << \
-				 ::getTypeName<T>() << \
-				 " ]" << COLOR_RESET << std::endl;
+void printTestInfo(std::string info1, unsigned int value1)
+{
+	std::cout << COLOR_CYAN << "[ " << info1 << ": " << value1
+			  << ::getTypeName<T>() << " ]" << COLOR_RESET << std::endl;
 }
 
 template <typename T>
-void	printTestInfo(std::string info1, unsigned int value1,
-						std::string info2, int value2)
+void printTestInfo(
+	std::string info1, unsigned int value1, std::string info2, int value2)
 {
-	std::cout << COLOR_CYAN << "[ " << \
-				 info1 << ": " << value1 << ", " << \
-				 info2 << ": " << value2 << \
-				 ::getTypeName<T>() << \
-				 " ]" << COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN << "[ " << info1 << ": " << value1 << ", " << info2
+			  << ": " << value2 << ::getTypeName<T>() << " ]" << COLOR_RESET
+			  << std::endl;
 }
 
-void	printKO() {
-	std::cout <<  COLOR_RED << "[KO]" << COLOR_RESET << std::endl;
+void printKO()
+{
+	std::cout << COLOR_RED << "[KO]" << COLOR_RESET << std::endl;
 }
 
-void	printOK() {
-	std::cout <<  COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
+void printOK()
+{
+	std::cout << COLOR_GREEN << "[OK]" << COLOR_RESET << std::endl;
 }
 } /* namespace */
 
@@ -78,17 +80,16 @@ void	printOK() {
 #define MAX_VAL 750
 
 namespace {
-int		subject_main()
+int subject_main()
 {
 	printTestName("Subject main");
 	Array<int> numbers(MAX_VAL);
-	int *mirror = new int[MAX_VAL];
+	int*	   mirror = new int[MAX_VAL];
 	srand(time(NULL));
-	for (int i = 0; i < MAX_VAL; i++)
-	{
+	for (int i = 0; i < MAX_VAL; i++) {
 		const int value = rand();
-		numbers[i] = value;
-		mirror[i] = value;
+		numbers[i]		= value;
+		mirror[i]		= value;
 	}
 	// SCOPE
 	{
@@ -104,12 +105,12 @@ int		subject_main()
 	}
 	try {
 		numbers[-2] = 0;
-	} catch (const std::exception &e) {
+	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 	try {
 		numbers[MAX_VAL] = 0;
-	} catch (const std::exception &e) {
+	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
@@ -124,7 +125,7 @@ int		subject_main()
 /* ---------------------------------- tests --------------------------------- */
 
 template <typename T>
-void	testSize(unsigned int size)
+void testSize(unsigned int size)
 {
 	printTestInfo<T>("size", size);
 	Array<T> array(size);
@@ -133,13 +134,13 @@ void	testSize(unsigned int size)
 
 	if (array.size() != size) {
 		printKO();
-		return ;
+		return;
 	}
 	printOK();
 }
 
 template <typename T>
-void	testSubscriptOperator(unsigned int size, int index)
+void testSubscriptOperator(unsigned int size, int index)
 {
 	printTestInfo<T>("size", size, "index", index);
 
@@ -151,13 +152,14 @@ void	testSubscriptOperator(unsigned int size, int index)
 	try {
 		std::cout << "array[" << index << "] = " << std::flush;
 		std::cout << array[index] << std::endl;
-	} catch (std::exception &e){
-		std::cout << e.what() << std::endl;;
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+		;
 	}
 }
 
 template <typename T>
-void	testAssignmentOperator(unsigned int dst_size, unsigned int src_size)
+void testAssignmentOperator(unsigned int dst_size, unsigned int src_size)
 {
 	printTestInfo<T>("dst_size", dst_size, "src_size", src_size);
 
@@ -180,7 +182,7 @@ void	testAssignmentOperator(unsigned int dst_size, unsigned int src_size)
 }
 
 template <typename T>
-void	testCopyConstructor(unsigned int original_size)
+void testCopyConstructor(unsigned int original_size)
 {
 	printTestInfo<T>("original_size", original_size);
 
@@ -197,14 +199,14 @@ void	testCopyConstructor(unsigned int original_size)
 	for (unsigned int i = 0; i < original_size; i++) {
 		if (original[i] != copy[i]) {
 			printKO();
-			return ;
+			return;
 		}
 	}
 	printOK();
 }
 
 template <typename T>
-void	testConstructor(unsigned int size)
+void testConstructor(unsigned int size)
 {
 	printTestInfo<T>("size", size);
 
@@ -215,17 +217,17 @@ void	testConstructor(unsigned int size)
 	for (unsigned int i = 0; i < size; i++) {
 		if (zeroInitializedArray[i]) {
 			printKO();
-			return ;
+			return;
 		}
 	}
 	printOK();
 }
 } /* namespace */
 
-int		main(int ac, char **av)
+int main(int ac, char** av)
 {
 	try {
-		std::string	test = (ac > 1 ? av[1] : "");
+		std::string test = (ac > 1 ? av[1] : "");
 
 		if (test == "subject") {
 			subject_main();
@@ -258,7 +260,7 @@ int		main(int ac, char **av)
 		} else {
 			printHelp();
 		}
-	} catch (std::exception &e) {
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
