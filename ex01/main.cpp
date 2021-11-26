@@ -13,7 +13,8 @@
 #include "span.hpp"
 #include <iostream>
 
-void subject_main(void)
+namespace subject {
+void test(void)
 {
 	Span sp = Span(5);
 
@@ -25,13 +26,52 @@ void subject_main(void)
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 }
+} // namespace subject
+
+void exception_tests()
+{
+	Span tooShort = Span(3);
+
+	try {
+		std::cout << tooShort.shortestSpan() << std::endl;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	tooShort.addNumber(21);
+	try {
+		std::cout << tooShort.shortestSpan() << std::endl;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	tooShort.addNumber(42);
+	try {
+		std::cout << tooShort.shortestSpan() << std::endl;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	tooShort.addNumber(-42);
+	try {
+		std::cout << tooShort.shortestSpan() << std::endl;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
 
 int main(int ac, char** av)
 {
+	try {
 	std::string test = (ac > 1 ? av[1] : "");
 
 	if (test.empty()) {
-		subject_main();
-	} else {
+			subject::test();
+		} else if (test == "all") {
+			exception_tests();
+		}
+
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
 }

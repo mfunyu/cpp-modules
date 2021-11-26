@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/26 20:13:58 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/26 20:19:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,16 @@ void Span::addNumber(int number)
 
 unsigned int Span::shortestSpan()
 {
+	if (_size < 2) {
+		throw std::range_error("less than 2 members");
+	}
 	return _shortestSpan;
 }
 
 unsigned int Span::longestSpan()
 {
+	if (_size < 2) {
+		throw std::range_error("less than 2 members");
+	}
 	return _longestSpan;
 }
