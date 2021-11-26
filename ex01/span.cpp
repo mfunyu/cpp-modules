@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/26 00:06:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/26 20:13:58 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,39 @@
 #include <algorithm>
 #include <stdexcept>
 
+Span::Span(unsigned int N) : _N(N), _size(0), _shortestSpan(0), _longestSpan(0)
+{}
+
 Span::~Span() {}
 
-Span::Span(const Span& other)
+Span::Span(Span const& other)
 {
 	*this = other;
 }
 
-Span& Span::operator=(const Span& other)
+Span& Span::operator=(Span const& other)
 {
-	if (this != &other) {}
+	if (this != &other) {
+		_N = other._N;
+	}
 	return *this;
 }
 
-Span::Span(unsigned int N) : _lst(N), _size(N), _last(0) {}
-
 void Span::addNumber(int number)
 {
-	if (_last == _size) {
-		return;
+	if (_size >= _N) {
+		throw std::length_error("Span is full");
 	}
-	_lst[_last] = number;
-	_last += 1;
+	_array.insert(number);
+	_size += 1;
 }
 
-int Span::shortestSpan()
+unsigned int Span::shortestSpan()
 {
-	if (_size < 2) {
-		throw std::range_error("no span to find");
-	}
-	int diff = std::numeric_limits<int>::max();
-	std::sort(_lst.begin(), _lst.end());
-	for (unsigned int i = 1; i < _last; i++) {
-		diff = std::min(diff, _lst[i] - _lst[i - 1]);
-	}
-	return diff;
+	return _shortestSpan;
 }
 
-int Span::longestSpan()
+unsigned int Span::longestSpan()
 {
-	if (_size < 2) {
-		throw std::range_error("no span to find");
-	}
-	// std::vector<int>::iterator smallest = min_element(_lst.begin(),
-	// _lst.end()); std::vector<int>::iterator largest =
-	// min_element(_lst.begin(), _lst.end()); return largest - smallest;
-
-	std::sort(_lst.begin(), _lst.begin() + _last);
-	return _lst[_last - 1] - _lst[0];
+	return _longestSpan;
 }
