@@ -13,6 +13,28 @@
 #include "span.hpp"
 #include <iostream>
 
+/* ------------------------------- formatting ------------------------------- */
+
+#define COLOR_CYAN	"\033[36m"
+#define COLOR_RESET "\033[0m"
+
+namespace {
+void printHeader(std::string content)
+{
+	std::cout << std::endl;
+	std::cout << COLOR_CYAN << "*** " << content << " ***" << COLOR_RESET
+			  << std::endl;
+}
+
+void printSubHeader(std::string content)
+{
+	std::cout << COLOR_CYAN << "[ " << content << " ]" << COLOR_RESET
+			  << std::endl;
+}
+} // namespace
+
+/* -------------------------------------------------------------------------- */
+
 namespace subject {
 void test(void)
 {
@@ -30,8 +52,7 @@ void test(void)
 
 void exception_tests()
 {
-	Span tooShort = Span(3);
-
+	printHeader("Exception Tests");
 	try {
 		std::cout << tooShort.shortestSpan() << std::endl;
 	} catch (const std::exception& e) {
@@ -40,6 +61,7 @@ void exception_tests()
 
 	tooShort.addNumber(21);
 	try {
+		printSubHeader("size = 1");
 		std::cout << tooShort.shortestSpan() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -47,6 +69,7 @@ void exception_tests()
 
 	tooShort.addNumber(42);
 	try {
+		printSubHeader("size = 2");
 		std::cout << tooShort.shortestSpan() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -54,6 +77,7 @@ void exception_tests()
 
 	tooShort.addNumber(-42);
 	try {
+		printSubHeader("size = 3");
 		std::cout << tooShort.shortestSpan() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
