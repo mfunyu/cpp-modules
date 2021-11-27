@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/26 20:19:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/27 14:14:54 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,24 @@ void Span::addNumber(int number)
 	if (_size >= _N) {
 		throw std::length_error("Span is full");
 	}
-	_array.insert(number);
 	_size += 1;
+
+	if (_size >= 2) {
+		std::multiset<int>::iterator next_value = _array.lower_bound(number);
+		if (next_value != _array.end()) {
+			unsigned int diff = *next_value;
+			diff -= number;
+			_shortestSpan
+				= std::min(_shortestSpan, static_cast<unsigned int>(diff));
+		}
+	}
+	_array.insert(number);
 }
 
 unsigned int Span::shortestSpan()
 {
 	if (_size < 2) {
-		throw std::range_error("less than 2 members");
+		throw std::range_error("shortestSpan: less than 2 members");
 	}
 	return _shortestSpan;
 }
@@ -60,8 +70,9 @@ unsigned int Span::shortestSpan()
 unsigned int Span::longestSpan()
 {
 	if (_size < 2) {
-		throw std::range_error("less than 2 members");
+		throw std::range_error("lengestSpan: less than 2 members");
 	}
+	_longestSpan = *(_array.rbegin()) - *(_array.begin());
 	return _longestSpan;
 }
 
