@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:05:20 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/26 20:13:00 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/27 14:06:40 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ class Span
 
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
+
+	unsigned int getSize() const;
+	unsigned int getMaxSize() const;
 
   private:
 	Span();

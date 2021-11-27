@@ -56,3 +56,13 @@ unsigned int Span::longestSpan()
 	}
 	return _longestSpan;
 }
+
+unsigned int Span::getSize() const
+{
+	return _size;
+}
+
+unsigned int Span::getMaxSize() const
+{
+	return _N;
+}
