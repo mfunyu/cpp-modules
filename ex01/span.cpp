@@ -14,20 +14,28 @@
 #include <algorithm>
 #include <stdexcept>
 
-Span::Span(unsigned int N) : _N(N), _size(0), _shortestSpan(0), _longestSpan(0)
+Span::Span(unsigned int N) :
+	_N(N), _size(0), _shortestSpan(std::numeric_limits<unsigned int>::max()),
+	_longestSpan(0)
 {}
 
 Span::~Span() {}
 
-Span::Span(Span const& other)
+Span::Span(Span const& other) :
+	_N(other._N), _size(other._size), _shortestSpan(other._shortestSpan),
+	_longestSpan(other._longestSpan)
 {
-	*this = other;
+	_array = other._array;
 }
 
 Span& Span::operator=(Span const& other)
 {
 	if (this != &other) {
-		_N = other._N;
+		_array		  = other._array;
+		_N			  = other._N;
+		_size		  = other._size;
+		_shortestSpan = other._shortestSpan;
+		_longestSpan  = other._longestSpan;
 	}
 	return *this;
 }
