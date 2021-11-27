@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/27 14:14:54 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/27 16:56:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,6 @@ void Span::addNumber(int number)
 		throw std::length_error("Span is full");
 	}
 	_size += 1;
-
-	if (_size >= 2) {
-		std::multiset<int>::iterator next_value = _array.lower_bound(number);
-		if (next_value != _array.end()) {
-			unsigned int diff = *next_value;
-			diff -= number;
-			_shortestSpan
-				= std::min(_shortestSpan, static_cast<unsigned int>(diff));
-		}
-	}
 	_array.insert(number);
 }
 
@@ -63,6 +53,19 @@ unsigned int Span::shortestSpan()
 {
 	if (_size < 2) {
 		throw std::range_error("shortestSpan: less than 2 members");
+	}
+
+	unsigned int diff;
+	std::multiset<int>::iterator now = _array.begin();
+	std::multiset<int>::iterator ite = _array.end();
+	std::multiset<int>::iterator next = now;
+	next++;
+
+	for (; next != ite; next++)
+	{
+		diff = *next - *now;
+		_shortestSpan = std::min(_shortestSpan, diff);
+		now++;
 	}
 	return _shortestSpan;
 }
