@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 20:39:21 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 20:54:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ void longestSpanTest(Span test, size_t expected_value = EMPTY)
 }
 
 namespace spanTest {
-void testAll()
+void singleShort()
 {
 	{
-		printHeader("test shortestSpan()");
+		printHeader("shortestSpan()");
 
 		/* exceptions thrown */
 		shortestSpanTest(Span(3), THROWEXCEPTION);
@@ -105,18 +105,19 @@ void testAll()
 
 		/* span returned */
 		Span nonEmpty = Span(3);
-
 		nonEmpty.addNumber(42); // 42
 		shortestSpanTest(nonEmpty, THROWEXCEPTION);
-
 		nonEmpty.addNumber(12); // 42, 12
 		shortestSpanTest(nonEmpty, 42 - 12);
-
 		nonEmpty.addNumber(1); // 42, 12 ,1
 		shortestSpanTest(nonEmpty, 12 - 1);
 	}
+}
+
+void singleLong()
+{
 	{
-		printHeader("test longestSpan()");
+		printHeader("longestSpan()");
 
 		/* exceptions thrown */
 		longestSpanTest(Span(3), THROWEXCEPTION);
@@ -133,19 +134,25 @@ void testAll()
 		longestSpanTest(nonEmpty, 100);
 	}
 }
-} // namespace spanTest
 
-namespace edgeTest {
-void testAll()
+void edgeCases()
 {
-	printHeader("test Edge cases");
+	printHeader("edge cases");
+	{
+		Span edge = Span(10);
+
+		printSubHeader("result over INT_MAX");
+		edge.addNumber(INT_MAX);
+		edge.addNumber(-42);
+		shortestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - -42);
+		longestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - -42);
+	}
 	{
 		Span edge = Span(10);
 
 		printSubHeader("INT_MIN and INT_MAX");
 		edge.addNumber(INT_MAX);
 		edge.addNumber(INT_MIN);
-
 		shortestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - INT_MIN);
 		longestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - INT_MIN);
 	}
@@ -155,10 +162,14 @@ void testAll()
 		printSubHeader("0 and 0");
 		zeros.addNumber(0);
 		zeros.addNumber(0);
-
 		shortestSpanTest(zeros, 0);
 		longestSpanTest(zeros, 0);
 	}
+}
+
+void basicCases()
+{
+	printHeader("basic cases");
 	{
 		printSubHeader("same values");
 
@@ -223,7 +234,7 @@ void testAll()
 		longestSpanTest(pluses, static_cast<ssize_t>(1000005) - (INT_MIN + 1));
 	}
 }
-} // namespace edgeTest
+} // namespace spanTest
 
 int main(int ac, char** av)
 {
@@ -232,9 +243,19 @@ int main(int ac, char** av)
 
 		if (test.empty()) {
 			subject::test();
+		} else if (test == "short") {
+			spanTest::singleShort();
+		} else if (test == "long") {
+			spanTest::singleLong();
+		} else if (test == "1") {
+			spanTest::basicCases();
+		} else if (test == "2") {
+			spanTest::edgeCases();
 		} else if (test == "all") {
-			spanTest::testAll();
-			edgeTest::testAll();
+			spanTest::singleShort();
+			spanTest::singleLong();
+			spanTest::basicCases();
+			spanTest::edgeCases();
 		}
 
 	} catch (std::exception& e) {
