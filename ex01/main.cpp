@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 13:29:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 19:26:13 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 /* ------------------------------- formatting ------------------------------- */
 
-#define COLOR_CYAN	 "\033[36m"
-#define COLOR_CYAN_T "\033[1;36m"
-#define COLOR_CYAN_D "\033[2;36m"
-#define COLOR_RESET	 "\033[0m"
+#define COLOR_CYAN	   "\033[36m"
+#define COLOR_CYAN_T   "\033[1;36m"
+#define COLOR_CYAN_D   "\033[2;36m"
+#define COLOR_RESET	   "\033[0m"
+#define THROWEXCEPTION -1
+#define EMPTY		   -2
 
 namespace {
 void printHeader(std::string content)
@@ -36,10 +38,14 @@ void printSubHeader(std::string content)
 
 void printExpectedValue(ssize_t expected_value)
 {
-	if (expected_value < 0)
+	if (expected_value < 0 && expected_value != THROWEXCEPTION)
 		return;
-	std::cout << COLOR_CYAN_D << "expected: " << expected_value << COLOR_RESET
-			  << std::endl;
+	std::cout << COLOR_CYAN_D << "expected: ";
+	if (expected_value == THROWEXCEPTION) {
+		std::cout << "throw exception" << COLOR_RESET << std::endl;
+	} else {
+		std::cout << expected_value << COLOR_RESET << std::endl;
+	}
 }
 } // namespace
 
@@ -60,7 +66,7 @@ void test(void)
 }
 } // namespace subject
 
-void shortestSpanTest(Span test, ssize_t expected_value = -1)
+void shortestSpanTest(Span test, ssize_t expected_value = EMPTY)
 {
 	std::cout << COLOR_CYAN << test << COLOR_RESET << std::endl;
 	printExpectedValue(expected_value);
@@ -73,7 +79,7 @@ void shortestSpanTest(Span test, ssize_t expected_value = -1)
 	}
 }
 
-void longestSpanTest(Span test, size_t expected_value = -1)
+void longestSpanTest(Span test, size_t expected_value = EMPTY)
 {
 	std::cout << COLOR_CYAN << test << COLOR_RESET << std::endl;
 	printExpectedValue(expected_value);
@@ -86,41 +92,45 @@ void longestSpanTest(Span test, size_t expected_value = -1)
 	}
 }
 
+namespace spanTest {
 void testAll()
 {
 	{
 		printHeader("test shortestSpan()");
 
 		/* exceptions thrown */
-		shortestSpanTest(Span(3));
-		shortestSpanTest(Span(2));
-		shortestSpanTest(Span(1));
+		shortestSpanTest(Span(3), THROWEXCEPTION);
+		shortestSpanTest(Span(2), THROWEXCEPTION);
+		shortestSpanTest(Span(1), THROWEXCEPTION);
 
 		/* span returned */
 		Span nonEmpty = Span(3);
+
 		nonEmpty.addNumber(42); // 42
-		shortestSpanTest(nonEmpty);
+		shortestSpanTest(nonEmpty, THROWEXCEPTION);
+
 		nonEmpty.addNumber(12); // 42, 12
-		shortestSpanTest(nonEmpty);
+		shortestSpanTest(nonEmpty, 42 - 12);
+
 		nonEmpty.addNumber(1); // 42, 12 ,1
-		shortestSpanTest(nonEmpty);
+		shortestSpanTest(nonEmpty, 12 - 1);
 	}
 	{
 		printHeader("test longestSpan()");
 
 		/* exceptions thrown */
-		longestSpanTest(Span(3));
-		longestSpanTest(Span(2));
-		longestSpanTest(Span(1));
+		longestSpanTest(Span(3), THROWEXCEPTION);
+		longestSpanTest(Span(2), THROWEXCEPTION);
+		longestSpanTest(Span(1), THROWEXCEPTION);
 
 		/* span returned */
 		Span nonEmpty = Span(3);
 		nonEmpty.addNumber(42); // 42
-		longestSpanTest(nonEmpty);
+		longestSpanTest(nonEmpty, THROWEXCEPTION);
 		nonEmpty.addNumber(0); // 42, 0
-		longestSpanTest(nonEmpty);
+		longestSpanTest(nonEmpty, 42);
 		nonEmpty.addNumber(100); // 42, 0, 100
-		longestSpanTest(nonEmpty);
+		longestSpanTest(nonEmpty, 100);
 	}
 }
 } // namespace spanTest
