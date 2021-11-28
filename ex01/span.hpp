@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:05:20 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 18:19:09 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 18:58:07 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ class Span
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
-	unsigned int getSize() const;
-	unsigned int getMaxSize() const;
+	unsigned int			  getSize() const;
+	unsigned int			  getMaxSize() const;
+	std::multiset<int> const& getValues() const;
 
   private:
 	Span();
 };
 
-
-std::ostream& operator<<(std::ostream & os, Span const& span);
+std::ostream& operator<<(std::ostream& os, Span const& span);
 
 #endif /* SPAN_HPP */
