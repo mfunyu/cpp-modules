@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/27 14:10:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 13:29:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void test(void)
 }
 } // namespace subject
 
+namespace spanTest
+{
 void shortestSpanTest(Span test)
 {
 	try {
@@ -79,15 +81,17 @@ void longestSpanTest(Span test)
 	}
 }
 
-void exception_tests()
+void testAll()
 {
 	{
 		printHeader("test shortestSpan()");
 
+		/* exceptions thrown */
 		shortestSpanTest(Span(3));
 		shortestSpanTest(Span(2));
 		shortestSpanTest(Span(1));
 
+		/* span returned */
 		Span nonEmpty = Span(3);
 		nonEmpty.addNumber(42); // 42
 		shortestSpanTest(nonEmpty);
@@ -99,19 +103,23 @@ void exception_tests()
 	{
 		printHeader("test longestSpan()");
 
+		/* exceptions thrown */
 		longestSpanTest(Span(3));
 		longestSpanTest(Span(2));
 		longestSpanTest(Span(1));
 
+		/* span returned */
 		Span nonEmpty = Span(3);
 		nonEmpty.addNumber(42); // 42
 		longestSpanTest(nonEmpty);
-		nonEmpty.addNumber(12); // 42, 0
+		nonEmpty.addNumber(0); // 42, 0
 		longestSpanTest(nonEmpty);
-		nonEmpty.addNumber(1); // 42, 0 ,1
+		nonEmpty.addNumber(100); // 42, 0, 100
 		longestSpanTest(nonEmpty);
 	}
 }
+} // namespace spanTest
+
 
 int main(int ac, char** av)
 {
@@ -121,7 +129,7 @@ int main(int ac, char** av)
 		if (test.empty()) {
 			subject::test();
 		} else if (test == "all") {
-			exception_tests();
+			spanTest::testAll();
 		}
 
 	} catch (std::exception& e) {
