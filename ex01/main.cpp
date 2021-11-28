@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 20:54:25 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 21:04:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@
 #define THROWEXCEPTION -1
 #define EMPTY		   -2
 
-namespace {
-void printHeader(std::string content)
+namespace print {
+void Header(std::string content)
 {
 	std::cout << std::endl;
 	std::cout << COLOR_CYAN_T << "------------------ " << content
 			  << " ------------------" << COLOR_RESET << std::endl;
 }
 
-void printSubHeader(std::string content)
+void SubHeader(std::string content)
 {
 	std::cout << COLOR_CYAN_T << "\n*** " << content << " ***" << COLOR_RESET
 			  << std::endl;
 }
 
-void printExpectedValue(ssize_t expected_value)
+void ExpectedValue(ssize_t expected_value)
 {
 	if (expected_value < 0 && expected_value != THROWEXCEPTION)
 		return;
@@ -47,7 +47,22 @@ void printExpectedValue(ssize_t expected_value)
 		std::cout << expected_value << COLOR_RESET << std::endl;
 	}
 }
-} // namespace
+
+void SpanDetail(Span const & sp)
+{
+	std::cout << COLOR_CYAN << sp << COLOR_RESET << std::endl;
+}
+
+void Help()
+{
+	std::cout << "usage: ./a.out [testname]\n" << std::endl;
+	std::cout << "  \"testnames\"" << std::endl;
+	std::cout << "\t\"1\"\t-> shortestSpan()" << std::endl;
+	std::cout << "\t\"2\"\t-> longestSpan()" << std::endl;
+	std::cout << "\t\"3\"\t-> run basic cases" << std::endl;
+	std::cout << "\t\"4\"\t-> run edge cases" << std::endl;
+}
+} // namespace print
 
 /* -------------------------------------------------------------------------- */
 
@@ -68,8 +83,8 @@ void test(void)
 
 void shortestSpanTest(Span test, ssize_t expected_value = EMPTY)
 {
-	std::cout << COLOR_CYAN << test << COLOR_RESET << std::endl;
-	printExpectedValue(expected_value);
+	print::SpanDetail(test);
+	print::ExpectedValue(expected_value);
 
 	std::cout << "shortest: ";
 	try {
@@ -81,8 +96,8 @@ void shortestSpanTest(Span test, ssize_t expected_value = EMPTY)
 
 void longestSpanTest(Span test, size_t expected_value = EMPTY)
 {
-	std::cout << COLOR_CYAN << test << COLOR_RESET << std::endl;
-	printExpectedValue(expected_value);
+	print::SpanDetail(test);
+	print::ExpectedValue(expected_value);
 
 	std::cout << "longest : ";
 	try {
@@ -96,7 +111,7 @@ namespace spanTest {
 void singleShort()
 {
 	{
-		printHeader("shortestSpan()");
+		print::Header("shortestSpan()");
 
 		/* exceptions thrown */
 		shortestSpanTest(Span(3), THROWEXCEPTION);
@@ -117,7 +132,7 @@ void singleShort()
 void singleLong()
 {
 	{
-		printHeader("longestSpan()");
+		print::Header("longestSpan()");
 
 		/* exceptions thrown */
 		longestSpanTest(Span(3), THROWEXCEPTION);
@@ -137,11 +152,11 @@ void singleLong()
 
 void edgeCases()
 {
-	printHeader("edge cases");
+	print::Header("edge cases");
 	{
 		Span edge = Span(10);
 
-		printSubHeader("result over INT_MAX");
+		print::SubHeader("result over INT_MAX");
 		edge.addNumber(INT_MAX);
 		edge.addNumber(-42);
 		shortestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - -42);
@@ -150,7 +165,7 @@ void edgeCases()
 	{
 		Span edge = Span(10);
 
-		printSubHeader("INT_MIN and INT_MAX");
+		print::SubHeader("INT_MIN and INT_MAX");
 		edge.addNumber(INT_MAX);
 		edge.addNumber(INT_MIN);
 		shortestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - INT_MIN);
@@ -159,7 +174,7 @@ void edgeCases()
 	{
 		Span zeros = Span(10);
 
-		printSubHeader("0 and 0");
+		print::SubHeader("0 and 0");
 		zeros.addNumber(0);
 		zeros.addNumber(0);
 		shortestSpanTest(zeros, 0);
@@ -169,9 +184,9 @@ void edgeCases()
 
 void basicCases()
 {
-	printHeader("basic cases");
+	print::Header("basic cases");
 	{
-		printSubHeader("same values");
+		print::SubHeader("same values");
 
 		Span zeros = Span(10);
 		zeros.addNumber(0);
@@ -192,7 +207,7 @@ void basicCases()
 		longestSpanTest(forty_twos, 0);
 	}
 	{
-		printSubHeader("sequenced values");
+		print::SubHeader("sequenced values");
 
 		Span minus = Span(10);
 		minus.addNumber(-40);
@@ -214,7 +229,7 @@ void basicCases()
 		longestSpanTest(pluses, 125 - 120);
 	}
 	{
-		printSubHeader("random values");
+		print::SubHeader("random values");
 
 		Span minus = Span(10);
 		minus.addNumber(-1);
@@ -243,19 +258,21 @@ int main(int ac, char** av)
 
 		if (test.empty()) {
 			subject::test();
-		} else if (test == "short") {
-			spanTest::singleShort();
-		} else if (test == "long") {
-			spanTest::singleLong();
 		} else if (test == "1") {
-			spanTest::basicCases();
+			spanTest::singleShort();
 		} else if (test == "2") {
+			spanTest::singleLong();
+		} else if (test == "3") {
+			spanTest::basicCases();
+		} else if (test == "4") {
 			spanTest::edgeCases();
 		} else if (test == "all") {
 			spanTest::singleShort();
 			spanTest::singleLong();
 			spanTest::basicCases();
 			spanTest::edgeCases();
+		} else {
+			print::Help();
 		}
 
 	} catch (std::exception& e) {
