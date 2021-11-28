@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 19:26:13 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 20:39:21 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,95 @@ void testAll()
 }
 } // namespace spanTest
 
+namespace edgeTest {
+void testAll()
+{
+	printHeader("test Edge cases");
+	{
+		Span edge = Span(10);
+
+		printSubHeader("INT_MIN and INT_MAX");
+		edge.addNumber(INT_MAX);
+		edge.addNumber(INT_MIN);
+
+		shortestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - INT_MIN);
+		longestSpanTest(edge, static_cast<ssize_t>(INT_MAX) - INT_MIN);
+	}
+	{
+		Span zeros = Span(10);
+
+		printSubHeader("0 and 0");
+		zeros.addNumber(0);
+		zeros.addNumber(0);
+
+		shortestSpanTest(zeros, 0);
+		longestSpanTest(zeros, 0);
+	}
+	{
+		printSubHeader("same values");
+
+		Span zeros = Span(10);
+		zeros.addNumber(0);
+		zeros.addNumber(0);
+		zeros.addNumber(0);
+		zeros.addNumber(0);
+		zeros.addNumber(0);
+		shortestSpanTest(zeros, 0);
+		longestSpanTest(zeros, 0);
+
+		Span forty_twos = Span(10);
+		forty_twos.addNumber(42);
+		forty_twos.addNumber(42);
+		forty_twos.addNumber(42);
+		forty_twos.addNumber(42);
+		forty_twos.addNumber(42);
+		shortestSpanTest(forty_twos, 0);
+		longestSpanTest(forty_twos, 0);
+	}
+	{
+		printSubHeader("sequenced values");
+
+		Span minus = Span(10);
+		minus.addNumber(-40);
+		minus.addNumber(-41);
+		minus.addNumber(-42);
+		minus.addNumber(-43);
+		minus.addNumber(-44);
+		shortestSpanTest(minus, -40 - -41);
+		longestSpanTest(minus, -40 - -44);
+
+		Span pluses = Span(10);
+		pluses.addNumber(120);
+		pluses.addNumber(121);
+		pluses.addNumber(122);
+		pluses.addNumber(123);
+		pluses.addNumber(124);
+		pluses.addNumber(125);
+		shortestSpanTest(pluses, 121 - 120);
+		longestSpanTest(pluses, 125 - 120);
+	}
+	{
+		printSubHeader("random values");
+
+		Span minus = Span(10);
+		minus.addNumber(-1);
+		minus.addNumber(98);
+		minus.addNumber(76);
+		minus.addNumber(24);
+		minus.addNumber(-52);
+		shortestSpanTest(minus, 98 - 76);
+		longestSpanTest(minus, 98 - -52);
+
+		Span pluses = Span(10);
+		pluses.addNumber(7);
+		pluses.addNumber(1000005);
+		pluses.addNumber(-5);
+		pluses.addNumber(INT_MIN + 1);
+		shortestSpanTest(pluses, 7 - -5);
+		longestSpanTest(pluses, static_cast<ssize_t>(1000005) - (INT_MIN + 1));
+	}
+}
+} // namespace edgeTest
 
 int main(int ac, char** av)
 {
@@ -145,6 +234,7 @@ int main(int ac, char** av)
 			subject::test();
 		} else if (test == "all") {
 			spanTest::testAll();
+			edgeTest::testAll();
 		}
 
 	} catch (std::exception& e) {
