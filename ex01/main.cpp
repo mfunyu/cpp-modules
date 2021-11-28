@@ -15,29 +15,30 @@
 
 /* ------------------------------- formatting ------------------------------- */
 
-#define COLOR_CYAN	"\033[36m"
-#define COLOR_RESET "\033[0m"
+#define COLOR_CYAN	 "\033[36m"
+#define COLOR_CYAN_T "\033[1;36m"
+#define COLOR_CYAN_D "\033[2;36m"
+#define COLOR_RESET	 "\033[0m"
 
 namespace {
 void printHeader(std::string content)
 {
 	std::cout << std::endl;
-	std::cout << COLOR_CYAN << "*** " << content << " ***" << COLOR_RESET
-			  << std::endl;
+	std::cout << COLOR_CYAN_T << "------------------ " << content
+			  << " ------------------" << COLOR_RESET << std::endl;
 }
 
-/*
 void printSubHeader(std::string content)
 {
-	std::cout << COLOR_CYAN << "[ " << content << " ]" << COLOR_RESET
+	std::cout << COLOR_CYAN_T << "\n*** " << content << " ***" << COLOR_RESET
 			  << std::endl;
 }
-*/
 
-void printSize(Span const& test)
+void printExpectedValue(ssize_t expected_value)
 {
-	std::cout << COLOR_CYAN << "[ size = " << test.getSize() << ", "
-			  << "maxsize = " << test.getMaxSize() << " ]" << COLOR_RESET
+	if (expected_value < 0)
+		return;
+	std::cout << COLOR_CYAN_D << "expected: " << expected_value << COLOR_RESET
 			  << std::endl;
 }
 } // namespace
@@ -59,22 +60,26 @@ void test(void)
 }
 } // namespace subject
 
-namespace spanTest
+void shortestSpanTest(Span test, ssize_t expected_value = -1)
 {
-void shortestSpanTest(Span test)
-{
+	std::cout << COLOR_CYAN << test << COLOR_RESET << std::endl;
+	printExpectedValue(expected_value);
+
+	std::cout << "shortest: ";
 	try {
-		printSize(test);
 		std::cout << test.shortestSpan() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
 
-void longestSpanTest(Span test)
+void longestSpanTest(Span test, size_t expected_value = -1)
 {
+	std::cout << COLOR_CYAN << test << COLOR_RESET << std::endl;
+	printExpectedValue(expected_value);
+
+	std::cout << "longest : ";
 	try {
-		printSize(test);
 		std::cout << test.longestSpan() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
