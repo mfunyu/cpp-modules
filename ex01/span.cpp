@@ -6,12 +6,13 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 13:33:50 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 18:43:22 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "span.hpp"
 #include <algorithm>
+#include <iostream>
 #include <stdexcept>
 
 Span::Span(unsigned int N) :
@@ -86,4 +87,11 @@ unsigned int Span::getSize() const
 unsigned int Span::getMaxSize() const
 {
 	return _N;
+}
+
+std::ostream& operator<<(std::ostream& os, Span const& span)
+{
+	os << "< size = " << span.getSize() << ", max_size = " << span.getMaxSize()
+	   << " >";
+	return os;
 }
