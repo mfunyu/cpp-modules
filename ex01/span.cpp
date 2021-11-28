@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/27 16:56:36 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 13:33:50 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,16 @@ unsigned int Span::shortestSpan()
 		throw std::range_error("shortestSpan: less than 2 members");
 	}
 
-	unsigned int diff;
-	std::multiset<int>::iterator now = _array.begin();
-	std::multiset<int>::iterator ite = _array.end();
-	std::multiset<int>::iterator next = now;
-	next++;
+	std::multiset<int>::iterator it_now	 = _array.begin();
+	std::multiset<int>::iterator it_end	 = _array.end();
+	std::multiset<int>::iterator it_next = it_now;
+	it_next++;
 
-	for (; next != ite; next++)
-	{
-		diff = *next - *now;
+	unsigned int diff;
+	for (; it_next != it_end; it_next++) {
+		diff		  = *it_next - *it_now;
 		_shortestSpan = std::min(_shortestSpan, diff);
-		now++;
+		it_now++;
 	}
 	return _shortestSpan;
 }
