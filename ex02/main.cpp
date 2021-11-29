@@ -111,6 +111,9 @@ void test()
 	intStack.push(42);
 	intStack.push(62);
 
+	print::SubHeader("check operator=");
+	MutantStack<int> intStack_copy;
+	intStack_copy = intStack;
 	print::SubHeader("check top()");
 	print::StackContents(intStack, "before");
 	std::cout << intStack.top() << std::endl;
