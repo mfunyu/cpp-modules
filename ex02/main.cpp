@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:33:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/23 23:59:44 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/29 15:29:56 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 
 /* ------------------------------- formatting ------------------------------- */
 
-#define COLOR_CYAN "\033[36m"
-#define COLOR_RESET "\033[0m"
+#define COLOR_CYAN	 "\033[36m"
+#define COLOR_CYAN_T "\033[1;36m"
+#define COLOR_CYAN_D "\033[2;36m"
+#define COLOR_RESET	 "\033[0m"
 
-namespace {
-void	printHeader(std::string content)
+namespace print {
+void Header(std::string content)
 {
 	std::cout << std::endl;
-	std::cout << COLOR_CYAN <<\
-				 "*** " << content << " ***" <<\
-				 COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN_T << "------------------ " << content
+			  << " ------------------" << COLOR_RESET << std::endl;
 }
 
 /*
-void	printSubHeader(std::string content)
+void	SubHeader(std::string content)
 {
 	std::cout << COLOR_CYAN <<\
 				 "[ " << content << " ]" <<\
@@ -36,20 +37,20 @@ void	printSubHeader(std::string content)
 }
 */
 
-void printHelp()
+void Help()
 {
 	std::cout << "usage: ./a.out [testname]\n" << std::endl;
 	std::cout << "  \"testnames\"" << std::endl;
-	std::cout << "\tnone\t -> subject test" << std::endl;
+	std::cout << "\tnone\t -> run the test on subject" << std::endl;
 	std::cout << "\t\"all\"\t -> run all tests" << std::endl;
 }
-} // namespace
+} // namespace print
 
 /* -------------------------------------------------------------------------- */
 
 int subject_main()
 {
-	printHeader("Subject test");
+	print::Header("subject test");
 	MutantStack<int> mstack;
 
 	mstack.push(5); //[5]
@@ -80,7 +81,7 @@ int subject_main()
 	return 0;
 }
 
-int		main(int ac, char **av)
+int main(int ac, char** av)
 {
 	std::string test = (ac > 1 ? av[1] : "");
 
@@ -89,6 +90,6 @@ int		main(int ac, char **av)
 	} else if (test == "all") {
 		subject_main();
 	} else {
-		printHelp();
+		print::Help();
 	}
 }
