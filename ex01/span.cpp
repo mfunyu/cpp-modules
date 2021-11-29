@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:15:48 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 18:58:47 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/28 21:53:44 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,14 @@ std::ostream& operator<<(std::ostream& os, Span const& span)
 	std::multiset<int>::const_iterator it_end = array.end();
 
 	os << " [ ";
-	for(; it != it_end; it++) {
+	int cnt = 0;
+	while(it != it_end && cnt < 20) {
 		os << *it << ", ";
+		it++;
+		cnt++;
 	}
+	if (cnt == 20 && it != it_end--)
+		os << " ... , " << *it_end;
 	os << " ]";
 
 	return os;
