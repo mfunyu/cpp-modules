@@ -83,6 +83,7 @@ int subject_main()
 
 int main(int ac, char** av)
 {
+	try {
 	std::string test = (ac > 1 ? av[1] : "");
 
 	if (test.empty()) {
@@ -91,5 +92,8 @@ int main(int ac, char** av)
 		subject_main();
 	} else {
 		print::Help();
+		}
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
 }
