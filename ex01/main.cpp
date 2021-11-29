@@ -6,12 +6,15 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/28 21:04:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/29 14:52:32 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "span.hpp"
+#include <algorithm>
 #include <iostream>
+#include <vector>
+#include <list>
 
 /* ------------------------------- formatting ------------------------------- */
 
@@ -48,7 +51,7 @@ void ExpectedValue(ssize_t expected_value)
 	}
 }
 
-void SpanDetail(Span const & sp)
+void SpanDetail(Span const& sp)
 {
 	std::cout << COLOR_CYAN << sp << COLOR_RESET << std::endl;
 }
@@ -249,6 +252,56 @@ void basicCases()
 		longestSpanTest(pluses, static_cast<ssize_t>(1000005) - (INT_MIN + 1));
 	}
 }
+
+size_t current;
+size_t increment()
+{
+	return ++current;
+}
+
+void largeCases()
+{
+	print::Header("large cases");
+
+	long			  varray_len = 10000;
+	std::vector<long> vector_array(varray_len + 1);
+	std::generate_n(vector_array.begin(), varray_len, increment);
+	Span large = Span(varray_len + 1);
+
+	long			  larray_len = 1000000;
+	std::list<long> list_array(larray_len + 1);
+	current = 0;
+	std::generate_n(list_array.begin(), larray_len, increment);
+
+	{
+		print::SubHeader("classic");
+		large.addNumber(vector_array.begin(), vector_array.end());
+
+		shortestSpanTest(large, 1 - 0);
+		longestSpanTest(large, varray_len - 0);
+	}
+	{
+		print::SubHeader("even more");
+		Span large = Span(larray_len + 1);
+		large.addNumber(list_array.begin(), list_array.end());
+
+		shortestSpanTest(large, 1 - 0);
+		longestSpanTest(large, larray_len - 0);
+	}
+	{
+		print::SubHeader("not enough space");
+		Span large = Span(50000);
+		try {
+			large.addNumber(list_array.begin(), list_array.end());
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
+
+		large.addNumber(vector_array.begin(), vector_array.end());
+		shortestSpanTest(large, 1 - 0);
+		longestSpanTest(large, varray_len - 0);
+	}
+}
 } // namespace spanTest
 
 int main(int ac, char** av)
@@ -266,6 +319,8 @@ int main(int ac, char** av)
 			spanTest::basicCases();
 		} else if (test == "4") {
 			spanTest::edgeCases();
+		} else if (test == "5") {
+			spanTest::largeCases();
 		} else if (test == "all") {
 			spanTest::singleShort();
 			spanTest::singleLong();
