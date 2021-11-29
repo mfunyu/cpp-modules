@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:08:36 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/29 14:52:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/29 14:57:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ void Help()
 {
 	std::cout << "usage: ./a.out [testname]\n" << std::endl;
 	std::cout << "  \"testnames\"" << std::endl;
+	std::cout << "\tnone\t-> run the short test on subject" << std::endl;
 	std::cout << "\t\"1\"\t-> shortestSpan()" << std::endl;
 	std::cout << "\t\"2\"\t-> longestSpan()" << std::endl;
 	std::cout << "\t\"3\"\t-> run basic cases" << std::endl;
 	std::cout << "\t\"4\"\t-> run edge cases" << std::endl;
+	std::cout << "\t\"5\"\t-> run large cases" << std::endl;
 }
 } // namespace print
 
@@ -72,6 +74,7 @@ void Help()
 namespace subject {
 void test(void)
 {
+	print::Header("subject main");
 	Span sp = Span(5);
 
 	sp.addNumber(5);
@@ -322,10 +325,12 @@ int main(int ac, char** av)
 		} else if (test == "5") {
 			spanTest::largeCases();
 		} else if (test == "all") {
+			subject::test();
 			spanTest::singleShort();
 			spanTest::singleLong();
 			spanTest::basicCases();
 			spanTest::edgeCases();
+			spanTest::largeCases();
 		} else {
 			print::Help();
 		}
