@@ -6,11 +6,12 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:33:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/29 15:29:56 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/29 16:47:51 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mutantstack.hpp"
+#include <iomanip>
 #include <iostream>
 
 /* ------------------------------- formatting ------------------------------- */
@@ -28,14 +29,24 @@ void Header(std::string content)
 			  << " ------------------" << COLOR_RESET << std::endl;
 }
 
-/*
-void	SubHeader(std::string content)
+void SubHeader(std::string content)
 {
-	std::cout << COLOR_CYAN <<\
-				 "[ " << content << " ]" <<\
-				 COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN_T << "\n*** " << content << " ***" << COLOR_RESET
+			  << std::endl;
 }
-*/
+
+template <typename T>
+void StackContents(MutantStack<T> const& stack, std::string const& msg)
+{
+	typename MutantStack<T>::const_iterator it	   = stack.begin();
+	typename MutantStack<T>::const_iterator it_end = stack.end();
+
+	std::cout << COLOR_CYAN_D << std::left << std::setw(7) << msg << ": ";
+	for (; it != it_end; it++) {
+		std::cout << "[" << *it << "]";
+	}
+	std::cout << COLOR_RESET << std::endl;
+}
 
 void Help()
 {
@@ -81,17 +92,74 @@ int subject_main()
 	return 0;
 }
 
+namespace memberFuncs {
+void test()
+{
+	print::Header("stack member functions");
+
+	MutantStack<int> emptyStack;
+	print::SubHeader("check constructor");
+	MutantStack<int> intStack;
+	print::StackContents(intStack, "initial");
+
+	print::SubHeader("check operator=");
+	MutantStack<int> intStack_copy;
+	// intStack_copy = intStack;
+
+	intStack.push(1);
+	intStack.push(2);
+	intStack.push(42);
+	intStack.push(62);
+
+	print::SubHeader("check top()");
+	print::StackContents(intStack, "before");
+	std::cout << intStack.top() << std::endl;
+
+	print::SubHeader("check empty()");
+	print::StackContents(intStack, "instance");
+	std::cout << intStack.empty() << std::endl;
+	print::StackContents(emptyStack, "instance");
+	std::cout << emptyStack.empty() << std::endl;
+
+	print::SubHeader("check size()");
+	print::StackContents(intStack, "instance");
+	std::cout << intStack.size() << std::endl;
+	print::StackContents(emptyStack, "instance");
+	std::cout << emptyStack.empty() << std::endl;
+
+	print::SubHeader("check push()");
+	print::StackContents(intStack, "before");
+	intStack.push(12);
+	print::StackContents(intStack, "after");
+	print::StackContents(intStack, "before");
+	intStack.push(100000);
+	print::StackContents(intStack, "after");
+	print::StackContents(emptyStack, "before");
+	emptyStack.push(-55);
+	print::StackContents(emptyStack, "after");
+
+	print::SubHeader("check pop()");
+	print::StackContents(intStack, "before");
+	intStack.pop();
+	print::StackContents(intStack, "after");
+	print::StackContents(intStack, "before");
+	intStack.pop();
+	print::StackContents(intStack, "after");
+}
+} // namespace memberFuncs
+
 int main(int ac, char** av)
 {
 	try {
-	std::string test = (ac > 1 ? av[1] : "");
+		std::string test = (ac > 1 ? av[1] : "");
 
-	if (test.empty()) {
-		subject_main();
-	} else if (test == "all") {
-		subject_main();
-	} else {
-		print::Help();
+		if (test.empty()) {
+			subject_main();
+		} else if (test == "all") {
+			subject_main();
+			memberFuncs::test();
+		} else {
+			print::Help();
 		}
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
