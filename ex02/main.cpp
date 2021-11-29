@@ -99,6 +99,18 @@ int subject_main()
 	return 0;
 }
 
+template <typename T>
+MutantStack<T> createAStack(unsigned int size)
+{
+	MutantStack<T> newStack;
+
+	for(unsigned int i = 0; i < size; i++)
+	{
+		newStack.push(std::rand() % 100);
+	}
+	return newStack;
+}
+
 namespace memberFuncs {
 template <typename T>
 void checkPop(MutantStack<T> & testStack)
@@ -163,12 +175,8 @@ void test()
 {
 	print::Header("stack member functions");
 
-	MutantStack<int> emptyStack;
-	MutantStack<int> intStack;
-	intStack.push(1);
-	intStack.push(2);
-	intStack.push(42);
-	intStack.push(62);
+	MutantStack<int> intStack = createAStack<int>(5);
+	MutantStack<int> emptyStack = createAStack<int>(0);
 
 	print::SubHeader("check constructor");
 	checkConstructor<int>();
@@ -202,6 +210,7 @@ void test()
 int main(int ac, char** av)
 {
 	try {
+		std::srand(time(NULL));
 		std::string test = (ac > 1 ? av[1] : "");
 
 		if (test.empty()) {
