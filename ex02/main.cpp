@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:33:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/29 16:47:51 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/29 22:50:17 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,26 @@ void Header(std::string content)
 			  << " ------------------" << COLOR_RESET << std::endl;
 }
 
-void SubHeader(std::string content)
+void SubHeader(std::string const content)
 {
 	std::cout << COLOR_CYAN_T << "\n*** " << content << " ***" << COLOR_RESET
 			  << std::endl;
 }
 
+void Comment(std::string const content)
+{
+	std::cout << COLOR_CYAN_D << "--- " << content << " ---" << COLOR_RESET
+			  << std::endl;
+}
+
 template <typename T>
-void StackContents(MutantStack<T> const& stack, std::string const& msg)
+void StackContents(MutantStack<T> const& stack, std::string const& msg,
+	std::string color = COLOR_CYAN_D)
 {
 	typename MutantStack<T>::const_iterator it	   = stack.begin();
 	typename MutantStack<T>::const_iterator it_end = stack.end();
 
-	std::cout << COLOR_CYAN_D << std::left << std::setw(7) << msg << ": ";
+	std::cout << color << std::left << std::setw(8) << msg << ": ";
 	for (; it != it_end; it++) {
 		std::cout << "[" << *it << "]";
 	}
@@ -100,11 +107,7 @@ void test()
 	MutantStack<int> emptyStack;
 	print::SubHeader("check constructor");
 	MutantStack<int> intStack;
-	print::StackContents(intStack, "initial");
-
-	print::SubHeader("check operator=");
-	MutantStack<int> intStack_copy;
-	// intStack_copy = intStack;
+	print::StackContents(intStack, "initial", COLOR_CYAN);
 
 	intStack.push(1);
 	intStack.push(2);
@@ -114,6 +117,13 @@ void test()
 	print::SubHeader("check operator=");
 	MutantStack<int> intStack_copy;
 	intStack_copy = intStack;
+	print::StackContents(intStack, "original", COLOR_CYAN);
+	print::StackContents(intStack_copy, "copy", COLOR_CYAN);
+	intStack_copy.push(0);
+	print::Comment("alterated copied object");
+	print::StackContents(intStack, "original", COLOR_CYAN);
+	print::StackContents(intStack_copy, "copy", COLOR_CYAN);
+
 	print::SubHeader("check top()");
 	print::StackContents(intStack, "before");
 	std::cout << intStack.top() << std::endl;
@@ -133,21 +143,21 @@ void test()
 	print::SubHeader("check push()");
 	print::StackContents(intStack, "before");
 	intStack.push(12);
-	print::StackContents(intStack, "after");
+	print::StackContents(intStack, "after", COLOR_CYAN);
 	print::StackContents(intStack, "before");
 	intStack.push(100000);
-	print::StackContents(intStack, "after");
+	print::StackContents(intStack, "after", COLOR_CYAN);
 	print::StackContents(emptyStack, "before");
 	emptyStack.push(-55);
-	print::StackContents(emptyStack, "after");
+	print::StackContents(emptyStack, "after", COLOR_CYAN);
 
 	print::SubHeader("check pop()");
 	print::StackContents(intStack, "before");
 	intStack.pop();
-	print::StackContents(intStack, "after");
+	print::StackContents(intStack, "after", COLOR_CYAN);
 	print::StackContents(intStack, "before");
 	intStack.pop();
-	print::StackContents(intStack, "after");
+	print::StackContents(intStack, "after", COLOR_CYAN);
 }
 } // namespace memberFuncs
 
