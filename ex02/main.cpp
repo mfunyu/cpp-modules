@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:33:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/29 22:50:17 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/29 23:17:41 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,64 +100,102 @@ int subject_main()
 }
 
 namespace memberFuncs {
+template <typename T>
+void checkPop(MutantStack<T> & testStack)
+{
+	print::StackContents(testStack, "before");
+	testStack.pop();
+	print::Comment("pop()");
+	print::StackContents(testStack, "after", COLOR_CYAN);
+}
+
+template <typename T>
+void checkPush(MutantStack<T> & testStack, int value)
+{
+	print::StackContents(testStack, "before");
+	testStack.push(value);
+	print::Comment("push(value)");
+	print::StackContents(testStack, "after", COLOR_CYAN);
+}
+
+template <typename T>
+void checkSize(MutantStack<T> const & testStack)
+{
+	print::StackContents(testStack, "instance");
+	std::cout << testStack.size() << std::endl;
+}
+
+template <typename T>
+void checkEmpty(MutantStack<T> const & testStack)
+{
+	print::StackContents(testStack, "instance");
+	std::cout << testStack.empty() << std::endl;
+}
+
+template <typename T>
+void checkTop(MutantStack<T> const & testStack)
+{
+	print::StackContents(testStack, "before");
+	std::cout << testStack.top() << std::endl;
+}
+
+template <typename T>
+void checkCopy(MutantStack<T> const & testStack)
+{
+	MutantStack<int> testStack_copy;
+	testStack_copy = testStack;
+	print::StackContents(testStack, "original", COLOR_CYAN);
+	print::StackContents(testStack_copy, "copy", COLOR_CYAN);
+	testStack_copy.push(0);
+	print::Comment("alterated copied object");
+	print::StackContents(testStack, "original", COLOR_CYAN);
+	print::StackContents(testStack_copy, "copy", COLOR_CYAN);
+}
+
+template <typename T>
+void checkConstructor()
+{
+	MutantStack<int> intStack;
+	print::StackContents(intStack, "initial", COLOR_CYAN);
+}
+
 void test()
 {
 	print::Header("stack member functions");
 
 	MutantStack<int> emptyStack;
-	print::SubHeader("check constructor");
 	MutantStack<int> intStack;
-	print::StackContents(intStack, "initial", COLOR_CYAN);
-
 	intStack.push(1);
 	intStack.push(2);
 	intStack.push(42);
 	intStack.push(62);
 
+	print::SubHeader("check constructor");
+	checkConstructor<int>();
+
 	print::SubHeader("check operator=");
-	MutantStack<int> intStack_copy;
-	intStack_copy = intStack;
-	print::StackContents(intStack, "original", COLOR_CYAN);
-	print::StackContents(intStack_copy, "copy", COLOR_CYAN);
-	intStack_copy.push(0);
-	print::Comment("alterated copied object");
-	print::StackContents(intStack, "original", COLOR_CYAN);
-	print::StackContents(intStack_copy, "copy", COLOR_CYAN);
+	checkCopy(intStack);
 
 	print::SubHeader("check top()");
-	print::StackContents(intStack, "before");
-	std::cout << intStack.top() << std::endl;
+	checkTop(intStack);
 
 	print::SubHeader("check empty()");
-	print::StackContents(intStack, "instance");
-	std::cout << intStack.empty() << std::endl;
-	print::StackContents(emptyStack, "instance");
-	std::cout << emptyStack.empty() << std::endl;
+	checkEmpty(intStack);
+	checkEmpty(emptyStack);
 
 	print::SubHeader("check size()");
-	print::StackContents(intStack, "instance");
-	std::cout << intStack.size() << std::endl;
-	print::StackContents(emptyStack, "instance");
-	std::cout << emptyStack.empty() << std::endl;
+	checkSize(intStack);
+	checkSize(emptyStack);
 
 	print::SubHeader("check push()");
-	print::StackContents(intStack, "before");
-	intStack.push(12);
-	print::StackContents(intStack, "after", COLOR_CYAN);
-	print::StackContents(intStack, "before");
-	intStack.push(100000);
-	print::StackContents(intStack, "after", COLOR_CYAN);
-	print::StackContents(emptyStack, "before");
-	emptyStack.push(-55);
-	print::StackContents(emptyStack, "after", COLOR_CYAN);
+	checkPush(intStack, 100);
+	checkPush(intStack, 100000);
+	checkPush(emptyStack, -20);
 
 	print::SubHeader("check pop()");
-	print::StackContents(intStack, "before");
-	intStack.pop();
-	print::StackContents(intStack, "after", COLOR_CYAN);
-	print::StackContents(intStack, "before");
-	intStack.pop();
-	print::StackContents(intStack, "after", COLOR_CYAN);
+	checkPop(intStack);
+	checkPop(intStack);
+	checkPop(intStack);
 }
 } // namespace memberFuncs
 
