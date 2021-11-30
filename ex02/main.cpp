@@ -207,6 +207,56 @@ void test()
 }
 } // namespace memberFuncs
 
+namespace iterators {
+void test()
+{
+	print::Header("iterator test");
+	MutantStack<int> intStack = createAStack<int>(7);
+
+	print::SubHeader("check begin()");
+	print::StackContents(intStack, "instance");
+	MutantStack<int>::iterator it = intStack.begin();
+	std::cout << *it << std::endl;
+	std::cout << *++it << std::endl;
+	*it = -42;
+	print::Comment("*it = -42");
+	print::StackContents(intStack, "after", COLOR_CYAN);
+
+	print::SubHeader("check end()");
+	print::StackContents(intStack, "instance");
+	MutantStack<int>::iterator ite = intStack.end();
+	std::cout << *--ite << std::endl;
+	std::cout << *--ite << std::endl;
+	*ite = 10000;
+	print::Comment("*ite = 10000");
+	print::StackContents(intStack, "after", COLOR_CYAN);
+
+	print::SubHeader("check rbegin()");
+	print::StackContents(intStack, "instance");
+	MutantStack<int>::reverse_iterator rit = intStack.rbegin();
+	std::cout << *rit << std::endl;
+	std::cout << *++rit << std::endl;
+
+	print::SubHeader("check rend()");
+	print::StackContents(intStack, "instance");
+	MutantStack<int>::reverse_iterator rite = intStack.rend();
+	std::cout << *--rite << std::endl;
+	std::cout << *--rite << std::endl;
+
+	print::SubHeader("check const begin()");
+	print::StackContents(intStack, "instance");
+	MutantStack<int>::const_iterator cit = intStack.begin();
+	std::cout << *cit << std::endl;
+	std::cout << *++cit << std::endl;
+
+	print::SubHeader("check const end()");
+	print::StackContents(intStack, "instance");
+	MutantStack<int>::const_iterator cite = intStack.end();
+	std::cout << *--cite << std::endl;
+	std::cout << *--cite << std::endl;
+}
+} // namespace iterators
+
 int main(int ac, char** av)
 {
 	try {
@@ -218,6 +268,7 @@ int main(int ac, char** av)
 		} else if (test == "all") {
 			subject_main();
 			memberFuncs::test();
+			iterators::test();
 		} else {
 			print::Help();
 		}
