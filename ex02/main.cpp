@@ -60,6 +60,8 @@ void Help()
 	std::cout << "usage: ./a.out [testname]\n" << std::endl;
 	std::cout << "  \"testnames\"" << std::endl;
 	std::cout << "\tnone\t -> run the test on subject" << std::endl;
+	std::cout << "\t\"1\"\t -> run all member functions' tests" << std::endl;
+	std::cout << "\t\"2\"\t -> run all iterator functions' tests" << std::endl;
 	std::cout << "\t\"all\"\t -> run all tests" << std::endl;
 }
 } // namespace print
@@ -292,6 +294,10 @@ int main(int ac, char** av)
 
 		if (test.empty()) {
 			subject_main();
+		} else if (test == "1") {
+			memberFuncs::test();
+		} else if (test == "2") {
+			iterators::test();
 		} else if (test == "all") {
 			subject_main();
 			memberFuncs::test();
