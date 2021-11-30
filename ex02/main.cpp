@@ -208,52 +208,79 @@ void test()
 } // namespace memberFuncs
 
 namespace iterators {
+
+template <typename T, typename Inputiterator>
+void checkContent(MutantStack<T> const& intStack, Inputiterator it)
+{
+	print::StackContents(intStack, "instance");
+	std::cout << "*it: " << *it << std::endl;
+}
+
+template <typename T, typename Inputiterator>
+void assignValue(MutantStack<T> const& intStack, Inputiterator it, int value)
+{
+	print::StackContents(intStack, "before");
+	*it = value;
+	print::Comment("*ite = value");
+	print::StackContents(intStack, "after", COLOR_CYAN);
+}
+
 void test()
 {
 	print::Header("iterator test");
 	MutantStack<int> intStack = createAStack<int>(7);
 
 	print::SubHeader("check begin()");
-	print::StackContents(intStack, "instance");
-	MutantStack<int>::iterator it = intStack.begin();
-	std::cout << *it << std::endl;
-	std::cout << *++it << std::endl;
-	*it = -42;
-	print::Comment("*it = -42");
-	print::StackContents(intStack, "after", COLOR_CYAN);
+	checkContent(intStack, intStack.begin());
+	checkContent(intStack, ++intStack.begin());
+	checkContent(intStack, intStack.begin() + 2);
+	assignValue(intStack, intStack.begin(), 42);
 
 	print::SubHeader("check end()");
-	print::StackContents(intStack, "instance");
-	MutantStack<int>::iterator ite = intStack.end();
-	std::cout << *--ite << std::endl;
-	std::cout << *--ite << std::endl;
-	*ite = 10000;
-	print::Comment("*ite = 10000");
-	print::StackContents(intStack, "after", COLOR_CYAN);
+	checkContent(intStack, --intStack.end());
+	checkContent(intStack, intStack.end() - 2);
+	checkContent(intStack, intStack.end() - 3);
+	assignValue(intStack, --intStack.end(), 1000);
 
 	print::SubHeader("check rbegin()");
-	print::StackContents(intStack, "instance");
-	MutantStack<int>::reverse_iterator rit = intStack.rbegin();
-	std::cout << *rit << std::endl;
-	std::cout << *++rit << std::endl;
+	checkContent(intStack, intStack.rbegin());
+	checkContent(intStack, ++intStack.rbegin());
+	checkContent(intStack, intStack.rbegin() + 2);
+	assignValue(intStack, intStack.rbegin(), -2);
 
 	print::SubHeader("check rend()");
-	print::StackContents(intStack, "instance");
-	MutantStack<int>::reverse_iterator rite = intStack.rend();
-	std::cout << *--rite << std::endl;
-	std::cout << *--rite << std::endl;
+	checkContent(intStack, --intStack.rend());
+	checkContent(intStack, intStack.rend() - 2);
+	checkContent(intStack, intStack.rend() - 3);
+	assignValue(intStack, --intStack.rend(), 0);
 
 	print::SubHeader("check const begin()");
-	print::StackContents(intStack, "instance");
-	MutantStack<int>::const_iterator cit = intStack.begin();
-	std::cout << *cit << std::endl;
-	std::cout << *++cit << std::endl;
+	MutantStack<int>::const_iterator begin = intStack.begin();
+	checkContent(intStack, begin);
+	checkContent(intStack, ++begin);
+	checkContent(intStack, ++begin);
+	// assignValue(intStack, begin, 42);
 
 	print::SubHeader("check const end()");
-	print::StackContents(intStack, "instance");
-	MutantStack<int>::const_iterator cite = intStack.end();
-	std::cout << *--cite << std::endl;
-	std::cout << *--cite << std::endl;
+	MutantStack<int>::const_iterator end = intStack.end();
+	checkContent(intStack, --end);
+	checkContent(intStack, --end);
+	checkContent(intStack, --end);
+	// assignValue(intStack, --end, 1000);
+
+	print::SubHeader("check const rbegin()");
+	MutantStack<int>::const_reverse_iterator rbegin = intStack.rbegin();
+	checkContent(intStack, rbegin);
+	checkContent(intStack, ++rbegin);
+	checkContent(intStack, ++rbegin);
+	// assignValue(intStack, rbegin, 42);
+
+	print::SubHeader("check const rend()");
+	MutantStack<int>::const_reverse_iterator rend = intStack.rend();
+	checkContent(intStack, --rend);
+	checkContent(intStack, --rend);
+	checkContent(intStack, --rend);
+	// assignValue(intStack, rend, 42);
 }
 } // namespace iterators
 
