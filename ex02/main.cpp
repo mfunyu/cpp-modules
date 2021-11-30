@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:33:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2021/11/29 23:17:41 by mfunyu           ###   ########.fr       */
+/*   Updated: 2021/11/30 13:51:33 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,7 @@ MutantStack<T> createAStack(unsigned int size)
 {
 	MutantStack<T> newStack;
 
-	for(unsigned int i = 0; i < size; i++)
-	{
+	for (unsigned int i = 0; i < size; i++) {
 		newStack.push(std::rand() % 100);
 	}
 	return newStack;
@@ -115,7 +114,7 @@ MutantStack<T> createAStack(unsigned int size)
 
 namespace memberFuncs {
 template <typename T>
-void checkPop(MutantStack<T> & testStack)
+void checkPop(MutantStack<T>& testStack)
 {
 	print::StackContents(testStack, "before");
 	testStack.pop();
@@ -124,7 +123,7 @@ void checkPop(MutantStack<T> & testStack)
 }
 
 template <typename T>
-void checkPush(MutantStack<T> & testStack, int value)
+void checkPush(MutantStack<T>& testStack, int value)
 {
 	print::StackContents(testStack, "before");
 	testStack.push(value);
@@ -133,35 +132,35 @@ void checkPush(MutantStack<T> & testStack, int value)
 }
 
 template <typename T>
-void checkSize(MutantStack<T> const & testStack)
+void checkSize(MutantStack<T> const& testStack)
 {
 	print::StackContents(testStack, "instance");
 	std::cout << testStack.size() << std::endl;
 }
 
 template <typename T>
-void checkEmpty(MutantStack<T> const & testStack)
+void checkEmpty(MutantStack<T> const& testStack)
 {
 	print::StackContents(testStack, "instance");
 	std::cout << testStack.empty() << std::endl;
 }
 
 template <typename T>
-void checkTop(MutantStack<T> const & testStack)
+void checkTop(MutantStack<T> const& testStack)
 {
 	print::StackContents(testStack, "before");
 	std::cout << testStack.top() << std::endl;
 }
 
 template <typename T>
-void checkCopy(MutantStack<T> const & testStack)
+void checkCopy(MutantStack<T> const& testStack)
 {
 	MutantStack<int> testStack_copy;
 	testStack_copy = testStack;
 	print::StackContents(testStack, "original", COLOR_CYAN);
 	print::StackContents(testStack_copy, "copy", COLOR_CYAN);
 	testStack_copy.push(0);
-	print::Comment("alterated copied object");
+	print::Comment("copy.push(0)");
 	print::StackContents(testStack, "original", COLOR_CYAN);
 	print::StackContents(testStack_copy, "copy", COLOR_CYAN);
 }
@@ -177,7 +176,7 @@ void test()
 {
 	print::Header("stack member functions");
 
-	MutantStack<int> intStack = createAStack<int>(5);
+	MutantStack<int> intStack	= createAStack<int>(5);
 	MutantStack<int> emptyStack = createAStack<int>(0);
 
 	print::SubHeader("check constructor");
